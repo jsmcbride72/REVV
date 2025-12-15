@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, Users, Target, TrendingUp, Heart, Lightbulb, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Shield, Search } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Users, Target, TrendingUp, Heart, Lightbulb, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Shield, Search, MousePointer, AlertTriangle, Link2, Eye } from 'lucide-react';
 import { useState } from 'react';
 import ContactForm from './ContactForm';
 
@@ -260,16 +260,77 @@ function App() {
             </div>
           </div>
 
-          <div className="mt-12 max-w-4xl mx-auto bg-gradient-to-br from-cyan-950/20 to-emerald-950/20 border border-neutral-800 rounded-2xl p-8 lg:p-10">
-            <h3 className="text-xl lg:text-2xl font-bold mb-4 text-center">
-              Why Both Matter
-            </h3>
-            <p className="text-neutral-300 text-center leading-relaxed mb-4">
-              Traditional UX assumes humans are in control, making decisions and clicking buttons. Agentic Experience fundamentally shifts this — AI agents take actions autonomously, making decisions and executing tasks on behalf of users.
-            </p>
-            <p className="text-neutral-300 text-center leading-relaxed">
-              Great UX without AX thinking creates interfaces that break when agents start taking action. AX without UX expertise builds powerful agents that people don't trust or understand. Revv Studio bridges both worlds — designing experiences where humans and agents collaborate effectively, with clear boundaries, transparent reasoning, and meaningful control.
-            </p>
+          <div className="mt-12 max-w-6xl mx-auto">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 rounded-2xl mb-4">
+                <Link2 className="w-8 h-8 text-cyan-400" />
+              </div>
+              <h3 className="text-2xl lg:text-3xl font-bold mb-3">
+                Why Both Matter
+              </h3>
+              <p className="text-neutral-400 max-w-2xl mx-auto">
+                Traditional UX assumes humans are in control. Agentic Experience fundamentally shifts this — AI agents take actions autonomously on behalf of users.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-3 gap-6 mb-8">
+              <div className="bg-gradient-to-br from-amber-950/30 to-neutral-900/50 border border-amber-800/40 rounded-xl p-6">
+                <div className="flex items-center justify-center w-12 h-12 bg-amber-500/10 rounded-xl mb-4">
+                  <AlertTriangle className="w-6 h-6 text-amber-400" />
+                </div>
+                <h4 className="text-lg font-bold mb-3 text-amber-100">UX Without AX</h4>
+                <p className="text-neutral-400 text-sm leading-relaxed">
+                  Interfaces designed for human control break when agents start taking autonomous action. Buttons, forms, and clicks don't translate to agentic workflows.
+                </p>
+              </div>
+
+              <div className="relative bg-gradient-to-br from-cyan-950/30 via-emerald-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-xl p-6 lg:scale-105 shadow-xl">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="bg-gradient-to-r from-cyan-500 to-emerald-500 text-neutral-950 text-xs font-bold px-4 py-1 rounded-full">
+                    The Bridge
+                  </span>
+                </div>
+                <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 rounded-xl mb-4">
+                  <Eye className="w-6 h-6 text-cyan-400" />
+                </div>
+                <h4 className="text-lg font-bold mb-3 bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">Revv Studio's Approach</h4>
+                <p className="text-neutral-300 text-sm leading-relaxed">
+                  We design experiences where humans and agents collaborate effectively — with clear boundaries, transparent reasoning, and meaningful control for both.
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-br from-amber-950/30 to-neutral-900/50 border border-amber-800/40 rounded-xl p-6">
+                <div className="flex items-center justify-center w-12 h-12 bg-amber-500/10 rounded-xl mb-4">
+                  <AlertTriangle className="w-6 h-6 text-amber-400" />
+                </div>
+                <h4 className="text-lg font-bold mb-3 text-amber-100">AX Without UX</h4>
+                <p className="text-neutral-400 text-sm leading-relaxed">
+                  Powerful agents that people don't trust or understand. Without UX expertise, autonomous systems lack the transparency and control users need to feel confident.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+              <div className="bg-gradient-to-br from-cyan-950/20 to-transparent border border-cyan-800/30 rounded-xl p-5 flex items-start space-x-3">
+                <div className="w-8 h-8 bg-cyan-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <MousePointer className="w-4 h-4 text-cyan-400" />
+                </div>
+                <div>
+                  <h5 className="font-semibold text-cyan-400 text-sm mb-1">Human-Centered Design</h5>
+                  <p className="text-xs text-neutral-400 leading-relaxed">Interfaces and experiences optimized for human understanding and interaction</p>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-emerald-950/20 to-transparent border border-emerald-800/30 rounded-xl p-5 flex items-start space-x-3">
+                <div className="w-8 h-8 bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Bot className="w-4 h-4 text-emerald-400" />
+                </div>
+                <div>
+                  <h5 className="font-semibold text-emerald-400 text-sm mb-1">Agent-Ready Systems</h5>
+                  <p className="text-xs text-neutral-400 leading-relaxed">Workflows designed for autonomous AI agents to take action with proper oversight</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
