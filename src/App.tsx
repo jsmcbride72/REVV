@@ -169,7 +169,7 @@ function App() {
               <p className="text-neutral-300 mb-6 leading-relaxed">
                 Traditional UX focuses on how people interact with products, services, and systems. We design interfaces, workflows, and experiences that are intuitive, efficient, and delightful to use.
               </p>
-              <div className="space-y-3">
+              <div className="space-y-3 mb-6">
                 <div className="flex items-center space-x-2 text-neutral-400">
                   <div className="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
                   <span className="text-sm">Interface design and prototyping</span>
@@ -186,6 +186,17 @@ function App() {
                   <div className="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
                   <span className="text-sm">Design systems and component libraries</span>
                 </div>
+              </div>
+              <div className="mt-6 rounded-xl overflow-hidden border border-neutral-800/50">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-auto"
+                >
+                  <source src="/driven-vid.mov" type="video/mp4" />
+                </video>
               </div>
             </div>
 
