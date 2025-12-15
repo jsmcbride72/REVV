@@ -107,9 +107,41 @@ function App() {
             <h2 className="text-3xl lg:text-4xl font-bold mb-6">Our Story</h2>
           </div>
           <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-2xl p-8 lg:p-12">
-            <p className="text-lg lg:text-xl text-neutral-300 leading-relaxed text-center max-w-4xl mx-auto">
-              We work with teams who want clearer workflows, better experiences, and systems that support people — whether that means smarter processes, better digital design, or carefully applied AI and automation.
+            <p className="text-lg lg:text-xl text-neutral-300 leading-relaxed mb-8">
+              Founded by practitioners who've spent years navigating the gap between business strategy and technological implementation, Revv Studio emerged from a simple observation: most organizations don't need more tools — they need work that actually works for the people doing it.
             </p>
+            <p className="text-lg text-neutral-400 leading-relaxed mb-8">
+              We've seen firsthand how AI hype can distract from fundamental operational issues, and how the best technology investments are the ones that amplify human capability rather than replace it. Our approach combines strategic consulting with hands-on implementation, ensuring that every change we introduce is grounded in real workflow improvement — not theoretical frameworks.
+            </p>
+            <div className="grid md:grid-cols-3 gap-8 pt-8 border-t border-neutral-800">
+              <div className="text-center">
+                <div className="flex justify-center mb-3">
+                  <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center">
+                    <Gauge className="w-5 h-5 text-cyan-400" />
+                  </div>
+                </div>
+                <div className="text-4xl lg:text-5xl font-bold text-gradient mb-2">40%</div>
+                <p className="text-sm text-neutral-400">Average reduction in process cycle time</p>
+              </div>
+              <div className="text-center">
+                <div className="flex justify-center mb-3">
+                  <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center">
+                    <TrendingUp className="w-5 h-5 text-cyan-400" />
+                  </div>
+                </div>
+                <div className="text-4xl lg:text-5xl font-bold text-gradient mb-2">65%</div>
+                <p className="text-sm text-neutral-400">Fewer handoff errors and rework loops</p>
+              </div>
+              <div className="text-center">
+                <div className="flex justify-center mb-3">
+                  <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center">
+                    <BarChart3 className="w-5 h-5 text-cyan-400" />
+                  </div>
+                </div>
+                <div className="text-4xl lg:text-5xl font-bold text-gradient mb-2">3-6mo</div>
+                <p className="text-sm text-neutral-400">Typical timeline to measurable outcomes</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
