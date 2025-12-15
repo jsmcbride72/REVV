@@ -77,7 +77,7 @@ function App() {
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-80"
+            className="absolute inset-0 w-full h-full object-cover opacity-95"
           >
             <source src="/hero-bg.mp4" type="video/mp4" />
           </video>
