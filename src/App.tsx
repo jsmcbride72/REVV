@@ -111,7 +111,7 @@ function App() {
                   muted
                   playsInline
                   className="w-full h-full object-cover"
-                  src="/studio-story.mp4"
+                  src="/jsmcbride_cool_studio.mp4"
                 />
               </div>
 
