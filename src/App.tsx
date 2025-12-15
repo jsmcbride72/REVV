@@ -220,7 +220,7 @@ function App() {
                   muted
                   playsInline
                   className="w-full h-auto"
-                  src="/phones-spin.mov"
+                  src="/jsmcbride_n8nf.mp4"
                 />
               </div>
 
