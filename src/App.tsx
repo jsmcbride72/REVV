@@ -174,7 +174,7 @@ function App() {
                   muted
                   playsInline
                   className="w-full h-auto"
-                  src="/driven-vid.mov"
+                  src="/phones-spin.mov"
                 />
               </div>
 
