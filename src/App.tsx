@@ -166,11 +166,11 @@ function App() {
                   <p className="text-sm text-cyan-400 font-semibold">Human-Centered Design</p>
                 </div>
               </div>
-              <div className="flex flex-col md:flex-row gap-4 items-start mb-6">
+              <div className="flex flex-col md:flex-row gap-6 items-start mb-6">
                 <p className="text-neutral-300 leading-relaxed flex-1">
                   Traditional UX focuses on how people interact with products, services, and systems. We design interfaces, workflows, and experiences that are intuitive, efficient, and delightful to use.
                 </p>
-                <div className="md:w-40 w-full rounded-lg overflow-hidden border border-neutral-800/50 flex-shrink-0">
+                <div className="md:w-72 w-full rounded-lg overflow-hidden border border-neutral-800/50 flex-shrink-0">
                   <video
                     autoPlay
                     loop
