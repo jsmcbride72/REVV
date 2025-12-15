@@ -277,62 +277,94 @@ function App() {
             <div className="group relative bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-2xl p-8 lg:p-10 hover:border-cyan-500/50 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
               <div className="relative">
-                <div className="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6">
-                  <Workflow className="w-6 h-6 text-cyan-400" />
-                </div>
-                <h3 className="text-2xl lg:text-3xl font-bold mb-4">
-                  Digital Experience & Workflow Optimization
-                </h3>
-                <p className="text-neutral-400 mb-6 text-lg">
-                  For teams focused on clarity, efficiency, and better experiences — with or without AI.
-                </p>
-                <p className="text-neutral-300 mb-6">
-                  We help organizations simplify how work flows through their business by improving processes, tools, and user experience.
-                </p>
-
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-semibold text-neutral-200 mb-1">Workflow mapping & optimization</h4>
-                      <p className="text-sm text-neutral-400">Identifying friction, duplication, and handoff breakdowns</p>
+                <div className="flex items-center justify-between mb-8">
+                  <div>
+                    <div className="flex items-center space-x-3 mb-2">
+                      <div className="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center">
+                        <Workflow className="w-6 h-6 text-cyan-400" />
+                      </div>
+                      <h3 className="text-2xl lg:text-3xl font-bold">
+                        Digital Experience & Workflow Optimization
+                      </h3>
                     </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-semibold text-neutral-200 mb-1">Process design & documentation</h4>
-                      <p className="text-sm text-neutral-400">Creating clear, usable systems people actually follow</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-semibold text-neutral-200 mb-1">UX & service design</h4>
-                      <p className="text-sm text-neutral-400">Improving how customers and internal teams interact with products and tools</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-semibold text-neutral-200 mb-1">Tool alignment</h4>
-                      <p className="text-sm text-neutral-400">Making sure the software you already use supports your workflows</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-semibold text-neutral-200 mb-1">Operational clarity</h4>
-                      <p className="text-sm text-neutral-400">Reducing confusion, rework, and decision fatigue</p>
-                    </div>
+                    <p className="text-neutral-400 text-sm ml-15">
+                      For teams focused on clarity, efficiency, and better experiences
+                    </p>
                   </div>
                 </div>
 
-                <div className="pt-6 border-t border-neutral-800">
-                  <p className="text-sm font-semibold text-cyan-400 mb-2">OUTCOME</p>
-                  <p className="text-neutral-300">
-                    Work becomes easier to understand, easier to execute, and easier to scale — without forcing new technology.
-                  </p>
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  <div className="bg-neutral-950/50 border border-neutral-800/50 rounded-xl p-5 text-center">
+                    <div className="flex justify-center mb-3">
+                      <Network className="w-8 h-8 text-cyan-400" />
+                    </div>
+                    <div className="text-3xl font-bold text-cyan-400 mb-1">40%</div>
+                    <p className="text-xs text-neutral-400 leading-tight">Reduction in process cycle time</p>
+                  </div>
+
+                  <div className="bg-neutral-950/50 border border-neutral-800/50 rounded-xl p-5 text-center">
+                    <div className="flex justify-center mb-3">
+                      <TrendingUp className="w-8 h-8 text-cyan-400" />
+                    </div>
+                    <div className="text-3xl font-bold text-cyan-400 mb-1">65%</div>
+                    <p className="text-xs text-neutral-400 leading-tight">Fewer handoff errors</p>
+                  </div>
+                </div>
+
+                <div className="space-y-3 mb-8">
+                  <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-4 flex items-center space-x-4 hover:border-cyan-500/30 transition-colors">
+                    <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Layers className="w-5 h-5 text-cyan-400" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">Workflow Mapping</h4>
+                      <p className="text-xs text-neutral-500">Identify friction & handoff breakdowns</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-4 flex items-center space-x-4 hover:border-cyan-500/30 transition-colors">
+                    <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Palette className="w-5 h-5 text-cyan-400" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">UX & Service Design</h4>
+                      <p className="text-xs text-neutral-500">Better customer & team experiences</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-4 flex items-center space-x-4 hover:border-cyan-500/30 transition-colors">
+                    <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Activity className="w-5 h-5 text-cyan-400" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">Process Design</h4>
+                      <p className="text-xs text-neutral-500">Clear systems people actually follow</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-4 flex items-center space-x-4 hover:border-cyan-500/30 transition-colors">
+                    <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Target className="w-5 h-5 text-cyan-400" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">Tool Alignment</h4>
+                      <p className="text-xs text-neutral-500">Software that supports workflows</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-cyan-950/20 to-transparent border border-cyan-800/30 rounded-xl p-5">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-8 h-8 bg-cyan-500/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Zap className="w-4 h-4 text-cyan-400" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-cyan-400 mb-2 tracking-wide">OUTCOME</p>
+                      <p className="text-sm text-neutral-200 leading-relaxed">
+                        Work becomes easier to understand, execute, and scale — without forcing new technology.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
