@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, Users, Target, TrendingUp, Heart, Lightbulb, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Users, Target, TrendingUp, Heart, Lightbulb, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Shield, Search } from 'lucide-react';
 import { useState } from 'react';
 import ContactForm from './ContactForm';
 
@@ -372,68 +372,131 @@ function App() {
             <div className="group relative bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-2xl p-8 lg:p-10 hover:border-emerald-500/50 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
               <div className="relative">
-                <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6">
-                  <CircuitBoard className="w-6 h-6 text-emerald-400" />
+                <div className="flex items-center justify-between mb-8">
+                  <div>
+                    <div className="flex items-center space-x-3 mb-2">
+                      <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center">
+                        <CircuitBoard className="w-6 h-6 text-emerald-400" />
+                      </div>
+                      <h3 className="text-2xl lg:text-3xl font-bold">
+                        Agentic AI & Intelligent Systems
+                      </h3>
+                    </div>
+                    <p className="text-neutral-400 text-sm ml-15">
+                      For teams ready to work alongside AI agents
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-2xl lg:text-3xl font-bold mb-4">
-                  Agentic AI & Intelligent Systems
-                </h3>
-                <p className="text-neutral-400 mb-6 text-lg">
-                  For teams ready to work alongside AI agents — not just use AI tools.
-                </p>
-                <p className="text-neutral-300 mb-6">
-                  When agentic AI is appropriate, we design systems where agents can take autonomous action while maintaining human oversight, trust, and control. This isn't about automation — it's about collaboration with intelligent agents.
-                </p>
+
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  <div className="bg-neutral-950/50 border border-neutral-800/50 rounded-xl p-5 text-center">
+                    <div className="flex justify-center mb-3">
+                      <Bot className="w-8 h-8 text-emerald-400" />
+                    </div>
+                    <div className="text-3xl font-bold text-emerald-400 mb-1">85%</div>
+                    <p className="text-xs text-neutral-400 leading-tight">Task completion autonomy rate</p>
+                  </div>
+
+                  <div className="bg-neutral-950/50 border border-neutral-800/50 rounded-xl p-5 text-center">
+                    <div className="flex justify-center mb-3">
+                      <Shield className="w-8 h-8 text-emerald-400" />
+                    </div>
+                    <div className="text-3xl font-bold text-emerald-400 mb-1">100%</div>
+                    <p className="text-xs text-neutral-400 leading-tight">Human oversight & control</p>
+                  </div>
+                </div>
 
                 <div className="mb-6">
-                  <p className="text-sm font-semibold text-emerald-400 mb-3">OUR APPROACH TO AGENTIC AI FOCUSES ON</p>
-                  <div className="space-y-3">
-                    <div className="flex items-start space-x-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 flex-shrink-0"></div>
-                      <p className="text-neutral-300">Agent autonomy with clear decision boundaries — defining what agents can do independently</p>
+                  <p className="text-xs font-bold text-emerald-400 mb-3 tracking-wide">CORE PRINCIPLES</p>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-emerald-500/30 transition-colors">
+                      <div className="flex items-center space-x-2 mb-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                        <h4 className="font-semibold text-neutral-200 text-xs">Agent Autonomy</h4>
+                      </div>
+                      <p className="text-xs text-neutral-500 leading-tight">Clear decision boundaries</p>
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 flex-shrink-0"></div>
-                      <p className="text-neutral-300">Transparent reasoning and explainability — people understand why agents made decisions</p>
+
+                    <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-emerald-500/30 transition-colors">
+                      <div className="flex items-center space-x-2 mb-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                        <h4 className="font-semibold text-neutral-200 text-xs">Explainability</h4>
+                      </div>
+                      <p className="text-xs text-neutral-500 leading-tight">Transparent reasoning</p>
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 flex-shrink-0"></div>
-                      <p className="text-neutral-300">Human-agent collaboration patterns — designing effective handoffs and escalation</p>
+
+                    <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-emerald-500/30 transition-colors">
+                      <div className="flex items-center space-x-2 mb-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                        <h4 className="font-semibold text-neutral-200 text-xs">Collaboration</h4>
+                      </div>
+                      <p className="text-xs text-neutral-500 leading-tight">Effective handoffs</p>
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 flex-shrink-0"></div>
-                      <p className="text-neutral-300">Trust frameworks and control mechanisms — ensuring agents work for people, not despite them</p>
+
+                    <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-emerald-500/30 transition-colors">
+                      <div className="flex items-center space-x-2 mb-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                        <h4 className="font-semibold text-neutral-200 text-xs">Trust Framework</h4>
+                      </div>
+                      <p className="text-xs text-neutral-500 leading-tight">Control mechanisms</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="mb-8">
-                  <p className="text-sm font-semibold text-emerald-400 mb-3">WE HELP WITH</p>
-                  <div className="space-y-3">
-                    <div className="flex items-start space-x-3">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                      <p className="text-neutral-300">Agentic AI opportunity assessment — where agents add value vs. where they create risk</p>
+                <div className="space-y-3 mb-8">
+                  <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-4 flex items-center space-x-4 hover:border-emerald-500/30 transition-colors">
+                    <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Search className="w-5 h-5 text-emerald-400" />
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                      <p className="text-neutral-300">Agent workflow design — defining what agents handle autonomously vs. with oversight</p>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">AI Opportunity Assessment</h4>
+                      <p className="text-xs text-neutral-500">Value vs. risk analysis</p>
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                      <p className="text-neutral-300">Human-agent interface design — how people monitor, guide, and override agents</p>
+                  </div>
+
+                  <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-4 flex items-center space-x-4 hover:border-emerald-500/30 transition-colors">
+                    <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Workflow className="w-5 h-5 text-emerald-400" />
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                      <p className="text-neutral-300">Trust building and change management — helping teams adopt agentic systems confidently</p>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">Agent Workflow Design</h4>
+                      <p className="text-xs text-neutral-500">Autonomy vs. oversight definition</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-4 flex items-center space-x-4 hover:border-emerald-500/30 transition-colors">
+                    <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Users className="w-5 h-5 text-emerald-400" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">Human-Agent Interface</h4>
+                      <p className="text-xs text-neutral-500">Monitor, guide & override systems</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-4 flex items-center space-x-4 hover:border-emerald-500/30 transition-colors">
+                    <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Heart className="w-5 h-5 text-emerald-400" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">Trust & Change Management</h4>
+                      <p className="text-xs text-neutral-500">Confident adoption strategies</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-6 border-t border-neutral-800">
-                  <p className="text-sm font-semibold text-emerald-400 mb-2">OUTCOME</p>
-                  <p className="text-neutral-300">
-                    AI agents that extend human capability, take action autonomously within clear boundaries, and create trust through transparency — not anxiety through unpredictability.
-                  </p>
+                <div className="bg-gradient-to-br from-emerald-950/20 to-transparent border border-emerald-800/30 rounded-xl p-5">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-8 h-8 bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Zap className="w-4 h-4 text-emerald-400" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-emerald-400 mb-2 tracking-wide">OUTCOME</p>
+                      <p className="text-sm text-neutral-200 leading-relaxed">
+                        AI agents that extend human capability, take action autonomously within clear boundaries, and create trust through transparency.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
