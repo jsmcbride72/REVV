@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, Users, Target, TrendingUp, Heart, Lightbulb, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Users, Target, TrendingUp, Heart, Lightbulb, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap } from 'lucide-react';
 import { useState } from 'react';
 import ContactForm from './ContactForm';
 
