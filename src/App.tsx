@@ -35,8 +35,8 @@ function App() {
         >
           <source src="/jsmcbride_cool_studio_that_focuses_on_AX_UX_--ar_11_--motion__0ccf1ddc-1b5c-4afb-afdf-eee380d4793f_3.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-neutral-950/85"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-cyan-950/40 to-neutral-950/60"></div>
+        <div className="absolute inset-0 bg-neutral-950/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-cyan-950/15 to-neutral-950/25"></div>
         <div className="absolute top-20 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
 
