@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, Zap, Users, Target, TrendingUp, Heart, Lightbulb, ShieldCheck, Rocket, Quote, ChevronDown } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Zap, Users, Target, TrendingUp, Heart, Lightbulb, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge } from 'lucide-react';
 import { useState } from 'react';
 import ContactForm from './ContactForm';
 
@@ -72,14 +72,29 @@ function App() {
             </p>
             <div className="grid md:grid-cols-3 gap-8 pt-8 border-t border-neutral-800">
               <div className="text-center">
+                <div className="flex justify-center mb-3">
+                  <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center">
+                    <Gauge className="w-5 h-5 text-cyan-400" />
+                  </div>
+                </div>
                 <div className="text-4xl lg:text-5xl font-bold text-gradient mb-2">40%</div>
                 <p className="text-sm text-neutral-400">Average reduction in process cycle time</p>
               </div>
               <div className="text-center">
+                <div className="flex justify-center mb-3">
+                  <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center">
+                    <TrendingUp className="w-5 h-5 text-cyan-400" />
+                  </div>
+                </div>
                 <div className="text-4xl lg:text-5xl font-bold text-gradient mb-2">65%</div>
                 <p className="text-sm text-neutral-400">Fewer handoff errors and rework loops</p>
               </div>
               <div className="text-center">
+                <div className="flex justify-center mb-3">
+                  <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center">
+                    <BarChart3 className="w-5 h-5 text-cyan-400" />
+                  </div>
+                </div>
                 <div className="text-4xl lg:text-5xl font-bold text-gradient mb-2">3-6mo</div>
                 <p className="text-sm text-neutral-400">Typical timeline to measurable outcomes</p>
               </div>
@@ -101,7 +116,7 @@ function App() {
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-2xl p-8 lg:p-10">
               <div className="flex items-center space-x-3 mb-6">
                 <div className="w-14 h-14 bg-cyan-500/10 rounded-xl flex items-center justify-center">
-                  <Users className="w-7 h-7 text-cyan-400" />
+                  <Palette className="w-7 h-7 text-cyan-400" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">User Experience (UX)</h3>
@@ -134,7 +149,7 @@ function App() {
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-2xl p-8 lg:p-10">
               <div className="flex items-center space-x-3 mb-6">
                 <div className="w-14 h-14 bg-emerald-500/10 rounded-xl flex items-center justify-center">
-                  <Zap className="w-7 h-7 text-emerald-400" />
+                  <Brain className="w-7 h-7 text-emerald-400" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">Agentic Experience (AX)</h3>
@@ -194,7 +209,7 @@ function App() {
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
               <div className="relative">
                 <div className="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6">
-                  <Target className="w-6 h-6 text-cyan-400" />
+                  <Workflow className="w-6 h-6 text-cyan-400" />
                 </div>
                 <h3 className="text-2xl lg:text-3xl font-bold mb-4">
                   Digital Experience & Workflow Optimization
@@ -257,7 +272,7 @@ function App() {
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
               <div className="relative">
                 <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6">
-                  <Zap className="w-6 h-6 text-emerald-400" />
+                  <CircuitBoard className="w-6 h-6 text-emerald-400" />
                 </div>
                 <h3 className="text-2xl lg:text-3xl font-bold mb-4">
                   Agentic AI & Intelligent Systems
@@ -347,7 +362,7 @@ function App() {
 
             <div className="group bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300">
               <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Lightbulb className="w-6 h-6 text-emerald-400" />
+                <Sparkles className="w-6 h-6 text-emerald-400" />
               </div>
               <h3 className="text-lg font-bold mb-3">Practical Over Perfect</h3>
               <p className="text-neutral-400 text-sm">
@@ -357,7 +372,7 @@ function App() {
 
             <div className="group bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300">
               <div className="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <ShieldCheck className="w-6 h-6 text-cyan-400" />
+                <Target className="w-6 h-6 text-cyan-400" />
               </div>
               <h3 className="text-lg font-bold mb-3">Honest Assessment</h3>
               <p className="text-neutral-400 text-sm">
@@ -367,7 +382,7 @@ function App() {
 
             <div className="group bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300">
               <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Rocket className="w-6 h-6 text-emerald-400" />
+                <Activity className="w-6 h-6 text-emerald-400" />
               </div>
               <h3 className="text-lg font-bold mb-3">Outcome Focused</h3>
               <p className="text-neutral-400 text-sm">
@@ -389,7 +404,12 @@ function App() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             <div className="group relative bg-neutral-900 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1">
-              <div className="text-4xl font-bold text-cyan-400/20 mb-4">01</div>
+              <div className="flex items-center justify-between mb-4">
+                <div className="text-4xl font-bold text-cyan-400/20">01</div>
+                <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center">
+                  <Users className="w-5 h-5 text-cyan-400" />
+                </div>
+              </div>
               <h3 className="text-xl font-bold mb-3">Understand the People First</h3>
               <p className="text-neutral-400">
                 We start by learning how work actually happens — who's involved, where friction lives, and what success looks like for the humans doing the work.
@@ -397,7 +417,12 @@ function App() {
             </div>
 
             <div className="group relative bg-neutral-900 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1">
-              <div className="text-4xl font-bold text-cyan-400/20 mb-4">02</div>
+              <div className="flex items-center justify-between mb-4">
+                <div className="text-4xl font-bold text-cyan-400/20">02</div>
+                <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center">
+                  <Lightbulb className="w-5 h-5 text-cyan-400" />
+                </div>
+              </div>
               <h3 className="text-xl font-bold mb-3">Improve Before Adding</h3>
               <p className="text-neutral-400">
                 We simplify workflows and experiences first. Technology is layered in only when it genuinely improves clarity, speed, or quality.
@@ -405,7 +430,12 @@ function App() {
             </div>
 
             <div className="group relative bg-neutral-900 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1">
-              <div className="text-4xl font-bold text-cyan-400/20 mb-4">03</div>
+              <div className="flex items-center justify-between mb-4">
+                <div className="text-4xl font-bold text-cyan-400/20">03</div>
+                <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center">
+                  <Network className="w-5 h-5 text-cyan-400" />
+                </div>
+              </div>
               <h3 className="text-xl font-bold mb-3">Implement With Care</h3>
               <p className="text-neutral-400">
                 Whether it's process changes, UX improvements, or AI-assisted workflows, we design solutions that fit your reality — not a theoretical future state.
@@ -413,7 +443,12 @@ function App() {
             </div>
 
             <div className="group relative bg-neutral-900 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1">
-              <div className="text-4xl font-bold text-cyan-400/20 mb-4">04</div>
+              <div className="flex items-center justify-between mb-4">
+                <div className="text-4xl font-bold text-cyan-400/20">04</div>
+                <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center">
+                  <BarChart3 className="w-5 h-5 text-cyan-400" />
+                </div>
+              </div>
               <h3 className="text-xl font-bold mb-3">Measure What Matters</h3>
               <p className="text-neutral-400 mb-4">
                 We focus on outcomes people feel:
@@ -453,27 +488,27 @@ function App() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300">
-              <Users className="w-8 h-8 text-cyan-400 mb-4" />
+              <ShieldCheck className="w-8 h-8 text-cyan-400 mb-4" />
               <h3 className="text-lg font-bold mb-2">We don't push AI where it doesn't belong</h3>
             </div>
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300">
-              <Target className="w-8 h-8 text-cyan-400 mb-4" />
+              <Heart className="w-8 h-8 text-cyan-400 mb-4" />
               <h3 className="text-lg font-bold mb-2">We design for people, not just systems</h3>
             </div>
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300">
-              <TrendingUp className="w-8 h-8 text-cyan-400 mb-4" />
+              <Gauge className="w-8 h-8 text-cyan-400 mb-4" />
               <h3 className="text-lg font-bold mb-2">We balance quick wins with long-term clarity</h3>
             </div>
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300">
-              <Zap className="w-8 h-8 text-cyan-400 mb-4" />
+              <Layers className="w-8 h-8 text-cyan-400 mb-4" />
               <h3 className="text-lg font-bold mb-2">We combine strategy, experience, and implementation</h3>
             </div>
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300">
-              <CheckCircle2 className="w-8 h-8 text-cyan-400 mb-4" />
+              <Rocket className="w-8 h-8 text-cyan-400 mb-4" />
               <h3 className="text-lg font-bold mb-2">We make change feel manageable — not disruptive</h3>
             </div>
           </div>
