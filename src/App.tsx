@@ -27,7 +27,7 @@ function App() {
           <div className="flex justify-between items-center">
             <div className="flex items-center">
               <img
-                src="/revv-logo.png"
+                src="/revv-logo-new.png"
                 alt="REVV Studio"
                 className="h-10"
               />
