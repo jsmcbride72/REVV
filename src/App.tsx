@@ -170,7 +170,7 @@ function App() {
                 <p className="text-neutral-300 leading-relaxed flex-1">
                   Traditional UX focuses on how people interact with products, services, and systems. We design interfaces, workflows, and experiences that are intuitive, efficient, and delightful to use.
                 </p>
-                <div className="md:w-[864px] w-full rounded-lg overflow-hidden border border-neutral-800/50 flex-shrink-0">
+                <div className="md:w-[432px] w-full rounded-lg overflow-hidden border border-neutral-800/50 flex-shrink-0">
                   <video
                     autoPlay
                     loop
