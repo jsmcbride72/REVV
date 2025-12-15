@@ -212,9 +212,22 @@ function App() {
                   <p className="text-sm text-emerald-400 font-semibold">The New Paradigm</p>
                 </div>
               </div>
-              <p className="text-neutral-300 mb-6 leading-relaxed">
+
+              <div className="mb-8 rounded-xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-auto"
+                  src="/phones-spin.mov"
+                />
+              </div>
+
+              <p className="text-neutral-300 leading-relaxed mb-6 text-lg">
                 AX is the emerging discipline of designing experiences where AI agents can take autonomous action on behalf of users. This fundamentally changes UX — instead of users doing tasks, agents do tasks for users. We design for human-agent collaboration, trust, and control.
               </p>
+
               <div className="space-y-3">
                 <div className="flex items-center space-x-2 text-neutral-400">
                   <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
