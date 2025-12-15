@@ -6,6 +6,20 @@ function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
       <nav className="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-xl border-b border-neutral-800/50">
@@ -15,11 +29,36 @@ function App() {
               <Zap className="w-6 h-6 text-cyan-400" />
               <span className="text-xl font-bold tracking-tight">Revv Studio</span>
             </div>
+
+            <div className="hidden md:flex items-center space-x-8">
+              <button onClick={() => scrollToSection('story')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
+                Story
+              </button>
+              <button onClick={() => scrollToSection('approach')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
+                Approach
+              </button>
+              <button onClick={() => scrollToSection('services')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
+                Services
+              </button>
+              <button onClick={() => scrollToSection('values')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
+                Values
+              </button>
+              <button onClick={() => scrollToSection('impact')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
+                Impact
+              </button>
+              <button
+                onClick={() => setIsContactFormOpen(true)}
+                className="px-6 py-2 bg-cyan-500 hover:bg-cyan-600 text-neutral-950 font-medium rounded-lg transition-all duration-300 hover:scale-105"
+              >
+                Contact
+              </button>
+            </div>
+
             <button
               onClick={() => setIsContactFormOpen(true)}
-              className="px-6 py-2 bg-cyan-500 hover:bg-cyan-600 text-neutral-950 font-medium rounded-lg transition-all duration-300 hover:scale-105"
+              className="md:hidden px-6 py-2 bg-cyan-500 hover:bg-cyan-600 text-neutral-950 font-medium rounded-lg transition-all duration-300 hover:scale-105"
             >
-              Contact Us
+              Contact
             </button>
           </div>
         </div>
@@ -58,7 +97,7 @@ function App() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
+      <section id="story" className="py-20 lg:py-32 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold mb-6">Our Story</h2>
@@ -103,7 +142,7 @@ function App() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
+      <section id="approach" className="py-20 lg:py-32 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">UX + AX: A Complete Approach</h2>
@@ -194,7 +233,7 @@ function App() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32">
+      <section id="services" className="py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">Two Ways We Help</h2>
@@ -340,7 +379,7 @@ function App() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 bg-neutral-900/30">
+      <section id="values" className="py-20 lg:py-32 bg-neutral-900/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">Our Values</h2>
@@ -515,7 +554,7 @@ function App() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 bg-gradient-to-b from-neutral-900/30 to-neutral-950">
+      <section id="impact" className="py-20 lg:py-32 bg-gradient-to-b from-neutral-900/30 to-neutral-950">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">Client Impact</h2>
