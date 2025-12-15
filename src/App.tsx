@@ -209,13 +209,13 @@ function App() {
                 </div>
               </div>
 
-              <div className="mb-8 rounded-xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl">
+              <div className="mb-8 rounded-xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl relative" style={{ aspectRatio: '16/12' }}>
                 <video
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="w-full h-auto"
+                  className="w-full h-full object-cover"
                   src="/jsmcbride_n8nf.mp4"
                 />
               </div>
