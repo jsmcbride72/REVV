@@ -74,10 +74,6 @@ function App() {
         >
           <source src="/supabase/jsmcbride_cool_digital_UX_moodboard_--ar_11_--motion_low_--vi_3da957f4-9cdf-40e1-bc03-9303a25f09b2_3.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-neutral-950/40"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-cyan-950/15 to-neutral-950/25"></div>
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
