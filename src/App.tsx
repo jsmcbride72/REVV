@@ -142,22 +142,6 @@ function App() {
         </div>
       </section>
 
-      <section className="py-12 bg-neutral-950">
-        <div className="w-full overflow-hidden">
-          <div className="h-[120px] w-full">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-              style={{ objectPosition: 'center 35%' }}
-              src="/studio.mp4"
-            />
-          </div>
-        </div>
-      </section>
-
       <section id="approach" className="py-20 lg:py-32 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
