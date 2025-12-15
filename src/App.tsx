@@ -146,21 +146,6 @@ function App() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 bg-gradient-to-b from-neutral-900/30 to-neutral-950">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <div className="rounded-2xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-auto"
-              src="/jsmcbride_n8nf.mp4"
-            />
-          </div>
-        </div>
-      </section>
-
       <section id="approach" className="py-20 lg:py-32 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
