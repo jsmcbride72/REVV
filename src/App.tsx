@@ -70,7 +70,7 @@ function App() {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-contain"
         >
           <source src="/supabase/jsmcbride_cool_digital_UX_moodboard_--ar_11_--motion_low_--vi_3da957f4-9cdf-40e1-bc03-9303a25f09b2_3.mp4" type="video/mp4" />
         </video>
