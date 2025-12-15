@@ -72,7 +72,7 @@ function App() {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="/jsmcbride_cool_studio_that_focuses_on_AX_UX_--ar_11_--motion__0ccf1ddc-1b5c-4afb-afdf-eee380d4793f_3.mp4" type="video/mp4" />
+          <source src="/supabase/jsmcbride_cool_digital_UX_moodboard_--ar_11_--motion_low_--vi_3da957f4-9cdf-40e1-bc03-9303a25f09b2_3.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-neutral-950/40"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-cyan-950/15 to-neutral-950/25"></div>
