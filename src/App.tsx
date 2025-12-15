@@ -886,36 +886,90 @@ function App() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="py-20 lg:py-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/10 to-transparent"></div>
+
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-6">What Makes Revv Studio Different</h2>
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-cyan-500/20 via-emerald-500/20 to-cyan-500/20 rounded-3xl mb-6 animate-pulse">
+              <Sparkles className="w-10 h-10 text-cyan-400" />
+            </div>
+            <h2 className="text-3xl lg:text-5xl font-bold mb-4">What Makes Revv Studio Different</h2>
+            <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
+              Not your typical consulting firm. Here's why our clients choose us.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300">
-              <ShieldCheck className="w-8 h-8 text-cyan-400 mb-4" />
-              <h3 className="text-lg font-bold mb-2">We don't push AI where it doesn't belong</h3>
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto mb-8">
+            <div className="group relative bg-gradient-to-br from-cyan-950/40 to-neutral-900/50 border-2 border-cyan-800/40 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
+              <div className="relative">
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <ShieldCheck className="w-8 h-8 text-cyan-400" />
+                </div>
+                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-cyan-100">We don't push AI where it doesn't belong</h3>
+                <p className="text-neutral-400 text-sm leading-relaxed">
+                  No AI hype or buzzwords. If your problem needs better processes, clearer workflows, or improved UX — that's what we'll recommend, even if it means less revenue for us.
+                </p>
+              </div>
             </div>
 
-            <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300">
-              <Heart className="w-8 h-8 text-cyan-400 mb-4" />
-              <h3 className="text-lg font-bold mb-2">We design for people, not just systems</h3>
+            <div className="group relative bg-gradient-to-br from-emerald-950/40 to-neutral-900/50 border-2 border-emerald-800/40 rounded-2xl p-8 hover:border-emerald-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 to-emerald-500/0 group-hover:from-emerald-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
+              <div className="relative">
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Heart className="w-8 h-8 text-emerald-400" />
+                </div>
+                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-emerald-100">We design for people, not just systems</h3>
+                <p className="text-neutral-400 text-sm leading-relaxed">
+                  Technology should adapt to how people work, not force them into rigid frameworks. We start with human needs and build systems around them.
+                </p>
+              </div>
             </div>
 
-            <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300">
-              <Gauge className="w-8 h-8 text-cyan-400 mb-4" />
-              <h3 className="text-lg font-bold mb-2">We balance quick wins with long-term clarity</h3>
+            <div className="group relative bg-gradient-to-br from-cyan-950/40 to-neutral-900/50 border-2 border-cyan-800/40 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
+              <div className="relative">
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Gauge className="w-8 h-8 text-cyan-400" />
+                </div>
+                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-cyan-100">We balance quick wins with long-term clarity</h3>
+                <p className="text-neutral-400 text-sm leading-relaxed">
+                  See progress in weeks, not months. We prioritize early momentum while building toward sustainable transformation that lasts.
+                </p>
+              </div>
             </div>
 
-            <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300">
-              <Layers className="w-8 h-8 text-cyan-400 mb-4" />
-              <h3 className="text-lg font-bold mb-2">We combine strategy, experience, and implementation</h3>
+            <div className="group relative bg-gradient-to-br from-emerald-950/40 to-neutral-900/50 border-2 border-emerald-800/40 rounded-2xl p-8 hover:border-emerald-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 to-emerald-500/0 group-hover:from-emerald-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
+              <div className="relative">
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Rocket className="w-8 h-8 text-emerald-400" />
+                </div>
+                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-emerald-100">We make change feel manageable — not disruptive</h3>
+                <p className="text-neutral-400 text-sm leading-relaxed">
+                  Change is hard. We break it into digestible steps, support your team through adoption, and ensure improvements stick rather than fade away.
+                </p>
+              </div>
             </div>
+          </div>
 
-            <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300">
-              <Rocket className="w-8 h-8 text-cyan-400 mb-4" />
-              <h3 className="text-lg font-bold mb-2">We make change feel manageable — not disruptive</h3>
+          <div className="max-w-4xl mx-auto">
+            <div className="relative bg-gradient-to-br from-cyan-950/30 via-emerald-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-2xl p-8 lg:p-10 shadow-xl">
+              <div className="absolute top-4 right-4 w-32 h-32 bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 rounded-full blur-3xl"></div>
+              <div className="relative flex flex-col lg:flex-row items-start lg:items-center gap-6">
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 rounded-2xl flex-shrink-0">
+                  <Layers className="w-8 h-8 text-cyan-400" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl lg:text-2xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+                    We combine strategy, experience, and implementation
+                  </h3>
+                  <p className="text-neutral-300 leading-relaxed">
+                    Most firms do one or the other. We bridge the gap between strategy and execution — rolling up our sleeves to implement alongside your team, not just delivering recommendations and walking away.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
