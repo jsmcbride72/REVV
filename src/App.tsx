@@ -26,11 +26,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <img
-                src="/revv-logo-new.png"
-                alt="REVV Studio"
-                className="h-10"
-              />
+              <span className="text-xl font-bold tracking-tight">REVV Studio</span>
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
