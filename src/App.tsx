@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, Zap, Users, Target, TrendingUp, Heart, Lightbulb, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Users, Target, TrendingUp, Heart, Lightbulb, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge } from 'lucide-react';
 import { useState } from 'react';
 import ContactForm from './ContactForm';
 
@@ -25,9 +25,12 @@ function App() {
       <nav className="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-xl border-b border-neutral-800/50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-2">
-              <Zap className="w-6 h-6 text-cyan-400" />
-              <span className="text-xl font-bold tracking-tight">Revv Studio</span>
+            <div className="flex items-center">
+              <img
+                src="/supabase/jsmcbride_cool_modern_REVV_logo_--v_7_49762833-ce5a-4d63-8a9e-bf7dc5947250_3.png"
+                alt="REVV Studio"
+                className="h-10"
+              />
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
