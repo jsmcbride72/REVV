@@ -166,37 +166,40 @@ function App() {
                   <p className="text-sm text-cyan-400 font-semibold">Human-Centered Design</p>
                 </div>
               </div>
-              <p className="text-neutral-300 mb-6 leading-relaxed">
-                Traditional UX focuses on how people interact with products, services, and systems. We design interfaces, workflows, and experiences that are intuitive, efficient, and delightful to use.
-              </p>
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center space-x-2 text-neutral-400">
-                  <div className="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
-                  <span className="text-sm">Interface design and prototyping</span>
+              <div className="flex flex-col md:flex-row gap-6 items-start">
+                <div className="flex-1">
+                  <p className="text-neutral-300 mb-6 leading-relaxed">
+                    Traditional UX focuses on how people interact with products, services, and systems. We design interfaces, workflows, and experiences that are intuitive, efficient, and delightful to use.
+                  </p>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-2 text-neutral-400">
+                      <div className="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
+                      <span className="text-sm">Interface design and prototyping</span>
+                    </div>
+                    <div className="flex items-center space-x-2 text-neutral-400">
+                      <div className="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
+                      <span className="text-sm">User research and usability testing</span>
+                    </div>
+                    <div className="flex items-center space-x-2 text-neutral-400">
+                      <div className="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
+                      <span className="text-sm">Service design and journey mapping</span>
+                    </div>
+                    <div className="flex items-center space-x-2 text-neutral-400">
+                      <div className="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
+                      <span className="text-sm">Design systems and component libraries</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-2 text-neutral-400">
-                  <div className="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
-                  <span className="text-sm">User research and usability testing</span>
+                <div className="md:w-72 w-full rounded-xl overflow-hidden border border-neutral-800/50 flex-shrink-0">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                    src="/driven-vid.mov"
+                  />
                 </div>
-                <div className="flex items-center space-x-2 text-neutral-400">
-                  <div className="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
-                  <span className="text-sm">Service design and journey mapping</span>
-                </div>
-                <div className="flex items-center space-x-2 text-neutral-400">
-                  <div className="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
-                  <span className="text-sm">Design systems and component libraries</span>
-                </div>
-              </div>
-              <div className="mt-6 rounded-xl overflow-hidden border border-neutral-800/50">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-auto"
-                >
-                  <source src="/driven-vid.mov" type="video/mp4" />
-                </video>
               </div>
             </div>
 
