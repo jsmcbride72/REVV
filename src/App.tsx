@@ -81,12 +81,12 @@ function App() {
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center max-w-6xl mx-auto">
-            <p className="text-sm font-semibold text-cyan-400 tracking-wide uppercase mb-8">
-              Welcome to the Revolution
-            </p>
-            <div className="flex justify-center mb-12">
+            <div className="flex justify-center mb-6">
               <img src="/logo.png" alt="Revv Studio" className="h-32 lg:h-40 w-auto" />
             </div>
+            <p className="text-xl lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-12">
+              Welcome to the Revolution
+            </p>
             <p className="text-4xl lg:text-6xl font-normal text-white leading-tight mb-12 drop-shadow-2xl">
               CHANGE IS HAPPENING FAST — NOT EVERY BUSINESS WANTS THE SAME TOOLS, OR THE SAME PACE.
             </p>
