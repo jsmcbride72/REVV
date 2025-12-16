@@ -95,6 +95,15 @@ function App() {
             </p>
           </div>
         </div>
+
+        <button
+          onClick={() => scrollToSection('story')}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 text-cyan-400 hover:text-cyan-300 transition-colors cursor-pointer animate-bounce"
+          aria-label="Scroll to content"
+        >
+          <span className="text-sm font-medium tracking-wide">Scroll to explore</span>
+          <ChevronDown className="w-8 h-8" />
+        </button>
       </section>
 
       <section id="story" className="py-20 lg:py-32 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
