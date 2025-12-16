@@ -354,6 +354,19 @@ function App() {
             </p>
           </div>
 
+          <div className="max-w-5xl mx-auto mb-16">
+            <div className="relative rounded-2xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+                src="/jsmcbride_WF.mp4"
+              />
+            </div>
+          </div>
+
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
             <div className="group relative bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-2xl p-8 lg:p-10 hover:border-cyan-500/50 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
