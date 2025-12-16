@@ -1121,28 +1121,6 @@ function App() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/20 to-transparent"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
-
-        <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <p className="text-sm font-semibold text-cyan-400 tracking-wide uppercase mb-4">
-            Welcome to the Revolution
-          </p>
-          <h2 className="text-3xl lg:text-5xl font-bold mb-6 leading-tight">
-            The future of work isn't about replacing humans —<br />
-            it's about supporting them better.
-          </h2>
-          <p className="text-xl text-neutral-400 mb-10 max-w-2xl mx-auto">
-            Revv Studio helps you choose the right path, move at the right pace, and build systems that work for the people who use them.
-          </p>
-          <button className="group inline-flex items-center space-x-2 px-8 py-4 bg-cyan-500 hover:bg-cyan-600 text-neutral-950 font-semibold rounded-lg transition-all duration-300 hover:scale-105">
-            <span>Start Your Revolution</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
-        </div>
-      </section>
-
       <footer className="border-t border-neutral-800 py-12">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
