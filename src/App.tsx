@@ -865,21 +865,8 @@ function App() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover object-bottom"
-          >
-            <source src="/jsmcbride_bkgnd.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/60 to-neutral-950/70"></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="py-20 lg:py-32 bg-gradient-to-b from-neutral-900/30 to-neutral-950">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-cyan-500/20 via-emerald-500/20 to-cyan-500/20 rounded-3xl mb-6 animate-pulse">
               <Sparkles className="w-10 h-10 text-cyan-400" />
