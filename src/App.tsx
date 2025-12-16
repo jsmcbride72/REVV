@@ -83,15 +83,18 @@ function App() {
           <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/50 to-neutral-950/80"></div>
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <p className="text-sm font-semibold text-cyan-400 tracking-wide uppercase mb-4">
+          <div className="text-center max-w-6xl mx-auto">
+            <p className="text-sm font-semibold text-cyan-400 tracking-wide uppercase mb-8">
               Welcome to the Revolution
             </p>
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-5xl lg:text-7xl font-bold mb-12 leading-tight">
               <span className="text-gradient glow-cyan">Revv Studio</span>
             </h1>
-            <p className="text-xl lg:text-2xl text-neutral-300 leading-relaxed mb-12">
-              Change is happening fast — not every business wants the same tools, or the same pace. Revv Studio helps organizations improve how work gets done today, while thoughtfully preparing for what's next.
+            <p className="text-4xl lg:text-6xl font-bold text-white leading-tight mb-12 drop-shadow-2xl">
+              Change is happening fast — not every business wants the same tools, or the same pace.
+            </p>
+            <p className="text-3xl lg:text-5xl font-semibold text-neutral-200 leading-tight drop-shadow-xl">
+              Revv Studio helps organizations improve how work gets done today, while thoughtfully preparing for what's next.
             </p>
           </div>
         </div>
