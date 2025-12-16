@@ -45,6 +45,9 @@ function App() {
               <button onClick={() => scrollToSection('values')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
                 Values
               </button>
+              <button onClick={() => scrollToSection('how-we-work')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
+                How We Work
+              </button>
               <button onClick={() => scrollToSection('impact')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
                 Impact
               </button>
@@ -799,7 +802,7 @@ function App() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 bg-gradient-to-b from-neutral-900/50 to-neutral-950">
+      <section id="how-we-work" className="py-20 lg:py-32 bg-gradient-to-b from-neutral-900/50 to-neutral-950">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">How We Work</h2>
