@@ -87,10 +87,10 @@ function App() {
             <h1 className="text-5xl lg:text-7xl font-bold mb-12 leading-tight">
               <span className="text-gradient glow-cyan">Revv Studio</span>
             </h1>
-            <p className="text-4xl lg:text-6xl font-bold text-white leading-tight mb-12 drop-shadow-2xl">
+            <p className="text-4xl lg:text-6xl font-normal text-white leading-tight mb-12 drop-shadow-2xl">
               Change is happening fast — not every business wants the same tools, or the same pace.
             </p>
-            <p className="text-3xl lg:text-5xl font-semibold text-neutral-200 leading-tight drop-shadow-xl">
+            <p className="text-3xl lg:text-5xl font-light text-neutral-200 leading-tight drop-shadow-xl">
               Revv Studio helps organizations improve how work gets done today, while thoughtfully preparing for what's next.
             </p>
           </div>
