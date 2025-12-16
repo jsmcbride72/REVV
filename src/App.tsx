@@ -81,9 +81,16 @@ function App() {
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <p className="text-sm font-semibold text-cyan-400 tracking-wide uppercase mb-4">
+            <p className="text-sm font-semibold text-cyan-400 tracking-wide uppercase mb-6">
               Welcome to the Revolution
             </p>
+            <div className="flex justify-center mb-8">
+              <img
+                src="/revv-logo-new.png"
+                alt="Revv Studio"
+                className="h-32 lg:h-40 w-auto object-contain drop-shadow-2xl animate-fade-in"
+              />
+            </div>
             <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
               <span className="text-gradient glow-cyan">Revv Studio</span>
             </h1>
