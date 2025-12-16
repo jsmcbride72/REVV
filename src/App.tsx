@@ -886,52 +886,52 @@ function App() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto mb-8">
-            <div className="group relative bg-gradient-to-br from-neutral-800/95 to-neutral-900/95 border-2 border-neutral-700/40 rounded-2xl p-8 hover:border-neutral-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-neutral-500/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-neutral-500/0 to-neutral-500/0 group-hover:from-neutral-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
+            <div className="group relative bg-gradient-to-br from-cyan-950/95 to-neutral-900/95 border-2 border-cyan-800/40 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
               <div className="relative">
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-neutral-500/20 to-neutral-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <ShieldCheck className="w-8 h-8 text-neutral-300" />
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <ShieldCheck className="w-8 h-8 text-cyan-400" />
                 </div>
-                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-neutral-100">We don't push AI where it doesn't belong</h3>
+                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-cyan-100">We don't push AI where it doesn't belong</h3>
                 <p className="text-neutral-400 text-sm leading-relaxed">
                   No AI hype or buzzwords. If your problem needs better processes, clearer workflows, or improved UX — that's what we'll recommend, even if it means less revenue for us.
                 </p>
               </div>
             </div>
 
-            <div className="group relative bg-gradient-to-br from-neutral-800/95 to-neutral-900/95 border-2 border-neutral-700/40 rounded-2xl p-8 hover:border-neutral-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-neutral-500/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-neutral-500/0 to-neutral-500/0 group-hover:from-neutral-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
+            <div className="group relative bg-gradient-to-br from-violet-950/95 to-neutral-900/95 border-2 border-violet-800/40 rounded-2xl p-8 hover:border-violet-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-violet-400/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-violet-400/0 to-violet-400/0 group-hover:from-violet-400/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
               <div className="relative">
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-neutral-500/20 to-neutral-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Heart className="w-8 h-8 text-neutral-300" />
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-400/20 to-violet-500/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Heart className="w-8 h-8 text-violet-400" />
                 </div>
-                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-neutral-100">We design for people, not just systems</h3>
+                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-violet-100">We design for people, not just systems</h3>
                 <p className="text-neutral-400 text-sm leading-relaxed">
                   Technology should adapt to how people work, not force them into rigid frameworks. We start with human needs and build systems around them.
                 </p>
               </div>
             </div>
 
-            <div className="group relative bg-gradient-to-br from-neutral-800/95 to-neutral-900/95 border-2 border-neutral-700/40 rounded-2xl p-8 hover:border-neutral-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-neutral-500/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-neutral-500/0 to-neutral-500/0 group-hover:from-neutral-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
+            <div className="group relative bg-gradient-to-br from-cyan-950/95 to-neutral-900/95 border-2 border-cyan-800/40 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
               <div className="relative">
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-neutral-500/20 to-neutral-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Gauge className="w-8 h-8 text-neutral-300" />
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Gauge className="w-8 h-8 text-cyan-400" />
                 </div>
-                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-neutral-100">We balance quick wins with long-term clarity</h3>
+                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-cyan-100">We balance quick wins with long-term clarity</h3>
                 <p className="text-neutral-400 text-sm leading-relaxed">
                   See progress in weeks, not months. We prioritize early momentum while building toward sustainable transformation that lasts.
                 </p>
               </div>
             </div>
 
-            <div className="group relative bg-gradient-to-br from-neutral-800/95 to-neutral-900/95 border-2 border-neutral-700/40 rounded-2xl p-8 hover:border-neutral-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-neutral-500/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-neutral-500/0 to-neutral-500/0 group-hover:from-neutral-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
+            <div className="group relative bg-gradient-to-br from-violet-950/95 to-neutral-900/95 border-2 border-violet-800/40 rounded-2xl p-8 hover:border-violet-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-violet-400/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-violet-400/0 to-violet-400/0 group-hover:from-violet-400/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
               <div className="relative">
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-neutral-500/20 to-neutral-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Rocket className="w-8 h-8 text-neutral-300" />
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-400/20 to-violet-500/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Rocket className="w-8 h-8 text-violet-400" />
                 </div>
-                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-neutral-100">We make change feel manageable — not disruptive</h3>
+                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-violet-100">We make change feel manageable — not disruptive</h3>
                 <p className="text-neutral-400 text-sm leading-relaxed">
                   Change is hard. We break it into digestible steps, support your team through adoption, and ensure improvements stick rather than fade away.
                 </p>
