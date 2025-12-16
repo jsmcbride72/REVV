@@ -84,9 +84,9 @@ function App() {
             <p className="text-sm font-semibold text-cyan-400 tracking-wide uppercase mb-8">
               Welcome to the Revolution
             </p>
-            <h1 className="text-5xl lg:text-7xl font-bold mb-12 leading-tight">
-              <span className="text-gradient glow-cyan">Revv Studio</span>
-            </h1>
+            <div className="flex justify-center mb-12">
+              <img src="/logo.png" alt="Revv Studio" className="h-32 lg:h-40 w-auto" />
+            </div>
             <p className="text-4xl lg:text-6xl font-normal text-white leading-tight mb-12 drop-shadow-2xl">
               Change is happening fast — not every business wants the same tools, or the same pace.
             </p>
