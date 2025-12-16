@@ -876,7 +876,7 @@ function App() {
           >
             <source src="/jsmcbride_bkgnd.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/80 via-neutral-950/70 to-neutral-950/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/40 via-neutral-950/30 to-neutral-950/40"></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
@@ -891,7 +891,7 @@ function App() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto mb-8">
-            <div className="group relative bg-gradient-to-br from-cyan-950/40 to-neutral-900/50 border-2 border-cyan-800/40 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
+            <div className="group relative bg-gradient-to-br from-cyan-950/95 to-neutral-900/95 border-2 border-cyan-800/40 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
               <div className="relative">
                 <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -904,7 +904,7 @@ function App() {
               </div>
             </div>
 
-            <div className="group relative bg-gradient-to-br from-emerald-950/40 to-neutral-900/50 border-2 border-emerald-800/40 rounded-2xl p-8 hover:border-emerald-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20">
+            <div className="group relative bg-gradient-to-br from-emerald-950/95 to-neutral-900/95 border-2 border-emerald-800/40 rounded-2xl p-8 hover:border-emerald-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 to-emerald-500/0 group-hover:from-emerald-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
               <div className="relative">
                 <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -917,7 +917,7 @@ function App() {
               </div>
             </div>
 
-            <div className="group relative bg-gradient-to-br from-cyan-950/40 to-neutral-900/50 border-2 border-cyan-800/40 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
+            <div className="group relative bg-gradient-to-br from-cyan-950/95 to-neutral-900/95 border-2 border-cyan-800/40 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
               <div className="relative">
                 <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -930,7 +930,7 @@ function App() {
               </div>
             </div>
 
-            <div className="group relative bg-gradient-to-br from-emerald-950/40 to-neutral-900/50 border-2 border-emerald-800/40 rounded-2xl p-8 hover:border-emerald-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20">
+            <div className="group relative bg-gradient-to-br from-emerald-950/95 to-neutral-900/95 border-2 border-emerald-800/40 rounded-2xl p-8 hover:border-emerald-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 to-emerald-500/0 group-hover:from-emerald-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
               <div className="relative">
                 <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
