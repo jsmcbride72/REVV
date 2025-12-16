@@ -872,11 +872,11 @@ function App() {
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover object-bottom"
           >
             <source src="/jsmcbride_bkgnd.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/40 via-neutral-950/30 to-neutral-950/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/60 to-neutral-950/70"></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
