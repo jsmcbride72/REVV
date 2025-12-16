@@ -886,7 +886,7 @@ function App() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto mb-8">
-            <div className="group relative bg-gradient-to-br from-cyan-950/95 to-neutral-900/95 border-2 border-cyan-800/40 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
+            <div className="group relative bg-gradient-to-br from-cyan-950/30 via-violet-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
               <div className="relative">
                 <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -899,8 +899,8 @@ function App() {
               </div>
             </div>
 
-            <div className="group relative bg-gradient-to-br from-violet-950/95 to-neutral-900/95 border-2 border-violet-800/40 rounded-2xl p-8 hover:border-violet-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-violet-400/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-violet-400/0 to-violet-400/0 group-hover:from-violet-400/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
+            <div className="group relative bg-gradient-to-br from-cyan-950/30 via-violet-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
               <div className="relative">
                 <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-400/20 to-violet-500/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Heart className="w-8 h-8 text-violet-400" />
@@ -912,7 +912,7 @@ function App() {
               </div>
             </div>
 
-            <div className="group relative bg-gradient-to-br from-cyan-950/95 to-neutral-900/95 border-2 border-cyan-800/40 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
+            <div className="group relative bg-gradient-to-br from-cyan-950/30 via-violet-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
               <div className="relative">
                 <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -925,8 +925,8 @@ function App() {
               </div>
             </div>
 
-            <div className="group relative bg-gradient-to-br from-violet-950/95 to-neutral-900/95 border-2 border-violet-800/40 rounded-2xl p-8 hover:border-violet-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-violet-400/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-violet-400/0 to-violet-400/0 group-hover:from-violet-400/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
+            <div className="group relative bg-gradient-to-br from-cyan-950/30 via-violet-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
               <div className="relative">
                 <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-400/20 to-violet-500/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Rocket className="w-8 h-8 text-violet-400" />
