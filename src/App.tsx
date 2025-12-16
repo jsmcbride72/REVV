@@ -224,12 +224,12 @@ function App() {
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-2xl p-8 lg:p-10">
               <div className="flex items-center space-x-3 mb-6">
-                <div className="w-14 h-14 bg-emerald-500/10 rounded-xl flex items-center justify-center">
-                  <Brain className="w-7 h-7 text-emerald-400" />
+                <div className="w-14 h-14 bg-violet-400/10 rounded-xl flex items-center justify-center">
+                  <Brain className="w-7 h-7 text-violet-400" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">Agentic Experience (AX)</h3>
-                  <p className="text-sm text-emerald-400 font-semibold">The New Paradigm</p>
+                  <p className="text-sm text-violet-400 font-semibold">The New Paradigm</p>
                 </div>
               </div>
 
@@ -250,19 +250,19 @@ function App() {
 
               <div className="space-y-3">
                 <div className="flex items-center space-x-2 text-neutral-400">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
                   <span className="text-sm">Agentic system design and orchestration</span>
                 </div>
                 <div className="flex items-center space-x-2 text-neutral-400">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
                   <span className="text-sm">Human-agent collaboration frameworks</span>
                 </div>
                 <div className="flex items-center space-x-2 text-neutral-400">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
                   <span className="text-sm">Trust, transparency, and control mechanisms</span>
                 </div>
                 <div className="flex items-center space-x-2 text-neutral-400">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
                   <span className="text-sm">Agent decision boundaries and escalation</span>
                 </div>
               </div>
@@ -293,16 +293,16 @@ function App() {
                 </p>
               </div>
 
-              <div className="relative bg-gradient-to-br from-cyan-950/30 via-emerald-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-xl p-6 lg:scale-105 shadow-xl">
+              <div className="relative bg-gradient-to-br from-cyan-950/30 via-violet-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-xl p-6 lg:scale-105 shadow-xl">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-cyan-500 to-emerald-500 text-neutral-950 text-xs font-bold px-4 py-1 rounded-full">
+                  <span className="bg-gradient-to-r from-cyan-500 to-violet-400 text-neutral-950 text-xs font-bold px-4 py-1 rounded-full">
                     The Bridge
                   </span>
                 </div>
-                <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 rounded-xl mb-4">
+                <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-violet-400/20 rounded-xl mb-4">
                   <Eye className="w-6 h-6 text-cyan-400" />
                 </div>
-                <h4 className="text-lg font-bold mb-3 bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">Revv Studio's Approach</h4>
+                <h4 className="text-lg font-bold mb-3 bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">Revv Studio's Approach</h4>
                 <p className="text-neutral-300 text-sm leading-relaxed">
                   We design experiences where humans and agents collaborate effectively — with clear boundaries, transparent reasoning, and meaningful control for both.
                 </p>
@@ -330,12 +330,12 @@ function App() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-emerald-950/20 to-transparent border border-emerald-800/30 rounded-xl p-5 flex items-start space-x-3">
-                <div className="w-8 h-8 bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Bot className="w-4 h-4 text-emerald-400" />
+              <div className="bg-gradient-to-br from-violet-950/20 to-transparent border border-violet-800/30 rounded-xl p-5 flex items-start space-x-3">
+                <div className="w-8 h-8 bg-violet-400/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Bot className="w-4 h-4 text-violet-400" />
                 </div>
                 <div>
-                  <h5 className="font-semibold text-emerald-400 text-sm mb-1">Agent-Ready Systems</h5>
+                  <h5 className="font-semibold text-violet-400 text-sm mb-1">Agent-Ready Systems</h5>
                   <p className="text-xs text-neutral-400 leading-relaxed">Workflows designed for autonomous AI agents to take action with proper oversight</p>
                 </div>
               </div>
@@ -461,14 +461,14 @@ function App() {
               </div>
             </div>
 
-            <div className="group relative bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-2xl p-8 lg:p-10 hover:border-emerald-500/50 transition-all duration-500">
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+            <div className="group relative bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-2xl p-8 lg:p-10 hover:border-violet-400/50 transition-all duration-500">
+              <div className="absolute inset-0 bg-gradient-to-br from-violet-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
               <div className="relative">
                 <div className="flex items-center justify-between mb-8">
                   <div>
                     <div className="flex items-center space-x-3 mb-2">
-                      <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center">
-                        <CircuitBoard className="w-6 h-6 text-emerald-400" />
+                      <div className="w-12 h-12 bg-violet-400/10 rounded-xl flex items-center justify-center">
+                        <CircuitBoard className="w-6 h-6 text-violet-400" />
                       </div>
                       <h3 className="text-2xl lg:text-3xl font-bold">
                         Agentic AI & Intelligent Systems
@@ -483,51 +483,51 @@ function App() {
                 <div className="grid grid-cols-2 gap-4 mb-8">
                   <div className="bg-neutral-950/50 border border-neutral-800/50 rounded-xl p-5 text-center">
                     <div className="flex justify-center mb-3">
-                      <Bot className="w-8 h-8 text-emerald-400" />
+                      <Bot className="w-8 h-8 text-violet-400" />
                     </div>
-                    <div className="text-3xl font-bold text-emerald-400 mb-1">85%</div>
+                    <div className="text-3xl font-bold text-violet-400 mb-1">85%</div>
                     <p className="text-xs text-neutral-400 leading-tight">Task completion autonomy rate</p>
                   </div>
 
                   <div className="bg-neutral-950/50 border border-neutral-800/50 rounded-xl p-5 text-center">
                     <div className="flex justify-center mb-3">
-                      <Shield className="w-8 h-8 text-emerald-400" />
+                      <Shield className="w-8 h-8 text-violet-400" />
                     </div>
-                    <div className="text-3xl font-bold text-emerald-400 mb-1">100%</div>
+                    <div className="text-3xl font-bold text-violet-400 mb-1">100%</div>
                     <p className="text-xs text-neutral-400 leading-tight">Human oversight & control</p>
                   </div>
                 </div>
 
                 <div className="mb-6">
-                  <p className="text-xs font-bold text-emerald-400 mb-3 tracking-wide">CORE PRINCIPLES</p>
+                  <p className="text-xs font-bold text-violet-400 mb-3 tracking-wide">CORE PRINCIPLES</p>
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-emerald-500/30 transition-colors">
+                    <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-violet-400/30 transition-colors">
                       <div className="flex items-center space-x-2 mb-1.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
                         <h4 className="font-semibold text-neutral-200 text-xs">Agent Autonomy</h4>
                       </div>
                       <p className="text-xs text-neutral-500 leading-tight">Clear decision boundaries</p>
                     </div>
 
-                    <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-emerald-500/30 transition-colors">
+                    <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-violet-400/30 transition-colors">
                       <div className="flex items-center space-x-2 mb-1.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
                         <h4 className="font-semibold text-neutral-200 text-xs">Explainability</h4>
                       </div>
                       <p className="text-xs text-neutral-500 leading-tight">Transparent reasoning</p>
                     </div>
 
-                    <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-emerald-500/30 transition-colors">
+                    <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-violet-400/30 transition-colors">
                       <div className="flex items-center space-x-2 mb-1.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
                         <h4 className="font-semibold text-neutral-200 text-xs">Collaboration</h4>
                       </div>
                       <p className="text-xs text-neutral-500 leading-tight">Effective handoffs</p>
                     </div>
 
-                    <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-emerald-500/30 transition-colors">
+                    <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-violet-400/30 transition-colors">
                       <div className="flex items-center space-x-2 mb-1.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
                         <h4 className="font-semibold text-neutral-200 text-xs">Trust Framework</h4>
                       </div>
                       <p className="text-xs text-neutral-500 leading-tight">Control mechanisms</p>
@@ -536,9 +536,9 @@ function App() {
                 </div>
 
                 <div className="space-y-3 mb-8">
-                  <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-4 flex items-center space-x-4 hover:border-emerald-500/30 transition-colors">
-                    <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Search className="w-5 h-5 text-emerald-400" />
+                  <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-4 flex items-center space-x-4 hover:border-violet-400/30 transition-colors">
+                    <div className="w-10 h-10 bg-violet-400/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Search className="w-5 h-5 text-violet-400" />
                     </div>
                     <div className="flex-1">
                       <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">AI Opportunity Assessment</h4>
@@ -546,9 +546,9 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-4 flex items-center space-x-4 hover:border-emerald-500/30 transition-colors">
-                    <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Workflow className="w-5 h-5 text-emerald-400" />
+                  <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-4 flex items-center space-x-4 hover:border-violet-400/30 transition-colors">
+                    <div className="w-10 h-10 bg-violet-400/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Workflow className="w-5 h-5 text-violet-400" />
                     </div>
                     <div className="flex-1">
                       <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">Agent Workflow Design</h4>
@@ -556,9 +556,9 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-4 flex items-center space-x-4 hover:border-emerald-500/30 transition-colors">
-                    <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Users className="w-5 h-5 text-emerald-400" />
+                  <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-4 flex items-center space-x-4 hover:border-violet-400/30 transition-colors">
+                    <div className="w-10 h-10 bg-violet-400/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Users className="w-5 h-5 text-violet-400" />
                     </div>
                     <div className="flex-1">
                       <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">Human-Agent Interface</h4>
@@ -566,9 +566,9 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-4 flex items-center space-x-4 hover:border-emerald-500/30 transition-colors">
-                    <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Heart className="w-5 h-5 text-emerald-400" />
+                  <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-4 flex items-center space-x-4 hover:border-violet-400/30 transition-colors">
+                    <div className="w-10 h-10 bg-violet-400/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Heart className="w-5 h-5 text-violet-400" />
                     </div>
                     <div className="flex-1">
                       <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">Trust & Change Management</h4>
@@ -577,13 +577,13 @@ function App() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-emerald-950/20 to-transparent border border-emerald-800/30 rounded-xl p-5">
+                <div className="bg-gradient-to-br from-violet-950/20 to-transparent border border-violet-800/30 rounded-xl p-5">
                   <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Zap className="w-4 h-4 text-emerald-400" />
+                    <div className="w-8 h-8 bg-violet-400/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Zap className="w-4 h-4 text-violet-400" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-emerald-400 mb-2 tracking-wide">OUTCOME</p>
+                      <p className="text-xs font-bold text-violet-400 mb-2 tracking-wide">OUTCOME</p>
                       <p className="text-sm text-neutral-200 leading-relaxed">
                         AI agents that extend human capability, take action autonomously within clear boundaries, and create trust through transparency.
                       </p>
@@ -868,7 +868,7 @@ function App() {
       <section className="py-20 lg:py-32 bg-gradient-to-b from-neutral-900/30 to-neutral-950">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-cyan-500/20 via-emerald-500/20 to-cyan-500/20 rounded-3xl mb-6 animate-pulse">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-cyan-500/20 via-violet-400/20 to-cyan-500/20 rounded-3xl mb-6 animate-pulse">
               <Sparkles className="w-10 h-10 text-cyan-400" />
             </div>
             <h2 className="text-3xl lg:text-5xl font-bold mb-4">What Makes Revv Studio Different</h2>
@@ -891,13 +891,13 @@ function App() {
               </div>
             </div>
 
-            <div className="group relative bg-gradient-to-br from-emerald-950/95 to-neutral-900/95 border-2 border-emerald-800/40 rounded-2xl p-8 hover:border-emerald-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 to-emerald-500/0 group-hover:from-emerald-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
+            <div className="group relative bg-gradient-to-br from-violet-950/95 to-neutral-900/95 border-2 border-violet-800/40 rounded-2xl p-8 hover:border-violet-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-violet-400/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-violet-400/0 to-violet-400/0 group-hover:from-violet-400/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
               <div className="relative">
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Heart className="w-8 h-8 text-emerald-400" />
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-400/20 to-violet-500/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Heart className="w-8 h-8 text-violet-400" />
                 </div>
-                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-emerald-100">We design for people, not just systems</h3>
+                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-violet-100">We design for people, not just systems</h3>
                 <p className="text-neutral-400 text-sm leading-relaxed">
                   Technology should adapt to how people work, not force them into rigid frameworks. We start with human needs and build systems around them.
                 </p>
@@ -917,13 +917,13 @@ function App() {
               </div>
             </div>
 
-            <div className="group relative bg-gradient-to-br from-emerald-950/95 to-neutral-900/95 border-2 border-emerald-800/40 rounded-2xl p-8 hover:border-emerald-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 to-emerald-500/0 group-hover:from-emerald-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
+            <div className="group relative bg-gradient-to-br from-violet-950/95 to-neutral-900/95 border-2 border-violet-800/40 rounded-2xl p-8 hover:border-violet-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-violet-400/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-violet-400/0 to-violet-400/0 group-hover:from-violet-400/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
               <div className="relative">
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Rocket className="w-8 h-8 text-emerald-400" />
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-400/20 to-violet-500/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Rocket className="w-8 h-8 text-violet-400" />
                 </div>
-                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-emerald-100">We make change feel manageable — not disruptive</h3>
+                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-violet-100">We make change feel manageable — not disruptive</h3>
                 <p className="text-neutral-400 text-sm leading-relaxed">
                   Change is hard. We break it into digestible steps, support your team through adoption, and ensure improvements stick rather than fade away.
                 </p>
@@ -932,14 +932,14 @@ function App() {
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="relative bg-gradient-to-br from-cyan-950/30 via-emerald-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-2xl p-8 lg:p-10 shadow-xl">
-              <div className="absolute top-4 right-4 w-32 h-32 bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 rounded-full blur-3xl"></div>
+            <div className="relative bg-gradient-to-br from-cyan-950/30 via-violet-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-2xl p-8 lg:p-10 shadow-xl">
+              <div className="absolute top-4 right-4 w-32 h-32 bg-gradient-to-br from-cyan-500/20 to-violet-400/20 rounded-full blur-3xl"></div>
               <div className="relative flex flex-col lg:flex-row items-start lg:items-center gap-6">
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 rounded-2xl flex-shrink-0">
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-violet-400/20 rounded-2xl flex-shrink-0">
                   <Layers className="w-8 h-8 text-cyan-400" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl lg:text-2xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+                  <h3 className="text-xl lg:text-2xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
                     We combine strategy, experience, and implementation
                   </h3>
                   <p className="text-neutral-300 leading-relaxed">
@@ -996,7 +996,7 @@ function App() {
             </div>
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 lg:p-8 hover:border-cyan-500/30 transition-all duration-300">
-              <Quote className="w-8 h-8 text-emerald-400 mb-4 opacity-50" />
+              <Quote className="w-8 h-8 text-violet-400 mb-4 opacity-50" />
               <p className="text-neutral-300 mb-6 leading-relaxed">
                 "The UX improvements transformed how our internal teams use the platform. Adoption went from 40% to 95% in two months."
               </p>
@@ -1018,7 +1018,7 @@ function App() {
             </div>
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 lg:p-8 hover:border-cyan-500/30 transition-all duration-300">
-              <Quote className="w-8 h-8 text-emerald-400 mb-4 opacity-50" />
+              <Quote className="w-8 h-8 text-violet-400 mb-4 opacity-50" />
               <p className="text-neutral-300 mb-6 leading-relaxed">
                 "They brought clarity to a messy situation. We now have documented processes that people follow, and handoffs that actually work."
               </p>
