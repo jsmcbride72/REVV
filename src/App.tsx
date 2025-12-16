@@ -867,10 +867,13 @@ function App() {
 
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src="/jsmcbride_bkg2.png"
-            alt=""
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover"
+            src="/jsmcbride_bkgnd3.mp4"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/80 via-neutral-950/70 to-neutral-950/90"></div>
         </div>
