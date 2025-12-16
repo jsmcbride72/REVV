@@ -85,7 +85,7 @@ function App() {
               Welcome to the Revolution
             </p>
             <div className="flex justify-center mb-12">
-              <img src="/logo.png" alt="Revv Studio" className="h-48 lg:h-64 w-auto" />
+              <img src="/logo.png" alt="Revv Studio" className="h-32 lg:h-40 w-auto" />
             </div>
             <p className="text-4xl lg:text-6xl font-normal text-white leading-tight mb-12 drop-shadow-2xl">
               CHANGE IS HAPPENING FAST — NOT EVERY BUSINESS WANTS THE SAME TOOLS, OR THE SAME PACE.
