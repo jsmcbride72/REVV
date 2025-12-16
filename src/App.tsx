@@ -93,9 +93,6 @@ function App() {
             <p className="text-xl lg:text-2xl text-neutral-300 leading-relaxed mb-12">
               Change is happening fast — not every business wants the same tools, or the same pace. Revv Studio helps organizations improve how work gets done today, while thoughtfully preparing for what's next.
             </p>
-            <p className="text-lg lg:text-xl text-neutral-400 leading-relaxed max-w-3xl mx-auto">
-              We work with teams who want clearer workflows, better experiences, and systems that support people — whether that means smarter processes, better digital design, or carefully applied AI and automation.
-            </p>
           </div>
         </div>
       </section>
