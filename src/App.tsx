@@ -865,8 +865,16 @@ function App() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 bg-gradient-to-b from-neutral-900/30 to-neutral-950">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="relative py-20 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/jsmcbride_bkg2.png"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/80 via-neutral-950/70 to-neutral-950/90"></div>
+        </div>
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-cyan-500/20 via-violet-400/20 to-cyan-500/20 rounded-3xl mb-6 animate-pulse">
               <Sparkles className="w-10 h-10 text-cyan-400" />
