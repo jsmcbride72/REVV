@@ -865,15 +865,6 @@ function App() {
         </div>
       </section>
 
-      <div className="relative w-full h-32 lg:h-48 overflow-hidden">
-        <img
-          className="w-full h-full object-cover object-center"
-          src="/jsmcbride_bkg2.png"
-          alt="Design showcase"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/40 via-transparent to-neutral-950/40"></div>
-      </div>
-
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0">
           <video
