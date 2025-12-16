@@ -879,9 +879,6 @@ function App() {
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-cyan-500/20 via-violet-400/20 to-cyan-500/20 rounded-3xl mb-6 animate-pulse">
-              <Sparkles className="w-10 h-10 text-cyan-400" />
-            </div>
             <h2 className="text-3xl lg:text-5xl font-bold mb-4">What Makes Revv Studio Different</h2>
             <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
               Not your typical consulting firm. Here's why our clients choose us.
