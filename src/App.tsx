@@ -346,15 +346,15 @@ function App() {
 
       <section id="services" className="py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-6">Two Ways We Help</h2>
-            <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
-              Not every company needs AI.<br />
-              Every company needs work that works better for humans.
-            </p>
-          </div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+              <h2 className="text-3xl lg:text-5xl font-bold mb-6">Two Ways We Help</h2>
+              <p className="text-xl text-neutral-400">
+                Not every company needs AI.<br />
+                Every company needs work that works better for humans.
+              </p>
+            </div>
 
-          <div className="max-w-5xl mx-auto mb-16">
             <div className="relative rounded-2xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl">
               <video
                 autoPlay
