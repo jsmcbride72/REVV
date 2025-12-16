@@ -766,6 +766,18 @@ function App() {
         </div>
       </section>
 
+      <div className="relative w-full h-32 lg:h-48 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          src="/jsmcbride_racing.mp4"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/40 via-transparent to-neutral-950/40"></div>
+      </div>
+
       <section id="how-we-work" className="py-20 lg:py-32 bg-neutral-900/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
