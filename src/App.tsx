@@ -42,9 +42,6 @@ function App() {
               <button onClick={() => scrollToSection('pricing')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
                 Pricing
               </button>
-              <button onClick={() => scrollToSection('values')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
-                Values
-              </button>
               <button onClick={() => scrollToSection('how-we-work')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
                 How We Work
               </button>
@@ -749,60 +746,7 @@ function App() {
         </div>
       </section>
 
-      <section id="values" className="py-20 lg:py-32 bg-neutral-900/30">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-6">Our Values</h2>
-            <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
-              The principles that guide every engagement
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            <div className="group bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300">
-              <div className="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Heart className="w-6 h-6 text-cyan-400" />
-              </div>
-              <h3 className="text-lg font-bold mb-3">People Over Process</h3>
-              <p className="text-neutral-400 text-sm">
-                We design systems that work for humans, not the other way around. Technology should adapt to people, not force them into rigid workflows.
-              </p>
-            </div>
-
-            <div className="group bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300">
-              <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Sparkles className="w-6 h-6 text-emerald-400" />
-              </div>
-              <h3 className="text-lg font-bold mb-3">Practical Over Perfect</h3>
-              <p className="text-neutral-400 text-sm">
-                We prioritize solutions that work today over theoretical ideals. Real progress comes from incremental improvements, not waiting for perfect conditions.
-              </p>
-            </div>
-
-            <div className="group bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300">
-              <div className="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Target className="w-6 h-6 text-cyan-400" />
-              </div>
-              <h3 className="text-lg font-bold mb-3">Honest Assessment</h3>
-              <p className="text-neutral-400 text-sm">
-                We tell you what you need, not what's trendy. If AI isn't the answer, we'll say so. If your processes need fixing first, we'll start there.
-              </p>
-            </div>
-
-            <div className="group bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300">
-              <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Activity className="w-6 h-6 text-emerald-400" />
-              </div>
-              <h3 className="text-lg font-bold mb-3">Outcome Focused</h3>
-              <p className="text-neutral-400 text-sm">
-                We measure success by results people can feel: less frustration, clearer decisions, faster execution, and systems that actually get used.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="how-we-work" className="py-20 lg:py-32 bg-gradient-to-b from-neutral-900/50 to-neutral-950">
+      <section id="how-we-work" className="py-20 lg:py-32 bg-neutral-900/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">How We Work</h2>
