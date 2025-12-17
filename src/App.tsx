@@ -695,19 +695,20 @@ function App() {
         </div>
       </section>
 
-      <section className="relative py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-            src={getAssetUrl("/jsmcbride_bkgnd3.mp4")}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/80 via-neutral-950/70 to-neutral-950/90"></div>
-        </div>
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative w-full max-w-5xl mx-auto h-40 lg:h-48 overflow-hidden rounded-2xl mb-12">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover object-top"
+          src={getAssetUrl("/jsmcbride_bkgnd3.mp4")}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/40 via-transparent to-neutral-950/40"></div>
+      </div>
+
+      <section className="py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-4">What Makes Revv Studio Different</h2>
             <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
