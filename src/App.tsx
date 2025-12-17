@@ -701,7 +701,7 @@ function App() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover object-center"
           src={getAssetUrl("/jsmcbride_bkgnd3.mp4")}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/40 via-transparent to-neutral-950/40"></div>
