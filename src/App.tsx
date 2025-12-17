@@ -6,6 +6,8 @@ function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
 
+  const getAssetUrl = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -75,14 +77,14 @@ function App() {
             playsInline
             className="absolute inset-0 w-full h-full object-cover"
           >
-            <source src="/jsmcbride_racing.mp4" type="video/mp4" />
+            <source src={getAssetUrl("/jsmcbride_racing.mp4")} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/50 to-neutral-950/80"></div>
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center max-w-6xl mx-auto">
             <div className="flex justify-center mb-6">
-              <img src="/logo.png" alt="Revv Studio" className="h-32 lg:h-40 w-auto" />
+              <img src={getAssetUrl("/logo.png")} alt="Revv Studio" className="h-32 lg:h-40 w-auto" />
             </div>
             <p className="text-xl lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-12">
               Welcome to the Revolution
@@ -120,7 +122,7 @@ function App() {
                   muted
                   playsInline
                   className="w-full h-full object-cover"
-                  src="/jsmcbride_cool_studio.mp4"
+                  src={getAssetUrl("/jsmcbride_cool_studio.mp4")}
                 />
               </div>
 
@@ -194,7 +196,7 @@ function App() {
                   muted
                   playsInline
                   className="w-full h-full object-cover"
-                  src="/phones-spin.mov"
+                  src={getAssetUrl("/phones-spin.mov")}
                 />
               </div>
 
@@ -240,7 +242,7 @@ function App() {
                   muted
                   playsInline
                   className="w-full h-full object-cover"
-                  src="/jsmcbride_n8nf.mp4"
+                  src={getAssetUrl("/jsmcbride_n8nf.mp4")}
                 />
               </div>
 
@@ -361,7 +363,7 @@ function App() {
               muted
               playsInline
               className="w-full h-full object-cover"
-              src="/jsmcbride_WF.mp4"
+              src={getAssetUrl("/jsmcbride_WF.mp4")}
             />
           </div>
 
@@ -773,7 +775,7 @@ function App() {
           muted
           playsInline
           className="w-full h-full object-cover"
-          src="/jsmcbride_racing.mp4"
+          src={getAssetUrl("/jsmcbride_racing.mp4")}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/40 via-transparent to-neutral-950/40"></div>
       </div>
@@ -873,7 +875,7 @@ function App() {
             muted
             playsInline
             className="w-full h-full object-cover"
-            src="/jsmcbride_bkgnd3.mp4"
+            src={getAssetUrl("/jsmcbride_bkgnd3.mp4")}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/80 via-neutral-950/70 to-neutral-950/90"></div>
         </div>
