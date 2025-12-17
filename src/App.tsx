@@ -768,7 +768,7 @@ function App() {
         </div>
       </section>
 
-      <div className="relative w-full h-32 lg:h-48 overflow-hidden">
+      <div className="relative w-full max-w-5xl mx-auto h-24 lg:h-36 overflow-hidden rounded-2xl">
         <video
           autoPlay
           loop
