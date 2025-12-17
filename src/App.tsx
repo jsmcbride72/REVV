@@ -356,13 +356,13 @@ function App() {
             </p>
           </div>
 
-          <div className="relative rounded-2xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl mb-16 h-48 lg:h-64 max-w-4xl mx-auto">
+          <div className="relative rounded-2xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl mb-16 h-48 lg:h-64">
             <video
               autoPlay
               loop
               muted
               playsInline
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover"
               src={getAssetUrl("/jsmcbride_WF.mp4")}
             />
           </div>
