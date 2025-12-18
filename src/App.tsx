@@ -423,7 +423,7 @@ function App() {
                   <div className="p-6">
                     <div className="flex items-center gap-2 mb-3">
                       <BarChart3 className="w-5 h-5 text-cyan-400" />
-                      <h3 className="text-xl font-bold text-cyan-100">Data Pipeline Modernization</h3>
+                      <h3 className="text-xl font-bold text-cyan-100">DRIVING GROWTH THROUGH MEASURABLE KPI'S AND STRATEGIC EXECUTION</h3>
                     </div>
                     <p className="text-neutral-400 text-sm leading-relaxed mb-4">
                       Redesigned analytics infrastructure from ground up, cutting report generation time from hours to minutes for a healthcare analytics firm.
