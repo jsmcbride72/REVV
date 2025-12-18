@@ -363,7 +363,7 @@ function App() {
                       muted
                       playsInline
                       className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
-                      src={getAssetUrl("/driven2.mov")}
+                      src={getAssetUrl("/driven-vid.mov")}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent"></div>
                   </div>
