@@ -411,10 +411,13 @@ function App() {
 
                 <div className="group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
                   <div className="relative h-48 overflow-hidden">
-                    <img
-                      src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800"
-                      alt="Data analytics dashboard"
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
                       className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                      src={getAssetUrl("/hero-bg.mp4")}
                     />
                   </div>
                   <div className="p-6">
