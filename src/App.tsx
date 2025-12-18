@@ -357,11 +357,15 @@ function App() {
               <div className="flex gap-6 min-w-max px-4">
                 <div className="group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
                   <div className="relative h-48 bg-gradient-to-br from-cyan-900/40 to-violet-900/40 overflow-hidden">
-                    <img
-                      src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800"
-                      alt="Workflow automation dashboard"
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
                       className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
-                    />
+                    >
+                      <source src="/driven2.mov" type="video/mp4" />
+                    </video>
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent"></div>
                   </div>
                   <div className="p-6">
