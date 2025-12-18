@@ -514,21 +514,35 @@ function App() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 mb-8">
-                  <div className="bg-neutral-950/50 border border-neutral-800/50 rounded-xl p-5 text-center">
-                    <div className="flex justify-center mb-3">
-                      <Network className="w-8 h-8 text-cyan-400" />
-                    </div>
-                    <div className="text-3xl font-bold text-cyan-400 mb-1">40%</div>
-                    <p className="text-xs text-neutral-400 leading-tight">Reduction in process cycle time</p>
-                  </div>
+                <div className="bg-neutral-950/50 border border-neutral-800/50 rounded-xl p-6 mb-8">
+                  <p className="text-xs font-bold text-cyan-400 mb-5 tracking-wide">IMPACT METRICS</p>
 
-                  <div className="bg-neutral-950/50 border border-neutral-800/50 rounded-xl p-5 text-center">
-                    <div className="flex justify-center mb-3">
-                      <TrendingUp className="w-8 h-8 text-cyan-400" />
+                  <div className="space-y-6">
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center space-x-2">
+                          <Network className="w-4 h-4 text-cyan-400" />
+                          <span className="text-xs text-neutral-300">Process Cycle Time</span>
+                        </div>
+                        <span className="text-lg font-bold text-cyan-400">-40%</span>
+                      </div>
+                      <div className="w-full h-2 bg-neutral-800 rounded-full overflow-hidden">
+                        <div className="h-full bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full" style={{ width: '40%' }}></div>
+                      </div>
                     </div>
-                    <div className="text-3xl font-bold text-cyan-400 mb-1">65%</div>
-                    <p className="text-xs text-neutral-400 leading-tight">Fewer handoff errors</p>
+
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center space-x-2">
+                          <TrendingUp className="w-4 h-4 text-cyan-400" />
+                          <span className="text-xs text-neutral-300">Handoff Errors</span>
+                        </div>
+                        <span className="text-lg font-bold text-cyan-400">-65%</span>
+                      </div>
+                      <div className="w-full h-2 bg-neutral-800 rounded-full overflow-hidden">
+                        <div className="h-full bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full" style={{ width: '65%' }}></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -609,21 +623,35 @@ function App() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 mb-8">
-                  <div className="bg-neutral-950/50 border border-neutral-800/50 rounded-xl p-5 text-center">
-                    <div className="flex justify-center mb-3">
-                      <Bot className="w-8 h-8 text-violet-400" />
-                    </div>
-                    <div className="text-3xl font-bold text-violet-400 mb-1">85%</div>
-                    <p className="text-xs text-neutral-400 leading-tight">Task completion autonomy rate</p>
-                  </div>
+                <div className="bg-neutral-950/50 border border-neutral-800/50 rounded-xl p-6 mb-8">
+                  <p className="text-xs font-bold text-violet-400 mb-5 tracking-wide">AUTONOMY BALANCE</p>
 
-                  <div className="bg-neutral-950/50 border border-neutral-800/50 rounded-xl p-5 text-center">
-                    <div className="flex justify-center mb-3">
-                      <Shield className="w-8 h-8 text-violet-400" />
+                  <div className="space-y-6">
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center space-x-2">
+                          <Bot className="w-4 h-4 text-violet-400" />
+                          <span className="text-xs text-neutral-300">Agent Autonomy</span>
+                        </div>
+                        <span className="text-lg font-bold text-violet-400">85%</span>
+                      </div>
+                      <div className="w-full h-2 bg-neutral-800 rounded-full overflow-hidden">
+                        <div className="h-full bg-gradient-to-r from-violet-500 to-violet-400 rounded-full" style={{ width: '85%' }}></div>
+                      </div>
                     </div>
-                    <div className="text-3xl font-bold text-violet-400 mb-1">100%</div>
-                    <p className="text-xs text-neutral-400 leading-tight">Human oversight & control</p>
+
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center space-x-2">
+                          <Shield className="w-4 h-4 text-violet-400" />
+                          <span className="text-xs text-neutral-300">Human Oversight</span>
+                        </div>
+                        <span className="text-lg font-bold text-violet-400">100%</span>
+                      </div>
+                      <div className="w-full h-2 bg-neutral-800 rounded-full overflow-hidden">
+                        <div className="h-full bg-gradient-to-r from-violet-500 to-violet-400 rounded-full" style={{ width: '100%' }}></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
