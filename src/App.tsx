@@ -417,7 +417,7 @@ function App() {
                       muted
                       playsInline
                       className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
-                      src={getAssetUrl("/hero-bg.mp4")}
+                      src={getAssetUrl("/20240207_strideGG_UNIVPROF_VID_1.mp4")}
                     />
                   </div>
                   <div className="p-6">
