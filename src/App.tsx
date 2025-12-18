@@ -38,11 +38,11 @@ function App() {
               <button onClick={() => scrollToSection('approach')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
                 Approach
               </button>
-              <button onClick={() => scrollToSection('case-studies')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
-                Case Studies
-              </button>
               <button onClick={() => scrollToSection('services')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
                 Services
+              </button>
+              <button onClick={() => scrollToSection('case-studies')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
+                Case Studies
               </button>
               <button
                 onClick={() => setIsContactFormOpen(true)}
