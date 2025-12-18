@@ -343,6 +343,130 @@ function App() {
         </div>
       </section>
 
+      <section className="py-20 lg:py-32 bg-neutral-950/50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-5xl font-bold mb-6">Case Studies</h2>
+            <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
+              Real transformations from companies who partnered with us
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="overflow-x-auto pb-8 scrollbar-hide">
+              <div className="flex gap-6 min-w-max px-4">
+                <div className="group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
+                  <div className="relative h-48 bg-gradient-to-br from-cyan-900/40 to-violet-900/40 overflow-hidden">
+                    <img
+                      src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Workflow automation dashboard"
+                      className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent"></div>
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Zap className="w-5 h-5 text-cyan-400" />
+                      <h3 className="text-xl font-bold text-cyan-100">Enterprise Workflow Automation</h3>
+                    </div>
+                    <p className="text-neutral-400 text-sm leading-relaxed mb-4">
+                      Reduced manual processing time by 75% through intelligent automation and custom workflow orchestration for a Fortune 500 logistics company.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-xs text-cyan-400">n8n</span>
+                      <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-xs text-cyan-400">Process Design</span>
+                      <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-xs text-cyan-400">Integration</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-violet-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-violet-400/20">
+                  <div className="relative h-48 bg-gradient-to-br from-violet-900/40 to-cyan-900/40 overflow-hidden">
+                    <img
+                      src="https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="AI assistant interface"
+                      className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent"></div>
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Bot className="w-5 h-5 text-violet-400" />
+                      <h3 className="text-xl font-bold text-violet-100">AI Customer Support Agent</h3>
+                    </div>
+                    <p className="text-neutral-400 text-sm leading-relaxed mb-4">
+                      Built an intelligent support agent that handles 60% of customer inquiries autonomously while maintaining a 95% satisfaction rate for a SaaS company.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-violet-400/10 border border-violet-400/30 rounded-full text-xs text-violet-400">AI Agents</span>
+                      <span className="px-3 py-1 bg-violet-400/10 border border-violet-400/30 rounded-full text-xs text-violet-400">NLP</span>
+                      <span className="px-3 py-1 bg-violet-400/10 border border-violet-400/30 rounded-full text-xs text-violet-400">UX Design</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
+                  <div className="relative h-48 bg-gradient-to-br from-cyan-900/40 to-violet-900/40 overflow-hidden">
+                    <img
+                      src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Data analytics dashboard"
+                      className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent"></div>
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <BarChart3 className="w-5 h-5 text-cyan-400" />
+                      <h3 className="text-xl font-bold text-cyan-100">Data Pipeline Modernization</h3>
+                    </div>
+                    <p className="text-neutral-400 text-sm leading-relaxed mb-4">
+                      Redesigned analytics infrastructure from ground up, cutting report generation time from hours to minutes for a healthcare analytics firm.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-xs text-cyan-400">Data Engineering</span>
+                      <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-xs text-cyan-400">ETL</span>
+                      <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-xs text-cyan-400">Architecture</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-violet-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-violet-400/20">
+                  <div className="relative h-48 bg-gradient-to-br from-violet-900/40 to-cyan-900/40 overflow-hidden">
+                    <img
+                      src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Mobile app interface"
+                      className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent"></div>
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Sparkles className="w-5 h-5 text-violet-400" />
+                      <h3 className="text-xl font-bold text-violet-100">Mobile Experience Redesign</h3>
+                    </div>
+                    <p className="text-neutral-400 text-sm leading-relaxed mb-4">
+                      Complete UX overhaul increased user engagement by 140% and reduced support tickets by 55% for a fintech mobile platform.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-violet-400/10 border border-violet-400/30 rounded-full text-xs text-violet-400">UX Research</span>
+                      <span className="px-3 py-1 bg-violet-400/10 border border-violet-400/30 rounded-full text-xs text-violet-400">Design</span>
+                      <span className="px-3 py-1 bg-violet-400/10 border border-violet-400/30 rounded-full text-xs text-violet-400">Mobile</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="absolute left-0 top-0 bottom-8 w-20 bg-gradient-to-r from-neutral-950 to-transparent pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-8 w-20 bg-gradient-to-l from-neutral-950 to-transparent pointer-events-none"></div>
+          </div>
+
+          <div className="text-center mt-8">
+            <p className="text-neutral-500 text-sm">Scroll to explore more case studies</p>
+          </div>
+        </div>
+      </section>
+
       <section id="services" className="py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
