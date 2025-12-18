@@ -38,6 +38,21 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
 
       if (error) throw error;
 
+      const emailApiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-contact-email`;
+      await fetch(emailApiUrl, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || '',
+          message: formData.message
+        })
+      });
+
       setSubmitStatus('success');
       setFormData({ name: '', email: '', company: '', message: '' });
 
