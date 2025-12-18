@@ -385,10 +385,13 @@ function App() {
 
                 <div className="group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-violet-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-violet-400/20">
                   <div className="relative h-48 bg-gradient-to-br from-violet-900/40 to-cyan-900/40 overflow-hidden">
-                    <img
-                      src="https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=800"
-                      alt="AI assistant interface"
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
                       className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                      src={getAssetUrl("/Preview.mov")}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent"></div>
                   </div>
