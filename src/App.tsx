@@ -29,7 +29,7 @@ function App() {
           <div className="flex justify-between items-center">
             <div className="flex items-center">
               <img
-                src="https://www.dropbox.com/scl/fi/6d4x8ap3k0qdv424kado8/loGO2.PNG?rlkey=hjyf7r15m22p9d0gu8z0i3ad1&st=m5gcljmi&raw=1"
+                src="https://www.dropbox.com/scl/fi/78mznubb1jz01u54lr95m/logo3.png?rlkey=xrvzvv2m1fhlb0smbfzm2bj0o&st=x5wylipn&raw=1"
                 alt="REVV Studio"
                 className="h-10"
               />
