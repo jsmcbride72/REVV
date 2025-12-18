@@ -369,7 +369,7 @@ function App() {
                   <div className="p-6">
                     <div className="flex items-center gap-2 mb-3">
                       <Zap className="w-5 h-5 text-cyan-400" />
-                      <h3 className="text-xl font-bold text-cyan-100">Enterprise Workflow Automation</h3>
+                      <h3 className="text-xl font-bold text-cyan-100">TRANSFORMING FLEET MANAGEMENT THROUGH HUMAN-CENTERED DESIGN</h3>
                     </div>
                     <p className="text-neutral-400 text-sm leading-relaxed mb-4">
                       Reduced manual processing time by 75% through intelligent automation and custom workflow orchestration for a Fortune 500 logistics company.
