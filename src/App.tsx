@@ -44,9 +44,6 @@ function App() {
               <button onClick={() => scrollToSection('services')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
                 Services
               </button>
-              <button onClick={() => scrollToSection('impact')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
-                Impact
-              </button>
               <button
                 onClick={() => setIsContactFormOpen(true)}
                 className="px-6 py-2 bg-cyan-500 hover:bg-cyan-600 text-neutral-950 font-medium rounded-lg transition-all duration-300 hover:scale-105"
