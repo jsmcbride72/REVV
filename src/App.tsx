@@ -396,7 +396,7 @@ function App() {
                   <div className="p-6">
                     <div className="flex items-center gap-2 mb-3">
                       <Bot className="w-5 h-5 text-violet-400" />
-                      <h3 className="text-xl font-bold text-violet-100">AI Customer Support Agent</h3>
+                      <h3 className="text-xl font-bold text-violet-100">TRANSFORMING CONTENT WITH AI-POWERED PERSONALIZATION</h3>
                     </div>
                     <p className="text-neutral-400 text-sm leading-relaxed mb-4">
                       Built an intelligent support agent that handles 60% of customer inquiries autonomously while maintaining a 95% satisfaction rate for a SaaS company.
