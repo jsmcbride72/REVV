@@ -356,7 +356,7 @@ function App() {
             <div className="overflow-x-auto pb-8 scrollbar-hide">
               <div className="flex gap-6 min-w-max px-4">
                 <div className="group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
-                  <div className="relative h-48 bg-gradient-to-br from-cyan-900/40 to-violet-900/40 overflow-hidden">
+                  <div className="relative h-48 overflow-hidden">
                     <video
                       autoPlay
                       loop
@@ -365,7 +365,6 @@ function App() {
                       className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                       src={getAssetUrl("/driven-vid.mov")}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent"></div>
                   </div>
                   <div className="p-6">
                     <div className="flex items-center gap-2 mb-3">
@@ -384,7 +383,7 @@ function App() {
                 </div>
 
                 <div className="group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-violet-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-violet-400/20">
-                  <div className="relative h-48 bg-gradient-to-br from-violet-900/40 to-cyan-900/40 overflow-hidden">
+                  <div className="relative h-48 overflow-hidden">
                     <video
                       autoPlay
                       loop
@@ -393,7 +392,6 @@ function App() {
                       className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                       src={getAssetUrl("/Preview.mov")}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent"></div>
                   </div>
                   <div className="p-6">
                     <div className="flex items-center gap-2 mb-3">
@@ -412,13 +410,12 @@ function App() {
                 </div>
 
                 <div className="group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
-                  <div className="relative h-48 bg-gradient-to-br from-cyan-900/40 to-violet-900/40 overflow-hidden">
+                  <div className="relative h-48 overflow-hidden">
                     <img
                       src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800"
                       alt="Data analytics dashboard"
                       className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent"></div>
                   </div>
                   <div className="p-6">
                     <div className="flex items-center gap-2 mb-3">
