@@ -837,82 +837,128 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/40 via-transparent to-neutral-950/40"></div>
       </div>
 
-      <section className="py-20 lg:py-32">
+      <section className="py-20 lg:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <h2 className="text-3xl lg:text-5xl font-bold mb-4">What Makes Revv Studio Different</h2>
             <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
-              Not your typical consulting firm. Here's why our clients choose us.
+              Results that speak louder than words
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto mb-8">
-            <div className="group relative bg-gradient-to-br from-cyan-950/30 via-violet-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
+          <div className="grid lg:grid-cols-3 gap-8 mb-16">
+            <div className="group relative bg-gradient-to-br from-cyan-950/40 to-neutral-950/40 border border-cyan-500/30 rounded-3xl p-8 hover:border-cyan-400/60 transition-all duration-700">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/20 group-hover:to-transparent rounded-3xl transition-all duration-700"></div>
               <div className="relative">
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <ShieldCheck className="w-8 h-8 text-cyan-400" />
+                <div className="mb-6">
+                  <div className="text-6xl lg:text-7xl font-black bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent mb-2 animate-pulse">
+                    3x
+                  </div>
+                  <div className="h-2 bg-neutral-800 rounded-full overflow-hidden mb-4">
+                    <div className="h-full bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full animate-[grow_2s_ease-out_forwards]" style={{ width: '0%', animation: 'grow 2s ease-out forwards' }}></div>
+                  </div>
                 </div>
-                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-cyan-100">We don't push AI where it doesn't belong</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed">
-                  No AI hype or buzzwords. If your problem needs better processes, clearer workflows, or improved UX — that's what we'll recommend, even if it means less revenue for us.
-                </p>
+                <h3 className="text-lg font-bold mb-2 text-cyan-100">Faster Implementation</h3>
+                <p className="text-neutral-400 text-sm">Strategy to execution in weeks, not quarters</p>
               </div>
             </div>
 
-            <div className="group relative bg-gradient-to-br from-cyan-950/30 via-violet-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
+            <div className="group relative bg-gradient-to-br from-emerald-950/40 to-neutral-950/40 border border-emerald-500/30 rounded-3xl p-8 hover:border-emerald-400/60 transition-all duration-700 lg:translate-y-8">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 to-emerald-500/0 group-hover:from-emerald-500/20 group-hover:to-transparent rounded-3xl transition-all duration-700"></div>
               <div className="relative">
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-400/20 to-violet-500/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Heart className="w-8 h-8 text-violet-400" />
+                <div className="mb-6">
+                  <div className="text-6xl lg:text-7xl font-black bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent mb-2 animate-pulse">
+                    94%
+                  </div>
+                  <div className="h-2 bg-neutral-800 rounded-full overflow-hidden mb-4">
+                    <div className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full" style={{ width: '0%', animation: 'grow 2s ease-out 0.3s forwards' }}></div>
+                  </div>
                 </div>
-                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-violet-100">We design for people, not just systems</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed">
-                  Technology should adapt to how people work, not force them into rigid frameworks. We start with human needs and build systems around them.
-                </p>
+                <h3 className="text-lg font-bold mb-2 text-emerald-100">Client Satisfaction</h3>
+                <p className="text-neutral-400 text-sm">Built on honesty over hype</p>
               </div>
             </div>
 
-            <div className="group relative bg-gradient-to-br from-cyan-950/30 via-violet-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
+            <div className="group relative bg-gradient-to-br from-violet-950/40 to-neutral-950/40 border border-violet-500/30 rounded-3xl p-8 hover:border-violet-400/60 transition-all duration-700">
+              <div className="absolute inset-0 bg-gradient-to-br from-violet-500/0 to-violet-500/0 group-hover:from-violet-500/20 group-hover:to-transparent rounded-3xl transition-all duration-700"></div>
               <div className="relative">
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Gauge className="w-8 h-8 text-cyan-400" />
+                <div className="mb-6">
+                  <div className="text-6xl lg:text-7xl font-black bg-gradient-to-r from-violet-400 to-violet-300 bg-clip-text text-transparent mb-2 animate-pulse">
+                    100%
+                  </div>
+                  <div className="h-2 bg-neutral-800 rounded-full overflow-hidden mb-4">
+                    <div className="h-full bg-gradient-to-r from-violet-500 to-violet-400 rounded-full" style={{ width: '0%', animation: 'grow 2s ease-out 0.6s forwards' }}></div>
+                  </div>
                 </div>
-                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-cyan-100">We balance quick wins with long-term clarity</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed">
-                  See progress in weeks, not months. We prioritize early momentum while building toward sustainable transformation that lasts.
-                </p>
+                <h3 className="text-lg font-bold mb-2 text-violet-100">Human-Centered</h3>
+                <p className="text-neutral-400 text-sm">Technology that adapts to people</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
+            <div className="group relative bg-gradient-to-br from-neutral-900/60 to-neutral-950/60 border border-neutral-700/50 rounded-2xl p-6 hover:border-cyan-500/40 transition-all duration-500 hover:scale-[1.02]">
+              <div className="flex items-start gap-4">
+                <div className="flex items-center justify-center w-12 h-12 bg-cyan-500/10 rounded-xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <ShieldCheck className="w-6 h-6 text-cyan-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold mb-2 text-cyan-100">No AI hype</h3>
+                  <p className="text-neutral-400 text-sm">We recommend what you need — not what's trending</p>
+                </div>
               </div>
             </div>
 
-            <div className="group relative bg-gradient-to-br from-cyan-950/30 via-violet-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-2xl p-8 hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/10 group-hover:to-transparent rounded-2xl transition-all duration-500"></div>
-              <div className="relative">
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-400/20 to-violet-500/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Rocket className="w-8 h-8 text-violet-400" />
+            <div className="group relative bg-gradient-to-br from-neutral-900/60 to-neutral-950/60 border border-neutral-700/50 rounded-2xl p-6 hover:border-emerald-500/40 transition-all duration-500 hover:scale-[1.02]">
+              <div className="flex items-start gap-4">
+                <div className="flex items-center justify-center w-12 h-12 bg-emerald-500/10 rounded-xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <Gauge className="w-6 h-6 text-emerald-400" />
                 </div>
-                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-violet-100">We make change feel manageable — not disruptive</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed">
-                  Change is hard. We break it into digestible steps, support your team through adoption, and ensure improvements stick rather than fade away.
-                </p>
+                <div>
+                  <h3 className="text-lg font-bold mb-2 text-emerald-100">Quick wins first</h3>
+                  <p className="text-neutral-400 text-sm">See progress in weeks while building for the long term</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="group relative bg-gradient-to-br from-neutral-900/60 to-neutral-950/60 border border-neutral-700/50 rounded-2xl p-6 hover:border-violet-500/40 transition-all duration-500 hover:scale-[1.02]">
+              <div className="flex items-start gap-4">
+                <div className="flex items-center justify-center w-12 h-12 bg-violet-500/10 rounded-xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <Heart className="w-6 h-6 text-violet-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold mb-2 text-violet-100">People first</h3>
+                  <p className="text-neutral-400 text-sm">Systems that work with humans, not against them</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="group relative bg-gradient-to-br from-neutral-900/60 to-neutral-950/60 border border-neutral-700/50 rounded-2xl p-6 hover:border-cyan-500/40 transition-all duration-500 hover:scale-[1.02]">
+              <div className="flex items-start gap-4">
+                <div className="flex items-center justify-center w-12 h-12 bg-cyan-500/10 rounded-xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <Rocket className="w-6 h-6 text-cyan-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold mb-2 text-cyan-100">Change made easy</h3>
+                  <p className="text-neutral-400 text-sm">Transformation that sticks, not just recommendations</p>
+                </div>
               </div>
             </div>
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="relative bg-gradient-to-br from-cyan-950/30 via-violet-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-2xl p-8 lg:p-10 shadow-xl">
-              <div className="absolute top-4 right-4 w-32 h-32 bg-gradient-to-br from-cyan-500/20 to-violet-400/20 rounded-full blur-3xl"></div>
+            <div className="relative bg-gradient-to-br from-cyan-950/30 via-violet-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-2xl p-8 lg:p-10 shadow-2xl overflow-hidden group hover:border-cyan-400/50 transition-all duration-500">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-cyan-500/20 to-violet-400/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
               <div className="relative flex flex-col lg:flex-row items-start lg:items-center gap-6">
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-violet-400/20 rounded-2xl flex-shrink-0">
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-violet-400/20 rounded-2xl flex-shrink-0 group-hover:rotate-12 transition-transform duration-500">
                   <Layers className="w-8 h-8 text-cyan-400" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl lg:text-2xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
-                    We combine strategy, experience, and implementation
+                  <h3 className="text-2xl lg:text-3xl font-bold mb-3 bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+                    Strategy + Implementation
                   </h3>
-                  <p className="text-neutral-300 leading-relaxed">
-                    Most firms do one or the other. We bridge the gap between strategy and execution — rolling up our sleeves to implement alongside your team, not just delivering recommendations and walking away.
+                  <p className="text-neutral-300 leading-relaxed text-lg">
+                    We don't just advise — we execute alongside your team
                   </p>
                 </div>
               </div>
