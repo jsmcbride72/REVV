@@ -44,9 +44,6 @@ function App() {
               <button onClick={() => scrollToSection('services')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
                 Services
               </button>
-              <button onClick={() => scrollToSection('how-we-work')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
-                How We Work
-              </button>
               <button onClick={() => scrollToSection('impact')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
                 Impact
               </button>
