@@ -28,7 +28,11 @@ function App() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <span className="text-xl font-bold tracking-tight">REVV Studio</span>
+              <img
+                src="https://www.dropbox.com/scl/fi/6d4x8ap3k0qdv424kado8/loGO2.PNG?rlkey=hjyf7r15m22p9d0gu8z0i3ad1&st=m5gcljmi&raw=1"
+                alt="REVV Studio"
+                className="h-10"
+              />
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
