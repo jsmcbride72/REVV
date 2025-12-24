@@ -168,9 +168,6 @@ function App() {
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pb-20 lg:pb-0">
           <div className="text-center max-w-6xl mx-auto">
-            <div className="flex justify-center mb-6">
-              <img src={getAssetUrl("/logo.png")} alt="Revv Studio" className="h-32 lg:h-40 w-auto" />
-            </div>
             <p className="text-2xl lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-12">
               Welcome to the Revolution
             </p>
