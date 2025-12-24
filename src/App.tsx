@@ -6,7 +6,7 @@ function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
 
-  const getAssetUrl = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+  const getAssetUrl = (path: string) => path;
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -67,13 +67,13 @@ function App() {
       </nav>
 
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-neutral-900 via-neutral-950 to-black">
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover opacity-70"
           >
             <source src={getAssetUrl("/jsmcbride_racing.mp4")} type="video/mp4" />
           </video>
