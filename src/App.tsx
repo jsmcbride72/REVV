@@ -449,7 +449,7 @@ function App() {
                   return (
                     <div
                       key={study.id}
-                      className={`group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-${study.color}-${study.color === 'cyan' ? '500' : '400'}/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-${study.color}-${study.color === 'cyan' ? '500' : '400'}/20`}
+                      className={`group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-${study.color}-${study.color === 'cyan' ? '500' : '400'}/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-${study.color}-${study.color === 'cyan' ? '500' : '400'}/20 flex flex-col`}
                     >
                       <div className="relative h-48 overflow-hidden">
                         {isVideo ? (
@@ -472,7 +472,7 @@ function App() {
                           </>
                         )}
                       </div>
-                      <div className="p-6">
+                      <div className="p-6 flex flex-col flex-1">
                         <div className="flex items-center gap-2 mb-3">
                           <Icon className={`w-5 h-5 text-${study.color}-400`} />
                           <h3 className={`text-xl font-bold text-${study.color}-100 uppercase`}>{study.title}</h3>
@@ -492,7 +492,7 @@ function App() {
                         </div>
                         <button
                           onClick={() => setSelectedCaseStudy(study)}
-                          className={`w-full flex items-center justify-center gap-2 px-4 py-3 bg-${study.color}-${study.color === 'cyan' ? '500' : '400'}/10 hover:bg-${study.color}-${study.color === 'cyan' ? '500' : '400'}/20 border border-${study.color}-${study.color === 'cyan' ? '500' : '400'}/30 rounded-lg text-${study.color}-400 font-semibold text-sm transition-all duration-300 hover:scale-105`}
+                          className={`w-full flex items-center justify-center gap-2 px-4 py-3 bg-${study.color}-${study.color === 'cyan' ? '500' : '400'}/10 hover:bg-${study.color}-${study.color === 'cyan' ? '500' : '400'}/20 border border-${study.color}-${study.color === 'cyan' ? '500' : '400'}/30 rounded-lg text-${study.color}-400 font-semibold text-sm transition-all duration-300 hover:scale-105 mt-auto`}
                         >
                           View Full Case Study
                           <ArrowRight className="w-4 h-4" />
