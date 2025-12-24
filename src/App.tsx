@@ -153,7 +153,7 @@ function App() {
         </div>
       </nav>
 
-      <section className="relative pt-32 pb-32 lg:pt-40 lg:pb-32 overflow-hidden">
+      <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-neutral-900 via-neutral-950 to-black">
           <video
             autoPlay
@@ -166,15 +166,15 @@ function App() {
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/50 to-neutral-950/80"></div>
         </div>
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pb-20 lg:pb-0">
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pb-16 lg:pb-0">
           <div className="text-center max-w-6xl mx-auto">
-            <p className="text-2xl lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-12">
+            <p className="text-lg lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-8">
               Welcome to the Revolution
             </p>
-            <p className="text-5xl lg:text-6xl font-normal text-white leading-tight mb-12 drop-shadow-2xl">
+            <p className="text-3xl lg:text-6xl font-normal text-white leading-tight mb-8 drop-shadow-2xl">
               A new era is exploding into motion. Businesses don't evolve at the same speed — or with the same tools.
             </p>
-            <p className="text-3xl lg:text-4xl font-light text-neutral-200 leading-tight drop-shadow-xl">
+            <p className="text-xl lg:text-4xl font-light text-neutral-200 leading-tight drop-shadow-xl">
               Revv Studio helps organizations improve how work gets done today, while thoughtfully preparing for what's next.
             </p>
           </div>
@@ -190,13 +190,13 @@ function App() {
         </button>
       </section>
 
-      <section id="story" className="py-20 lg:py-32 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
+      <section id="story" className="py-12 lg:py-32 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl lg:text-4xl font-bold mb-6">Our Story</h2>
+          <div className="text-center mb-8">
+            <h2 className="text-3xl lg:text-5xl font-bold mb-4">Our Story</h2>
           </div>
-          <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-2xl p-8 lg:p-12">
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
+          <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-2xl p-6 lg:p-12">
+            <div className="grid lg:grid-cols-2 gap-6 items-center">
               <div className="rounded-xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl">
                 <video
                   autoPlay
@@ -209,10 +209,10 @@ function App() {
               </div>
 
               <div>
-                <p className="text-xl lg:text-xl text-neutral-300 leading-relaxed mb-8">
+                <p className="text-lg lg:text-xl text-neutral-300 leading-relaxed mb-6">
                   Founded by practitioners who've spent years navigating the gap between business strategy and technological implementation, Revv Studio emerged from a simple observation: most organizations don't need more tools — they need work that actually works for the people doing it.
                 </p>
-                <p className="text-xl text-neutral-400 leading-relaxed mb-8">
+                <p className="text-base lg:text-xl text-neutral-400 leading-relaxed mb-6">
                   We've seen firsthand how AI hype can distract from fundamental operational issues, and how the best technology investments are the ones that amplify human capability rather than replace it. Our approach combines strategic consulting with hands-on implementation, ensuring that every change we introduce is grounded in real workflow improvement — not theoretical frameworks.
                 </p>
                 <div className="grid grid-cols-3 gap-6 pt-8 border-t border-neutral-800">
@@ -250,28 +250,28 @@ function App() {
         </div>
       </section>
 
-      <section id="approach" className="py-20 lg:py-32 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
+      <section id="approach" className="py-12 lg:py-32 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">UX + AX: A Complete Approach</h2>
-            <p className="text-xl lg:text-xl text-neutral-400 max-w-3xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl lg:text-5xl font-bold mb-4">UX + AX: A Complete Approach</h2>
+            <p className="text-lg lg:text-xl text-neutral-400 max-w-3xl mx-auto">
               Most firms specialize in one or the other. We excel at both — and understand how they intersect.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-2xl p-8 lg:p-10">
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="w-14 h-14 bg-cyan-500/10 rounded-xl flex items-center justify-center">
-                  <Palette className="w-7 h-7 text-cyan-400" />
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center">
+                  <Palette className="w-6 h-6 text-cyan-400" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold">User Experience (UX)</h3>
-                  <p className="text-sm text-cyan-400 font-semibold">Human-Centered Design</p>
+                  <h3 className="text-xl lg:text-2xl font-bold">User Experience (UX)</h3>
+                  <p className="text-xs lg:text-sm text-cyan-400 font-semibold">Human-Centered Design</p>
                 </div>
               </div>
 
-              <div className="mb-8 rounded-xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl relative" style={{ aspectRatio: '16/12' }}>
+              <div className="mb-6 rounded-xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl relative" style={{ aspectRatio: '16/12' }}>
                 <video
                   autoPlay
                   loop
@@ -282,7 +282,7 @@ function App() {
                 />
               </div>
 
-              <p className="text-neutral-300 leading-relaxed mb-6 text-lg">
+              <p className="text-neutral-300 leading-relaxed mb-4 text-base lg:text-lg">
                 Traditional UX focuses on how people interact with products, services, and systems. We design interfaces, workflows, and experiences that are intuitive, efficient, and delightful to use.
               </p>
 
@@ -307,17 +307,17 @@ function App() {
             </div>
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-2xl p-8 lg:p-10">
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="w-14 h-14 bg-violet-400/10 rounded-xl flex items-center justify-center">
-                  <Brain className="w-7 h-7 text-violet-400" />
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-12 h-12 bg-violet-400/10 rounded-xl flex items-center justify-center">
+                  <Brain className="w-6 h-6 text-violet-400" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold">Agentic Experience (AX)</h3>
-                  <p className="text-sm text-violet-400 font-semibold">The New Paradigm</p>
+                  <h3 className="text-xl lg:text-2xl font-bold">Agentic Experience (AX)</h3>
+                  <p className="text-xs lg:text-sm text-violet-400 font-semibold">The New Paradigm</p>
                 </div>
               </div>
 
-              <div className="mb-8 rounded-xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl relative" style={{ aspectRatio: '16/12' }}>
+              <div className="mb-6 rounded-xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl relative" style={{ aspectRatio: '16/12' }}>
                 <video
                   autoPlay
                   loop
@@ -328,7 +328,7 @@ function App() {
                 />
               </div>
 
-              <p className="text-neutral-300 leading-relaxed mb-6 text-lg">
+              <p className="text-neutral-300 leading-relaxed mb-4 text-base lg:text-lg">
                 AX is the emerging discipline of designing experiences where AI agents can take autonomous action on behalf of users. This fundamentally changes UX — instead of users doing tasks, agents do tasks for users. We design for human-agent collaboration, trust, and control.
               </p>
 
@@ -353,51 +353,51 @@ function App() {
             </div>
           </div>
 
-          <div className="mt-12 max-w-6xl mx-auto">
-            <div className="text-center mb-10">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 rounded-2xl mb-4">
-                <Link2 className="w-8 h-8 text-cyan-400" />
+          <div className="mt-8 max-w-6xl mx-auto">
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 rounded-2xl mb-3">
+                <Link2 className="w-7 h-7 text-cyan-400" />
               </div>
-              <h3 className="text-3xl lg:text-3xl font-bold mb-3">
+              <h3 className="text-2xl lg:text-3xl font-bold mb-2">
                 Why Both Matter
               </h3>
-              <p className="text-base lg:text-base text-neutral-400 max-w-2xl mx-auto">
+              <p className="text-base lg:text-lg text-neutral-400 max-w-2xl mx-auto">
                 Traditional UX assumes humans are in control. Agentic Experience fundamentally shifts this — AI agents take actions autonomously on behalf of users.
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-6 mb-8">
-              <div className="bg-gradient-to-br from-amber-950/30 to-neutral-900/50 border border-amber-800/40 rounded-xl p-6">
-                <div className="flex items-center justify-center w-12 h-12 bg-amber-500/10 rounded-xl mb-4">
-                  <AlertTriangle className="w-6 h-6 text-amber-400" />
+            <div className="grid lg:grid-cols-3 gap-4 mb-6">
+              <div className="bg-gradient-to-br from-amber-950/30 to-neutral-900/50 border border-amber-800/40 rounded-xl p-5">
+                <div className="flex items-center justify-center w-10 h-10 bg-amber-500/10 rounded-xl mb-3">
+                  <AlertTriangle className="w-5 h-5 text-amber-400" />
                 </div>
-                <h4 className="text-xl font-bold mb-3 text-amber-100">UX Without AX</h4>
-                <p className="text-neutral-400 text-base leading-relaxed">
+                <h4 className="text-lg lg:text-xl font-bold mb-2 text-amber-100">UX Without AX</h4>
+                <p className="text-neutral-400 text-sm lg:text-base leading-relaxed">
                   Interfaces designed for human control break when agents start taking autonomous action. Buttons, forms, and clicks don't translate to agentic workflows.
                 </p>
               </div>
 
-              <div className="relative bg-gradient-to-br from-cyan-950/30 via-violet-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-xl p-6 lg:scale-105 shadow-xl">
+              <div className="relative bg-gradient-to-br from-cyan-950/30 via-violet-950/30 to-cyan-950/30 border-2 border-cyan-500/30 rounded-xl p-5 lg:scale-105 shadow-xl">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-cyan-500 to-violet-400 text-neutral-950 text-xs font-bold px-4 py-1 rounded-full">
+                  <span className="bg-gradient-to-r from-cyan-500 to-violet-400 text-neutral-950 text-xs font-bold px-3 py-1 rounded-full">
                     The Bridge
                   </span>
                 </div>
-                <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-violet-400/20 rounded-xl mb-4">
-                  <Eye className="w-6 h-6 text-cyan-400" />
+                <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-cyan-500/20 to-violet-400/20 rounded-xl mb-3">
+                  <Eye className="w-5 h-5 text-cyan-400" />
                 </div>
-                <h4 className="text-xl font-bold mb-3 bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">Revv Studio's Approach</h4>
-                <p className="text-neutral-300 text-base leading-relaxed">
+                <h4 className="text-lg lg:text-xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">Revv Studio's Approach</h4>
+                <p className="text-neutral-300 text-sm lg:text-base leading-relaxed">
                   We design experiences where humans and agents collaborate effectively — with clear boundaries, transparent reasoning, and meaningful control for both.
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-amber-950/30 to-neutral-900/50 border border-amber-800/40 rounded-xl p-6">
-                <div className="flex items-center justify-center w-12 h-12 bg-amber-500/10 rounded-xl mb-4">
-                  <AlertTriangle className="w-6 h-6 text-amber-400" />
+              <div className="bg-gradient-to-br from-amber-950/30 to-neutral-900/50 border border-amber-800/40 rounded-xl p-5">
+                <div className="flex items-center justify-center w-10 h-10 bg-amber-500/10 rounded-xl mb-3">
+                  <AlertTriangle className="w-5 h-5 text-amber-400" />
                 </div>
-                <h4 className="text-xl font-bold mb-3 text-amber-100">AX Without UX</h4>
-                <p className="text-neutral-400 text-base leading-relaxed">
+                <h4 className="text-lg lg:text-xl font-bold mb-2 text-amber-100">AX Without UX</h4>
+                <p className="text-neutral-400 text-sm lg:text-base leading-relaxed">
                   Powerful agents that people don't trust or understand. Without UX expertise, autonomous systems lack the transparency and control users need to feel confident.
                 </p>
               </div>
@@ -428,11 +428,11 @@ function App() {
         </div>
       </section>
 
-      <section id="case-studies" className="py-20 lg:py-32 bg-neutral-950/50">
+      <section id="case-studies" className="py-12 lg:py-32 bg-neutral-950/50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Case Studies</h2>
-            <p className="text-xl lg:text-xl text-neutral-400 max-w-3xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl lg:text-5xl font-bold mb-4">Case Studies</h2>
+            <p className="text-lg lg:text-xl text-neutral-400 max-w-3xl mx-auto">
               Real transformations from companies who partnered with us
             </p>
           </div>
@@ -512,11 +512,11 @@ function App() {
         </div>
       </section>
 
-      <section id="services" className="py-20 lg:py-32">
+      <section id="services" className="py-12 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Two Ways We Help</h2>
-            <p className="text-xl lg:text-xl text-neutral-400 max-w-3xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl lg:text-5xl font-bold mb-4">Two Ways We Help</h2>
+            <p className="text-lg lg:text-xl text-neutral-400 max-w-3xl mx-auto">
               Not every company needs AI.<br />
               Every company needs work that works better for humans.
             </p>
@@ -540,14 +540,14 @@ function App() {
                 <div className="flex items-center justify-between mb-8">
                   <div>
                     <div className="flex items-center space-x-3 mb-2">
-                      <div className="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center">
-                        <Workflow className="w-6 h-6 text-cyan-400" />
+                      <div className="w-10 h-10 bg-cyan-500/10 rounded-xl flex items-center justify-center">
+                        <Workflow className="w-5 h-5 text-cyan-400" />
                       </div>
-                      <h3 className="text-2xl lg:text-3xl font-bold">
+                      <h3 className="text-xl lg:text-3xl font-bold">
                         Digital Experience & Workflow Optimization
                       </h3>
                     </div>
-                    <p className="text-neutral-400 text-base ml-15">
+                    <p className="text-neutral-400 text-sm lg:text-base ml-13">
                       For teams focused on clarity, efficiency, and better experiences
                     </p>
                   </div>
@@ -649,14 +649,14 @@ function App() {
                 <div className="flex items-center justify-between mb-8">
                   <div>
                     <div className="flex items-center space-x-3 mb-2">
-                      <div className="w-12 h-12 bg-violet-400/10 rounded-xl flex items-center justify-center">
-                        <CircuitBoard className="w-6 h-6 text-violet-400" />
+                      <div className="w-10 h-10 bg-violet-400/10 rounded-xl flex items-center justify-center">
+                        <CircuitBoard className="w-5 h-5 text-violet-400" />
                       </div>
-                      <h3 className="text-2xl lg:text-3xl font-bold">
+                      <h3 className="text-xl lg:text-3xl font-bold">
                         Agentic AI & Intelligent Systems
                       </h3>
                     </div>
-                    <p className="text-neutral-400 text-base ml-15">
+                    <p className="text-neutral-400 text-sm lg:text-base ml-13">
                       For teams ready to work alongside AI agents
                     </p>
                   </div>
@@ -792,11 +792,11 @@ function App() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 overflow-hidden">
+      <section className="py-12 lg:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4">What Makes Revv Studio Different</h2>
-            <p className="text-xl lg:text-xl text-neutral-400 max-w-2xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-5xl font-bold mb-4">What Makes Revv Studio Different</h2>
+            <p className="text-lg lg:text-xl text-neutral-400 max-w-2xl mx-auto">
               Results that speak louder than words
             </p>
           </div>
@@ -922,11 +922,11 @@ function App() {
         </div>
       </section>
 
-      <section id="impact" className="py-20 lg:py-32 bg-gradient-to-b from-neutral-900/30 to-neutral-950">
+      <section id="impact" className="py-12 lg:py-32 bg-gradient-to-b from-neutral-900/30 to-neutral-950">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Client Impact</h2>
-            <p className="text-xl lg:text-xl text-neutral-400 max-w-2xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl lg:text-5xl font-bold mb-4">Client Impact</h2>
+            <p className="text-lg lg:text-xl text-neutral-400 max-w-2xl mx-auto">
               Real results from organizations who chose clarity over complexity
             </p>
           </div>
@@ -1001,11 +1001,11 @@ function App() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32 bg-neutral-900/30">
+      <section className="py-12 lg:py-32 bg-neutral-900/30">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Common Questions</h2>
-            <p className="text-xl lg:text-xl text-neutral-400">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl lg:text-5xl font-bold mb-4">Common Questions</h2>
+            <p className="text-lg lg:text-xl text-neutral-400">
               What to expect when working with Revv Studio
             </p>
           </div>
@@ -1014,10 +1014,10 @@ function App() {
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl overflow-hidden">
               <button
                 onClick={() => setOpenFaq(openFaq === 0 ? null : 0)}
-                className="w-full text-left p-6 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
+                className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-xl">How do you determine if AI is right for our situation?</span>
-                <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform ${openFaq === 0 ? 'rotate-180' : ''}`} />
+                <span className="font-semibold text-lg lg:text-xl">How do you determine if AI is right for our situation?</span>
+                <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 0 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 0 && (
                 <div className="px-6 pb-6 text-neutral-400 leading-relaxed text-base">
@@ -1029,10 +1029,10 @@ function App() {
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl overflow-hidden">
               <button
                 onClick={() => setOpenFaq(openFaq === 1 ? null : 1)}
-                className="w-full text-left p-6 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
+                className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-xl">What does a typical engagement look like?</span>
-                <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform ${openFaq === 1 ? 'rotate-180' : ''}`} />
+                <span className="font-semibold text-lg lg:text-xl">What does a typical engagement look like?</span>
+                <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 1 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 1 && (
                 <div className="px-6 pb-6 text-neutral-400 leading-relaxed text-base">
@@ -1044,10 +1044,10 @@ function App() {
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl overflow-hidden">
               <button
                 onClick={() => setOpenFaq(openFaq === 2 ? null : 2)}
-                className="w-full text-left p-6 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
+                className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-xl">Do you work with companies of all sizes?</span>
-                <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform ${openFaq === 2 ? 'rotate-180' : ''}`} />
+                <span className="font-semibold text-lg lg:text-xl">Do you work with companies of all sizes?</span>
+                <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 2 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 2 && (
                 <div className="px-6 pb-6 text-neutral-400 leading-relaxed text-base">
@@ -1059,10 +1059,10 @@ function App() {
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl overflow-hidden">
               <button
                 onClick={() => setOpenFaq(openFaq === 3 ? null : 3)}
-                className="w-full text-left p-6 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
+                className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-xl">How quickly can we expect to see results?</span>
-                <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform ${openFaq === 3 ? 'rotate-180' : ''}`} />
+                <span className="font-semibold text-lg lg:text-xl">How quickly can we expect to see results?</span>
+                <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 3 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 3 && (
                 <div className="px-6 pb-6 text-neutral-400 leading-relaxed text-base">
@@ -1074,10 +1074,10 @@ function App() {
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl overflow-hidden">
               <button
                 onClick={() => setOpenFaq(openFaq === 4 ? null : 4)}
-                className="w-full text-left p-6 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
+                className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-xl">What makes you different from traditional consultants?</span>
-                <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform ${openFaq === 4 ? 'rotate-180' : ''}`} />
+                <span className="font-semibold text-lg lg:text-xl">What makes you different from traditional consultants?</span>
+                <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 4 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 4 && (
                 <div className="px-6 pb-6 text-neutral-400 leading-relaxed text-base">
