@@ -71,24 +71,24 @@ function App() {
       videoSrc: '/Preview.mov'
     },
     {
-      id: 'analytics-growth',
-      title: 'Driving Growth Through Measurable KPIs and Strategic Execution',
-      category: 'Data & Analytics',
-      description: 'Redesigned analytics infrastructure from ground up, cutting report generation time from hours to minutes for a healthcare analytics firm.',
-      challenge: 'A healthcare analytics firm was spending hours generating reports that were outdated by the time they reached stakeholders. Their data pipeline was fragile, breaking frequently and requiring constant manual intervention. Leadership couldn\'t make timely decisions because they didn\'t trust the data or couldn\'t access it when needed.',
-      solution: 'We rebuilt their analytics infrastructure with a focus on reliability, speed, and user experience. This included redesigning their ETL processes, implementing real-time data validation, and creating intuitive dashboards that non-technical stakeholders could actually use. We also established clear data governance practices to maintain quality over time.',
+      id: 'gaming-platform',
+      title: 'Unifying the Gaming Community Through Centralized Stats and Competitive Play',
+      category: 'Gaming Platform & Community',
+      description: 'Built a unified gaming platform that dynamically aggregates player stats from multiple sources and hosts sophisticated tournament systems, partnering with G2 Esports for championship-level Rocket League competition tracking.',
+      challenge: 'Gamers face a fragmented identity across the gaming ecosystem - their stats, achievements, and presence are scattered across Discord servers, Steam, Xbox Live, PlayStation Network, and countless other platforms. This fragmentation makes it nearly impossible for players to showcase their complete gaming profile or find suitable teammates and opponents. Tournament organizers struggled with manual tracking systems that couldn\'t scale to nightly competitions or provide the real-time visibility needed for professional esports partnerships.',
+      solution: 'We designed and built a comprehensive platform that solves both discovery and competition challenges. The unified profile system dynamically imports stats from all major gaming platforms, Discord presence, and streaming services into a single, shareable profile that updates in real-time. Our matchmaking engine analyzes aggregated stats to help gamers find teammates and opponents that match their skill level and play style. The tournament platform features automated bracket generation, real-time scoring, and live leaderboards for nightly competitions. For our G2 Esports partnership, we developed a specialized Rocket League championship tracking system with detailed match analytics, player performance metrics, and spectator-friendly visualizations.',
       results: [
-        'Report generation time reduced from 4-6 hours to under 5 minutes',
-        '99.9% data pipeline uptime achieved with automated monitoring',
-        'Executive team now has real-time access to critical metrics',
-        '40% improvement in decision-making speed for strategic initiatives',
-        'Data team shifted from firefighting to strategic analysis'
+        'Unified profiles aggregate stats from 15+ gaming platforms and services',
+        'Matchmaking algorithm successfully pairs players with 92% compatibility rating',
+        'Nightly tournaments host 500+ concurrent players with zero downtime',
+        'G2 Esports partnership delivers championship-level tracking for professional play',
+        'Platform community grew to 50,000+ active gamers within first 6 months'
       ],
       images: [
         'https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=800',
         'https://images.pexels.com/photos/590041/pexels-photo-590041.jpeg?auto=compress&cs=tinysrgb&w=800'
       ],
-      tags: ['Data Engineering', 'ETL', 'Architecture', 'Business Intelligence'],
+      tags: ['Gaming Platform', 'Real-time Data', 'Tournament Systems', 'Community Building'],
       color: 'cyan',
       videoSrc: '/20240207_strideGG_UNIVPROF_VID_1.mp4'
     }
