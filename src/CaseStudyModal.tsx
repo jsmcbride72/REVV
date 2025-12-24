@@ -76,15 +76,30 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
           </div>
 
           <div className="grid lg:grid-cols-2 gap-6 mb-8">
-            {caseStudy.images.map((image, index) => (
-              <div key={index} className={`rounded-xl overflow-hidden border ${colors.border} bg-gradient-to-br ${colors.bg} to-transparent`}>
-                <img
-                  src={image}
-                  alt={`${caseStudy.title} - Image ${index + 1}`}
-                  className="w-full h-64 object-cover"
-                />
-              </div>
-            ))}
+            {caseStudy.images.map((image, index) => {
+              const isVideo = image.endsWith('.mov') || image.endsWith('.mp4');
+
+              return (
+                <div key={index} className={`rounded-xl overflow-hidden border ${colors.border} bg-gradient-to-br ${colors.bg} to-transparent`}>
+                  {isVideo ? (
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-64 object-cover"
+                      src={image}
+                    />
+                  ) : (
+                    <img
+                      src={image}
+                      alt={`${caseStudy.title} - Image ${index + 1}`}
+                      className="w-full h-64 object-cover"
+                    />
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           <div className="space-y-8 mb-8">
