@@ -93,24 +93,24 @@ function App() {
       videoSrc: '/20240207_strideGG_UNIVPROF_VID_1.mp4'
     },
     {
-      id: 'mobile-redesign',
-      title: 'Mobile Experience Redesign',
-      category: 'UX Design',
-      description: 'Complete UX overhaul increased user engagement by 140% and reduced support tickets by 55% for a fintech mobile platform.',
-      challenge: 'A fintech mobile platform was experiencing high abandonment rates and overwhelming support requests. Users found the app confusing, critical features were buried in menus, and the interface didn\'t match how people actually managed their finances. The company was losing users to competitors with better experiences.',
-      solution: 'We conducted extensive user research to understand real user needs and pain points. Then we completely redesigned the mobile experience, prioritizing clarity, speed, and confidence-building. Every interaction was optimized for mobile, with clear visual hierarchy, intuitive navigation, and helpful micro-interactions that guide users through complex financial tasks.',
+      id: 'fuel-card-platform',
+      title: 'Revolutionizing Fleet Fuel Management for the Mobile Workforce',
+      category: 'Fintech & Mobile UX',
+      description: 'Transformed a fuel card application into a comprehensive fleet management platform, reducing driver support requests by 68% and accelerating expense approvals by 5x.',
+      challenge: 'A fintech company providing fuel cards to trucking and delivery fleets faced serious adoption issues. Drivers struggled to find supported fuel stations, leading to frequent roadside support calls. The expense approval process was slow and opaque, with drivers unable to track their submissions. Administrators were overwhelmed with support requests while manually reviewing expenses across disconnected systems. The disconnect between drivers and back-office teams was costing time, money, and driver satisfaction.',
+      solution: 'We designed a dual-sided platform that serves both drivers and administrators. The driver app features a digital wallet for managing multiple fuel cards, real-time location-based search for nearby supported stations with turn-by-turn navigation, and transparent expense tracking. The admin dashboard provides real-time expense monitoring, an integrated chat system for instant driver support, and a streamlined expense review workflow where agents can quickly approve or flag transactions. Every interaction was designed for users on the move or managing high volumes.',
       results: [
-        '140% increase in daily active user engagement',
-        '55% reduction in customer support tickets',
-        'App store rating improved from 3.2 to 4.7 stars',
-        'User onboarding completion rate increased by 85%',
-        'Customer acquisition cost decreased by 30% due to improved retention'
+        '68% reduction in driver support calls through self-service features',
+        'Expense approval time reduced from 5 days to under 24 hours',
+        'Drivers find supported fuel stations 90% faster with location-based search',
+        'Admin chat feature resolves 85% of issues without phone calls',
+        'Driver app rating improved to 4.6 stars with 95% adoption across fleet'
       ],
       images: [
         'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
         'https://images.pexels.com/photos/4968630/pexels-photo-4968630.jpeg?auto=compress&cs=tinysrgb&w=800'
       ],
-      tags: ['UX Research', 'Design', 'Mobile', 'User Testing'],
+      tags: ['Fintech', 'Mobile UX', 'Fleet Management', 'Real-time Communication'],
       color: 'violet',
       videoSrc: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800'
     }
