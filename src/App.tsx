@@ -26,25 +26,25 @@ function App() {
 
   const caseStudies: CaseStudy[] = [
     {
-      id: 'fleet-management',
-      title: 'Transforming Fleet Management Through Human-Centered Design',
-      category: 'Workflow Optimization',
-      description: 'Reduced manual processing time by 75% through intelligent automation and custom workflow orchestration for a Fortune 500 logistics company.',
-      challenge: 'A Fortune 500 logistics company was struggling with manual processes that consumed 40+ hours per week. Their fleet management workflows involved multiple systems, complex data entry, and frequent errors due to inconsistent handoffs between teams. Critical vehicle data was trapped in silos, making real-time decision-making nearly impossible.',
-      solution: 'We redesigned their core workflows from the ground up, mapping every touchpoint and identifying automation opportunities. Using n8n for orchestration, we built intelligent workflows that connected their existing systems, automated data validation, and created real-time alerts for critical events. The solution was designed around how their teams actually work, not how the software wanted them to work.',
+      id: 'fuel-card-platform',
+      title: 'Revolutionizing Fleet Fuel Management for the Mobile Workforce',
+      category: 'Fintech & Mobile UX',
+      description: 'Transformed a fuel card application into a comprehensive fleet management platform, reducing driver support requests by 68% and accelerating expense approvals by 5x.',
+      challenge: 'A fintech company providing fuel cards to trucking and delivery fleets faced serious adoption issues. Drivers struggled to find supported fuel stations, leading to frequent roadside support calls. The expense approval process was slow and opaque, with drivers unable to track their submissions. Administrators were overwhelmed with support requests while manually reviewing expenses across disconnected systems. The disconnect between drivers and back-office teams was costing time, money, and driver satisfaction.',
+      solution: 'We designed a dual-sided platform that serves both drivers and administrators. The driver app features a digital wallet for managing multiple fuel cards, real-time location-based search for nearby supported stations with turn-by-turn navigation, and transparent expense tracking. The admin dashboard provides real-time expense monitoring, an integrated chat system for instant driver support, and a streamlined expense review workflow where agents can quickly approve or flag transactions. Every interaction was designed for users on the move or managing high volumes.',
       results: [
-        '75% reduction in manual data entry and processing time',
-        '90% decrease in data entry errors and rework',
-        'Real-time visibility into fleet status across all systems',
-        'Teams now spend time on strategic decisions instead of data wrangling',
-        'ROI achieved within 3 months of implementation'
+        '68% reduction in driver support calls through self-service features',
+        'Expense approval time reduced from 5 days to under 24 hours',
+        'Drivers find supported fuel stations 90% faster with location-based search',
+        'Admin chat feature resolves 85% of issues without phone calls',
+        'Driver app rating improved to 4.6 stars with 95% adoption across fleet'
       ],
       images: [
         '/phones-spin.mov',
         'https://images.pexels.com/photos/4391470/pexels-photo-4391470.jpeg?auto=compress&cs=tinysrgb&w=800',
         'https://images.pexels.com/photos/6457579/pexels-photo-6457579.jpeg?auto=compress&cs=tinysrgb&w=800'
       ],
-      tags: ['n8n', 'Process Design', 'Integration', 'Workflow Automation'],
+      tags: ['Fintech', 'Mobile UX', 'Fleet Management', 'Real-time Communication'],
       color: 'cyan',
       videoSrc: '/driven-vid.mov'
     },
@@ -91,28 +91,6 @@ function App() {
       tags: ['Data Engineering', 'ETL', 'Architecture', 'Business Intelligence'],
       color: 'cyan',
       videoSrc: '/20240207_strideGG_UNIVPROF_VID_1.mp4'
-    },
-    {
-      id: 'fuel-card-platform',
-      title: 'Revolutionizing Fleet Fuel Management for the Mobile Workforce',
-      category: 'Fintech & Mobile UX',
-      description: 'Transformed a fuel card application into a comprehensive fleet management platform, reducing driver support requests by 68% and accelerating expense approvals by 5x.',
-      challenge: 'A fintech company providing fuel cards to trucking and delivery fleets faced serious adoption issues. Drivers struggled to find supported fuel stations, leading to frequent roadside support calls. The expense approval process was slow and opaque, with drivers unable to track their submissions. Administrators were overwhelmed with support requests while manually reviewing expenses across disconnected systems. The disconnect between drivers and back-office teams was costing time, money, and driver satisfaction.',
-      solution: 'We designed a dual-sided platform that serves both drivers and administrators. The driver app features a digital wallet for managing multiple fuel cards, real-time location-based search for nearby supported stations with turn-by-turn navigation, and transparent expense tracking. The admin dashboard provides real-time expense monitoring, an integrated chat system for instant driver support, and a streamlined expense review workflow where agents can quickly approve or flag transactions. Every interaction was designed for users on the move or managing high volumes.',
-      results: [
-        '68% reduction in driver support calls through self-service features',
-        'Expense approval time reduced from 5 days to under 24 hours',
-        'Drivers find supported fuel stations 90% faster with location-based search',
-        'Admin chat feature resolves 85% of issues without phone calls',
-        'Driver app rating improved to 4.6 stars with 95% adoption across fleet'
-      ],
-      images: [
-        'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
-        'https://images.pexels.com/photos/4968630/pexels-photo-4968630.jpeg?auto=compress&cs=tinysrgb&w=800'
-      ],
-      tags: ['Fintech', 'Mobile UX', 'Fleet Management', 'Real-time Communication'],
-      color: 'violet',
-      videoSrc: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800'
     }
   ];
 
