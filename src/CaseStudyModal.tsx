@@ -12,6 +12,7 @@ interface CaseStudy {
   images: string[];
   tags: string[];
   color: 'cyan' | 'violet';
+  videoSrc: string;
 }
 
 interface CaseStudyModalProps {
@@ -75,31 +76,15 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
             <p className="text-xl lg:text-xl text-neutral-400">{caseStudy.description}</p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-6 mb-8">
-            {caseStudy.images.map((image, index) => {
-              const isVideo = image.endsWith('.mov') || image.endsWith('.mp4');
-
-              return (
-                <div key={index} className={`rounded-xl overflow-hidden border ${colors.border}`}>
-                  {isVideo ? (
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-64 object-cover"
-                      src={image}
-                    />
-                  ) : (
-                    <img
-                      src={image}
-                      alt={`${caseStudy.title} - Image ${index + 1}`}
-                      className="w-full h-64 object-cover"
-                    />
-                  )}
-                </div>
-              );
-            })}
+          <div className={`rounded-xl overflow-hidden border ${colors.border} mb-8`}>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-auto object-cover"
+              src={caseStudy.videoSrc}
+            />
           </div>
 
           <div className="space-y-8 mb-8">
@@ -112,6 +97,38 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
               <h3 className="text-2xl font-bold mb-3">Our Solution</h3>
               <p className="text-neutral-300 leading-relaxed text-base">{caseStudy.solution}</p>
             </div>
+
+            {caseStudy.images.length > 0 && (
+              <div>
+                <h3 className="text-2xl font-bold mb-4">Product Gallery</h3>
+                <div className="grid lg:grid-cols-2 gap-6">
+                  {caseStudy.images.map((image, index) => {
+                    const isVideo = image.endsWith('.mov') || image.endsWith('.mp4');
+
+                    return (
+                      <div key={index} className={`rounded-xl overflow-hidden border ${colors.border}`}>
+                        {isVideo ? (
+                          <video
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="w-full h-64 object-cover"
+                            src={image}
+                          />
+                        ) : (
+                          <img
+                            src={image}
+                            alt={`${caseStudy.title} - Image ${index + 1}`}
+                            className="w-full h-64 object-cover"
+                          />
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
 
             <div className={`bg-gradient-to-br ${colors.bg} to-transparent border ${colors.border} rounded-xl p-8`}>
               <h3 className={`text-3xl font-bold mb-6 ${colors.text}`}>Impact Metrics</h3>
