@@ -172,10 +172,7 @@ function App() {
               Welcome to the Revolution
             </p>
             <p className="text-3xl lg:text-6xl font-normal text-white leading-tight mb-8 drop-shadow-2xl">
-              A new era is exploding into motion. Businesses don't evolve at the same speed — or with the same tools.
-            </p>
-            <p className="text-xl lg:text-4xl font-light text-neutral-200 leading-tight drop-shadow-xl">
-              Revv Studio helps organizations improve how work gets done today, while thoughtfully preparing for what's next.
+              A NEW ERA IS EXPLODING INTO MOTION. Businesses don't evolve at the same speed—or with the same tools. Revv Studio helps organizations elevate how work gets done today, while deliberately preparing for what's next.
             </p>
           </div>
         </div>
