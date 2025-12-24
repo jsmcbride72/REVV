@@ -1,12 +1,119 @@
-import { Users, Target, TrendingUp, Heart, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Shield, Search, MousePointer, AlertTriangle, Link2, Eye } from 'lucide-react';
+import { Users, Target, TrendingUp, Heart, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Shield, Search, MousePointer, AlertTriangle, Link2, Eye, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import ContactForm from './ContactForm';
+import CaseStudyModal from './CaseStudyModal';
+
+interface CaseStudy {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  challenge: string;
+  solution: string;
+  results: string[];
+  images: string[];
+  tags: string[];
+  color: 'cyan' | 'violet';
+  videoSrc: string;
+}
 
 function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+  const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null);
 
   const getAssetUrl = (path: string) => path;
+
+  const caseStudies: CaseStudy[] = [
+    {
+      id: 'fleet-management',
+      title: 'Transforming Fleet Management Through Human-Centered Design',
+      category: 'Workflow Optimization',
+      description: 'Reduced manual processing time by 75% through intelligent automation and custom workflow orchestration for a Fortune 500 logistics company.',
+      challenge: 'A Fortune 500 logistics company was struggling with manual processes that consumed 40+ hours per week. Their fleet management workflows involved multiple systems, complex data entry, and frequent errors due to inconsistent handoffs between teams. Critical vehicle data was trapped in silos, making real-time decision-making nearly impossible.',
+      solution: 'We redesigned their core workflows from the ground up, mapping every touchpoint and identifying automation opportunities. Using n8n for orchestration, we built intelligent workflows that connected their existing systems, automated data validation, and created real-time alerts for critical events. The solution was designed around how their teams actually work, not how the software wanted them to work.',
+      results: [
+        '75% reduction in manual data entry and processing time',
+        '90% decrease in data entry errors and rework',
+        'Real-time visibility into fleet status across all systems',
+        'Teams now spend time on strategic decisions instead of data wrangling',
+        'ROI achieved within 3 months of implementation'
+      ],
+      images: [
+        'https://images.pexels.com/photos/4391470/pexels-photo-4391470.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'https://images.pexels.com/photos/6457579/pexels-photo-6457579.jpeg?auto=compress&cs=tinysrgb&w=800'
+      ],
+      tags: ['n8n', 'Process Design', 'Integration', 'Workflow Automation'],
+      color: 'cyan',
+      videoSrc: '/driven-vid.mov'
+    },
+    {
+      id: 'ai-personalization',
+      title: 'Transforming Content with AI-Powered Personalization',
+      category: 'Agentic AI',
+      description: 'Built an intelligent support agent that handles 60% of customer inquiries autonomously while maintaining a 95% satisfaction rate for a SaaS company.',
+      challenge: 'A rapidly growing SaaS company was drowning in customer support requests. Their small support team couldn\'t keep up with volume, leading to long wait times, frustrated customers, and burned-out staff. They needed a solution that could scale support without sacrificing quality or the human touch their customers valued.',
+      solution: 'We designed and implemented an AI agent system that handles routine inquiries while seamlessly escalating complex issues to human agents. The system was trained on their actual support conversations, product documentation, and customer context. We built transparent interfaces showing customers when they\'re interacting with AI and giving them easy paths to human support when needed.',
+      results: [
+        '60% of customer inquiries resolved autonomously by AI agents',
+        '95% customer satisfaction rating maintained across all interactions',
+        'Average response time reduced from 4 hours to under 5 minutes',
+        'Support team now focuses on complex problems and relationship building',
+        'Customer retention improved by 18% due to faster, more consistent support'
+      ],
+      images: [
+        'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=800'
+      ],
+      tags: ['AI Agents', 'NLP', 'UX Design', 'Customer Experience'],
+      color: 'violet',
+      videoSrc: '/Preview.mov'
+    },
+    {
+      id: 'analytics-growth',
+      title: 'Driving Growth Through Measurable KPIs and Strategic Execution',
+      category: 'Data & Analytics',
+      description: 'Redesigned analytics infrastructure from ground up, cutting report generation time from hours to minutes for a healthcare analytics firm.',
+      challenge: 'A healthcare analytics firm was spending hours generating reports that were outdated by the time they reached stakeholders. Their data pipeline was fragile, breaking frequently and requiring constant manual intervention. Leadership couldn\'t make timely decisions because they didn\'t trust the data or couldn\'t access it when needed.',
+      solution: 'We rebuilt their analytics infrastructure with a focus on reliability, speed, and user experience. This included redesigning their ETL processes, implementing real-time data validation, and creating intuitive dashboards that non-technical stakeholders could actually use. We also established clear data governance practices to maintain quality over time.',
+      results: [
+        'Report generation time reduced from 4-6 hours to under 5 minutes',
+        '99.9% data pipeline uptime achieved with automated monitoring',
+        'Executive team now has real-time access to critical metrics',
+        '40% improvement in decision-making speed for strategic initiatives',
+        'Data team shifted from firefighting to strategic analysis'
+      ],
+      images: [
+        'https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'https://images.pexels.com/photos/590041/pexels-photo-590041.jpeg?auto=compress&cs=tinysrgb&w=800'
+      ],
+      tags: ['Data Engineering', 'ETL', 'Architecture', 'Business Intelligence'],
+      color: 'cyan',
+      videoSrc: '/20240207_strideGG_UNIVPROF_VID_1.mp4'
+    },
+    {
+      id: 'mobile-redesign',
+      title: 'Mobile Experience Redesign',
+      category: 'UX Design',
+      description: 'Complete UX overhaul increased user engagement by 140% and reduced support tickets by 55% for a fintech mobile platform.',
+      challenge: 'A fintech mobile platform was experiencing high abandonment rates and overwhelming support requests. Users found the app confusing, critical features were buried in menus, and the interface didn\'t match how people actually managed their finances. The company was losing users to competitors with better experiences.',
+      solution: 'We conducted extensive user research to understand real user needs and pain points. Then we completely redesigned the mobile experience, prioritizing clarity, speed, and confidence-building. Every interaction was optimized for mobile, with clear visual hierarchy, intuitive navigation, and helpful micro-interactions that guide users through complex financial tasks.',
+      results: [
+        '140% increase in daily active user engagement',
+        '55% reduction in customer support tickets',
+        'App store rating improved from 3.2 to 4.7 stars',
+        'User onboarding completion rate increased by 85%',
+        'Customer acquisition cost decreased by 30% due to improved retention'
+      ],
+      images: [
+        'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'https://images.pexels.com/photos/4968630/pexels-photo-4968630.jpeg?auto=compress&cs=tinysrgb&w=800'
+      ],
+      tags: ['UX Research', 'Design', 'Mobile', 'User Testing'],
+      color: 'violet',
+      videoSrc: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800'
+    }
+  ];
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -356,111 +463,65 @@ function App() {
           <div className="relative">
             <div className="overflow-x-auto pb-8 scrollbar-hide">
               <div className="flex gap-6 min-w-max px-4">
-                <div className="group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
-                  <div className="relative h-48 overflow-hidden">
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
-                      src={getAssetUrl("/driven-vid.mov")}
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Zap className="w-5 h-5 text-cyan-400" />
-                      <h3 className="text-xl font-bold text-cyan-100">TRANSFORMING FLEET MANAGEMENT THROUGH HUMAN-CENTERED DESIGN</h3>
-                    </div>
-                    <p className="text-neutral-400 text-sm leading-relaxed mb-4">
-                      Reduced manual processing time by 75% through intelligent automation and custom workflow orchestration for a Fortune 500 logistics company.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-xs text-cyan-400">n8n</span>
-                      <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-xs text-cyan-400">Process Design</span>
-                      <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-xs text-cyan-400">Integration</span>
-                    </div>
-                  </div>
-                </div>
+                {caseStudies.map((study, index) => {
+                  const Icon = index === 0 ? Zap : index === 1 ? Bot : index === 2 ? BarChart3 : Sparkles;
+                  const isVideo = study.videoSrc.endsWith('.mov') || study.videoSrc.endsWith('.mp4');
 
-                <div className="group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-violet-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-violet-400/20">
-                  <div className="relative h-48 overflow-hidden">
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
-                      src={getAssetUrl("/Preview.mov")}
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Bot className="w-5 h-5 text-violet-400" />
-                      <h3 className="text-xl font-bold text-violet-100">TRANSFORMING CONTENT WITH AI-POWERED PERSONALIZATION</h3>
+                  return (
+                    <div
+                      key={study.id}
+                      className={`group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-${study.color}-${study.color === 'cyan' ? '500' : '400'}/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-${study.color}-${study.color === 'cyan' ? '500' : '400'}/20`}
+                    >
+                      <div className="relative h-48 overflow-hidden">
+                        {isVideo ? (
+                          <video
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            src={getAssetUrl(study.videoSrc)}
+                          />
+                        ) : (
+                          <>
+                            <img
+                              src={study.videoSrc}
+                              alt={study.title}
+                              className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent"></div>
+                          </>
+                        )}
+                      </div>
+                      <div className="p-6">
+                        <div className="flex items-center gap-2 mb-3">
+                          <Icon className={`w-5 h-5 text-${study.color}-400`} />
+                          <h3 className={`text-xl font-bold text-${study.color}-100 uppercase`}>{study.title}</h3>
+                        </div>
+                        <p className="text-neutral-400 text-sm leading-relaxed mb-4">
+                          {study.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {study.tags.slice(0, 3).map((tag, i) => (
+                            <span
+                              key={i}
+                              className={`px-3 py-1 bg-${study.color}-${study.color === 'cyan' ? '500' : '400'}/10 border border-${study.color}-${study.color === 'cyan' ? '500' : '400'}/30 rounded-full text-xs text-${study.color}-400`}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        <button
+                          onClick={() => setSelectedCaseStudy(study)}
+                          className={`w-full flex items-center justify-center gap-2 px-4 py-3 bg-${study.color}-${study.color === 'cyan' ? '500' : '400'}/10 hover:bg-${study.color}-${study.color === 'cyan' ? '500' : '400'}/20 border border-${study.color}-${study.color === 'cyan' ? '500' : '400'}/30 rounded-lg text-${study.color}-400 font-semibold text-sm transition-all duration-300 hover:scale-105`}
+                        >
+                          View Full Case Study
+                          <ArrowRight className="w-4 h-4" />
+                        </button>
+                      </div>
                     </div>
-                    <p className="text-neutral-400 text-sm leading-relaxed mb-4">
-                      Built an intelligent support agent that handles 60% of customer inquiries autonomously while maintaining a 95% satisfaction rate for a SaaS company.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-violet-400/10 border border-violet-400/30 rounded-full text-xs text-violet-400">AI Agents</span>
-                      <span className="px-3 py-1 bg-violet-400/10 border border-violet-400/30 rounded-full text-xs text-violet-400">NLP</span>
-                      <span className="px-3 py-1 bg-violet-400/10 border border-violet-400/30 rounded-full text-xs text-violet-400">UX Design</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
-                  <div className="relative h-48 overflow-hidden">
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
-                      src={getAssetUrl("/20240207_strideGG_UNIVPROF_VID_1.mp4")}
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <BarChart3 className="w-5 h-5 text-cyan-400" />
-                      <h3 className="text-xl font-bold text-cyan-100">DRIVING GROWTH THROUGH MEASURABLE KPI'S AND STRATEGIC EXECUTION</h3>
-                    </div>
-                    <p className="text-neutral-400 text-sm leading-relaxed mb-4">
-                      Redesigned analytics infrastructure from ground up, cutting report generation time from hours to minutes for a healthcare analytics firm.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-xs text-cyan-400">Data Engineering</span>
-                      <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-xs text-cyan-400">ETL</span>
-                      <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-xs text-cyan-400">Architecture</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-violet-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-violet-400/20">
-                  <div className="relative h-48 bg-gradient-to-br from-violet-900/40 to-cyan-900/40 overflow-hidden">
-                    <img
-                      src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
-                      alt="Mobile app interface"
-                      className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent"></div>
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Sparkles className="w-5 h-5 text-violet-400" />
-                      <h3 className="text-xl font-bold text-violet-100">Mobile Experience Redesign</h3>
-                    </div>
-                    <p className="text-neutral-400 text-sm leading-relaxed mb-4">
-                      Complete UX overhaul increased user engagement by 140% and reduced support tickets by 55% for a fintech mobile platform.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-violet-400/10 border border-violet-400/30 rounded-full text-xs text-violet-400">UX Research</span>
-                      <span className="px-3 py-1 bg-violet-400/10 border border-violet-400/30 rounded-full text-xs text-violet-400">Design</span>
-                      <span className="px-3 py-1 bg-violet-400/10 border border-violet-400/30 rounded-full text-xs text-violet-400">Mobile</span>
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
             </div>
 
@@ -1068,6 +1129,12 @@ function App() {
       <ContactForm
         isOpen={isContactFormOpen}
         onClose={() => setIsContactFormOpen(false)}
+      />
+
+      <CaseStudyModal
+        caseStudy={selectedCaseStudy}
+        isOpen={selectedCaseStudy !== null}
+        onClose={() => setSelectedCaseStudy(null)}
       />
     </div>
   );
