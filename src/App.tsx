@@ -33,11 +33,11 @@ function App() {
       challenge: 'A fintech company providing fuel cards to trucking and delivery fleets faced serious adoption issues. Drivers struggled to find supported fuel stations, leading to frequent roadside support calls. The expense approval process was slow and opaque, with drivers unable to track their submissions. Administrators were overwhelmed with support requests while manually reviewing expenses across disconnected systems. The disconnect between drivers and back-office teams was costing time, money, and driver satisfaction.',
       solution: 'We designed a dual-sided platform that serves both drivers and administrators. The driver app features a digital wallet for managing multiple fuel cards, real-time location-based search for nearby supported stations with turn-by-turn navigation, and transparent expense tracking. The admin dashboard provides real-time expense monitoring, an integrated chat system for instant driver support, and a streamlined expense review workflow where agents can quickly approve or flag transactions. Every interaction was designed for users on the move or managing high volumes.',
       results: [
-        '68% reduction in driver support calls through self-service features',
-        'Expense approval time reduced from 5 days to under 24 hours',
-        'Drivers find supported fuel stations 90% faster with location-based search',
-        'Admin chat feature resolves 85% of issues without phone calls',
-        'Driver app rating improved to 4.6 stars with 95% adoption across fleet'
+        '68% ↓ Driver support calls',
+        '5 days → 24 hours: Expense approval time',
+        '90% faster fuel station discovery',
+        '85% issues resolved via chat (no phone)',
+        '4.6★ rating | 95% fleet adoption'
       ],
       images: [
         '/phones-spin.mov',
@@ -56,11 +56,11 @@ function App() {
       challenge: 'Traditional search experiences are static and disconnected from how people actually discover and organize content. Users struggle to keep track of evolving interests across local news, global trends, and niche topics. Content creators and professionals like interior designers need ways to curate and share living collections that stay current without constant manual updates. The market needed a solution that combines the visual curation of Pinterest, the search power of Google, and the shareability of Instagram.',
       solution: 'We built NewsRing around the concept of "Rings" - intelligent, saved searches that continuously update with fresh content tailored to any criteria. Starting with local news discovery and expanding to global reach, each Ring is powered by conversational AI that understands context and refines results through natural dialogue. Users can create Rings for their hometown updates, professional interests, or creative inspiration, with AI prompts guiding discovery. Content stays current automatically, transforming static boards into living, shareable knowledge streams that evolve with user needs.',
       results: [
-        'Users engage with content 3x longer than traditional search platforms',
-        'AI-guided prompts reduce search time by 65% while improving result relevance',
-        'Rings are shared 4x more frequently than static bookmarks or boards',
-        'Interior designers and content creators see 80% time savings in curation',
-        'Location-based Rings deliver continuously updated local content with 95% accuracy'
+        '3x longer content engagement',
+        '65% ↓ Search time (AI-guided prompts)',
+        '4x more shares vs. static bookmarks',
+        '80% time savings for content curation',
+        '95% accuracy: Location-based content updates'
       ],
       images: [
         'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -78,11 +78,11 @@ function App() {
       challenge: 'Gamers face a fragmented identity across the gaming ecosystem - their stats, achievements, and presence are scattered across Discord servers, Steam, Xbox Live, PlayStation Network, and countless other platforms. This fragmentation makes it nearly impossible for players to showcase their complete gaming profile or find suitable teammates and opponents. Tournament organizers struggled with manual tracking systems that couldn\'t scale to nightly competitions or provide the real-time visibility needed for professional esports partnerships.',
       solution: 'We designed and built a comprehensive platform that solves both discovery and competition challenges. The unified profile system dynamically imports stats from all major gaming platforms, Discord presence, and streaming services into a single, shareable profile that updates in real-time. Our matchmaking engine analyzes aggregated stats to help gamers find teammates and opponents that match their skill level and play style. The tournament platform features automated bracket generation, real-time scoring, and live leaderboards for nightly competitions. For our G2 Esports partnership, we developed a specialized Rocket League championship tracking system with detailed match analytics, player performance metrics, and spectator-friendly visualizations.',
       results: [
-        'Unified profiles aggregate stats from 15+ gaming platforms and services',
-        'Matchmaking algorithm successfully pairs players with 92% compatibility rating',
-        'Nightly tournaments host 500+ concurrent players with zero downtime',
-        'G2 Esports partnership delivers championship-level tracking for professional play',
-        'Platform community grew to 50,000+ active gamers within first 6 months'
+        '15+ platforms: Unified stat aggregation',
+        '92% player compatibility rating',
+        '500+ concurrent players | 0% downtime',
+        'G2 Esports: Championship-level tracking',
+        '50K+ active gamers in 6 months'
       ],
       images: [
         'https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=800',
