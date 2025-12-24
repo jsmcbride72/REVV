@@ -152,7 +152,7 @@ function App() {
         </div>
       </nav>
 
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+      <section className="relative pt-32 pb-32 lg:pt-40 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-neutral-900 via-neutral-950 to-black">
           <video
             autoPlay
@@ -165,7 +165,7 @@ function App() {
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/50 to-neutral-950/80"></div>
         </div>
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pb-20 lg:pb-0">
           <div className="text-center max-w-6xl mx-auto">
             <div className="flex justify-center mb-6">
               <img src={getAssetUrl("/logo.png")} alt="Revv Studio" className="h-32 lg:h-40 w-auto" />
@@ -185,10 +185,10 @@ function App() {
         <button
           onClick={() => scrollToSection('story')}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 text-cyan-400 hover:text-cyan-300 transition-colors cursor-pointer animate-bounce"
-          aria-label="Scroll to content"
+          aria-label="Scroll to explore"
         >
-          <span className="text-sm font-medium tracking-wide">Scroll to explore</span>
-          <ChevronDown className="w-8 h-8" />
+          <span className="hidden lg:block text-sm font-medium tracking-wide">Scroll to explore</span>
+          <ChevronDown className="w-10 h-10 lg:w-8 lg:h-8" />
         </button>
       </section>
 
