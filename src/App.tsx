@@ -170,13 +170,13 @@ function App() {
             <div className="flex justify-center mb-6">
               <img src={getAssetUrl("/logo.png")} alt="Revv Studio" className="h-32 lg:h-40 w-auto" />
             </div>
-            <p className="text-xl lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-12">
+            <p className="text-2xl lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-12">
               Welcome to the Revolution
             </p>
-            <p className="text-4xl lg:text-6xl font-normal text-white leading-tight mb-12 drop-shadow-2xl">
+            <p className="text-5xl lg:text-6xl font-normal text-white leading-tight mb-12 drop-shadow-2xl">
               CHANGE IS HAPPENING FAST — NOT EVERY BUSINESS WANTS THE SAME TOOLS, OR THE SAME PACE.
             </p>
-            <p className="text-2xl lg:text-4xl font-light text-neutral-200 leading-tight drop-shadow-xl">
+            <p className="text-3xl lg:text-4xl font-light text-neutral-200 leading-tight drop-shadow-xl">
               Revv Studio helps organizations improve how work gets done today, while thoughtfully preparing for what's next.
             </p>
           </div>
@@ -195,7 +195,7 @@ function App() {
       <section id="story" className="py-20 lg:py-32 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-6">Our Story</h2>
+            <h2 className="text-4xl lg:text-4xl font-bold mb-6">Our Story</h2>
           </div>
           <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-2xl p-8 lg:p-12">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
@@ -211,10 +211,10 @@ function App() {
               </div>
 
               <div>
-                <p className="text-lg lg:text-xl text-neutral-300 leading-relaxed mb-8">
+                <p className="text-xl lg:text-xl text-neutral-300 leading-relaxed mb-8">
                   Founded by practitioners who've spent years navigating the gap between business strategy and technological implementation, Revv Studio emerged from a simple observation: most organizations don't need more tools — they need work that actually works for the people doing it.
                 </p>
-                <p className="text-lg text-neutral-400 leading-relaxed mb-8">
+                <p className="text-xl text-neutral-400 leading-relaxed mb-8">
                   We've seen firsthand how AI hype can distract from fundamental operational issues, and how the best technology investments are the ones that amplify human capability rather than replace it. Our approach combines strategic consulting with hands-on implementation, ensuring that every change we introduce is grounded in real workflow improvement — not theoretical frameworks.
                 </p>
                 <div className="grid grid-cols-3 gap-6 pt-8 border-t border-neutral-800">
@@ -225,7 +225,7 @@ function App() {
                       </div>
                     </div>
                     <div className="text-3xl lg:text-4xl font-bold text-gradient mb-2">40%</div>
-                    <p className="text-xs text-neutral-400">Average reduction in process cycle time</p>
+                    <p className="text-sm text-neutral-400">Average reduction in process cycle time</p>
                   </div>
                   <div className="text-center">
                     <div className="flex justify-center mb-3">
@@ -234,7 +234,7 @@ function App() {
                       </div>
                     </div>
                     <div className="text-3xl lg:text-4xl font-bold text-gradient mb-2">65%</div>
-                    <p className="text-xs text-neutral-400">Fewer handoff errors and rework loops</p>
+                    <p className="text-sm text-neutral-400">Fewer handoff errors and rework loops</p>
                   </div>
                   <div className="text-center">
                     <div className="flex justify-center mb-3">
@@ -243,7 +243,7 @@ function App() {
                       </div>
                     </div>
                     <div className="text-3xl lg:text-4xl font-bold text-gradient mb-2">3-6mo</div>
-                    <p className="text-xs text-neutral-400">Typical timeline to measurable outcomes</p>
+                    <p className="text-sm text-neutral-400">Typical timeline to measurable outcomes</p>
                   </div>
                 </div>
               </div>
@@ -255,8 +255,8 @@ function App() {
       <section id="approach" className="py-20 lg:py-32 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-6">UX + AX: A Complete Approach</h2>
-            <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">UX + AX: A Complete Approach</h2>
+            <p className="text-xl lg:text-xl text-neutral-400 max-w-3xl mx-auto">
               Most firms specialize in one or the other. We excel at both — and understand how they intersect.
             </p>
           </div>
@@ -291,19 +291,19 @@ function App() {
               <div className="space-y-3">
                 <div className="flex items-center space-x-2 text-neutral-400">
                   <div className="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
-                  <span className="text-sm">Interface design and prototyping</span>
+                  <span className="text-base">Interface design and prototyping</span>
                 </div>
                 <div className="flex items-center space-x-2 text-neutral-400">
                   <div className="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
-                  <span className="text-sm">User research and usability testing</span>
+                  <span className="text-base">User research and usability testing</span>
                 </div>
                 <div className="flex items-center space-x-2 text-neutral-400">
                   <div className="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
-                  <span className="text-sm">Service design and journey mapping</span>
+                  <span className="text-base">Service design and journey mapping</span>
                 </div>
                 <div className="flex items-center space-x-2 text-neutral-400">
                   <div className="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
-                  <span className="text-sm">Design systems and component libraries</span>
+                  <span className="text-base">Design systems and component libraries</span>
                 </div>
               </div>
             </div>
@@ -337,19 +337,19 @@ function App() {
               <div className="space-y-3">
                 <div className="flex items-center space-x-2 text-neutral-400">
                   <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
-                  <span className="text-sm">Agentic system design and orchestration</span>
+                  <span className="text-base">Agentic system design and orchestration</span>
                 </div>
                 <div className="flex items-center space-x-2 text-neutral-400">
                   <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
-                  <span className="text-sm">Human-agent collaboration frameworks</span>
+                  <span className="text-base">Human-agent collaboration frameworks</span>
                 </div>
                 <div className="flex items-center space-x-2 text-neutral-400">
                   <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
-                  <span className="text-sm">Trust, transparency, and control mechanisms</span>
+                  <span className="text-base">Trust, transparency, and control mechanisms</span>
                 </div>
                 <div className="flex items-center space-x-2 text-neutral-400">
                   <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
-                  <span className="text-sm">Agent decision boundaries and escalation</span>
+                  <span className="text-base">Agent decision boundaries and escalation</span>
                 </div>
               </div>
             </div>
@@ -360,10 +360,10 @@ function App() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 rounded-2xl mb-4">
                 <Link2 className="w-8 h-8 text-cyan-400" />
               </div>
-              <h3 className="text-2xl lg:text-3xl font-bold mb-3">
+              <h3 className="text-3xl lg:text-3xl font-bold mb-3">
                 Why Both Matter
               </h3>
-              <p className="text-neutral-400 max-w-2xl mx-auto">
+              <p className="text-base lg:text-base text-neutral-400 max-w-2xl mx-auto">
                 Traditional UX assumes humans are in control. Agentic Experience fundamentally shifts this — AI agents take actions autonomously on behalf of users.
               </p>
             </div>
@@ -373,8 +373,8 @@ function App() {
                 <div className="flex items-center justify-center w-12 h-12 bg-amber-500/10 rounded-xl mb-4">
                   <AlertTriangle className="w-6 h-6 text-amber-400" />
                 </div>
-                <h4 className="text-lg font-bold mb-3 text-amber-100">UX Without AX</h4>
-                <p className="text-neutral-400 text-sm leading-relaxed">
+                <h4 className="text-xl font-bold mb-3 text-amber-100">UX Without AX</h4>
+                <p className="text-neutral-400 text-base leading-relaxed">
                   Interfaces designed for human control break when agents start taking autonomous action. Buttons, forms, and clicks don't translate to agentic workflows.
                 </p>
               </div>
@@ -388,8 +388,8 @@ function App() {
                 <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-violet-400/20 rounded-xl mb-4">
                   <Eye className="w-6 h-6 text-cyan-400" />
                 </div>
-                <h4 className="text-lg font-bold mb-3 bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">Revv Studio's Approach</h4>
-                <p className="text-neutral-300 text-sm leading-relaxed">
+                <h4 className="text-xl font-bold mb-3 bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">Revv Studio's Approach</h4>
+                <p className="text-neutral-300 text-base leading-relaxed">
                   We design experiences where humans and agents collaborate effectively — with clear boundaries, transparent reasoning, and meaningful control for both.
                 </p>
               </div>
@@ -398,8 +398,8 @@ function App() {
                 <div className="flex items-center justify-center w-12 h-12 bg-amber-500/10 rounded-xl mb-4">
                   <AlertTriangle className="w-6 h-6 text-amber-400" />
                 </div>
-                <h4 className="text-lg font-bold mb-3 text-amber-100">AX Without UX</h4>
-                <p className="text-neutral-400 text-sm leading-relaxed">
+                <h4 className="text-xl font-bold mb-3 text-amber-100">AX Without UX</h4>
+                <p className="text-neutral-400 text-base leading-relaxed">
                   Powerful agents that people don't trust or understand. Without UX expertise, autonomous systems lack the transparency and control users need to feel confident.
                 </p>
               </div>
@@ -411,8 +411,8 @@ function App() {
                   <MousePointer className="w-4 h-4 text-cyan-400" />
                 </div>
                 <div>
-                  <h5 className="font-semibold text-cyan-400 text-sm mb-1">Human-Centered Design</h5>
-                  <p className="text-xs text-neutral-400 leading-relaxed">Interfaces and experiences optimized for human understanding and interaction</p>
+                  <h5 className="font-semibold text-cyan-400 text-base mb-1">Human-Centered Design</h5>
+                  <p className="text-sm text-neutral-400 leading-relaxed">Interfaces and experiences optimized for human understanding and interaction</p>
                 </div>
               </div>
 
@@ -421,8 +421,8 @@ function App() {
                   <Bot className="w-4 h-4 text-violet-400" />
                 </div>
                 <div>
-                  <h5 className="font-semibold text-violet-400 text-sm mb-1">Agent-Ready Systems</h5>
-                  <p className="text-xs text-neutral-400 leading-relaxed">Workflows designed for autonomous AI agents to take action with proper oversight</p>
+                  <h5 className="font-semibold text-violet-400 text-base mb-1">Agent-Ready Systems</h5>
+                  <p className="text-sm text-neutral-400 leading-relaxed">Workflows designed for autonomous AI agents to take action with proper oversight</p>
                 </div>
               </div>
             </div>
@@ -433,8 +433,8 @@ function App() {
       <section id="case-studies" className="py-20 lg:py-32 bg-neutral-950/50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-6">Case Studies</h2>
-            <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Case Studies</h2>
+            <p className="text-xl lg:text-xl text-neutral-400 max-w-3xl mx-auto">
               Real transformations from companies who partnered with us
             </p>
           </div>
@@ -477,7 +477,7 @@ function App() {
                           <Icon className={`w-5 h-5 text-${study.color}-400`} />
                           <h3 className={`text-xl font-bold text-${study.color}-100 uppercase`}>{study.title}</h3>
                         </div>
-                        <p className="text-neutral-400 text-sm leading-relaxed mb-4">
+                        <p className="text-neutral-400 text-base leading-relaxed mb-4">
                           {study.description}
                         </p>
                         <div className="flex flex-wrap gap-2 mb-4">
@@ -517,8 +517,8 @@ function App() {
       <section id="services" className="py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-6">Two Ways We Help</h2>
-            <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Two Ways We Help</h2>
+            <p className="text-xl lg:text-xl text-neutral-400 max-w-3xl mx-auto">
               Not every company needs AI.<br />
               Every company needs work that works better for humans.
             </p>
@@ -549,7 +549,7 @@ function App() {
                         Digital Experience & Workflow Optimization
                       </h3>
                     </div>
-                    <p className="text-neutral-400 text-sm ml-15">
+                    <p className="text-neutral-400 text-base ml-15">
                       For teams focused on clarity, efficiency, and better experiences
                     </p>
                   </div>
@@ -563,7 +563,7 @@ function App() {
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center space-x-2">
                           <Network className="w-4 h-4 text-cyan-400" />
-                          <span className="text-xs text-neutral-300">Process Cycle Time</span>
+                          <span className="text-sm text-neutral-300">Process Cycle Time</span>
                         </div>
                         <span className="text-lg font-bold text-cyan-400">-40%</span>
                       </div>
@@ -576,7 +576,7 @@ function App() {
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center space-x-2">
                           <TrendingUp className="w-4 h-4 text-cyan-400" />
-                          <span className="text-xs text-neutral-300">Handoff Errors</span>
+                          <span className="text-sm text-neutral-300">Handoff Errors</span>
                         </div>
                         <span className="text-lg font-bold text-cyan-400">-65%</span>
                       </div>
@@ -593,8 +593,8 @@ function App() {
                       <Layers className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">Workflow Mapping</h4>
-                      <p className="text-xs text-neutral-500">Identify friction & handoff breakdowns</p>
+                      <h4 className="font-semibold text-neutral-200 text-base mb-0.5">Workflow Mapping</h4>
+                      <p className="text-sm text-neutral-500">Identify friction & handoff breakdowns</p>
                     </div>
                   </div>
 
@@ -603,8 +603,8 @@ function App() {
                       <Palette className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">UX & Service Design</h4>
-                      <p className="text-xs text-neutral-500">Better customer & team experiences</p>
+                      <h4 className="font-semibold text-neutral-200 text-base mb-0.5">UX & Service Design</h4>
+                      <p className="text-sm text-neutral-500">Better customer & team experiences</p>
                     </div>
                   </div>
 
@@ -613,8 +613,8 @@ function App() {
                       <Activity className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">Process Design</h4>
-                      <p className="text-xs text-neutral-500">Clear systems people actually follow</p>
+                      <h4 className="font-semibold text-neutral-200 text-base mb-0.5">Process Design</h4>
+                      <p className="text-sm text-neutral-500">Clear systems people actually follow</p>
                     </div>
                   </div>
 
@@ -623,8 +623,8 @@ function App() {
                       <Target className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">Tool Alignment</h4>
-                      <p className="text-xs text-neutral-500">Software that supports workflows</p>
+                      <h4 className="font-semibold text-neutral-200 text-base mb-0.5">Tool Alignment</h4>
+                      <p className="text-sm text-neutral-500">Software that supports workflows</p>
                     </div>
                   </div>
                 </div>
@@ -636,7 +636,7 @@ function App() {
                     </div>
                     <div>
                       <p className="text-xs font-bold text-cyan-400 mb-2 tracking-wide">OUTCOME</p>
-                      <p className="text-sm text-neutral-200 leading-relaxed">
+                      <p className="text-base text-neutral-200 leading-relaxed">
                         Work becomes easier to understand, execute, and scale — without forcing new technology.
                       </p>
                     </div>
@@ -658,7 +658,7 @@ function App() {
                         Agentic AI & Intelligent Systems
                       </h3>
                     </div>
-                    <p className="text-neutral-400 text-sm ml-15">
+                    <p className="text-neutral-400 text-base ml-15">
                       For teams ready to work alongside AI agents
                     </p>
                   </div>
@@ -672,7 +672,7 @@ function App() {
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center space-x-2">
                           <Bot className="w-4 h-4 text-violet-400" />
-                          <span className="text-xs text-neutral-300">Agent Autonomy</span>
+                          <span className="text-sm text-neutral-300">Agent Autonomy</span>
                         </div>
                         <span className="text-lg font-bold text-violet-400">85%</span>
                       </div>
@@ -685,7 +685,7 @@ function App() {
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center space-x-2">
                           <Shield className="w-4 h-4 text-violet-400" />
-                          <span className="text-xs text-neutral-300">Human Oversight</span>
+                          <span className="text-sm text-neutral-300">Human Oversight</span>
                         </div>
                         <span className="text-lg font-bold text-violet-400">100%</span>
                       </div>
@@ -702,33 +702,33 @@ function App() {
                     <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-violet-400/30 transition-colors">
                       <div className="flex items-center space-x-2 mb-1.5">
                         <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
-                        <h4 className="font-semibold text-neutral-200 text-xs">Agent Autonomy</h4>
+                        <h4 className="font-semibold text-neutral-200 text-sm">Agent Autonomy</h4>
                       </div>
-                      <p className="text-xs text-neutral-500 leading-tight">Clear decision boundaries</p>
+                      <p className="text-sm text-neutral-500 leading-tight">Clear decision boundaries</p>
                     </div>
 
                     <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-violet-400/30 transition-colors">
                       <div className="flex items-center space-x-2 mb-1.5">
                         <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
-                        <h4 className="font-semibold text-neutral-200 text-xs">Explainability</h4>
+                        <h4 className="font-semibold text-neutral-200 text-sm">Explainability</h4>
                       </div>
-                      <p className="text-xs text-neutral-500 leading-tight">Transparent reasoning</p>
+                      <p className="text-sm text-neutral-500 leading-tight">Transparent reasoning</p>
                     </div>
 
                     <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-violet-400/30 transition-colors">
                       <div className="flex items-center space-x-2 mb-1.5">
                         <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
-                        <h4 className="font-semibold text-neutral-200 text-xs">Collaboration</h4>
+                        <h4 className="font-semibold text-neutral-200 text-sm">Collaboration</h4>
                       </div>
-                      <p className="text-xs text-neutral-500 leading-tight">Effective handoffs</p>
+                      <p className="text-sm text-neutral-500 leading-tight">Effective handoffs</p>
                     </div>
 
                     <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-violet-400/30 transition-colors">
                       <div className="flex items-center space-x-2 mb-1.5">
                         <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
-                        <h4 className="font-semibold text-neutral-200 text-xs">Trust Framework</h4>
+                        <h4 className="font-semibold text-neutral-200 text-sm">Trust Framework</h4>
                       </div>
-                      <p className="text-xs text-neutral-500 leading-tight">Control mechanisms</p>
+                      <p className="text-sm text-neutral-500 leading-tight">Control mechanisms</p>
                     </div>
                   </div>
                 </div>
@@ -739,8 +739,8 @@ function App() {
                       <Search className="w-5 h-5 text-violet-400" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">AI Opportunity Assessment</h4>
-                      <p className="text-xs text-neutral-500">Value vs. risk analysis</p>
+                      <h4 className="font-semibold text-neutral-200 text-base mb-0.5">AI Opportunity Assessment</h4>
+                      <p className="text-sm text-neutral-500">Value vs. risk analysis</p>
                     </div>
                   </div>
 
@@ -749,8 +749,8 @@ function App() {
                       <Workflow className="w-5 h-5 text-violet-400" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">Agent Workflow Design</h4>
-                      <p className="text-xs text-neutral-500">Autonomy vs. oversight definition</p>
+                      <h4 className="font-semibold text-neutral-200 text-base mb-0.5">Agent Workflow Design</h4>
+                      <p className="text-sm text-neutral-500">Autonomy vs. oversight definition</p>
                     </div>
                   </div>
 
@@ -759,8 +759,8 @@ function App() {
                       <Users className="w-5 h-5 text-violet-400" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">Human-Agent Interface</h4>
-                      <p className="text-xs text-neutral-500">Monitor, guide & override systems</p>
+                      <h4 className="font-semibold text-neutral-200 text-base mb-0.5">Human-Agent Interface</h4>
+                      <p className="text-sm text-neutral-500">Monitor, guide & override systems</p>
                     </div>
                   </div>
 
@@ -769,8 +769,8 @@ function App() {
                       <Heart className="w-5 h-5 text-violet-400" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-neutral-200 text-sm mb-0.5">Trust & Change Management</h4>
-                      <p className="text-xs text-neutral-500">Confident adoption strategies</p>
+                      <h4 className="font-semibold text-neutral-200 text-base mb-0.5">Trust & Change Management</h4>
+                      <p className="text-sm text-neutral-500">Confident adoption strategies</p>
                     </div>
                   </div>
                 </div>
@@ -782,7 +782,7 @@ function App() {
                     </div>
                     <div>
                       <p className="text-xs font-bold text-violet-400 mb-2 tracking-wide">OUTCOME</p>
-                      <p className="text-sm text-neutral-200 leading-relaxed">
+                      <p className="text-base text-neutral-200 leading-relaxed">
                         AI agents that extend human capability, take action autonomously within clear boundaries, and create trust through transparency.
                       </p>
                     </div>
@@ -797,8 +797,8 @@ function App() {
       <section className="py-20 lg:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-4">What Makes Revv Studio Different</h2>
-            <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">What Makes Revv Studio Different</h2>
+            <p className="text-xl lg:text-xl text-neutral-400 max-w-2xl mx-auto">
               Results that speak louder than words
             </p>
           </div>
@@ -815,8 +815,8 @@ function App() {
                     <div className="h-full bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full animate-[grow_2s_ease-out_forwards]" style={{ width: '0%', animation: 'grow 2s ease-out forwards' }}></div>
                   </div>
                 </div>
-                <h3 className="text-lg font-bold mb-2 text-cyan-100">Faster Implementation</h3>
-                <p className="text-neutral-400 text-sm">Strategy to execution in weeks, not quarters</p>
+                <h3 className="text-xl font-bold mb-2 text-cyan-100">Faster Implementation</h3>
+                <p className="text-neutral-400 text-base">Strategy to execution in weeks, not quarters</p>
               </div>
             </div>
 
@@ -831,8 +831,8 @@ function App() {
                     <div className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full" style={{ width: '0%', animation: 'grow 2s ease-out 0.3s forwards' }}></div>
                   </div>
                 </div>
-                <h3 className="text-lg font-bold mb-2 text-emerald-100">Client Satisfaction</h3>
-                <p className="text-neutral-400 text-sm">Built on honesty over hype</p>
+                <h3 className="text-xl font-bold mb-2 text-emerald-100">Client Satisfaction</h3>
+                <p className="text-neutral-400 text-base">Built on honesty over hype</p>
               </div>
             </div>
 
@@ -847,8 +847,8 @@ function App() {
                     <div className="h-full bg-gradient-to-r from-violet-500 to-violet-400 rounded-full" style={{ width: '0%', animation: 'grow 2s ease-out 0.6s forwards' }}></div>
                   </div>
                 </div>
-                <h3 className="text-lg font-bold mb-2 text-violet-100">Human-Centered</h3>
-                <p className="text-neutral-400 text-sm">Technology that adapts to people</p>
+                <h3 className="text-xl font-bold mb-2 text-violet-100">Human-Centered</h3>
+                <p className="text-neutral-400 text-base">Technology that adapts to people</p>
               </div>
             </div>
           </div>
@@ -860,8 +860,8 @@ function App() {
                   <ShieldCheck className="w-6 h-6 text-cyan-400" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-2 text-cyan-100">No AI hype</h3>
-                  <p className="text-neutral-400 text-sm">We recommend what you need — not what's trending</p>
+                  <h3 className="text-xl font-bold mb-2 text-cyan-100">No AI hype</h3>
+                  <p className="text-neutral-400 text-base">We recommend what you need — not what's trending</p>
                 </div>
               </div>
             </div>
@@ -872,8 +872,8 @@ function App() {
                   <Gauge className="w-6 h-6 text-emerald-400" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-2 text-emerald-100">Quick wins first</h3>
-                  <p className="text-neutral-400 text-sm">See progress in weeks while building for the long term</p>
+                  <h3 className="text-xl font-bold mb-2 text-emerald-100">Quick wins first</h3>
+                  <p className="text-neutral-400 text-base">See progress in weeks while building for the long term</p>
                 </div>
               </div>
             </div>
@@ -884,8 +884,8 @@ function App() {
                   <Heart className="w-6 h-6 text-violet-400" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-2 text-violet-100">People first</h3>
-                  <p className="text-neutral-400 text-sm">Systems that work with humans, not against them</p>
+                  <h3 className="text-xl font-bold mb-2 text-violet-100">People first</h3>
+                  <p className="text-neutral-400 text-base">Systems that work with humans, not against them</p>
                 </div>
               </div>
             </div>
@@ -896,8 +896,8 @@ function App() {
                   <Rocket className="w-6 h-6 text-cyan-400" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-2 text-cyan-100">Change made easy</h3>
-                  <p className="text-neutral-400 text-sm">Transformation that sticks, not just recommendations</p>
+                  <h3 className="text-xl font-bold mb-2 text-cyan-100">Change made easy</h3>
+                  <p className="text-neutral-400 text-base">Transformation that sticks, not just recommendations</p>
                 </div>
               </div>
             </div>
@@ -911,10 +911,10 @@ function App() {
                   <Layers className="w-8 h-8 text-cyan-400" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl lg:text-3xl font-bold mb-3 bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+                  <h3 className="text-3xl lg:text-3xl font-bold mb-3 bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
                     Strategy + Implementation
                   </h3>
-                  <p className="text-neutral-300 leading-relaxed text-lg">
+                  <p className="text-neutral-300 leading-relaxed text-xl">
                     We don't just advise — we execute alongside your team
                   </p>
                 </div>
@@ -927,8 +927,8 @@ function App() {
       <section id="impact" className="py-20 lg:py-32 bg-gradient-to-b from-neutral-900/30 to-neutral-950">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-6">Client Impact</h2>
-            <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Client Impact</h2>
+            <p className="text-xl lg:text-xl text-neutral-400 max-w-2xl mx-auto">
               Real results from organizations who chose clarity over complexity
             </p>
           </div>
@@ -936,67 +936,67 @@ function App() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 lg:p-8 hover:border-cyan-500/30 transition-all duration-300">
               <Quote className="w-8 h-8 text-cyan-400 mb-4 opacity-50" />
-              <p className="text-neutral-300 mb-6 leading-relaxed">
+              <p className="text-neutral-300 mb-6 leading-relaxed text-base">
                 "The workflow redesign cut our approval time in half and eliminated the confusion around ownership. People actually understand the process now."
               </p>
               <div className="pt-4 border-t border-neutral-800">
-                <p className="font-semibold text-sm">Director of Operations</p>
-                <p className="text-xs text-neutral-500">Financial Services</p>
+                <p className="font-semibold text-base">Director of Operations</p>
+                <p className="text-sm text-neutral-500">Financial Services</p>
               </div>
             </div>
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 lg:p-8 hover:border-cyan-500/30 transition-all duration-300">
               <Quote className="w-8 h-8 text-emerald-400 mb-4 opacity-50" />
-              <p className="text-neutral-300 mb-6 leading-relaxed">
+              <p className="text-neutral-300 mb-6 leading-relaxed text-base">
                 "They helped us identify where AI could genuinely save time without disrupting our team's strengths. The implementation was practical, not theoretical."
               </p>
               <div className="pt-4 border-t border-neutral-800">
-                <p className="font-semibold text-sm">VP of Product</p>
-                <p className="text-xs text-neutral-500">Healthcare Technology</p>
+                <p className="font-semibold text-base">VP of Product</p>
+                <p className="text-sm text-neutral-500">Healthcare Technology</p>
               </div>
             </div>
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 lg:p-8 hover:border-cyan-500/30 transition-all duration-300">
               <Quote className="w-8 h-8 text-cyan-400 mb-4 opacity-50" />
-              <p className="text-neutral-300 mb-6 leading-relaxed">
+              <p className="text-neutral-300 mb-6 leading-relaxed text-base">
                 "Finally, someone who didn't try to sell us technology we didn't need. They fixed our processes first, then layered in tools strategically."
               </p>
               <div className="pt-4 border-t border-neutral-800">
-                <p className="font-semibold text-sm">Chief Operating Officer</p>
-                <p className="text-xs text-neutral-500">Manufacturing</p>
+                <p className="font-semibold text-base">Chief Operating Officer</p>
+                <p className="text-sm text-neutral-500">Manufacturing</p>
               </div>
             </div>
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 lg:p-8 hover:border-cyan-500/30 transition-all duration-300">
               <Quote className="w-8 h-8 text-violet-400 mb-4 opacity-50" />
-              <p className="text-neutral-300 mb-6 leading-relaxed">
+              <p className="text-neutral-300 mb-6 leading-relaxed text-base">
                 "The UX improvements transformed how our internal teams use the platform. Adoption went from 40% to 95% in two months."
               </p>
               <div className="pt-4 border-t border-neutral-800">
-                <p className="font-semibold text-sm">Head of Digital Transformation</p>
-                <p className="text-xs text-neutral-500">Enterprise Retail</p>
+                <p className="font-semibold text-base">Head of Digital Transformation</p>
+                <p className="text-sm text-neutral-500">Enterprise Retail</p>
               </div>
             </div>
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 lg:p-8 hover:border-cyan-500/30 transition-all duration-300">
               <Quote className="w-8 h-8 text-cyan-400 mb-4 opacity-50" />
-              <p className="text-neutral-300 mb-6 leading-relaxed">
+              <p className="text-neutral-300 mb-6 leading-relaxed text-base">
                 "Their automation recommendations saved our team 15 hours per week on reporting. More importantly, the reports are now actually useful."
               </p>
               <div className="pt-4 border-t border-neutral-800">
-                <p className="font-semibold text-sm">Analytics Manager</p>
-                <p className="text-xs text-neutral-500">SaaS Platform</p>
+                <p className="font-semibold text-base">Analytics Manager</p>
+                <p className="text-sm text-neutral-500">SaaS Platform</p>
               </div>
             </div>
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6 lg:p-8 hover:border-cyan-500/30 transition-all duration-300">
               <Quote className="w-8 h-8 text-violet-400 mb-4 opacity-50" />
-              <p className="text-neutral-300 mb-6 leading-relaxed">
+              <p className="text-neutral-300 mb-6 leading-relaxed text-base">
                 "They brought clarity to a messy situation. We now have documented processes that people follow, and handoffs that actually work."
               </p>
               <div className="pt-4 border-t border-neutral-800">
-                <p className="font-semibold text-sm">SVP, Customer Success</p>
-                <p className="text-xs text-neutral-500">B2B Technology</p>
+                <p className="font-semibold text-base">SVP, Customer Success</p>
+                <p className="text-sm text-neutral-500">B2B Technology</p>
               </div>
             </div>
           </div>
@@ -1006,8 +1006,8 @@ function App() {
       <section className="py-20 lg:py-32 bg-neutral-900/30">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-6">Common Questions</h2>
-            <p className="text-xl text-neutral-400">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Common Questions</h2>
+            <p className="text-xl lg:text-xl text-neutral-400">
               What to expect when working with Revv Studio
             </p>
           </div>
@@ -1018,11 +1018,11 @@ function App() {
                 onClick={() => setOpenFaq(openFaq === 0 ? null : 0)}
                 className="w-full text-left p-6 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-lg">How do you determine if AI is right for our situation?</span>
+                <span className="font-semibold text-xl">How do you determine if AI is right for our situation?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform ${openFaq === 0 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 0 && (
-                <div className="px-6 pb-6 text-neutral-400 leading-relaxed">
+                <div className="px-6 pb-6 text-neutral-400 leading-relaxed text-base">
                   We start with your actual workflows and pain points, not technology. Through discovery sessions, we identify where work breaks down, what causes frustration, and where time is wasted. Only then do we assess whether AI or automation genuinely addresses those issues better than process improvements, training, or tool optimization. If AI isn't the answer, we'll tell you.
                 </div>
               )}
@@ -1033,11 +1033,11 @@ function App() {
                 onClick={() => setOpenFaq(openFaq === 1 ? null : 1)}
                 className="w-full text-left p-6 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-lg">What does a typical engagement look like?</span>
+                <span className="font-semibold text-xl">What does a typical engagement look like?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform ${openFaq === 1 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 1 && (
-                <div className="px-6 pb-6 text-neutral-400 leading-relaxed">
+                <div className="px-6 pb-6 text-neutral-400 leading-relaxed text-base">
                   Most engagements follow a phased approach: discovery and assessment, design and planning, implementation, and measurement. We typically work in 6-12 week cycles with clear milestones and regular check-ins. Unlike traditional consulting, we don't disappear after delivering recommendations — we stay involved through implementation to ensure changes stick and deliver results.
                 </div>
               )}
@@ -1048,11 +1048,11 @@ function App() {
                 onClick={() => setOpenFaq(openFaq === 2 ? null : 2)}
                 className="w-full text-left p-6 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-lg">Do you work with companies of all sizes?</span>
+                <span className="font-semibold text-xl">Do you work with companies of all sizes?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform ${openFaq === 2 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 2 && (
-                <div className="px-6 pb-6 text-neutral-400 leading-relaxed">
+                <div className="px-6 pb-6 text-neutral-400 leading-relaxed text-base">
                   We work with organizations from 50 to 5,000+ employees. Our approach scales based on your complexity, not just your size. A 200-person company with complex workflows may need more support than a 1,000-person company with clear processes. We're a good fit if you're experiencing workflow friction, unclear ownership, or considering technology investments and want an honest assessment.
                 </div>
               )}
@@ -1063,11 +1063,11 @@ function App() {
                 onClick={() => setOpenFaq(openFaq === 3 ? null : 3)}
                 className="w-full text-left p-6 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-lg">How quickly can we expect to see results?</span>
+                <span className="font-semibold text-xl">How quickly can we expect to see results?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform ${openFaq === 3 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 3 && (
-                <div className="px-6 pb-6 text-neutral-400 leading-relaxed">
+                <div className="px-6 pb-6 text-neutral-400 leading-relaxed text-base">
                   Quick wins often emerge within the first 4-6 weeks — clearer documentation, streamlined handoffs, or eliminated redundancies. Deeper transformation takes 3-6 months as new workflows become habits and technology integration stabilizes. We prioritize early momentum while building toward sustainable improvement, so you see progress throughout the engagement, not just at the end.
                 </div>
               )}
@@ -1078,11 +1078,11 @@ function App() {
                 onClick={() => setOpenFaq(openFaq === 4 ? null : 4)}
                 className="w-full text-left p-6 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-lg">What makes you different from traditional consultants?</span>
+                <span className="font-semibold text-xl">What makes you different from traditional consultants?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform ${openFaq === 4 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 4 && (
-                <div className="px-6 pb-6 text-neutral-400 leading-relaxed">
+                <div className="px-6 pb-6 text-neutral-400 leading-relaxed text-base">
                   We combine strategy with hands-on execution. Instead of delivering slide decks and recommendations, we roll up our sleeves and implement alongside your team. We focus on people-first solutions rather than forcing technology adoption. And we're honest about when AI or automation isn't the answer — even if it means a smaller engagement. Our measure of success is whether your team's work actually gets easier.
                 </div>
               )}

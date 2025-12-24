@@ -68,11 +68,11 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
 
         <div className="p-8 lg:p-12">
           <div className="mb-8">
-            <span className={`inline-block px-3 py-1 text-xs font-bold ${colors.text} bg-neutral-900 border ${colors.border} rounded-full mb-4`}>
+            <span className={`inline-block px-3 py-1 text-sm font-bold ${colors.text} bg-neutral-900 border ${colors.border} rounded-full mb-4`}>
               {caseStudy.category}
             </span>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">{caseStudy.title}</h2>
-            <p className="text-xl text-neutral-400">{caseStudy.description}</p>
+            <h2 className="text-4xl lg:text-4xl font-bold mb-4">{caseStudy.title}</h2>
+            <p className="text-xl lg:text-xl text-neutral-400">{caseStudy.description}</p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-6 mb-8">
@@ -104,17 +104,17 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
 
           <div className="space-y-8 mb-8">
             <div className={`bg-gradient-to-br ${colors.bg} to-transparent border ${colors.border} rounded-xl p-6`}>
-              <h3 className={`text-xl font-bold mb-3 ${colors.text}`}>The Challenge</h3>
-              <p className="text-neutral-300 leading-relaxed">{caseStudy.challenge}</p>
+              <h3 className={`text-2xl font-bold mb-3 ${colors.text}`}>The Challenge</h3>
+              <p className="text-neutral-300 leading-relaxed text-base">{caseStudy.challenge}</p>
             </div>
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl p-6">
-              <h3 className="text-xl font-bold mb-3">Our Solution</h3>
-              <p className="text-neutral-300 leading-relaxed">{caseStudy.solution}</p>
+              <h3 className="text-2xl font-bold mb-3">Our Solution</h3>
+              <p className="text-neutral-300 leading-relaxed text-base">{caseStudy.solution}</p>
             </div>
 
             <div className={`bg-gradient-to-br ${colors.bg} to-transparent border ${colors.border} rounded-xl p-8`}>
-              <h3 className={`text-2xl font-bold mb-6 ${colors.text}`}>Impact Metrics</h3>
+              <h3 className={`text-3xl font-bold mb-6 ${colors.text}`}>Impact Metrics</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 {caseStudy.results.map((result, index) => {
                   const icons = [TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2];
@@ -155,10 +155,10 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
           </div>
 
           <div>
-            <h3 className="text-sm font-bold text-neutral-500 mb-3 tracking-wide">TECHNOLOGIES & APPROACHES</h3>
+            <h3 className="text-base font-bold text-neutral-500 mb-3 tracking-wide">TECHNOLOGIES & APPROACHES</h3>
             <div className="flex flex-wrap gap-2">
               {caseStudy.tags.map((tag, index) => (
-                <span key={index} className={`px-3 py-1 border rounded-full text-xs ${colors.tag}`}>
+                <span key={index} className={`px-3 py-1 border rounded-full text-sm ${colors.tag}`}>
                   {tag}
                 </span>
               ))}

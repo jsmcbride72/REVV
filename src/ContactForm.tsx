@@ -79,7 +79,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-neutral-900 border border-neutral-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="sticky top-0 bg-neutral-900 border-b border-neutral-800 p-6 flex items-center justify-between">
-          <h2 className="text-2xl font-bold">Get in Touch</h2>
+          <h2 className="text-3xl font-bold">Get in Touch</h2>
           <button
             onClick={onClose}
             className="text-neutral-400 hover:text-white transition-colors"
@@ -91,7 +91,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
 
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-semibold text-neutral-300 mb-2">
+            <label htmlFor="name" className="block text-base font-semibold text-neutral-300 mb-2">
               Name *
             </label>
             <input
@@ -107,7 +107,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-semibold text-neutral-300 mb-2">
+            <label htmlFor="email" className="block text-base font-semibold text-neutral-300 mb-2">
               Email *
             </label>
             <input
@@ -123,7 +123,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
           </div>
 
           <div>
-            <label htmlFor="company" className="block text-sm font-semibold text-neutral-300 mb-2">
+            <label htmlFor="company" className="block text-base font-semibold text-neutral-300 mb-2">
               Company
             </label>
             <input
@@ -138,7 +138,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-sm font-semibold text-neutral-300 mb-2">
+            <label htmlFor="message" className="block text-base font-semibold text-neutral-300 mb-2">
               Message *
             </label>
             <textarea
