@@ -41,7 +41,7 @@ function App() {
       ],
       images: [
         '/phones-spin.mov',
-        '/dashboard-desktop.png',
+        '/main-tile-mock.png',
         'https://images.pexels.com/photos/4391470/pexels-photo-4391470.jpeg?auto=compress&cs=tinysrgb&w=800',
         'https://images.pexels.com/photos/6457579/pexels-photo-6457579.jpeg?auto=compress&cs=tinysrgb&w=800'
       ],
