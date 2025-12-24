@@ -190,7 +190,7 @@ function App() {
         </button>
       </section>
 
-      <section id="story" className="py-12 lg:py-32 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
+      <section id="story" className="py-12 lg:py-20 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-8">
             <h2 className="text-3xl lg:text-5xl font-bold mb-4">Our Story</h2>
@@ -250,7 +250,7 @@ function App() {
         </div>
       </section>
 
-      <section id="approach" className="py-12 lg:py-32 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
+      <section id="approach" className="py-12 lg:py-20 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-8">
             <h2 className="text-3xl lg:text-5xl font-bold mb-4">UX + AX: A Complete Approach</h2>
@@ -428,7 +428,7 @@ function App() {
         </div>
       </section>
 
-      <section id="case-studies" className="py-12 lg:py-32 bg-neutral-950/50">
+      <section id="case-studies" className="py-12 lg:py-20 bg-neutral-950/50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-8">
             <h2 className="text-3xl lg:text-5xl font-bold mb-4">Case Studies</h2>
@@ -512,7 +512,7 @@ function App() {
         </div>
       </section>
 
-      <section id="services" className="py-12 lg:py-32">
+      <section id="services" className="py-12 lg:py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-8">
             <h2 className="text-3xl lg:text-5xl font-bold mb-4">Two Ways We Help</h2>
@@ -792,7 +792,7 @@ function App() {
         </div>
       </section>
 
-      <section className="py-12 lg:py-32 overflow-hidden">
+      <section className="py-12 lg:py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-5xl font-bold mb-4">What Makes Revv Studio Different</h2>
@@ -922,7 +922,7 @@ function App() {
         </div>
       </section>
 
-      <section id="impact" className="py-12 lg:py-32 bg-gradient-to-b from-neutral-900/30 to-neutral-950">
+      <section id="impact" className="py-12 lg:py-20 bg-gradient-to-b from-neutral-900/30 to-neutral-950">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-8">
             <h2 className="text-3xl lg:text-5xl font-bold mb-4">Client Impact</h2>
@@ -1001,7 +1001,7 @@ function App() {
         </div>
       </section>
 
-      <section className="py-12 lg:py-32 bg-neutral-900/30">
+      <section className="py-12 lg:py-20 bg-neutral-900/30">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-8">
             <h2 className="text-3xl lg:text-5xl font-bold mb-4">Common Questions</h2>
