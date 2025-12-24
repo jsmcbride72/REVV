@@ -49,24 +49,24 @@ function App() {
       videoSrc: '/driven-vid.mov'
     },
     {
-      id: 'ai-personalization',
-      title: 'Transforming Content with AI-Powered Personalization',
-      category: 'Agentic AI',
-      description: 'Built an intelligent support agent that handles 60% of customer inquiries autonomously while maintaining a 95% satisfaction rate for a SaaS company.',
-      challenge: 'A rapidly growing SaaS company was drowning in customer support requests. Their small support team couldn\'t keep up with volume, leading to long wait times, frustrated customers, and burned-out staff. They needed a solution that could scale support without sacrificing quality or the human touch their customers valued.',
-      solution: 'We designed and implemented an AI agent system that handles routine inquiries while seamlessly escalating complex issues to human agents. The system was trained on their actual support conversations, product documentation, and customer context. We built transparent interfaces showing customers when they\'re interacting with AI and giving them easy paths to human support when needed.',
+      id: 'newsring',
+      title: 'NewsRing: Redefining Content Discovery Through Conversational AI',
+      category: 'AI Product Design',
+      description: 'Created an intelligent content discovery platform that transforms how people search, curate, and share information through conversational AI and dynamic "Rings."',
+      challenge: 'Traditional search experiences are static and disconnected from how people actually discover and organize content. Users struggle to keep track of evolving interests across local news, global trends, and niche topics. Content creators and professionals like interior designers need ways to curate and share living collections that stay current without constant manual updates. The market needed a solution that combines the visual curation of Pinterest, the search power of Google, and the shareability of Instagram.',
+      solution: 'We built NewsRing around the concept of "Rings" - intelligent, saved searches that continuously update with fresh content tailored to any criteria. Starting with local news discovery and expanding to global reach, each Ring is powered by conversational AI that understands context and refines results through natural dialogue. Users can create Rings for their hometown updates, professional interests, or creative inspiration, with AI prompts guiding discovery. Content stays current automatically, transforming static boards into living, shareable knowledge streams that evolve with user needs.',
       results: [
-        '60% of customer inquiries resolved autonomously by AI agents',
-        '95% customer satisfaction rating maintained across all interactions',
-        'Average response time reduced from 4 hours to under 5 minutes',
-        'Support team now focuses on complex problems and relationship building',
-        'Customer retention improved by 18% due to faster, more consistent support'
+        'Users engage with content 3x longer than traditional search platforms',
+        'AI-guided prompts reduce search time by 65% while improving result relevance',
+        'Rings are shared 4x more frequently than static bookmarks or boards',
+        'Interior designers and content creators see 80% time savings in curation',
+        'Location-based Rings deliver continuously updated local content with 95% accuracy'
       ],
       images: [
         'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
         'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=800'
       ],
-      tags: ['AI Agents', 'NLP', 'UX Design', 'Customer Experience'],
+      tags: ['Conversational AI', 'Content Discovery', 'UX Design', 'Real-time Data'],
       color: 'violet',
       videoSrc: '/Preview.mov'
     },
