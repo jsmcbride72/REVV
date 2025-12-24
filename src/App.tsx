@@ -1,4 +1,4 @@
-import { Users, Target, TrendingUp, Heart, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Shield, Search, MousePointer, AlertTriangle, Link2, Eye, ArrowRight } from 'lucide-react';
+import { Users, Target, TrendingUp, Heart, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Shield, Search, MousePointer, AlertTriangle, Link2, Eye, ArrowRight, Mouse, MoveDown } from 'lucide-react';
 import { useState } from 'react';
 import ContactForm from './ContactForm';
 import CaseStudyModal from './CaseStudyModal';
@@ -182,11 +182,15 @@ function App() {
 
         <button
           onClick={() => scrollToSection('story')}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 text-cyan-400 hover:text-cyan-300 transition-colors cursor-pointer animate-bounce"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-3 text-cyan-400 hover:text-cyan-300 transition-all cursor-pointer group"
           aria-label="Scroll to explore"
         >
-          <span className="hidden lg:block text-sm font-medium tracking-wide">Scroll to explore</span>
-          <ChevronDown className="w-10 h-10 lg:w-8 lg:h-8" />
+          <div className="relative">
+            <div className="w-8 h-12 border-2 border-cyan-400 rounded-full flex items-start justify-center p-2 group-hover:border-cyan-300 transition-colors">
+              <div className="w-1 h-3 bg-cyan-400 rounded-full animate-bounce group-hover:bg-cyan-300"></div>
+            </div>
+            <MoveDown className="w-5 h-5 absolute -bottom-6 left-1/2 -translate-x-1/2 animate-bounce" style={{ animationDelay: '150ms' }} />
+          </div>
         </button>
       </section>
 
