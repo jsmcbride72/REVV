@@ -1,4 +1,4 @@
-import { X } from 'lucide-react';
+import { X, TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2 } from 'lucide-react';
 import { useEffect } from 'react';
 
 interface CaseStudy {
@@ -113,15 +113,43 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
               <p className="text-neutral-300 leading-relaxed">{caseStudy.solution}</p>
             </div>
 
-            <div className={`bg-gradient-to-br ${colors.bg} to-transparent border ${colors.border} rounded-xl p-6`}>
-              <h3 className={`text-xl font-bold mb-4 ${colors.text}`}>Results</h3>
-              <div className="space-y-3">
-                {caseStudy.results.map((result, index) => (
-                  <div key={index} className="flex items-start space-x-3">
-                    <div className={`w-1.5 h-1.5 rounded-full ${colors.text.replace('text-', 'bg-')} mt-2 flex-shrink-0`}></div>
-                    <p className="text-neutral-300">{result}</p>
-                  </div>
-                ))}
+            <div className={`bg-gradient-to-br ${colors.bg} to-transparent border ${colors.border} rounded-xl p-8`}>
+              <h3 className={`text-2xl font-bold mb-6 ${colors.text}`}>Impact Metrics</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                {caseStudy.results.map((result, index) => {
+                  const icons = [TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2];
+                  const Icon = icons[index % icons.length];
+
+                  const metricMatch = result.match(/^([0-9.]+[%xK+★]+)/);
+                  const metric = metricMatch ? metricMatch[1] : '';
+                  const description = result.substring(metric.length).trim();
+
+                  return (
+                    <div key={index} className="group relative bg-neutral-950/50 border border-neutral-800/50 rounded-xl p-5 hover:border-neutral-700 transition-all duration-300">
+                      <div className="flex items-start space-x-4">
+                        <div className={`flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${colors.bg} to-transparent border ${colors.border} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                          <Icon className={`w-6 h-6 ${colors.text}`} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className={`text-3xl font-black ${colors.text} mb-1 leading-none`}>
+                            {metric}
+                          </div>
+                          <p className="text-sm text-neutral-400 leading-tight">{description}</p>
+                        </div>
+                      </div>
+                      <div className="mt-4 h-1.5 bg-neutral-800/50 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full bg-gradient-to-r ${caseStudy.color === 'cyan' ? 'from-cyan-500 to-cyan-400' : 'from-violet-500 to-violet-400'} rounded-full`}
+                          style={{
+                            width: '100%',
+                            animation: `slideIn 1s ease-out ${index * 0.1}s forwards`,
+                            transform: 'translateX(-100%)'
+                          }}
+                        ></div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
