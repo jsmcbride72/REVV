@@ -160,7 +160,7 @@ function App() {
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover scale-90"
           >
             <source src={getAssetUrl("/My Video2-highlight.mp4")} type="video/mp4" />
           </video>
