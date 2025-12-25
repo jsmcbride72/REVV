@@ -162,7 +162,7 @@ function App() {
             playsInline
             className="absolute inset-0 w-full h-full object-cover"
           >
-            <source src={getAssetUrl("/My Video-highlight.mp4")} type="video/mp4" />
+            <source src={getAssetUrl("/My Video2-highlight.mp4")} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/50 to-neutral-950/80"></div>
         </div>
