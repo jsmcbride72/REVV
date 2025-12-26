@@ -164,7 +164,7 @@ function App() {
           >
             <source src={getAssetUrl("/NEW-SPINV1.mp4")} type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/50 to-neutral-950/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/30 via-neutral-950/20 to-neutral-950/40"></div>
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pb-16 lg:pb-0">
           <div className="text-center max-w-6xl mx-auto">
@@ -460,7 +460,7 @@ function App() {
                             loop
                             muted
                             playsInline
-                            className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                            className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                             src={getAssetUrl(study.videoSrc)}
                           />
                         ) : (
@@ -468,9 +468,9 @@ function App() {
                             <img
                               src={study.videoSrc}
                               alt={study.title}
-                              className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                              className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/50 to-transparent"></div>
                           </>
                         )}
                       </div>
