@@ -168,13 +168,13 @@ function App() {
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pb-16 lg:pb-0">
           <div className="text-center max-w-6xl mx-auto">
-            <p className="text-lg lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-8">
+            <p className="text-lg lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-8 opacity-0 animate-[fadeInUp_1s_ease-out_10s_forwards]">
               Welcome to the Revolution
             </p>
-            <p className="text-4xl lg:text-7xl font-bold text-white leading-tight mb-8 drop-shadow-2xl">
+            <p className="text-4xl lg:text-7xl font-bold text-white leading-tight mb-8 drop-shadow-2xl opacity-0 animate-[fadeInUp_1s_ease-out_10.2s_forwards]">
               A NEW ERA IS EXPLODING INTO MOTION.
             </p>
-            <p className="text-xl lg:text-3xl font-light text-neutral-200 leading-tight drop-shadow-xl">
+            <p className="text-xl lg:text-3xl font-light text-neutral-200 leading-tight drop-shadow-xl opacity-0 animate-[fadeInUp_1s_ease-out_10.4s_forwards]">
               Businesses don't evolve at the same speed—or with the same tools. Revv Studio helps organizations elevate how work gets done today, while deliberately preparing for what's next.
             </p>
           </div>
