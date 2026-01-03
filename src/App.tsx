@@ -175,7 +175,7 @@ function App() {
               The way work happens is evolving
             </p>
             <p className="text-xl lg:text-3xl font-light text-neutral-200 leading-tight drop-shadow-xl opacity-0 animate-[fadeInUp_1s_ease-out_4.4s_forwards]">
-              Revv Studio partners with organizations to design smarter workflows today—while building the foundations for what's next.
+              Designing smarter workflows today. Building foundations for tomorrow.
             </p>
           </div>
         </div>
