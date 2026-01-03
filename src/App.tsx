@@ -40,7 +40,7 @@ function App() {
         '4.6★ App rating with 95% adoption'
       ],
       images: [
-        '/phones-spin.mov',
+        '/driven-vid.mov',
         '/main-tile-mock.png',
         '/mobile-preview.png',
         'https://images.pexels.com/photos/4391470/pexels-photo-4391470.jpeg?auto=compress&cs=tinysrgb&w=800'
