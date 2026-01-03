@@ -106,21 +106,22 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
                     const isVideo = image.endsWith('.mov') || image.endsWith('.mp4');
 
                     return (
-                      <div key={index} className={`rounded-xl overflow-hidden border ${colors.border}`}>
+                      <div key={index} className={`rounded-xl overflow-hidden border ${colors.border} bg-neutral-900`}>
                         {isVideo ? (
                           <video
                             autoPlay
                             loop
                             muted
                             playsInline
-                            className="w-full h-64 object-cover"
+                            className="w-full h-auto min-h-[250px] object-cover"
                             src={image}
                           />
                         ) : (
                           <img
                             src={image}
                             alt={`${caseStudy.title} - Image ${index + 1}`}
-                            className="w-full h-64 object-contain bg-neutral-900"
+                            className="w-full h-auto object-cover"
+                            loading="lazy"
                           />
                         )}
                       </div>
