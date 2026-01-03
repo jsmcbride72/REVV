@@ -39,7 +39,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
       if (error) throw error;
 
       const emailApiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-contact-email`;
-      await fetch(emailApiUrl, {
+      const emailResponse = await fetch(emailApiUrl, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
@@ -52,6 +52,11 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
           message: formData.message
         })
       });
+
+      if (!emailResponse.ok) {
+        const errorData = await emailResponse.json();
+        console.error('Email sending failed:', errorData);
+      }
 
       setSubmitStatus('success');
       setFormData({ name: '', email: '', company: '', message: '' });
