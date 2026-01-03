@@ -65,7 +65,7 @@ function App() {
       ],
       images: [
         '/Landing-Page.png',
-        'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=800'
+        '/phones-spin.mov'
       ],
       tags: ['Conversational AI', 'Content Discovery', 'UX Design', 'Real-time Data'],
       color: 'violet',
