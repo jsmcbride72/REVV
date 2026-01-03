@@ -164,7 +164,7 @@ function App() {
           >
             <source src={getAssetUrl("/NEW-SPINV1.mp4")} type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/30 via-neutral-950/20 to-neutral-950/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/50 via-neutral-950/40 to-neutral-950/60"></div>
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pb-16 lg:pb-0">
           <div className="text-center max-w-6xl mx-auto">
