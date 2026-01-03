@@ -120,7 +120,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
                           <img
                             src={image}
                             alt={`${caseStudy.title} - Image ${index + 1}`}
-                            className="w-full h-64 object-cover"
+                            className="w-full h-64 object-contain bg-neutral-900"
                           />
                         )}
                       </div>
