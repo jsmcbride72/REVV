@@ -87,7 +87,7 @@ function App() {
       ],
       images: [
         '/image-screen-psd-download.png',
-        'https://images.pexels.com/photos/590041/pexels-photo-590041.jpeg?auto=compress&cs=tinysrgb&w=800'
+        '/profile-main-tile-mock.png'
       ],
       tags: ['Gaming Platform', 'Real-time Data', 'Tournament Systems', 'Community Building'],
       color: 'cyan',
