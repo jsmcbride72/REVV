@@ -281,7 +281,7 @@ function App() {
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover scale-125"
+                  className="w-full h-full object-cover"
                   src={getAssetUrl("/phones-spin.mov")}
                 />
               </div>
