@@ -86,7 +86,7 @@ function App() {
         '50K+ Active gamers in 6 months'
       ],
       images: [
-        'https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=800',
+        '/image-screen-psd-download.png',
         'https://images.pexels.com/photos/590041/pexels-photo-590041.jpeg?auto=compress&cs=tinysrgb&w=800'
       ],
       tags: ['Gaming Platform', 'Real-time Data', 'Tournament Systems', 'Community Building'],
