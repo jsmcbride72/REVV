@@ -25,7 +25,10 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
     setSubmitStatus('idle');
 
     try {
-      const { error: dbError } = await supabase
+      console.log('Starting form submission...');
+      console.log('Form data:', formData);
+
+      const { data, error: dbError } = await supabase
         .from('contact_submissions')
         .insert([
           {
@@ -34,37 +37,15 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
             company: formData.company || null,
             message: formData.message
           }
-        ]);
+        ])
+        .select();
 
       if (dbError) {
-        console.error('Database error:', dbError);
-        throw dbError;
+        console.error('Database error details:', dbError);
+        throw new Error(`Database error: ${dbError.message}`);
       }
 
-      try {
-        const emailApiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-contact-email`;
-
-        const emailResponse = await fetch(emailApiUrl, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            company: formData.company,
-            message: formData.message
-          })
-        });
-
-        if (!emailResponse.ok) {
-          const errorData = await emailResponse.json();
-          console.error('Email sending failed:', errorData);
-        }
-      } catch (emailError) {
-        console.error('Email error (non-critical):', emailError);
-      }
+      console.log('Database insert successful:', data);
 
       setSubmitStatus('success');
       setFormData({ name: '', email: '', company: '', message: '' });
@@ -74,7 +55,10 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
         setSubmitStatus('idle');
       }, 2000);
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error('Form submission error:', error);
+      if (error instanceof Error) {
+        console.error('Error message:', error.message);
+      }
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
