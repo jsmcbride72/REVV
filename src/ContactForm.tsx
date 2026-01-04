@@ -47,18 +47,18 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-  to: "scott@revvstudio.com",
-  subject: `New contact form: ${formData.name}`,
-  html: `
-    <h2>New Contact Submission</h2>
-    <p><strong>Name:</strong> ${formData.name}</p>
-    <p><strong>Email:</strong> ${formData.email}</p>
-    <p><strong>Company:</strong> ${formData.company || "—"}</p>
-    <p><strong>Message:</strong></p>
-    <p>${formData.message.replace(/\n/g, "<br/>")}</p>
-  `
-})
-
+          to: "scott@revvstudio.com",
+          subject: `New contact form: ${formData.name}`,
+          html: `
+            <h2>New Contact Submission</h2>
+            <p><strong>Name:</strong> ${formData.name}</p>
+            <p><strong>Email:</strong> ${formData.email}</p>
+            <p><strong>Company:</strong> ${formData.company || "—"}</p>
+            <p><strong>Message:</strong></p>
+            <p>${formData.message.replace(/\n/g, "<br/>")}</p>
+          `
+        })
+      });
 
       if (!emailResponse.ok) {
         const errorData = await emailResponse.json();
