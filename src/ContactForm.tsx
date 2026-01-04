@@ -38,7 +38,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
 
       if (error) throw error;
 
-      const emailApiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/resend-email`;
+      const emailApiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-contact-email`;
 
       const emailResponse = await fetch(emailApiUrl, {
         method: 'POST',
