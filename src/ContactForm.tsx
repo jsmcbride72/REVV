@@ -38,7 +38,8 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
 
       if (error) throw error;
 
-      const emailApiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-contact-email`;
+      const emailApiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/resend-email`;
+
       const emailResponse = await fetch(emailApiUrl, {
         method: 'POST',
         headers: {
@@ -46,12 +47,18 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          company: formData.company || '',
-          message: formData.message
-        })
-      });
+  to: "scott@revvstudio.com",
+  subject: `New contact form: ${formData.name}`,
+  html: `
+    <h2>New Contact Submission</h2>
+    <p><strong>Name:</strong> ${formData.name}</p>
+    <p><strong>Email:</strong> ${formData.email}</p>
+    <p><strong>Company:</strong> ${formData.company || "—"}</p>
+    <p><strong>Message:</strong></p>
+    <p>${formData.message.replace(/\n/g, "<br/>")}</p>
+  `
+})
+
 
       if (!emailResponse.ok) {
         const errorData = await emailResponse.json();
