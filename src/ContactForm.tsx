@@ -25,10 +25,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
     setSubmitStatus('idle');
 
     try {
-      console.log('Starting form submission...');
-      console.log('Form data:', formData);
-
-      const { data, error: dbError } = await supabase
+      const { error: dbError } = await supabase
         .from('contact_submissions')
         .insert([
           {
@@ -37,15 +34,12 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
             company: formData.company || null,
             message: formData.message
           }
-        ])
-        .select();
+        ]);
 
       if (dbError) {
-        console.error('Database error details:', dbError);
-        throw new Error(`Database error: ${dbError.message}`);
+        console.error('Database error:', dbError);
+        throw dbError;
       }
-
-      console.log('Database insert successful:', data);
 
       setSubmitStatus('success');
       setFormData({ name: '', email: '', company: '', message: '' });
@@ -56,9 +50,6 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
       }, 2000);
     } catch (error) {
       console.error('Form submission error:', error);
-      if (error instanceof Error) {
-        console.error('Error message:', error.message);
-      }
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
