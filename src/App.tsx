@@ -115,11 +115,17 @@ function App() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <img
-                src="https://www.dropbox.com/scl/fi/78mznubb1jz01u54lr95m/logo3.png?rlkey=xrvzvv2m1fhlb0smbfzm2bj0o&st=x5wylipn&raw=1"
-                alt="REVV Studio"
-                className="h-10"
-              />
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="cursor-pointer hover:opacity-80 transition-opacity"
+                aria-label="Scroll to top"
+              >
+                <img
+                  src="https://www.dropbox.com/scl/fi/78mznubb1jz01u54lr95m/logo3.png?rlkey=xrvzvv2m1fhlb0smbfzm2bj0o&st=x5wylipn&raw=1"
+                  alt="REVV Studio"
+                  className="h-10"
+                />
+              </button>
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
