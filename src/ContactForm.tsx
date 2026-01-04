@@ -1,179 +1,161 @@
-import { useState } from 'react';
-import { X, Send } from 'lucide-react';
-import { supabase } from './supabaseClient';
+import { useState } from "react";
+import { X, Send } from "lucide-react";
 
 interface ContactFormProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+function encode(data: Record<string, string>) {
+  return Object.keys(data)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key] ?? "")}`)
+    .join("&");
+}
+
 export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
+    name: "",
+    email: "",
+    company: "",
+    message: "",
+    "bot-field": "",
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
   if (!isOpen) return null;
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus('idle');
+    setStatus("idle");
 
     try {
-      const { error: dbError } = await supabase
-        .from('contact_submissions')
-        .insert([
-          {
-            name: formData.name,
-            email: formData.email,
-            company: formData.company || null,
-            message: formData.message
-          }
-        ]);
+      const payload = {
+        "form-name": "contact",
+        ...formData,
+      };
 
-      if (dbError) {
-        console.error('Database error:', dbError);
-        throw dbError;
-      }
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode(payload),
+      });
 
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', company: '', message: '' });
+      if (!res.ok) throw new Error("Form submit failed");
+
+      setStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        message: "",
+        "bot-field": "",
+      });
 
       setTimeout(() => {
         onClose();
-        setSubmitStatus('idle');
-      }, 2000);
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setSubmitStatus('error');
+        setStatus("idle");
+      }, 1500);
+    } catch {
+      setStatus("error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
   return (
-    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-neutral-900 border border-neutral-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-neutral-900 border-b border-neutral-800 p-6 flex items-center justify-between">
-          <h2 className="text-3xl font-bold">Get in Touch</h2>
-          <button
-            onClick={onClose}
-            className="text-neutral-400 hover:text-white transition-colors"
-            aria-label="Close"
-          >
-            <X className="w-6 h-6" />
+    <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
+      <div className="bg-neutral-900 rounded-xl w-full max-w-2xl">
+        <div className="flex justify-between p-6 border-b border-neutral-800">
+          <h2 className="text-2xl font-bold">Get in Touch</h2>
+          <button onClick={onClose}>
+            <X />
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
-          <div>
-            <label htmlFor="name" className="block text-base font-semibold text-neutral-300 mb-2">
-              Name *
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-cyan-500 transition-colors"
-              placeholder="Your full name"
-            />
-          </div>
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          onSubmit={handleSubmit}
+          className="p-6 space-y-5"
+        >
+          <input type="hidden" name="form-name" value="contact" />
 
-          <div>
-            <label htmlFor="email" className="block text-base font-semibold text-neutral-300 mb-2">
-              Email *
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-cyan-500 transition-colors"
-              placeholder="your.email@company.com"
-            />
-          </div>
+          <input type="hidden" name="bot-field" />
 
-          <div>
-            <label htmlFor="company" className="block text-base font-semibold text-neutral-300 mb-2">
-              Company
-            </label>
-            <input
-              type="text"
-              id="company"
-              name="company"
-              value={formData.company}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-cyan-500 transition-colors"
-              placeholder="Your company name (optional)"
-            />
-          </div>
+          <input
+            name="name"
+            placeholder="Name"
+            required
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full p-3 bg-neutral-800 rounded"
+          />
 
-          <div>
-            <label htmlFor="message" className="block text-base font-semibold text-neutral-300 mb-2">
-              Message *
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              required
-              value={formData.message}
-              onChange={handleChange}
-              rows={6}
-              className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:border-cyan-500 transition-colors resize-none"
-              placeholder="Tell us about your project or how we can help..."
-            />
-          </div>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full p-3 bg-neutral-800 rounded"
+          />
 
-          {submitStatus === 'success' && (
-            <div className="bg-emerald-500/10 border border-emerald-500/50 rounded-lg p-4 text-emerald-400">
-              Thanks for reaching out! We'll get back to you soon.
-            </div>
+          <input
+            name="company"
+            placeholder="Company"
+            value={formData.company}
+            onChange={handleChange}
+            className="w-full p-3 bg-neutral-800 rounded"
+          />
+
+          <textarea
+            name="message"
+            placeholder="Message"
+            required
+            rows={5}
+            value={formData.message}
+            onChange={handleChange}
+            className="w-full p-3 bg-neutral-800 rounded"
+          />
+
+          {status === "success" && (
+            <p className="text-green-400">Message sent successfully.</p>
           )}
 
-          {submitStatus === 'error' && (
-            <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-4 text-red-400">
-              Something went wrong. Please try again or email us directly.
-            </div>
+          {status === "error" && (
+            <p className="text-red-400">
+              Something went wrong. Please email us directly.
+            </p>
           )}
 
-          <div className="flex gap-4 pt-4">
+          <div className="flex gap-3">
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-6 py-3 bg-neutral-800 hover:bg-neutral-700 text-white font-semibold rounded-lg transition-colors"
+              className="flex-1 bg-neutral-800 p-3 rounded"
             >
               Cancel
             </button>
+
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 px-6 py-3 bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-600 hover:to-emerald-600 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 bg-cyan-600 p-3 rounded flex items-center justify-center gap-2"
             >
-              {isSubmitting ? (
-                'Sending...'
-              ) : (
-                <>
-                  <Send className="w-4 h-4" />
-                  Send Message
-                </>
-              )}
+              {isSubmitting ? "Sending..." : <><Send size={16} /> Send</>}
             </button>
           </div>
         </form>
