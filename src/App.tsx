@@ -40,14 +40,14 @@ function App() {
         '4.6★ App rating with 95% adoption'
       ],
       images: [
+        '/driven-vid.mov',
         '/main-tile-mock.png',
         '/mobile-preview.png',
-        '/dashboard-desktop.png',
-        '/screenshot_2025-12-17_at_6.07.44_pm.png'
+        '/dashboard-desktop.png'
       ],
       tags: ['Fintech', 'Mobile UX', 'Fleet Management', 'Real-time Communication'],
       color: 'cyan',
-      videoSrc: '/My Video5.mp4'
+      videoSrc: '/driven-vid.mov'
     },
     {
       id: 'newsring',
@@ -69,7 +69,7 @@ function App() {
       ],
       tags: ['Conversational AI', 'Content Discovery', 'UX Design', 'Real-time Data'],
       color: 'violet',
-      videoSrc: '/studio.mp4'
+      videoSrc: '/Preview.mov'
     },
     {
       id: 'gaming-platform',
@@ -288,7 +288,7 @@ function App() {
                   muted
                   playsInline
                   className="w-full h-full object-cover scale-150"
-                  src={getAssetUrl("/NEW-SPINV1.mp4")}
+                  src={getAssetUrl("/phones-spin.mov")}
                 />
               </div>
 
