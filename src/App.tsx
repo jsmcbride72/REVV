@@ -65,7 +65,7 @@ function App() {
       ],
       images: [
         '/Landing-Page.png',
-        '/jsmcbride_bkg2.png'
+        '/phones-spin.mov'
       ],
       tags: ['Conversational AI', 'Content Discovery', 'UX Design', 'Real-time Data'],
       color: 'violet',
