@@ -285,7 +285,7 @@ function App() {
                   muted
                   playsInline
                   className="w-full h-full object-cover scale-150"
-                  src={getAssetUrl("/driven-vid.mov")}
+                  src={getAssetUrl("/jsmcbride_n8nf.mp4")}
                 />
               </div>
 
