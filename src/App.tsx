@@ -84,12 +84,12 @@ function App() {
         '50K+ Active gamers in 6 months'
       ],
       images: [
-        '/jsmcbride_cool_studio.mp4',
+        '/20240207_strideGG_UNIVPROF_VID_1.mp4',
         '/jsmcbride_WF.mp4'
       ],
       tags: ['Gaming Platform', 'Real-time Data', 'Tournament Systems', 'Community Building'],
       color: 'cyan',
-      videoSrc: '/jsmcbride_cool_studio.mp4'
+      videoSrc: '/20240207_strideGG_UNIVPROF_VID_1.mp4'
     }
   ];
 
