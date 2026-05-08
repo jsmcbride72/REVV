@@ -41,9 +41,7 @@ function App() {
       ],
       images: [
         '/driven-vid.mov',
-        '/main-tile-mock.png',
-        '/mobile-preview.png',
-        '/dashboard-desktop.png'
+        '/studio-story.mp4'
       ],
       tags: ['Fintech', 'Mobile UX', 'Fleet Management', 'Real-time Communication'],
       color: 'cyan',
@@ -64,12 +62,12 @@ function App() {
         '95% Accuracy for location-based updates'
       ],
       images: [
-        '/Landing-Page.png',
-        '/phones-spin.mov'
+        '/studio-story.mp4',
+        '/driven-vid.mov'
       ],
       tags: ['Conversational AI', 'Content Discovery', 'UX Design', 'Real-time Data'],
       color: 'violet',
-      videoSrc: '/Preview.mov'
+      videoSrc: '/studio-story.mp4'
     },
     {
       id: 'gaming-platform',
@@ -86,12 +84,12 @@ function App() {
         '50K+ Active gamers in 6 months'
       ],
       images: [
-        '/image-screen-psd-download.png',
-        '/profile-main-tile-mock.png'
+        '/driven-vid.mov',
+        '/studio-story.mp4'
       ],
       tags: ['Gaming Platform', 'Real-time Data', 'Tournament Systems', 'Community Building'],
       color: 'cyan',
-      videoSrc: '/20240207_strideGG_UNIVPROF_VID_1.mp4'
+      videoSrc: '/driven-vid.mov'
     }
   ];
 
@@ -167,9 +165,8 @@ function App() {
             muted
             playsInline
             className="absolute inset-0 w-full h-full object-cover scale-90"
-          >
-            <source src={getAssetUrl("/NEW-SPINV1.mp4")} type="video/mp4" />
-          </video>
+            src={getAssetUrl("/driven-vid.mov")}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/50 via-neutral-950/40 to-neutral-950/60"></div>
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pb-16 lg:pb-0">
@@ -214,7 +211,7 @@ function App() {
                   muted
                   playsInline
                   className="w-full h-full object-cover"
-                  src={getAssetUrl("/jsmcbride_cool_studio.mp4")}
+                  src={getAssetUrl("/studio-story.mp4")}
                 />
               </div>
 
@@ -288,7 +285,7 @@ function App() {
                   muted
                   playsInline
                   className="w-full h-full object-cover scale-150"
-                  src={getAssetUrl("/phones-spin.mov")}
+                  src={getAssetUrl("/driven-vid.mov")}
                 />
               </div>
 
@@ -334,7 +331,7 @@ function App() {
                   muted
                   playsInline
                   className="w-full h-full object-cover"
-                  src={getAssetUrl("/jsmcbride_n8nf.mp4")}
+                  src={getAssetUrl("/studio-story.mp4")}
                 />
               </div>
 
@@ -539,7 +536,7 @@ function App() {
               muted
               playsInline
               className="w-full h-full object-cover"
-              src={getAssetUrl("/jsmcbride_WF.mp4")}
+              src={getAssetUrl("/driven-vid.mov")}
             />
           </div>
 
