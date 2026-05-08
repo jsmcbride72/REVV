@@ -40,8 +40,8 @@ function App() {
         '4.6★ App rating with 95% adoption'
       ],
       images: [
-        '/driven-vid.mov',
-        '/jsmcbride_cool_studio.mp4'
+        '/main-tile-mock.png',
+        '/phones-spin.mov'
       ],
       tags: ['Fintech', 'Mobile UX', 'Fleet Management', 'Real-time Communication'],
       color: 'cyan',
