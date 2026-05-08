@@ -41,7 +41,7 @@ function App() {
       ],
       images: [
         '/driven-vid.mov',
-        '/studio-story.mp4'
+        '/jsmcbride_cool_studio.mp4'
       ],
       tags: ['Fintech', 'Mobile UX', 'Fleet Management', 'Real-time Communication'],
       color: 'cyan',
@@ -62,12 +62,12 @@ function App() {
         '95% Accuracy for location-based updates'
       ],
       images: [
-        '/studio-story.mp4',
-        '/driven-vid.mov'
+        '/NEW-SPINV1.mp4',
+        '/jsmcbride_WF.mp4'
       ],
       tags: ['Conversational AI', 'Content Discovery', 'UX Design', 'Real-time Data'],
       color: 'violet',
-      videoSrc: '/studio-story.mp4'
+      videoSrc: '/NEW-SPINV1.mp4'
     },
     {
       id: 'gaming-platform',
@@ -84,12 +84,12 @@ function App() {
         '50K+ Active gamers in 6 months'
       ],
       images: [
-        '/driven-vid.mov',
-        '/studio-story.mp4'
+        '/jsmcbride_cool_studio.mp4',
+        '/jsmcbride_WF.mp4'
       ],
       tags: ['Gaming Platform', 'Real-time Data', 'Tournament Systems', 'Community Building'],
       color: 'cyan',
-      videoSrc: '/driven-vid.mov'
+      videoSrc: '/jsmcbride_cool_studio.mp4'
     }
   ];
 
@@ -165,7 +165,7 @@ function App() {
             muted
             playsInline
             className="absolute inset-0 w-full h-full object-cover scale-90"
-            src={getAssetUrl("/driven-vid.mov")}
+            src={getAssetUrl("/NEW-SPINV1.mp4")}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/50 via-neutral-950/40 to-neutral-950/60"></div>
         </div>
@@ -211,7 +211,7 @@ function App() {
                   muted
                   playsInline
                   className="w-full h-full object-cover"
-                  src={getAssetUrl("/studio-story.mp4")}
+                  src={getAssetUrl("/jsmcbride_cool_studio.mp4")}
                 />
               </div>
 
@@ -285,7 +285,7 @@ function App() {
                   muted
                   playsInline
                   className="w-full h-full object-cover scale-150"
-                  src={getAssetUrl("/driven-vid.mov")}
+                  src={getAssetUrl("/jsmcbride_n8nf.mp4")}
                 />
               </div>
 
@@ -331,7 +331,7 @@ function App() {
                   muted
                   playsInline
                   className="w-full h-full object-cover"
-                  src={getAssetUrl("/studio-story.mp4")}
+                  src={getAssetUrl("/jsmcbride_WF.mp4")}
                 />
               </div>
 
@@ -536,7 +536,7 @@ function App() {
               muted
               playsInline
               className="w-full h-full object-cover"
-              src={getAssetUrl("/driven-vid.mov")}
+              src={getAssetUrl("/jsmcbride_WF.mp4")}
             />
           </div>
 
