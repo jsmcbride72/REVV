@@ -77,14 +77,23 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
           </div>
 
           <div className={`rounded-xl overflow-hidden border ${colors.border} mb-8`}>
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-auto object-cover"
-              src={caseStudy.videoSrc}
-            />
+            {caseStudy.videoSrc.endsWith('.mov') || caseStudy.videoSrc.endsWith('.mp4') ? (
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto object-cover"
+              >
+                <source src={caseStudy.videoSrc} type={caseStudy.videoSrc.endsWith('.mov') ? 'video/quicktime' : 'video/mp4'} />
+              </video>
+            ) : (
+              <img
+                src={caseStudy.videoSrc}
+                alt={caseStudy.title}
+                className="w-full h-auto object-cover"
+              />
+            )}
           </div>
 
           <div className="space-y-8 mb-8">
