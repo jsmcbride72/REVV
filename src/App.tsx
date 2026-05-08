@@ -40,14 +40,14 @@ function App() {
         '4.6★ App rating with 95% adoption'
       ],
       images: [
-        'https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
-        'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
-        'https://images.pexels.com/photos/6169668/pexels-photo-6169668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
-        'https://images.pexels.com/photos/7709020/pexels-photo-7709020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750'
+        '/driven-vid.mov',
+        '/main-tile-mock.png',
+        '/mobile-preview.png',
+        '/dashboard-desktop.png'
       ],
       tags: ['Fintech', 'Mobile UX', 'Fleet Management', 'Real-time Communication'],
       color: 'cyan',
-      videoSrc: 'https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750'
+      videoSrc: '/driven-vid.mov'
     },
     {
       id: 'newsring',
@@ -64,12 +64,12 @@ function App() {
         '95% Accuracy for location-based updates'
       ],
       images: [
-        'https://images.pexels.com/photos/6476808/pexels-photo-6476808.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
-        'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750'
+        '/Landing-Page.png',
+        '/phones-spin.mov'
       ],
       tags: ['Conversational AI', 'Content Discovery', 'UX Design', 'Real-time Data'],
       color: 'violet',
-      videoSrc: 'https://images.pexels.com/photos/5082579/pexels-photo-5082579.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750'
+      videoSrc: '/Preview.mov'
     },
     {
       id: 'gaming-platform',
@@ -86,12 +86,12 @@ function App() {
         '50K+ Active gamers in 6 months'
       ],
       images: [
-        'https://images.pexels.com/photos/7862657/pexels-photo-7862657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
-        'https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750'
+        '/image-screen-psd-download.png',
+        '/profile-main-tile-mock.png'
       ],
       tags: ['Gaming Platform', 'Real-time Data', 'Tournament Systems', 'Community Building'],
       color: 'cyan',
-      videoSrc: 'https://images.pexels.com/photos/7862657/pexels-photo-7862657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750'
+      videoSrc: '/20240207_strideGG_UNIVPROF_VID_1.mp4'
     }
   ];
 
@@ -161,12 +161,16 @@ function App() {
 
       <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-neutral-900 via-neutral-950 to-black">
-          <img
-            src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080"
-            alt="Hero background"
-            className="absolute inset-0 w-full h-full object-cover scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/60 to-neutral-950/80"></div>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover scale-90"
+          >
+            <source src={getAssetUrl("/NEW-SPINV1.mp4")} type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/50 via-neutral-950/40 to-neutral-950/60"></div>
         </div>
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pb-16 lg:pb-0">
           <div className="text-center max-w-6xl mx-auto">
@@ -204,10 +208,13 @@ function App() {
           <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-2xl p-6 lg:p-12">
             <div className="grid lg:grid-cols-2 gap-6 items-center">
               <div className="rounded-xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl">
-                <img
-                  src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750"
-                  alt="Studio workspace"
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-full object-cover"
+                  src={getAssetUrl("/jsmcbride_cool_studio.mp4")}
                 />
               </div>
 
@@ -275,10 +282,13 @@ function App() {
               </div>
 
               <div className="mb-6 rounded-xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl relative" style={{ aspectRatio: '16/12' }}>
-                <img
-                  src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750"
-                  alt="Mobile design"
-                  className="w-full h-full object-cover"
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover scale-150"
+                  src={getAssetUrl("/phones-spin.mov")}
                 />
               </div>
 
@@ -318,10 +328,13 @@ function App() {
               </div>
 
               <div className="mb-6 rounded-xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl relative" style={{ aspectRatio: '16/12' }}>
-                <img
-                  src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750"
-                  alt="AI workflow automation"
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-full object-cover"
+                  src={getAssetUrl("/jsmcbride_n8nf.mp4")}
                 />
               </div>
 
@@ -455,9 +468,8 @@ function App() {
                             muted
                             playsInline
                             className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
-                          >
-                            <source src={getAssetUrl(study.videoSrc)} type={study.videoSrc.endsWith('.mov') ? 'video/quicktime' : 'video/mp4'} />
-                          </video>
+                            src={getAssetUrl(study.videoSrc)}
+                          />
                         ) : (
                           <>
                             <img
@@ -521,10 +533,13 @@ function App() {
           </div>
 
           <div className="relative rounded-2xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl mb-16 h-32 lg:h-48 max-w-5xl mx-auto">
-            <img
-              src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1920&h=400"
-              alt="Design workflow"
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
               className="w-full h-full object-cover"
+              src={getAssetUrl("/jsmcbride_WF.mp4")}
             />
           </div>
 
