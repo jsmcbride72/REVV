@@ -63,7 +63,7 @@ function App() {
       ],
       images: [
         '/Landing-Page.png',
-        '/Group-427319892.png'
+        '/Group 427319892.png'
       ],
       tags: ['Conversational AI', 'Content Discovery', 'UX Design', 'Real-time Data'],
       color: 'violet',
