@@ -67,7 +67,7 @@ function App() {
       ],
       tags: ['Conversational AI', 'Content Discovery', 'UX Design', 'Real-time Data'],
       color: 'violet',
-      videoSrc: '/phones-spin.mov'
+      videoSrc: '/NEW-SPINV1.mp4'
     },
     {
       id: 'gaming-platform',
