@@ -62,8 +62,8 @@ function App() {
         '95% Accuracy for location-based updates'
       ],
       images: [
-        '/NEW-SPINV1.mp4',
-        '/jsmcbride_WF.mp4'
+        '/Landing-Page.png',
+        '/Group-427319892.png'
       ],
       tags: ['Conversational AI', 'Content Discovery', 'UX Design', 'Real-time Data'],
       color: 'violet',
