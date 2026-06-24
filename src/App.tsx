@@ -22,7 +22,7 @@ function App() {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const HERO_SLIDE_COUNT = 2;
+  const HERO_SLIDE_COUNT = 3;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -185,6 +185,14 @@ function App() {
               src={getAssetUrl("/I_WANT_THIS_TO_ANIMATE_IN_AREA_Seedance_20_51931.mp4")}
             />
           </div>
+          {/* Slide 3 bg */}
+          <div className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${currentSlide === 2 ? 'opacity-100' : 'opacity-0'}`}>
+            <video
+              autoPlay loop muted playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+              src={getAssetUrl("/HAVE_THESE_LOOK_ALIVE_BY_SCROL_Seedance_20_98983.mp4")}
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/50 via-neutral-950/40 to-neutral-950/60"></div>
         </div>
 
@@ -219,6 +227,23 @@ function App() {
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
+
+          {/* Slide 3 content */}
+          <div className={`text-left max-w-2xl pb-16 lg:pb-0 transition-all duration-700 ease-in-out ${currentSlide === 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6 absolute inset-x-0 top-0 pointer-events-none'}`}>
+            <p className="text-sm lg:text-base font-bold text-cyan-400 tracking-widest uppercase mb-4">
+              Driven — Case Study
+            </p>
+            <h2 className="text-2xl lg:text-4xl font-bold text-white leading-snug mb-8 drop-shadow-2xl">
+              Revolutionizing Fleet Fuel Management for the Mobile Workforce
+            </h2>
+            <button
+              onClick={() => setSelectedCaseStudy(caseStudies[0])}
+              className="inline-flex items-center gap-3 px-7 py-3.5 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-base shadow-xl shadow-cyan-500/30"
+            >
+              View Case Study
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
         {/* Prev / Next arrows */}
@@ -245,7 +270,7 @@ function App() {
               onClick={() => setCurrentSlide(i)}
               className={`rounded-full transition-all duration-300 ${
                 i === currentSlide
-                  ? `${i === 0 ? 'bg-cyan-400' : 'bg-violet-400'} w-6 h-2`
+                  ? `${i === 1 ? 'bg-violet-400' : 'bg-cyan-400'} w-6 h-2`
                   : 'bg-neutral-600 hover:bg-neutral-400 w-2 h-2'
               }`}
               aria-label={`Go to slide ${i + 1}`}
