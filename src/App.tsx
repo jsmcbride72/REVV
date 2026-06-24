@@ -464,7 +464,7 @@ function App() {
                             loop
                             muted
                             playsInline
-                            className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                            className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                             src={getAssetUrl(study.videoSrc)}
                           />
                         ) : (
