@@ -204,19 +204,19 @@ function App() {
           </div>
 
           {/* Slide 2 content */}
-          <div className={`text-center max-w-5xl mx-auto pb-16 lg:pb-0 transition-all duration-700 ease-in-out ${currentSlide === 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6 absolute inset-x-0 top-0 pointer-events-none'}`}>
-            <p className="text-sm lg:text-base font-bold text-violet-400 tracking-widest uppercase mb-6">
+          <div className={`text-left max-w-2xl pb-16 lg:pb-0 transition-all duration-700 ease-in-out ${currentSlide === 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6 absolute inset-x-0 top-0 pointer-events-none'}`}>
+            <p className="text-sm lg:text-base font-bold text-violet-400 tracking-widest uppercase mb-4">
               NewsRing — Case Study
             </p>
-            <h2 className="text-4xl lg:text-7xl font-bold text-white leading-tight mb-10 drop-shadow-2xl">
+            <h2 className="text-2xl lg:text-4xl font-bold text-white leading-snug mb-8 drop-shadow-2xl">
               Redefining Content Discovery Through Conversational AI
             </h2>
             <button
               onClick={() => setSelectedCaseStudy(caseStudies[1])}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-violet-500 hover:bg-violet-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-lg shadow-xl shadow-violet-500/30"
+              className="inline-flex items-center gap-3 px-7 py-3.5 bg-violet-500 hover:bg-violet-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-base shadow-xl shadow-violet-500/30"
             >
               View Case Study
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>
