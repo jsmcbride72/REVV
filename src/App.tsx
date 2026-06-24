@@ -41,7 +41,8 @@ function App() {
       ],
       images: [
         '/main-tile-mock.png',
-        '/phones-spin.mov'
+        '/phones-spin.mov',
+        '/driven2.mov'
       ],
       tags: ['Fintech', 'Mobile UX', 'Fleet Management', 'Real-time Communication'],
       color: 'cyan',
