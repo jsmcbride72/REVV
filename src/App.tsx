@@ -1,5 +1,5 @@
 import { Users, Target, TrendingUp, Heart, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Shield, Search, MousePointer, AlertTriangle, Link2, Eye, ArrowRight, Mouse, MoveDown, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ContactForm from './ContactForm';
 import CaseStudyModal from './CaseStudyModal';
 
@@ -22,13 +22,26 @@ function App() {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const HERO_SLIDE_COUNT = 3;
+  const [animKey, setAnimKey] = useState(0);
+  const HERO_SLIDE_COUNT = 4;
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+    setAnimKey(k => k + 1);
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % HERO_SLIDE_COUNT);
+      setAnimKey(k => k + 1);
+    }, 10000);
+  };
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    timerRef.current = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % HERO_SLIDE_COUNT);
-    }, 7000);
-    return () => clearInterval(timer);
+      setAnimKey(k => k + 1);
+    }, 10000);
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, []);
 
   const getAssetUrl = (path: string) => path;
@@ -167,95 +180,127 @@ function App() {
       </nav>
 
       <section className="relative pt-32 pb-32 lg:pt-40 lg:pb-40 overflow-hidden">
-        {/* Slide backgrounds */}
-        <div className="absolute inset-0 bg-gradient-to-br from-neutral-900 via-neutral-950 to-black">
+        {/* Background track — slides left-to-right */}
+        <div
+          className="absolute inset-0 flex transition-transform duration-[1100ms] ease-[cubic-bezier(0.76,0,0.24,1)]"
+          style={{ width: `${HERO_SLIDE_COUNT * 100}%`, transform: `translateX(-${(currentSlide / HERO_SLIDE_COUNT) * 100}%)` }}
+        >
           {/* Slide 1 bg */}
-          <div className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${currentSlide === 0 ? 'opacity-100' : 'opacity-0'}`}>
-            <video
-              autoPlay loop muted playsInline
-              className="absolute inset-0 w-full h-full object-cover scale-90"
-              src={getAssetUrl("/NEW-SPINV1.mp4")}
-            />
+          <div className="relative bg-gradient-to-br from-neutral-900 via-neutral-950 to-black" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover scale-90" src={getAssetUrl("/NEW-SPINV1.mp4")} />
+            <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/50 via-neutral-950/40 to-neutral-950/60" />
           </div>
           {/* Slide 2 bg */}
-          <div className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${currentSlide === 1 ? 'opacity-100' : 'opacity-0'}`}>
-            <video
-              autoPlay loop muted playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-              src={getAssetUrl("/I_WANT_THIS_TO_ANIMATE_IN_AREA_Seedance_20_51931.mp4")}
-            />
+          <div className="relative bg-neutral-950" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/I_WANT_THIS_TO_ANIMATE_IN_AREA_Seedance_20_51931.mp4")} />
+            <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/30 to-neutral-950/60" />
           </div>
           {/* Slide 3 bg */}
-          <div className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${currentSlide === 2 ? 'opacity-100' : 'opacity-0'}`}>
-            <video
-              autoPlay loop muted playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-              src={getAssetUrl("/HAVE_THESE_LOOK_ALIVE_BY_SCROL_Seedance_20_98983.mp4")}
-            />
+          <div className="relative bg-neutral-950" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/HAVE_THESE_LOOK_ALIVE_BY_SCROL_Seedance_20_98983.mp4")} />
+            <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/30 to-neutral-950/60" />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/50 via-neutral-950/40 to-neutral-950/60"></div>
+          {/* Slide 4 bg */}
+          <div className="relative bg-neutral-950" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/I_WANT_TO_DO_A_COOL_ANIMATION__Seedance_20_39658.mp4")} />
+            <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/30 to-neutral-950/60" />
+          </div>
         </div>
 
-        {/* Slide content */}
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Content track — slides with background */}
+        <div
+          className="relative flex transition-transform duration-[1100ms] ease-[cubic-bezier(0.76,0,0.24,1)]"
+          style={{ width: `${HERO_SLIDE_COUNT * 100}%`, transform: `translateX(-${(currentSlide / HERO_SLIDE_COUNT) * 100}%)` }}
+        >
           {/* Slide 1 content */}
-          <div className={`text-center max-w-6xl mx-auto pb-16 lg:pb-0 transition-all duration-700 ease-in-out ${currentSlide === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6 absolute inset-x-0 top-0 pointer-events-none'}`}>
-            <p className="text-lg lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-8 opacity-0 animate-[fadeInUp_1s_ease-out_4s_forwards]">
-              Welcome to the Revolution
-            </p>
-            <p className="text-4xl lg:text-7xl font-bold text-white leading-tight mb-8 drop-shadow-2xl opacity-0 animate-[fadeInUp_1s_ease-out_4.2s_forwards]">
-              The way work happens is evolving
-            </p>
-            <p className="text-xl lg:text-3xl font-light text-neutral-200 leading-tight drop-shadow-xl opacity-0 animate-[fadeInUp_1s_ease-out_4.4s_forwards]">
-              Designing smarter workflows today. Building foundations for tomorrow.
-            </p>
+          <div className="flex items-center justify-center pb-16 lg:pb-0 px-6 lg:px-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <div className="text-center max-w-6xl" key={`s0-${animKey}`}>
+              <p className="text-lg lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-8 opacity-0 animate-[slideInBlur_0.8s_ease-out_0.1s_forwards]">
+                Welcome to the Revolution
+              </p>
+              <p className="text-4xl lg:text-7xl font-bold text-white leading-tight mb-8 drop-shadow-2xl opacity-0 animate-[slideInBlur_0.8s_ease-out_0.25s_forwards]">
+                The way work happens is evolving
+              </p>
+              <p className="text-xl lg:text-3xl font-light text-neutral-200 leading-tight drop-shadow-xl opacity-0 animate-[slideInBlur_0.8s_ease-out_0.4s_forwards]">
+                Designing smarter workflows today. Building foundations for tomorrow.
+              </p>
+            </div>
           </div>
 
           {/* Slide 2 content */}
-          <div className={`text-left max-w-2xl pb-16 lg:pb-0 transition-all duration-700 ease-in-out ${currentSlide === 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6 absolute inset-x-0 top-0 pointer-events-none'}`}>
-            <p className="text-sm lg:text-base font-bold text-violet-400 tracking-widest uppercase mb-4">
-              NewsRing — Case Study
-            </p>
-            <h2 className="text-2xl lg:text-4xl font-bold text-white leading-snug mb-8 drop-shadow-2xl">
-              Redefining Content Discovery Through Conversational AI
-            </h2>
-            <button
-              onClick={() => setSelectedCaseStudy(caseStudies[1])}
-              className="inline-flex items-center gap-3 px-7 py-3.5 bg-violet-500 hover:bg-violet-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-base shadow-xl shadow-violet-500/30"
-            >
-              View Case Study
-              <ArrowRight className="w-4 h-4" />
-            </button>
+          <div className="flex items-center pb-16 lg:pb-0 px-6 lg:px-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <div className="text-left max-w-2xl" key={`s1-${animKey}`}>
+              <p className="text-sm lg:text-base font-bold text-violet-400 tracking-widest uppercase mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_0.15s_forwards]">
+                NewsRing — Case Study
+              </p>
+              <h2 className="text-2xl lg:text-4xl font-bold text-white leading-snug mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.8s_ease-out_0.3s_forwards]">
+                Redefining Content Discovery Through Conversational AI
+              </h2>
+              <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_0.45s_forwards]">
+                <button
+                  onClick={() => setSelectedCaseStudy(caseStudies[1])}
+                  className="inline-flex items-center gap-3 px-7 py-3.5 bg-violet-500 hover:bg-violet-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-base shadow-xl shadow-violet-500/30"
+                >
+                  View Case Study
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Slide 3 content */}
-          <div className={`text-left max-w-2xl pb-16 lg:pb-0 transition-all duration-700 ease-in-out ${currentSlide === 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6 absolute inset-x-0 top-0 pointer-events-none'}`}>
-            <p className="text-sm lg:text-base font-bold text-cyan-400 tracking-widest uppercase mb-4">
-              Driven — Case Study
-            </p>
-            <h2 className="text-2xl lg:text-4xl font-bold text-white leading-snug mb-8 drop-shadow-2xl">
-              Revolutionizing Fleet Fuel Management for the Mobile Workforce
-            </h2>
-            <button
-              onClick={() => setSelectedCaseStudy(caseStudies[0])}
-              className="inline-flex items-center gap-3 px-7 py-3.5 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-base shadow-xl shadow-cyan-500/30"
-            >
-              View Case Study
-              <ArrowRight className="w-4 h-4" />
-            </button>
+          <div className="flex items-center pb-16 lg:pb-0 px-6 lg:px-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <div className="text-left max-w-2xl" key={`s2-${animKey}`}>
+              <p className="text-sm lg:text-base font-bold text-cyan-400 tracking-widest uppercase mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_0.15s_forwards]">
+                Driven — Case Study
+              </p>
+              <h2 className="text-2xl lg:text-4xl font-bold text-white leading-snug mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.8s_ease-out_0.3s_forwards]">
+                Revolutionizing Fleet Fuel Management for the Mobile Workforce
+              </h2>
+              <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_0.45s_forwards]">
+                <button
+                  onClick={() => setSelectedCaseStudy(caseStudies[0])}
+                  className="inline-flex items-center gap-3 px-7 py-3.5 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-base shadow-xl shadow-cyan-500/30"
+                >
+                  View Case Study
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Slide 4 content */}
+          <div className="flex items-center pb-16 lg:pb-0 px-6 lg:px-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <div className="text-left max-w-2xl" key={`s3-${animKey}`}>
+              <p className="text-sm lg:text-base font-bold text-cyan-400 tracking-widest uppercase mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_0.15s_forwards]">
+                StrideGG — Case Study
+              </p>
+              <h2 className="text-2xl lg:text-4xl font-bold text-white leading-snug mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.8s_ease-out_0.3s_forwards]">
+                Unifying the Gaming Community Through Centralized Stats and Competitive Play
+              </h2>
+              <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_0.45s_forwards]">
+                <button
+                  onClick={() => setSelectedCaseStudy(caseStudies[2])}
+                  className="inline-flex items-center gap-3 px-7 py-3.5 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-base shadow-xl shadow-cyan-500/30"
+                >
+                  View Case Study
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Prev / Next arrows */}
         <button
-          onClick={() => setCurrentSlide(prev => (prev - 1 + HERO_SLIDE_COUNT) % HERO_SLIDE_COUNT)}
+          onClick={() => goToSlide((currentSlide - 1 + HERO_SLIDE_COUNT) % HERO_SLIDE_COUNT)}
           className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-neutral-900/60 border border-neutral-700/50 text-neutral-300 hover:text-white hover:bg-neutral-800/80 hover:border-neutral-600 transition-all duration-300 backdrop-blur-sm"
           aria-label="Previous slide"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
         <button
-          onClick={() => setCurrentSlide(prev => (prev + 1) % HERO_SLIDE_COUNT)}
+          onClick={() => goToSlide((currentSlide + 1) % HERO_SLIDE_COUNT)}
           className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-neutral-900/60 border border-neutral-700/50 text-neutral-300 hover:text-white hover:bg-neutral-800/80 hover:border-neutral-600 transition-all duration-300 backdrop-blur-sm"
           aria-label="Next slide"
         >
@@ -267,7 +312,7 @@ function App() {
           {Array.from({ length: HERO_SLIDE_COUNT }).map((_, i) => (
             <button
               key={i}
-              onClick={() => setCurrentSlide(i)}
+              onClick={() => goToSlide(i)}
               className={`rounded-full transition-all duration-300 ${
                 i === currentSlide
                   ? `${i === 1 ? 'bg-violet-400' : 'bg-cyan-400'} w-6 h-2`
