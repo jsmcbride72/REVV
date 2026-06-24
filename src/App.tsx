@@ -23,6 +23,7 @@ function App() {
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [animKey, setAnimKey] = useState(0);
+  const [showOverlay, setShowOverlay] = useState(false);
   const HERO_SLIDE_COUNT = 4;
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -41,7 +42,11 @@ function App() {
       setCurrentSlide(prev => (prev + 1) % HERO_SLIDE_COUNT);
       setAnimKey(k => k + 1);
     }, 10000);
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+    const overlayTimer = setTimeout(() => setShowOverlay(true), 3500);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+      clearTimeout(overlayTimer);
+    };
   }, []);
 
   const getAssetUrl = (path: string) => path;
@@ -179,7 +184,7 @@ function App() {
         </div>
       </nav>
 
-      <section className="relative pt-32 pb-32 lg:pt-40 lg:pb-40 overflow-hidden bg-black">
+      <section className="relative pt-32 pb-32 lg:pt-40 lg:pb-40 overflow-hidden">
         {/* Background track — slides left-to-right */}
         <div
           className="absolute inset-0 flex transition-transform duration-[1100ms] ease-[cubic-bezier(0.76,0,0.24,1)]"
@@ -188,25 +193,25 @@ function App() {
           {/* Slide 1 bg */}
           <div className="relative" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
             <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/NEW-SPINV1.mp4")} />
-            <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/50 to-neutral-950/70 opacity-0 animate-[fadeInOverlay_1s_ease-out_3.5s_forwards]" />
+            <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/50 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
           </div>
           {/* Slide 2 bg */}
           <div className="relative" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
             <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/I_WANT_THIS_TO_ANIMATE_IN_AREA_Seedance_20_51931.mp4")} />
-            <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-neutral-950/70 opacity-0 animate-[fadeInOverlay_1s_ease-out_3.5s_forwards]" />
-            <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/50 to-transparent opacity-0 animate-[fadeInOverlay_1s_ease-out_3.5s_forwards]" />
+            <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
+            <div className={`absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/50 to-transparent transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
           </div>
           {/* Slide 3 bg */}
           <div className="relative" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
             <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/HAVE_THESE_LOOK_ALIVE_BY_SCROL_Seedance_20_98983.mp4")} />
-            <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-neutral-950/70 opacity-0 animate-[fadeInOverlay_1s_ease-out_3.5s_forwards]" />
-            <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/50 to-transparent opacity-0 animate-[fadeInOverlay_1s_ease-out_3.5s_forwards]" />
+            <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
+            <div className={`absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/50 to-transparent transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
           </div>
           {/* Slide 4 bg */}
           <div className="relative" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
             <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/I_WANT_TO_DO_A_COOL_ANIMATION__Seedance_20_39658.mp4")} />
-            <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-neutral-950/70 opacity-0 animate-[fadeInOverlay_1s_ease-out_3.5s_forwards]" />
-            <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/50 to-transparent opacity-0 animate-[fadeInOverlay_1s_ease-out_3.5s_forwards]" />
+            <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
+            <div className={`absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/50 to-transparent transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
           </div>
         </div>
 
