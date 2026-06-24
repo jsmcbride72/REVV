@@ -1,5 +1,5 @@
-import { Users, Target, TrendingUp, Heart, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Shield, Search, MousePointer, AlertTriangle, Link2, Eye, ArrowRight, Mouse, MoveDown } from 'lucide-react';
-import { useState } from 'react';
+import { Users, Target, TrendingUp, Heart, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Shield, Search, MousePointer, AlertTriangle, Link2, Eye, ArrowRight, Mouse, MoveDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import ContactForm from './ContactForm';
 import CaseStudyModal from './CaseStudyModal';
 
@@ -21,6 +21,15 @@ function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const HERO_SLIDE_COUNT = 2;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % HERO_SLIDE_COUNT);
+    }, 7000);
+    return () => clearInterval(timer);
+  }, []);
 
   const getAssetUrl = (path: string) => path;
 
@@ -157,20 +166,32 @@ function App() {
         </div>
       </nav>
 
-      <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-neutral-900 via-neutral-950 to-black">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover scale-90"
-            src={getAssetUrl("/NEW-SPINV1.mp4")}
-          />
+      <section className="relative pt-32 pb-32 lg:pt-40 lg:pb-40 overflow-hidden">
+        {/* Slide backgrounds */}
+        <div className="absolute inset-0 bg-gradient-to-br from-neutral-900 via-neutral-950 to-black">
+          {/* Slide 1 bg */}
+          <div className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${currentSlide === 0 ? 'opacity-100' : 'opacity-0'}`}>
+            <video
+              autoPlay loop muted playsInline
+              className="absolute inset-0 w-full h-full object-cover scale-90"
+              src={getAssetUrl("/NEW-SPINV1.mp4")}
+            />
+          </div>
+          {/* Slide 2 bg */}
+          <div className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${currentSlide === 1 ? 'opacity-100' : 'opacity-0'}`}>
+            <video
+              autoPlay loop muted playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+              src={getAssetUrl("/I_WANT_THIS_TO_ANIMATE_IN_AREA_Seedance_20_51931.mp4")}
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/50 via-neutral-950/40 to-neutral-950/60"></div>
         </div>
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pb-16 lg:pb-0">
-          <div className="text-center max-w-6xl mx-auto">
+
+        {/* Slide content */}
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Slide 1 content */}
+          <div className={`text-center max-w-6xl mx-auto pb-16 lg:pb-0 transition-all duration-700 ease-in-out ${currentSlide === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6 absolute inset-x-0 top-0 pointer-events-none'}`}>
             <p className="text-lg lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-8 opacity-0 animate-[fadeInUp_1s_ease-out_4s_forwards]">
               Welcome to the Revolution
             </p>
@@ -181,11 +202,61 @@ function App() {
               Designing smarter workflows today. Building foundations for tomorrow.
             </p>
           </div>
+
+          {/* Slide 2 content */}
+          <div className={`text-center max-w-5xl mx-auto pb-16 lg:pb-0 transition-all duration-700 ease-in-out ${currentSlide === 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6 absolute inset-x-0 top-0 pointer-events-none'}`}>
+            <p className="text-sm lg:text-base font-bold text-violet-400 tracking-widest uppercase mb-6">
+              NewsRing — Case Study
+            </p>
+            <h2 className="text-4xl lg:text-7xl font-bold text-white leading-tight mb-10 drop-shadow-2xl">
+              Redefining Content Discovery Through Conversational AI
+            </h2>
+            <button
+              onClick={() => setSelectedCaseStudy(caseStudies[1])}
+              className="inline-flex items-center gap-3 px-8 py-4 bg-violet-500 hover:bg-violet-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-lg shadow-xl shadow-violet-500/30"
+            >
+              View Case Study
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
+        {/* Prev / Next arrows */}
+        <button
+          onClick={() => setCurrentSlide(prev => (prev - 1 + HERO_SLIDE_COUNT) % HERO_SLIDE_COUNT)}
+          className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-neutral-900/60 border border-neutral-700/50 text-neutral-300 hover:text-white hover:bg-neutral-800/80 hover:border-neutral-600 transition-all duration-300 backdrop-blur-sm"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        <button
+          onClick={() => setCurrentSlide(prev => (prev + 1) % HERO_SLIDE_COUNT)}
+          className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-neutral-900/60 border border-neutral-700/50 text-neutral-300 hover:text-white hover:bg-neutral-800/80 hover:border-neutral-600 transition-all duration-300 backdrop-blur-sm"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+
+        {/* Dot indicators */}
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-2">
+          {Array.from({ length: HERO_SLIDE_COUNT }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentSlide(i)}
+              className={`rounded-full transition-all duration-300 ${
+                i === currentSlide
+                  ? `${i === 0 ? 'bg-cyan-400' : 'bg-violet-400'} w-6 h-2`
+                  : 'bg-neutral-600 hover:bg-neutral-400 w-2 h-2'
+              }`}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Scroll indicator */}
         <button
           onClick={() => scrollToSection('story')}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-3 text-cyan-400 hover:text-cyan-300 transition-all cursor-pointer group"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-3 text-cyan-400 hover:text-cyan-300 transition-all cursor-pointer group"
           aria-label="Scroll to explore"
         >
           <div className="relative">
