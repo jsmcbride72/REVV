@@ -45,7 +45,7 @@ function App() {
       ],
       tags: ['Fintech', 'Mobile UX', 'Fleet Management', 'Real-time Communication'],
       color: 'cyan',
-      videoSrc: '/driven-vid.mov'
+      videoSrc: '/driven2.mov'
     },
     {
       id: 'newsring',
