@@ -85,3 +85,8 @@
     filter: blur(0px);
   }
 }
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
