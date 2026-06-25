@@ -13,8 +13,9 @@ interface CaseStudy {
   results: string[];
   images: string[];
   tags: string[];
-  color: 'cyan' | 'violet';
+  color: 'cyan' | 'violet' | 'emerald';
   videoSrc: string;
+  heroSrc?: string;
 }
 
 function App() {
@@ -82,7 +83,8 @@ function App() {
       ],
       tags: ['Fintech', 'Mobile UX', 'Fleet Management', 'Real-time Communication'],
       color: 'cyan',
-      videoSrc: '/driven2.mov'
+      videoSrc: '/driven2.mov',
+      heroSrc: '/I_need_to_pan_around_on_this_v_Seedance_20_89188.mp4'
     },
     {
       id: 'newsring',
