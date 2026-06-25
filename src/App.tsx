@@ -85,7 +85,7 @@ function App() {
       ],
       tags: ['Fintech', 'Mobile UX', 'Fleet Management', 'Real-time Communication'],
       color: 'cyan',
-      videoSrc: '/driven2.mov',
+      videoSrc: '/animate_this_in_a_cool_way_tha_Happy_Horse_11_23300.mp4',
       heroSrc: '/I_need_to_start_with_the_truck_Seedance_20_20111.mp4'
     },
     {
