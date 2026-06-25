@@ -108,7 +108,7 @@ function App() {
       ],
       tags: ['Conversational AI', 'Content Discovery', 'UX Design', 'Real-time Data'],
       color: 'violet',
-      videoSrc: '/NR-phones-spin.mov',
+      videoSrc: '/I_want_a_man_using_this_on_his_Seedance_20_54823.mp4',
       heroSrc: '/nr-case.mp4'
     },
     {
