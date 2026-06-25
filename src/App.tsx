@@ -25,7 +25,7 @@ function App() {
   const [animKey, setAnimKey] = useState(0);
   const [showOverlay, setShowOverlay] = useState(false);
   const overlayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const HERO_SLIDE_COUNT = 4;
+  const HERO_SLIDE_COUNT = 5;
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const goToSlide = (index: number) => {
@@ -127,6 +127,27 @@ function App() {
       tags: ['Gaming Platform', 'Real-time Data', 'Tournament Systems', 'Community Building'],
       color: 'cyan',
       videoSrc: '/20240207_strideGG_UNIVPROF_VID_1.mp4'
+    },
+    {
+      id: 'senior-pga-concession',
+      title: 'Proven Live — First Deployed at the Senior PGA, The Concession',
+      category: 'Live Event Technology',
+      description: 'Battle-tested at one of golf\'s most prestigious venues. Our platform went live at the Senior PGA Championship at The Concession, proving the technology under real tournament conditions.',
+      challenge: 'Deploying live technology at a PGA-level event means zero tolerance for failure. The platform needed to handle real-time data under the pressure of a live championship, serving media, staff, and spectators simultaneously without a single point of friction.',
+      solution: 'We deployed our full platform stack on-site at The Concession Golf Club during the Senior PGA Championship. Every feature — live scoring, real-time analytics, and stakeholder dashboards — ran in production under tournament conditions, validating the system architecture and delivering a flawless first deployment.',
+      results: [
+        '100% Uptime throughout the championship',
+        'Real-time data across all stakeholder dashboards',
+        'Zero critical incidents during live play',
+        'Deployed and validated in a single tournament cycle',
+        'Blueprint established for all future event deployments'
+      ],
+      images: [
+        '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4'
+      ],
+      tags: ['Live Events', 'PGA', 'Real-time Data', 'Tournament Technology'],
+      color: 'emerald',
+      videoSrc: '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4'
     }
   ];
 
@@ -223,6 +244,12 @@ function App() {
             <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
             <div className={`absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/50 to-transparent transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
           </div>
+          {/* Slide 5 bg */}
+          <div className="relative" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4")} />
+            <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
+            <div className={`absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/50 to-transparent transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
+          </div>
         </div>
 
         {/* Content track — slides with background */}
@@ -307,6 +334,27 @@ function App() {
               </div>
             </div>
           </div>
+
+          {/* Slide 5 content */}
+          <div className="flex items-center pb-16 lg:pb-0 pl-20 lg:pl-28 pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <div className="text-left max-w-2xl" key={`s4-${animKey}`}>
+              <p className="hero-label text-sm lg:text-base font-bold text-emerald-400 tracking-widest uppercase mb-4">
+                Proven Live — First Deployed.
+              </p>
+              <h2 className="hero-headline-left text-2xl lg:text-4xl font-bold text-white leading-snug mb-8 drop-shadow-2xl">
+                First deployed at the Senior PGA, The Concession.
+              </h2>
+              <div className="hero-button">
+                <button
+                  onClick={() => setSelectedCaseStudy(caseStudies[3])}
+                  className="inline-flex items-center gap-3 px-7 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-base shadow-xl shadow-emerald-500/30"
+                >
+                  View Case Study
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Bottom nav: prev arrow + dots + next arrow */}
@@ -325,7 +373,7 @@ function App() {
               onClick={() => goToSlide(i)}
               className={`rounded-full transition-all duration-300 ${
                 i === currentSlide
-                  ? `${i === 1 ? 'bg-violet-400' : 'bg-cyan-400'} w-6 h-2`
+                  ? `${i === 1 ? 'bg-violet-400' : i === 4 ? 'bg-emerald-400' : 'bg-cyan-400'} w-6 h-2`
                   : 'bg-neutral-600 hover:bg-neutral-400 w-2 h-2'
               }`}
               aria-label={`Go to slide ${i + 1}`}
