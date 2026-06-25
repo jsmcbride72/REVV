@@ -128,7 +128,8 @@ function App() {
       ],
       tags: ['Gaming Platform', 'Real-time Data', 'Tournament Systems', 'Community Building'],
       color: 'cyan',
-      videoSrc: '/20240207_strideGG_UNIVPROF_VID_1.mp4'
+      videoSrc: '/20240207_strideGG_UNIVPROF_VID_1.mp4',
+      heroSrc: '/back_view_of_a_gamer_in_a_game_Seedance_20_54336.mp4'
     },
     {
       id: 'senior-pga-concession',
