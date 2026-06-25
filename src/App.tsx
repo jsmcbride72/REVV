@@ -13,6 +13,7 @@ interface CaseStudy {
   results: string[];
   images: string[];
   wideImages?: string[];
+  lessons?: { title: string; body: string }[];
   tags: string[];
   color: 'cyan' | 'violet' | 'emerald';
   videoSrc: string;
@@ -141,17 +142,29 @@ function App() {
       title: 'Proven Live — First Deployed at the Senior PGA, The Concession',
       category: 'Live Event Technology',
       description: 'Battle-tested at one of golf\'s most prestigious venues. Our platform went live at the Senior PGA Championship at The Concession, proving the technology under real tournament conditions.',
-      challenge: 'Deploying live technology at a PGA-level event means zero tolerance for failure. The platform needed to handle real-time data under the pressure of a live championship, serving media, staff, and spectators simultaneously without a single point of friction.',
-      solution: 'We deployed our full platform stack on-site at The Concession Golf Club during the Senior PGA Championship. Every feature — live scoring, real-time analytics, and stakeholder dashboards — ran in production under tournament conditions, validating the system architecture and delivering a flawless first deployment.',
+      challenge: 'Championship golf presents unique wayfinding challenges. Spectators move between 18 holes spread across hundreds of acres, with player groups constantly shifting positions throughout the day.\n\nTraditional solutions — paper maps, static signage, basic event apps — fail because the information is either outdated by the time it\'s consumed or requires too much effort to find.',
+      solution: 'EventPulse deployed an AI concierge that understood the full context of the championship — player positions, tee times, facility locations, food options, and real-time course conditions.\n\nAttendees simply asked questions naturally like, "Where is Bernhard Langer right now?" or "What\'s the closest food stand to hole 7?" They received instant, accurate answers.',
       results: [
-        '100% Uptime throughout the championship',
-        'Real-time data across all stakeholder dashboards',
-        'Zero critical incidents during live play',
-        'Deployed and validated in a single tournament cycle',
-        'Blueprint established for all future event deployments'
+        '2016 Active users during 4-day event',
+        '89% Query satisfaction rate',
+        '4.2s Average response time'
       ],
       images: [
         '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4'
+      ],
+      lessons: [
+        {
+          title: 'Speed beats completeness',
+          body: 'Users preferred a fast 80% answer over a slow, comprehensive one. In live event contexts, time pressure means conciseness wins.'
+        },
+        {
+          title: 'Context is everything',
+          body: 'The AI\'s ability to understand implicit context ("Where should I go next?" considers time, location, preferences) was the top-rated feature.'
+        },
+        {
+          title: 'Trust builds through accuracy',
+          body: 'Users who received accurate answers on first interaction were 3x more likely to return for subsequent questions throughout the day.'
+        }
       ],
       tags: ['Live Events', 'PGA', 'Real-time Data', 'Tournament Technology'],
       color: 'emerald',

@@ -1,6 +1,11 @@
 import { ChevronLeft, TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2 } from 'lucide-react';
 import { useEffect } from 'react';
 
+interface Lesson {
+  title: string;
+  body: string;
+}
+
 interface CaseStudy {
   id: string;
   title: string;
@@ -11,6 +16,7 @@ interface CaseStudy {
   results: string[];
   images: string[];
   wideImages?: string[];
+  lessons?: Lesson[];
   tags: string[];
   color: 'cyan' | 'violet' | 'emerald';
   videoSrc: string;
@@ -116,14 +122,44 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
         {/* Challenge */}
         <div className={`bg-gradient-to-br ${colors.bg} to-transparent border ${colors.border} rounded-2xl p-8`}>
           <h3 className={`text-2xl font-bold mb-4 ${colors.text}`}>The Challenge</h3>
-          <p className="text-neutral-300 leading-relaxed text-base">{caseStudy.challenge}</p>
+          <div className="space-y-4">
+            {caseStudy.challenge.split('\n\n').map((para, i) => (
+              <p key={i} className="text-neutral-300 leading-relaxed text-base">{para}</p>
+            ))}
+          </div>
         </div>
 
         {/* Solution */}
         <div className="bg-neutral-900/60 border border-neutral-800 rounded-2xl p-8">
           <h3 className="text-2xl font-bold mb-4 text-white">Our Solution</h3>
-          <p className="text-neutral-300 leading-relaxed text-base">{caseStudy.solution}</p>
+          <div className="space-y-4">
+            {caseStudy.solution.split('\n\n').map((para, i) => (
+              <p key={i} className="text-neutral-300 leading-relaxed text-base">{para}</p>
+            ))}
+          </div>
         </div>
+
+        {/* Lessons Learned */}
+        {caseStudy.lessons && caseStudy.lessons.length > 0 && (
+          <div>
+            <h3 className="text-2xl font-bold mb-6 text-white">Lessons Learned</h3>
+            <div className="space-y-4">
+              {caseStudy.lessons.map((lesson, index) => (
+                <div key={index} className={`bg-gradient-to-br ${colors.bg} to-transparent border ${colors.border} rounded-2xl p-6`}>
+                  <div className="flex items-start gap-4">
+                    <div className={`flex-shrink-0 w-8 h-8 rounded-full border ${colors.border} flex items-center justify-center`}>
+                      <span className={`text-sm font-black ${colors.text}`}>{index + 1}</span>
+                    </div>
+                    <div>
+                      <h4 className={`text-lg font-bold mb-2 ${colors.text}`}>{lesson.title}</h4>
+                      <p className="text-neutral-300 leading-relaxed text-base">{lesson.body}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Gallery */}
         {(caseStudy.images.length > 0 || (caseStudy.wideImages && caseStudy.wideImages.length > 0)) && (
@@ -189,7 +225,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
             {caseStudy.results.map((result, index) => {
               const icons = [TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2];
               const Icon = icons[index % icons.length];
-              const metricMatch = result.match(/^([0-9.]+[%xK+★]+)/);
+              const metricMatch = result.match(/^([0-9][0-9.,]*[%xK+★s]*)/);
               const metric = metricMatch ? metricMatch[1] : '';
               const description = result.substring(metric.length).trim();
 
