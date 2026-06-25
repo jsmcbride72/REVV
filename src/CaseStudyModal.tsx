@@ -10,6 +10,7 @@ interface CaseStudy {
   solution: string;
   results: string[];
   images: string[];
+  wideImages?: string[];
   tags: string[];
   color: 'cyan' | 'violet' | 'emerald';
   videoSrc: string;
@@ -125,10 +126,34 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
         </div>
 
         {/* Gallery */}
-        {caseStudy.images.length > 0 && (
+        {(caseStudy.images.length > 0 || (caseStudy.wideImages && caseStudy.wideImages.length > 0)) && (
           <div>
             <h3 className="text-2xl font-bold mb-6 text-white">Product Gallery</h3>
             <div className="grid lg:grid-cols-2 gap-6">
+              {(caseStudy.wideImages ?? []).map((image, index) => {
+                const isVideo = image.endsWith('.mov') || image.endsWith('.mp4');
+                return (
+                  <div key={`wide-${index}`} className={`lg:col-span-2 rounded-2xl overflow-hidden border ${colors.border} bg-neutral-900`}>
+                    {isVideo ? (
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-auto min-h-[320px] object-cover"
+                        src={image}
+                      />
+                    ) : (
+                      <img
+                        src={image}
+                        alt={`${caseStudy.title} — wide ${index + 1}`}
+                        className="w-full h-auto object-cover"
+                        loading="lazy"
+                      />
+                    )}
+                  </div>
+                );
+              })}
               {caseStudy.images.map((image, index) => {
                 const isVideo = image.endsWith('.mov') || image.endsWith('.mp4');
                 return (

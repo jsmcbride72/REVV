@@ -12,6 +12,7 @@ interface CaseStudy {
   solution: string;
   results: string[];
   images: string[];
+  wideImages?: string[];
   tags: string[];
   color: 'cyan' | 'violet' | 'emerald';
   videoSrc: string;
@@ -126,6 +127,9 @@ function App() {
       images: [
         '/20240207_strideGG_UNIVPROF_VID_1.mp4',
         '/jsmcbride_WF.mp4'
+      ],
+      wideImages: [
+        '/20240207_strideGG_UNIVPROF_VID_1.mp4'
       ],
       tags: ['Gaming Platform', 'Real-time Data', 'Tournament Systems', 'Community Building'],
       color: 'cyan',
