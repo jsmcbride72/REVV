@@ -24,16 +24,23 @@ function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [animKey, setAnimKey] = useState(0);
   const [showOverlay, setShowOverlay] = useState(false);
+  const overlayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const HERO_SLIDE_COUNT = 4;
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
     setAnimKey(k => k + 1);
+    setShowOverlay(false);
+    if (overlayTimerRef.current) clearTimeout(overlayTimerRef.current);
+    overlayTimerRef.current = setTimeout(() => setShowOverlay(true), 5000);
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % HERO_SLIDE_COUNT);
       setAnimKey(k => k + 1);
+      setShowOverlay(false);
+      if (overlayTimerRef.current) clearTimeout(overlayTimerRef.current);
+      overlayTimerRef.current = setTimeout(() => setShowOverlay(true), 5000);
     }, 10000);
   };
 
@@ -41,11 +48,14 @@ function App() {
     timerRef.current = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % HERO_SLIDE_COUNT);
       setAnimKey(k => k + 1);
+      setShowOverlay(false);
+      if (overlayTimerRef.current) clearTimeout(overlayTimerRef.current);
+      overlayTimerRef.current = setTimeout(() => setShowOverlay(true), 5000);
     }, 10000);
-    const overlayTimer = setTimeout(() => setShowOverlay(true), 3500);
+    overlayTimerRef.current = setTimeout(() => setShowOverlay(true), 5000);
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
-      clearTimeout(overlayTimer);
+      if (overlayTimerRef.current) clearTimeout(overlayTimerRef.current);
     };
   }, []);
 
