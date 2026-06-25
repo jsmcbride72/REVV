@@ -84,7 +84,7 @@ function App() {
       tags: ['Fintech', 'Mobile UX', 'Fleet Management', 'Real-time Communication'],
       color: 'cyan',
       videoSrc: '/driven2.mov',
-      heroSrc: '/I_need_to_pan_around_on_this_v_Seedance_20_89188.mp4'
+      heroSrc: '/I_need_to_start_with_the_truck_Seedance_20_20111.mp4'
     },
     {
       id: 'newsring',
