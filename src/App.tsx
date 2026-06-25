@@ -150,7 +150,8 @@ function App() {
       ],
       tags: ['Live Events', 'PGA', 'Real-time Data', 'Tournament Technology'],
       color: 'emerald',
-      videoSrc: '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4'
+      videoSrc: '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4',
+      heroSrc: '/reel1-2.mp4'
     }
   ];
 
