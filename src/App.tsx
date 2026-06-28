@@ -126,8 +126,8 @@ function App() {
         '50K+ Active gamers in 6 months'
       ],
       images: [
-        '/20240207_strideGG_UNIVPROF_VID_1.mp4',
-        '/jsmcbride_WF.mp4'
+        '/give_me_a_product_shot_of_this_Nano_Banana_2_29271.png',
+        '/give_me_a_product_shot_of_this_Nano_Banana_2_41828.png'
       ],
       wideImages: [
         '/20240207_strideGG_UNIVPROF_VID_1.mp4'
