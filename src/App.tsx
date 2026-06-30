@@ -245,7 +245,7 @@ function App() {
         >
           {/* Slide 1 bg */}
           <div className="relative" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/NEW-SPINV1.mp4")} />
+            <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/SPOTLIGHT.mp4")} />
             <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/50 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
           </div>
           {/* Slide 2 bg */}
