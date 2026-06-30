@@ -150,7 +150,8 @@ function App() {
         '4.2s Average response time'
       ],
       images: [
-        '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4'
+        '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4',
+        '/CONCESSION-EP-2.mp4'
       ],
       lessons: [
         {
