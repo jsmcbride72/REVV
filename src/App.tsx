@@ -245,30 +245,30 @@ function App() {
         >
           {/* Slide 1 bg */}
           <div className="relative" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/NEW-SPINV1.mp4")} />
+            <video autoPlay loop muted playsInline className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} src={getAssetUrl("/NEW-SPINV1.mp4")} />
             <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/50 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
           </div>
           {/* Slide 2 bg */}
           <div className="relative" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/I_WANT_THIS_TO_ANIMATE_IN_AREA_Seedance_20_51931.mp4")} />
+            <video autoPlay loop muted playsInline className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} src={getAssetUrl("/I_WANT_THIS_TO_ANIMATE_IN_AREA_Seedance_20_51931.mp4")} />
             <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
             <div className={`absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/50 to-transparent transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
           </div>
           {/* Slide 3 bg */}
           <div className="relative" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/HAVE_THESE_LOOK_ALIVE_BY_SCROL_Seedance_20_98983.mp4")} />
+            <video autoPlay loop muted playsInline className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} src={getAssetUrl("/HAVE_THESE_LOOK_ALIVE_BY_SCROL_Seedance_20_98983.mp4")} />
             <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
             <div className={`absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/50 to-transparent transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
           </div>
           {/* Slide 4 bg */}
           <div className="relative" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/I_WANT_TO_DO_A_COOL_ANIMATION__Seedance_20_39658.mp4")} />
+            <video autoPlay loop muted playsInline className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} src={getAssetUrl("/I_WANT_TO_DO_A_COOL_ANIMATION__Seedance_20_39658.mp4")} />
             <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
             <div className={`absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/50 to-transparent transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
           </div>
           {/* Slide 5 bg */}
           <div className="relative" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4")} />
+            <video autoPlay loop muted playsInline className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} src={getAssetUrl("/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4")} />
             <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
             <div className={`absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/50 to-transparent transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
           </div>
