@@ -237,7 +237,7 @@ function App() {
         </div>
       </nav>
 
-      <section className="relative pt-32 pb-32 lg:pt-40 lg:pb-40 overflow-hidden">
+      <section className="relative min-h-screen flex flex-col overflow-hidden">
         {/* Background track — slides left-to-right */}
         <div
           className="absolute inset-0 flex transition-transform duration-[1100ms] ease-[cubic-bezier(0.76,0,0.24,1)]"
@@ -276,11 +276,11 @@ function App() {
 
         {/* Content track — slides with background */}
         <div
-          className="relative flex transition-transform duration-[1100ms] ease-[cubic-bezier(0.76,0,0.24,1)]"
+          className="relative flex flex-1 transition-transform duration-[1100ms] ease-[cubic-bezier(0.76,0,0.24,1)]"
           style={{ width: `${HERO_SLIDE_COUNT * 100}%`, transform: `translateX(-${(currentSlide / HERO_SLIDE_COUNT) * 100}%)` }}
         >
           {/* Slide 1 content */}
-          <div className="flex items-center justify-center pb-16 lg:pb-0 px-6 lg:px-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+          <div className="flex items-center justify-center pt-32 lg:pt-40 pb-24 px-6 lg:px-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
             <div className="text-center max-w-6xl" key={`s0-${animKey}`}>
               <p className="text-lg lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-8 opacity-0 animate-[slideInBlur_0.8s_ease-out_5s_forwards]">
                 Welcome to the Revolution
@@ -295,7 +295,7 @@ function App() {
           </div>
 
           {/* Slide 2 content */}
-          <div className="flex items-center pb-16 lg:pb-0 pl-20 lg:pl-28 pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+          <div className="flex items-center pt-32 lg:pt-40 pb-24 pl-20 lg:pl-28 pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
             <div className="text-left max-w-2xl" key={`s1-${animKey}`}>
               <p className="text-sm lg:text-base font-bold text-violet-400 tracking-widest uppercase mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_5s_forwards]">
                 NewsRing — Case Study
@@ -316,7 +316,7 @@ function App() {
           </div>
 
           {/* Slide 3 content */}
-          <div className="flex items-center pb-16 lg:pb-0 pl-20 lg:pl-28 pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+          <div className="flex items-center pt-32 lg:pt-40 pb-24 pl-20 lg:pl-28 pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
             <div className="text-left max-w-2xl" key={`s2-${animKey}`}>
               <p className="text-sm lg:text-base font-bold text-cyan-400 tracking-widest uppercase mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_5s_forwards]">
                 Driven — Case Study
@@ -337,7 +337,7 @@ function App() {
           </div>
 
           {/* Slide 4 content */}
-          <div className="flex items-center pb-16 lg:pb-0 pl-20 lg:pl-28 pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+          <div className="flex items-center pt-32 lg:pt-40 pb-24 pl-20 lg:pl-28 pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
             <div className="text-left max-w-2xl" key={`s3-${animKey}`}>
               <p className="text-sm lg:text-base font-bold text-cyan-400 tracking-widest uppercase mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_5s_forwards]">
                 StrideGG — Case Study
@@ -358,7 +358,7 @@ function App() {
           </div>
 
           {/* Slide 5 content */}
-          <div className="flex items-center pb-16 lg:pb-0 pl-20 lg:pl-28 pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+          <div className="flex items-center pt-32 lg:pt-40 pb-24 pl-20 lg:pl-28 pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
             <div className="text-left max-w-2xl" key={`s4-${animKey}`}>
               <p className="text-sm lg:text-base font-bold text-emerald-400 tracking-widest uppercase mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_5s_forwards]">
                 Proven Live — First Deployed.
