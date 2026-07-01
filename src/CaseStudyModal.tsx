@@ -207,7 +207,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
                       <img
                         src={image}
                         alt={`${caseStudy.title} — ${index + 1}`}
-                        className="w-full h-auto object-cover"
+                        className="w-full h-[320px] object-cover object-center"
                         loading="lazy"
                       />
                     )}
