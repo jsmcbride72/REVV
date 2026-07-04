@@ -81,8 +81,8 @@ function App() {
       ],
       images: [
         '/main-tile-mock.png',
-        '/driven.mp4'
       ],
+      wideImages: ['/driven.mp4'],
       tags: ['Fintech', 'Mobile UX', 'Fleet Management', 'Real-time Communication'],
       color: 'cyan',
       videoSrc: '/animate_this_in_a_cool_way_tha_Happy_Horse_11_23300.mp4',
