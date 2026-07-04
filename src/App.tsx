@@ -246,9 +246,19 @@ function App() {
           style={{ width: `${HERO_SLIDE_COUNT * 100}%`, transform: `translateX(-${(currentSlide / HERO_SLIDE_COUNT) * 100}%)` }}
         >
           {/* Slide 1 bg */}
-          <div className="relative h-full" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/SPOTLIGHT.mp4")} />
-            <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/50 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
+          <div className="relative h-full bg-neutral-900" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              disablePictureInPicture
+              preload="auto"
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source src="/SPOTLIGHT.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/50 via-neutral-950/30 to-neutral-950/60" />
           </div>
           {/* Slide 2 bg */}
           <div className="relative h-full" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
