@@ -30,6 +30,13 @@ function App() {
   const overlayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const HERO_SLIDE_COUNT = 5;
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  useEffect(() => {
+    videoRefs.current.forEach(v => {
+      if (v) v.play().catch(() => {});
+    });
+  }, []);
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -239,21 +246,42 @@ function App() {
         </div>
       </nav>
 
-      <section className="relative min-h-screen flex flex-col overflow-hidden">
+      <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
         {/* Video backgrounds — crossfade on slide change */}
-        <video autoPlay loop muted playsInline className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1100ms] ${currentSlide === 0 ? 'opacity-100' : 'opacity-0'}`} src="/SPOTLIGHT.mp4" />
-        <video autoPlay loop muted playsInline className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1100ms] ${currentSlide === 1 ? 'opacity-100' : 'opacity-0'}`} src="/I_WANT_THIS_TO_ANIMATE_IN_AREA_Seedance_20_51931.mp4" />
-        <video autoPlay loop muted playsInline className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1100ms] ${currentSlide === 2 ? 'opacity-100' : 'opacity-0'}`} src="/I_need_to_start_with_the_truck_Seedance_20_20111.mp4" />
-        <video autoPlay loop muted playsInline className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1100ms] ${currentSlide === 3 ? 'opacity-100' : 'opacity-0'}`} src="/I_WANT_TO_DO_A_COOL_ANIMATION__Seedance_20_39658.mp4" />
-        <video autoPlay loop muted playsInline className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1100ms] ${currentSlide === 4 ? 'opacity-100' : 'opacity-0'}`} src="/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4" />
+        {[
+          '/SPOTLIGHT.mp4',
+          '/I_WANT_THIS_TO_ANIMATE_IN_AREA_Seedance_20_51931.mp4',
+          '/I_need_to_start_with_the_truck_Seedance_20_20111.mp4',
+          '/I_WANT_TO_DO_A_COOL_ANIMATION__Seedance_20_39658.mp4',
+          '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4',
+        ].map((src, i) => (
+          <video
+            key={src}
+            ref={el => { videoRefs.current[i] = el; }}
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{
+              position: 'absolute',
+              top: 0, left: 0, right: 0, bottom: 0,
+              width: '100%', height: '100%',
+              objectFit: 'cover',
+              zIndex: 0,
+              opacity: currentSlide === i ? 1 : 0,
+              transition: 'opacity 1.1s ease',
+            }}
+          >
+            <source src={src} type="video/mp4" />
+          </video>
+        ))}
         {/* Dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/40 to-neutral-950/65 pointer-events-none" />
-        <div className={`absolute inset-0 bg-gradient-to-r from-neutral-950/80 via-neutral-950/40 to-transparent pointer-events-none transition-opacity duration-[1100ms] ${currentSlide === 0 ? 'opacity-0' : 'opacity-100'}`} />
+        <div style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none', background: 'linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.6) 100%)' }} />
 
         {/* Content track — slides with background */}
         <div
           className="relative flex flex-1 transition-transform duration-[1100ms] ease-[cubic-bezier(0.76,0,0.24,1)]"
-          style={{ width: `${HERO_SLIDE_COUNT * 100}%`, transform: `translateX(-${(currentSlide / HERO_SLIDE_COUNT) * 100}%)` }}
+          style={{ width: `${HERO_SLIDE_COUNT * 100}%`, transform: `translateX(-${(currentSlide / HERO_SLIDE_COUNT) * 100}%)`, zIndex: 2 }}
         >
           {/* Slide 1 content */}
           <div className="flex items-center justify-center pt-32 lg:pt-40 pb-24 px-6 lg:px-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
@@ -356,7 +384,7 @@ function App() {
         </div>
 
         {/* Bottom nav: prev arrow + dots + next arrow */}
-        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-3">
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-3" style={{ zIndex: 3 }}>
           <button
             onClick={() => goToSlide((currentSlide - 1 + HERO_SLIDE_COUNT) % HERO_SLIDE_COUNT)}
             className="p-2 rounded-full bg-neutral-900/60 border border-neutral-700/50 text-neutral-300 hover:text-white hover:bg-neutral-800/80 hover:border-neutral-600 transition-all duration-300 backdrop-blur-sm"
