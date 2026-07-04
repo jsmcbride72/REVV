@@ -71,8 +71,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
   };
 
   const colors = colorClasses[caseStudy.color];
-  const stripSlash = (p: string) => p.replace(/^\//, '');
-  const heroVideo = stripSlash(caseStudy.heroSrc ?? caseStudy.videoSrc);
+  const heroVideo = caseStudy.heroSrc ?? caseStudy.videoSrc;
 
   return (
     <div className="fixed inset-0 z-50 bg-neutral-950 overflow-y-auto">
@@ -178,11 +177,11 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
                         muted
                         playsInline
                         className="w-full h-auto min-h-[320px] object-cover"
-                        src={stripSlash(image)}
+                        src={image}
                       />
                     ) : (
                       <img
-                        src={stripSlash(image)}
+                        src={image}
                         alt={`${caseStudy.title} — wide ${index + 1}`}
                         className="w-full h-auto object-cover"
                         loading="lazy"
@@ -202,11 +201,11 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
                         muted
                         playsInline
                         className="w-full h-auto min-h-[260px] object-cover"
-                        src={stripSlash(image)}
+                        src={image}
                       />
                     ) : (
                       <img
-                        src={stripSlash(image)}
+                        src={image}
                         alt={`${caseStudy.title} — ${index + 1}`}
                         className="w-full h-[320px] object-cover object-center"
                         loading="lazy"

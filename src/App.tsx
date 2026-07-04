@@ -62,7 +62,7 @@ function App() {
     };
   }, []);
 
-  const getAssetUrl = (path: string) => path.replace(/^\//, '');
+  const getAssetUrl = (path: string) => path;
 
   const caseStudies: CaseStudy[] = [
     {
