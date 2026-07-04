@@ -82,7 +82,6 @@ function App() {
       images: [
         '/main-tile-mock.png',
         '/driven.mp4',
-        '/driven2.mp4',
       ],
       wideImages: ['/driven3.mp4'],
       tags: ['Fintech', 'Mobile UX', 'Fleet Management', 'Real-time Communication'],
