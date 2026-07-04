@@ -238,37 +238,37 @@ function App() {
         </div>
       </nav>
 
-      <section className="relative h-screen min-h-screen flex flex-col overflow-hidden">
+      <section className="relative min-h-screen flex flex-col overflow-hidden">
         {/* Background track — slides left-to-right */}
         <div
-          className="absolute inset-0 z-0 flex transition-transform duration-[1100ms] ease-[cubic-bezier(0.76,0,0.24,1)]"
+          className="absolute inset-0 flex transition-transform duration-[1100ms] ease-[cubic-bezier(0.76,0,0.24,1)]"
           style={{ width: `${HERO_SLIDE_COUNT * 100}%`, transform: `translateX(-${(currentSlide / HERO_SLIDE_COUNT) * 100}%)` }}
         >
           {/* Slide 1 bg */}
-          <div className="relative flex-shrink-0 h-full" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+          <div className="relative flex-none" style={{ width: `${100 / HERO_SLIDE_COUNT}%`, height: '100%' }}>
             <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/SPOTLIGHT.mp4")} />
             <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/50 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
           </div>
           {/* Slide 2 bg */}
-          <div className="relative flex-shrink-0 h-full" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+          <div className="relative flex-none" style={{ width: `${100 / HERO_SLIDE_COUNT}%`, height: '100%' }}>
             <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/I_WANT_THIS_TO_ANIMATE_IN_AREA_Seedance_20_51931.mp4")} />
             <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
             <div className={`absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/50 to-transparent transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
           </div>
           {/* Slide 3 bg */}
-          <div className="relative flex-shrink-0 h-full" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+          <div className="relative flex-none" style={{ width: `${100 / HERO_SLIDE_COUNT}%`, height: '100%' }}>
             <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/I_need_to_start_with_the_truck_Seedance_20_20111.mp4")} />
             <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
             <div className={`absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/50 to-transparent transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
           </div>
           {/* Slide 4 bg */}
-          <div className="relative flex-shrink-0 h-full" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+          <div className="relative flex-none" style={{ width: `${100 / HERO_SLIDE_COUNT}%`, height: '100%' }}>
             <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/I_WANT_TO_DO_A_COOL_ANIMATION__Seedance_20_39658.mp4")} />
             <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
             <div className={`absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/50 to-transparent transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
           </div>
           {/* Slide 5 bg */}
-          <div className="relative flex-shrink-0 h-full" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+          <div className="relative flex-none" style={{ width: `${100 / HERO_SLIDE_COUNT}%`, height: '100%' }}>
             <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" src={getAssetUrl("/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4")} />
             <div className={`absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-neutral-950/70 transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
             <div className={`absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/50 to-transparent transition-opacity duration-[1200ms] ${showOverlay ? 'opacity-100' : 'opacity-0'}`} />
@@ -277,7 +277,7 @@ function App() {
 
         {/* Content track — slides with background */}
         <div
-          className="relative z-10 flex flex-1 transition-transform duration-[1100ms] ease-[cubic-bezier(0.76,0,0.24,1)]"
+          className="relative flex flex-1 transition-transform duration-[1100ms] ease-[cubic-bezier(0.76,0,0.24,1)]"
           style={{ width: `${HERO_SLIDE_COUNT * 100}%`, transform: `translateX(-${(currentSlide / HERO_SLIDE_COUNT) * 100}%)` }}
         >
           {/* Slide 1 content */}
@@ -381,7 +381,7 @@ function App() {
         </div>
 
         {/* Bottom nav: prev arrow + dots + next arrow */}
-        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-3">
           <button
             onClick={() => goToSlide((currentSlide - 1 + HERO_SLIDE_COUNT) % HERO_SLIDE_COUNT)}
             className="p-2 rounded-full bg-neutral-900/60 border border-neutral-700/50 text-neutral-300 hover:text-white hover:bg-neutral-800/80 hover:border-neutral-600 transition-all duration-300 backdrop-blur-sm"
