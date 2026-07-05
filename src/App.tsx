@@ -1,4 +1,4 @@
-import { Users, Target, TrendingUp, Heart, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Shield, Search, MousePointer, AlertTriangle, Link2, Eye, ArrowRight, MoveDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Users, Target, TrendingUp, Heart, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Shield, Search, MousePointer, AlertTriangle, Link2, Eye, ArrowRight, Mouse, MoveDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import ContactForm from './ContactForm';
 import CaseStudyModal from './CaseStudyModal';
@@ -26,24 +26,24 @@ function App() {
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [animKey, setAnimKey] = useState(0);
+  const [showOverlay, setShowOverlay] = useState(false);
+  const overlayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const HERO_SLIDE_COUNT = 5;
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const HERO_VIDEOS = [
-    '/SPOTLIGHT.mp4',
-    '/I_WANT_THIS_TO_ANIMATE_IN_AREA_Seedance_20_51931.mp4',
-    '/I_need_to_start_with_the_truck_Seedance_20_20111.mp4',
-    '/I_WANT_TO_DO_A_COOL_ANIMATION__Seedance_20_39658.mp4',
-    '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4',
-  ];
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
     setAnimKey(k => k + 1);
+    setShowOverlay(false);
+    if (overlayTimerRef.current) clearTimeout(overlayTimerRef.current);
+    overlayTimerRef.current = setTimeout(() => setShowOverlay(true), 1500);
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % HERO_SLIDE_COUNT);
       setAnimKey(k => k + 1);
+      setShowOverlay(false);
+      if (overlayTimerRef.current) clearTimeout(overlayTimerRef.current);
+      overlayTimerRef.current = setTimeout(() => setShowOverlay(true), 1500);
     }, 10000);
   };
 
@@ -51,9 +51,14 @@ function App() {
     timerRef.current = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % HERO_SLIDE_COUNT);
       setAnimKey(k => k + 1);
+      setShowOverlay(false);
+      if (overlayTimerRef.current) clearTimeout(overlayTimerRef.current);
+      overlayTimerRef.current = setTimeout(() => setShowOverlay(true), 1500);
     }, 10000);
+    overlayTimerRef.current = setTimeout(() => setShowOverlay(true), 1500);
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
+      if (overlayTimerRef.current) clearTimeout(overlayTimerRef.current);
     };
   }, []);
 
@@ -234,26 +239,21 @@ function App() {
         </div>
       </nav>
 
-      <section style={{ display: 'grid', minHeight: '100vh', position: 'relative' }}>
-        {/* Video — same grid cell as content, stretches to match content height */}
-        <video
-          key={currentSlide}
-          autoPlay
-          loop
-          muted
-          playsInline
-          src={HERO_VIDEOS[currentSlide]}
-          style={{ gridArea: '1/1', width: '100%', objectFit: 'cover', display: 'block' }}
-        />
-        {/* Dark gradient overlay — only under the text for readability */}
-        <div style={{ gridArea: '1/1', zIndex: 1, pointerEvents: 'none', background: 'linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.6) 100%)' }} />
-        {/* Content shell — determines grid cell height */}
-        <div style={{ gridArea: '1/1', zIndex: 2, display: 'flex', flexDirection: 'column' }}>
+      <section className="relative min-h-screen flex flex-col overflow-hidden">
+        {/* Video backgrounds — crossfade on slide change */}
+        <video autoPlay loop muted playsInline className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1100ms] ${currentSlide === 0 ? 'opacity-100' : 'opacity-0'}`} src="/SPOTLIGHT.mp4" />
+        <video autoPlay loop muted playsInline className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1100ms] ${currentSlide === 1 ? 'opacity-100' : 'opacity-0'}`} src="/I_WANT_THIS_TO_ANIMATE_IN_AREA_Seedance_20_51931.mp4" />
+        <video autoPlay loop muted playsInline className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1100ms] ${currentSlide === 2 ? 'opacity-100' : 'opacity-0'}`} src="/I_need_to_start_with_the_truck_Seedance_20_20111.mp4" />
+        <video autoPlay loop muted playsInline className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1100ms] ${currentSlide === 3 ? 'opacity-100' : 'opacity-0'}`} src="/I_WANT_TO_DO_A_COOL_ANIMATION__Seedance_20_39658.mp4" />
+        <video autoPlay loop muted playsInline className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1100ms] ${currentSlide === 4 ? 'opacity-100' : 'opacity-0'}`} src="/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4" />
+        {/* Dark gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-neutral-950/40 to-neutral-950/65 pointer-events-none" />
+        <div className={`absolute inset-0 bg-gradient-to-r from-neutral-950/80 via-neutral-950/40 to-transparent pointer-events-none transition-opacity duration-[1100ms] ${currentSlide === 0 ? 'opacity-0' : 'opacity-100'}`} />
 
         {/* Content track — slides with background */}
         <div
           className="relative flex flex-1 transition-transform duration-[1100ms] ease-[cubic-bezier(0.76,0,0.24,1)]"
-          style={{ width: `${HERO_SLIDE_COUNT * 100}%`, transform: `translateX(-${(currentSlide / HERO_SLIDE_COUNT) * 100}%)`, zIndex: 2 }}
+          style={{ width: `${HERO_SLIDE_COUNT * 100}%`, transform: `translateX(-${(currentSlide / HERO_SLIDE_COUNT) * 100}%)` }}
         >
           {/* Slide 1 content */}
           <div className="flex items-center justify-center pt-32 lg:pt-40 pb-24 px-6 lg:px-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
@@ -356,7 +356,7 @@ function App() {
         </div>
 
         {/* Bottom nav: prev arrow + dots + next arrow */}
-        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-3" style={{ zIndex: 3 }}>
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-3">
           <button
             onClick={() => goToSlide((currentSlide - 1 + HERO_SLIDE_COUNT) % HERO_SLIDE_COUNT)}
             className="p-2 rounded-full bg-neutral-900/60 border border-neutral-700/50 text-neutral-300 hover:text-white hover:bg-neutral-800/80 hover:border-neutral-600 transition-all duration-300 backdrop-blur-sm"
@@ -400,7 +400,6 @@ function App() {
             <MoveDown className="w-5 h-5 absolute -bottom-6 left-1/2 -translate-x-1/2 animate-bounce" style={{ animationDelay: '150ms' }} />
           </div>
         </button>
-        </div>{/* end content shell */}
       </section>
 
       <section id="story" className="py-12 lg:py-20 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
