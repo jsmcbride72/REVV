@@ -30,13 +30,14 @@ function App() {
   const overlayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const HERO_SLIDE_COUNT = 5;
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  useEffect(() => {
-    videoRefs.current.forEach(v => {
-      if (v) v.play().catch(() => {});
-    });
-  }, []);
+  const HERO_VIDEOS = [
+    '/SPOTLIGHT.mp4',
+    '/I_WANT_THIS_TO_ANIMATE_IN_AREA_Seedance_20_51931.mp4',
+    '/I_need_to_start_with_the_truck_Seedance_20_20111.mp4',
+    '/I_WANT_TO_DO_A_COOL_ANIMATION__Seedance_20_39658.mp4',
+    '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4',
+  ];
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -246,37 +247,20 @@ function App() {
         </div>
       </nav>
 
-      <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-        {/* Video backgrounds — crossfade on slide change */}
-        {[
-          '/SPOTLIGHT.mp4',
-          '/I_WANT_THIS_TO_ANIMATE_IN_AREA_Seedance_20_51931.mp4',
-          '/I_need_to_start_with_the_truck_Seedance_20_20111.mp4',
-          '/I_WANT_TO_DO_A_COOL_ANIMATION__Seedance_20_39658.mp4',
-          '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4',
-        ].map((src, i) => (
-          <video
-            key={src}
-            ref={el => { videoRefs.current[i] = el; }}
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{
-              position: 'absolute',
-              top: 0, left: 0, right: 0, bottom: 0,
-              width: '100%', height: '100%',
-              objectFit: 'cover',
-              zIndex: 0,
-              opacity: currentSlide === i ? 1 : 0,
-              transition: 'opacity 1.1s ease',
-            }}
-          >
-            <source src={src} type="video/mp4" />
-          </video>
-        ))}
+      <section className="relative min-h-screen flex flex-col overflow-hidden">
+        {/* Single video — remounts on slide change so it always plays */}
+        <video
+          key={currentSlide}
+          autoPlay
+          loop
+          muted
+          playsInline
+          src={HERO_VIDEOS[currentSlide]}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ zIndex: 0 }}
+        />
         {/* Dark gradient overlay */}
-        <div style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none', background: 'linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.6) 100%)' }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1, background: 'linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.6) 100%)' }} />
 
         {/* Content track — slides with background */}
         <div
