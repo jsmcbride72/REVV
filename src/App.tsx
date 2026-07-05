@@ -234,8 +234,8 @@ function App() {
         </div>
       </nav>
 
-      <section className="relative h-screen overflow-hidden">
-        {/* Video background */}
+      <section style={{ display: 'grid', minHeight: '100vh', position: 'relative' }}>
+        {/* Video — same grid cell as content, stretches to match content height */}
         <video
           key={currentSlide}
           autoPlay
@@ -243,11 +243,10 @@ function App() {
           muted
           playsInline
           src={HERO_VIDEOS[currentSlide]}
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ zIndex: 0 }}
+          style={{ gridArea: '1/1', width: '100%', objectFit: 'cover', display: 'block' }}
         />
-        {/* Content shell */}
-        <div className="absolute inset-0 flex flex-col" style={{ zIndex: 2 }}>
+        {/* Content shell — determines grid cell height */}
+        <div style={{ gridArea: '1/1', zIndex: 2, display: 'flex', flexDirection: 'column' }}>
 
         {/* Content track — slides with background */}
         <div
