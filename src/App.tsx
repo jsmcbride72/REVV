@@ -247,18 +247,19 @@ function App() {
         </div>
       </nav>
 
-      <section className="relative min-h-screen flex flex-col overflow-hidden">
-        {/* Single video — remounts on slide change so it always plays */}
-        <video
-          key={currentSlide}
-          autoPlay
-          loop
-          muted
-          playsInline
-          src={HERO_VIDEOS[currentSlide]}
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ zIndex: 0 }}
-        />
+      <section className="relative min-h-screen flex flex-col">
+        {/* Video wrapper: explicit inset-0 sizing so percentage-based child dimensions work */}
+        <div className="absolute inset-0 overflow-hidden" style={{ zIndex: 0 }}>
+          <video
+            key={currentSlide}
+            autoPlay
+            loop
+            muted
+            playsInline
+            src={HERO_VIDEOS[currentSlide]}
+            style={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        </div>
         {/* Dark gradient overlay */}
         <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1, background: 'linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.6) 100%)' }} />
 
