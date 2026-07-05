@@ -245,6 +245,8 @@ function App() {
           src={HERO_VIDEOS[currentSlide]}
           style={{ gridArea: '1/1', width: '100%', objectFit: 'cover', display: 'block' }}
         />
+        {/* Dark gradient overlay — only under the text for readability */}
+        <div style={{ gridArea: '1/1', zIndex: 1, pointerEvents: 'none', background: 'linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.6) 100%)' }} />
         {/* Content shell — determines grid cell height */}
         <div style={{ gridArea: '1/1', zIndex: 2, display: 'flex', flexDirection: 'column' }}>
 
