@@ -1,4 +1,4 @@
-import { Users, Target, TrendingUp, Heart, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Shield, Search, MousePointer, AlertTriangle, Link2, Eye, ArrowRight, Mouse, MoveDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Users, Target, TrendingUp, Heart, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Shield, Search, MousePointer, AlertTriangle, Link2, Eye, ArrowRight, MoveDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import ContactForm from './ContactForm';
 import CaseStudyModal from './CaseStudyModal';
@@ -26,8 +26,6 @@ function App() {
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [animKey, setAnimKey] = useState(0);
-  const [showOverlay, setShowOverlay] = useState(false);
-  const overlayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const HERO_SLIDE_COUNT = 5;
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -42,16 +40,10 @@ function App() {
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
     setAnimKey(k => k + 1);
-    setShowOverlay(false);
-    if (overlayTimerRef.current) clearTimeout(overlayTimerRef.current);
-    overlayTimerRef.current = setTimeout(() => setShowOverlay(true), 1500);
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % HERO_SLIDE_COUNT);
       setAnimKey(k => k + 1);
-      setShowOverlay(false);
-      if (overlayTimerRef.current) clearTimeout(overlayTimerRef.current);
-      overlayTimerRef.current = setTimeout(() => setShowOverlay(true), 1500);
     }, 10000);
   };
 
@@ -59,14 +51,9 @@ function App() {
     timerRef.current = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % HERO_SLIDE_COUNT);
       setAnimKey(k => k + 1);
-      setShowOverlay(false);
-      if (overlayTimerRef.current) clearTimeout(overlayTimerRef.current);
-      overlayTimerRef.current = setTimeout(() => setShowOverlay(true), 1500);
     }, 10000);
-    overlayTimerRef.current = setTimeout(() => setShowOverlay(true), 1500);
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
-      if (overlayTimerRef.current) clearTimeout(overlayTimerRef.current);
     };
   }, []);
 
@@ -247,21 +234,21 @@ function App() {
         </div>
       </nav>
 
-      <section className="relative min-h-screen flex flex-col">
-        {/* Video wrapper: explicit inset-0 sizing so percentage-based child dimensions work */}
-        <div className="absolute inset-0 overflow-hidden" style={{ zIndex: 0 }}>
-          <video
-            key={currentSlide}
-            autoPlay
-            loop
-            muted
-            playsInline
-            src={HERO_VIDEOS[currentSlide]}
-            style={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
-          />
-        </div>
+      <section style={{ display: 'grid', minHeight: '100vh', position: 'relative' }}>
+        {/* Video — same grid cell as content, stretches to match content height */}
+        <video
+          key={currentSlide}
+          autoPlay
+          loop
+          muted
+          playsInline
+          src={HERO_VIDEOS[currentSlide]}
+          style={{ gridArea: '1/1', width: '100%', objectFit: 'cover', display: 'block' }}
+        />
         {/* Dark gradient overlay */}
-        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1, background: 'linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.6) 100%)' }} />
+        <div style={{ gridArea: '1/1', zIndex: 1, pointerEvents: 'none', background: 'linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.6) 100%)' }} />
+        {/* Content shell — determines grid cell height */}
+        <div style={{ gridArea: '1/1', zIndex: 2, display: 'flex', flexDirection: 'column' }}>
 
         {/* Content track — slides with background */}
         <div
@@ -413,6 +400,7 @@ function App() {
             <MoveDown className="w-5 h-5 absolute -bottom-6 left-1/2 -translate-x-1/2 animate-bounce" style={{ animationDelay: '150ms' }} />
           </div>
         </button>
+        </div>{/* end content shell */}
       </section>
 
       <section id="story" className="py-12 lg:py-20 bg-gradient-to-b from-neutral-950 to-neutral-900/30">
