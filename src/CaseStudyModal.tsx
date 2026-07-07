@@ -1,7 +1,47 @@
 import { ChevronLeft, TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2 } from 'lucide-react';
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 function GalleryVideo({ src, className }: { src: string; className: string }) {
+  const [blobUrl, setBlobUrl] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const fetchedRef = useRef(false);
+
+  useEffect(() => {
+    if (fetchedRef.current) return;
+    fetchedRef.current = true;
+    let objectUrl: string | null = null;
+
+    fetch(src)
+      .then(r => {
+        if (!r.ok) throw new Error('fetch failed');
+        return r.blob();
+      })
+      .then(blob => {
+        objectUrl = URL.createObjectURL(blob);
+        setBlobUrl(objectUrl);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError(true);
+        setLoading(false);
+      });
+
+    return () => {
+      if (objectUrl) URL.revokeObjectURL(objectUrl);
+    };
+  }, [src]);
+
+  if (loading) return (
+    <div className={`${className} flex items-center justify-center bg-neutral-900 text-neutral-500 text-sm`}>
+      Loading video…
+    </div>
+  );
+
+  if (error) return (
+    <video autoPlay muted loop playsInline controls preload="auto" className={className} src={src} />
+  );
+
   return (
     <video
       autoPlay
@@ -9,9 +49,8 @@ function GalleryVideo({ src, className }: { src: string; className: string }) {
       loop
       playsInline
       controls
-      preload="auto"
       className={className}
-      src={src}
+      src={blobUrl!}
     />
   );
 }
