@@ -1,4 +1,5 @@
 import { ChevronLeft, TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2 } from 'lucide-react';
+import { useEffect } from 'react';
 
 function GalleryVideo({ src, className }: { src: string; className: string }) {
   return (
