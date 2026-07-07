@@ -1,56 +1,17 @@
-import { ChevronLeft, TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2, Play, Pause } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { ChevronLeft, TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2 } from 'lucide-react';
+import { useEffect } from 'react';
 
 function GalleryVideo({ src, className }: { src: string; className: string }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
-  const [started, setStarted] = useState(false);
-
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    const onPlay = () => setPlaying(true);
-    const onPause = () => setPlaying(false);
-    v.addEventListener('play', onPlay);
-    v.addEventListener('pause', onPause);
-    return () => {
-      v.removeEventListener('play', onPlay);
-      v.removeEventListener('pause', onPause);
-    };
-  }, []);
-
-  const toggle = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (v.paused) {
-      v.play();
-      setStarted(true);
-    } else {
-      v.pause();
-    }
-  };
-
   return (
-    <div className="relative group/vid cursor-pointer" onClick={toggle}>
-      <video
-        ref={videoRef}
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className={className}
-        src={src}
-      />
-      <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-200 ${playing && started ? 'opacity-0 group-hover/vid:opacity-100' : 'opacity-100'}`}>
-        <div className="w-14 h-14 rounded-full bg-neutral-950/70 backdrop-blur-sm border border-white/20 flex items-center justify-center shadow-xl">
-          {playing ? (
-            <Pause className="w-6 h-6 text-white" />
-          ) : (
-            <Play className="w-6 h-6 text-white ml-0.5" />
-          )}
-        </div>
-      </div>
-    </div>
+    <video
+      controls
+      loop
+      muted
+      playsInline
+      preload="auto"
+      className={className}
+      src={src}
+    />
   );
 }
 
