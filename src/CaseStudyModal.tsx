@@ -1,5 +1,5 @@
 import { ChevronLeft, TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2 } from 'lucide-react';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface Lesson {
   title: string;
@@ -30,6 +30,8 @@ interface CaseStudyModalProps {
 }
 
 export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -40,6 +42,15 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
       document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen || !containerRef.current) return;
+    const videos = containerRef.current.querySelectorAll<HTMLVideoElement>('video');
+    videos.forEach(v => {
+      v.load();
+      v.play().catch(() => {});
+    });
+  }, [isOpen, caseStudy]);
 
   if (!isOpen || !caseStudy) return null;
 
@@ -74,7 +85,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
   const heroVideo = caseStudy.heroSrc ?? caseStudy.videoSrc;
 
   return (
-    <div className="fixed inset-0 z-50 bg-neutral-950 overflow-y-auto">
+    <div ref={containerRef} className="fixed inset-0 z-50 bg-neutral-950 overflow-y-auto">
 
       {/* ── Hero spotlight ── */}
       <div className="relative w-full h-[85vh] overflow-hidden">
@@ -176,6 +187,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
                         loop
                         muted
                         playsInline
+                        preload="auto"
                         className="w-full h-auto min-h-[320px] object-cover"
                         src={image}
                       />
@@ -200,6 +212,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
                         loop
                         muted
                         playsInline
+                        preload="auto"
                         className="w-full h-auto min-h-[260px] object-cover"
                         src={image}
                       />
