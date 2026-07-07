@@ -96,6 +96,8 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
       <div className="relative w-full h-[85vh] overflow-hidden">
         <video
           autoPlay
+          loop
+          muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
           src={heroVideo}
