@@ -1,54 +1,16 @@
 import { ChevronLeft, TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2 } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
 
 function GalleryVideo({ src, className }: { src: string; className: string }) {
-  const [blobUrl, setBlobUrl] = useState<string>('');
-  const [loading, setLoading] = useState(true);
-  const objectUrlRef = useRef<string>('');
-
-  useEffect(() => {
-    setLoading(true);
-    setBlobUrl('');
-    let cancelled = false;
-    fetch(src)
-      .then(r => r.blob())
-      .then(blob => {
-        if (cancelled) return;
-        const url = URL.createObjectURL(blob);
-        objectUrlRef.current = url;
-        setBlobUrl(url);
-        setLoading(false);
-      })
-      .catch(() => {
-        if (!cancelled) setLoading(false);
-      });
-    return () => {
-      cancelled = true;
-      if (objectUrlRef.current) {
-        URL.revokeObjectURL(objectUrlRef.current);
-        objectUrlRef.current = '';
-      }
-    };
-  }, [src]);
-
-  if (loading) {
-    return (
-      <div className={`${className} flex items-center justify-center bg-neutral-900 min-h-[260px]`}>
-        <div className="flex flex-col items-center gap-3 text-neutral-500">
-          <div className="w-8 h-8 border-2 border-neutral-600 border-t-neutral-300 rounded-full animate-spin" />
-          <span className="text-sm">Loading video...</span>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <video
-      controls
+      autoPlay
+      muted
       loop
       playsInline
+      controls
+      preload="auto"
       className={className}
-      src={blobUrl || src}
+      src={src}
     />
   );
 }
