@@ -30,7 +30,7 @@ function App() {
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const HERO_VIDEOS = [
-    '/SPOTLIGHT.mp4',
+    '/SPOTLIGHT2.mp4',
     '/I_WANT_THIS_TO_ANIMATE_IN_AREA_Seedance_20_51931.mp4',
     '/I_need_to_start_with_the_truck_Seedance_20_20111.mp4',
     '/I_WANT_TO_DO_A_COOL_ANIMATION__Seedance_20_39658.mp4',
