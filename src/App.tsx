@@ -196,7 +196,7 @@ function App() {
                 aria-label="Scroll to top"
               >
                 <img
-                  src="/logo-5.png"
+                  src="/logo3.png"
                   alt="REVV Studio"
                   className="h-10 w-auto"
                 />
