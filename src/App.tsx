@@ -196,9 +196,9 @@ function App() {
                 aria-label="Scroll to top"
               >
                 <img
-                  src="https://www.dropbox.com/scl/fi/78mznubb1jz01u54lr95m/logo3.png?rlkey=xrvzvv2m1fhlb0smbfzm2bj0o&st=x5wylipn&raw=1"
+                  src="/logo-5.png"
                   alt="REVV Studio"
-                  className="h-10"
+                  className="h-10 w-auto"
                 />
               </button>
             </div>
