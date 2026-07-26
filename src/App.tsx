@@ -256,33 +256,33 @@ function App() {
           style={{ width: `${HERO_SLIDE_COUNT * 100}%`, transform: `translateX(-${(currentSlide / HERO_SLIDE_COUNT) * 100}%)`, zIndex: 2 }}
         >
           {/* Slide 1 content */}
-          <div className="flex items-center justify-center pt-32 lg:pt-40 pb-24 px-6 lg:px-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <div className="text-center max-w-6xl" key={`s0-${animKey}`}>
-              <p className="text-lg lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-8 opacity-0 animate-[slideInBlur_0.8s_ease-out_1.5s_forwards]">
+          <div className="flex items-center justify-center pt-28 sm:pt-32 lg:pt-40 pb-24 px-5 sm:px-6 lg:px-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <div className="text-center max-w-6xl px-2" key={`s0-${animKey}`}>
+              <p className="text-base sm:text-lg lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-6 sm:mb-8 opacity-0 animate-[slideInBlur_0.8s_ease-out_1.5s_forwards]">
                 Welcome to the Revolution
               </p>
-              <p className="text-4xl lg:text-7xl font-bold text-white leading-tight mb-8 drop-shadow-2xl opacity-0 animate-[slideInBlur_0.9s_ease-out_1.7s_forwards]">
+              <p className="text-3xl sm:text-4xl lg:text-7xl font-bold text-white leading-tight mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInBlur_0.9s_ease-out_1.7s_forwards]">
                 The way work happens is evolving
               </p>
-              <p className="text-xl lg:text-3xl font-light text-neutral-200 leading-tight drop-shadow-xl opacity-0 animate-[slideInBlur_0.8s_ease-out_1.9s_forwards]">
+              <p className="text-lg sm:text-xl lg:text-3xl font-light text-neutral-200 leading-tight drop-shadow-xl opacity-0 animate-[slideInBlur_0.8s_ease-out_1.9s_forwards]">
                 Designing smarter workflows today. Building foundations for tomorrow.
               </p>
             </div>
           </div>
 
           {/* Slide 2 content */}
-          <div className="flex items-center pt-32 lg:pt-40 pb-24 pl-20 lg:pl-28 pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+          <div className="flex items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
             <div className="text-left max-w-2xl" key={`s1-${animKey}`}>
-              <p className="text-sm lg:text-base font-bold text-violet-400 tracking-widest uppercase mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_1.5s_forwards]">
+              <p className="text-xs sm:text-sm lg:text-base font-bold text-violet-400 tracking-widest uppercase mb-3 sm:mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_1.5s_forwards]">
                 NewsRing — Case Study
               </p>
-              <h2 className="text-2xl lg:text-4xl font-bold text-white leading-snug mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards]">
+              <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards]">
                 Redefining Content Discovery Through Conversational AI
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
                 <button
                   onClick={() => setSelectedCaseStudy(caseStudies[1])}
-                  className="inline-flex items-center gap-3 px-7 py-3.5 bg-violet-500 hover:bg-violet-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-base shadow-xl shadow-violet-500/30"
+                  className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 bg-violet-500 hover:bg-violet-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-xl shadow-violet-500/30"
                 >
                   View Case Study
                   <ArrowRight className="w-4 h-4" />
@@ -292,18 +292,18 @@ function App() {
           </div>
 
           {/* Slide 3 content */}
-          <div className="flex items-center pt-32 lg:pt-40 pb-24 pl-20 lg:pl-28 pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+          <div className="flex items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
             <div className="text-left max-w-2xl" key={`s2-${animKey}`}>
-              <p className="text-sm lg:text-base font-bold text-cyan-400 tracking-widest uppercase mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_1.5s_forwards]">
+              <p className="text-xs sm:text-sm lg:text-base font-bold text-cyan-400 tracking-widest uppercase mb-3 sm:mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_1.5s_forwards]">
                 Driven — Case Study
               </p>
-              <h2 className="text-2xl lg:text-4xl font-bold text-white leading-snug mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards]">
+              <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards]">
                 Revolutionizing Fleet Fuel Management for the Mobile Workforce
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
                 <button
                   onClick={() => setSelectedCaseStudy(caseStudies[0])}
-                  className="inline-flex items-center gap-3 px-7 py-3.5 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-base shadow-xl shadow-cyan-500/30"
+                  className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-xl shadow-cyan-500/30"
                 >
                   View Case Study
                   <ArrowRight className="w-4 h-4" />
@@ -313,18 +313,18 @@ function App() {
           </div>
 
           {/* Slide 4 content */}
-          <div className="flex items-center pt-32 lg:pt-40 pb-24 pl-20 lg:pl-28 pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+          <div className="flex items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
             <div className="text-left max-w-2xl" key={`s3-${animKey}`}>
-              <p className="text-sm lg:text-base font-bold text-cyan-400 tracking-widest uppercase mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_1.5s_forwards]">
+              <p className="text-xs sm:text-sm lg:text-base font-bold text-cyan-400 tracking-widest uppercase mb-3 sm:mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_1.5s_forwards]">
                 StrideGG — Case Study
               </p>
-              <h2 className="text-2xl lg:text-4xl font-bold text-white leading-snug mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards]">
+              <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards]">
                 Unifying the Gaming Community Through Centralized Stats and Competitive Play
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
                 <button
                   onClick={() => setSelectedCaseStudy(caseStudies[2])}
-                  className="inline-flex items-center gap-3 px-7 py-3.5 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-base shadow-xl shadow-cyan-500/30"
+                  className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-xl shadow-cyan-500/30"
                 >
                   View Case Study
                   <ArrowRight className="w-4 h-4" />
@@ -334,18 +334,18 @@ function App() {
           </div>
 
           {/* Slide 5 content */}
-          <div className="flex items-center pt-32 lg:pt-40 pb-24 pl-20 lg:pl-28 pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+          <div className="flex items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
             <div className="text-left max-w-2xl" key={`s4-${animKey}`}>
-              <p className="text-sm lg:text-base font-bold text-emerald-400 tracking-widest uppercase mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_1.5s_forwards]">
+              <p className="text-xs sm:text-sm lg:text-base font-bold text-emerald-400 tracking-widest uppercase mb-3 sm:mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_1.5s_forwards]">
                 Proven Live — First Deployed.
               </p>
-              <h2 className="text-2xl lg:text-4xl font-bold text-white leading-snug mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards]">
+              <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards]">
                 First deployed at the Senior PGA, The Concession.
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
                 <button
                   onClick={() => setSelectedCaseStudy(caseStudies[3])}
-                  className="inline-flex items-center gap-3 px-7 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-base shadow-xl shadow-emerald-500/30"
+                  className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-xl shadow-emerald-500/30"
                 >
                   View Case Study
                   <ArrowRight className="w-4 h-4" />
@@ -356,7 +356,7 @@ function App() {
         </div>
 
         {/* Bottom nav: prev arrow + dots + next arrow */}
-        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-3" style={{ zIndex: 3 }}>
+        <div className="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-2 sm:gap-3" style={{ zIndex: 3 }}>
           <button
             onClick={() => goToSlide((currentSlide - 1 + HERO_SLIDE_COUNT) % HERO_SLIDE_COUNT)}
             className="p-2 rounded-full bg-neutral-900/60 border border-neutral-700/50 text-neutral-300 hover:text-white hover:bg-neutral-800/80 hover:border-neutral-600 transition-all duration-300 backdrop-blur-sm"
