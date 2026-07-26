@@ -75,7 +75,7 @@ function App() {
         '4.6★ App rating with 95% adoption'
       ],
       images: [
-        '/main-tile-mock.png',
+        '/main-tile-mock.jpg',
         '/driven.mp4',
       ],
       wideImages: ['/driven3.mp4'],
@@ -99,8 +99,8 @@ function App() {
         '95% Accuracy for location-based updates'
       ],
       images: [
-        '/Landing-Page.png',
-        '/phones.png'
+        '/Landing-Page.jpg',
+        '/phones.jpg'
       ],
       tags: ['Conversational AI', 'Content Discovery', 'UX Design', 'Real-time Data'],
       color: 'violet',
@@ -122,8 +122,8 @@ function App() {
         '50K+ Active gamers in 6 months'
       ],
       images: [
-        '/give_me_a_product_shot_of_this_Nano_Banana_2_29271.png',
-        '/give_me_a_product_shot_of_this_Nano_Banana_2_41828.png'
+        '/give_me_a_product_shot_of_this_Nano_Banana_2_29271.jpg',
+        '/give_me_a_product_shot_of_this_Nano_Banana_2_41828.jpg'
       ],
       wideImages: [
         '/GG-Profile.mp4'
