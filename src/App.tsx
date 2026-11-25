@@ -167,6 +167,57 @@ function App() {
       color: 'emerald',
       videoSrc: '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4',
       heroSrc: '/reel1-2.mp4'
+    },
+    {
+      id: 'fuzebox-ai',
+      title: 'FuzeBox AI: Turning Enterprise AI Ambition into Measurable P&L Impact',
+      category: 'AI Platform & Brand',
+      description: 'Designed and built the digital presence for FuzeBox AI — an AI-first venture whose framework turns fragmented enterprise AI efforts into orchestrated, measurable execution.',
+      challenge: 'FuzeBox AI needed a digital presence that could do justice to the framework behind it. Enterprise buyers were being sold AI tools that create "AI theater" — activity without outcomes. The site had to explain three problems every enterprise feels: the Value Realization Gap between AI capability and P&L impact, the Coordination Tax that absorbs 30-50% of enterprise effort in handoffs and decision latency, and the Tool-First Trap of pilots that never scale.\n\nThe challenge was translating a sophisticated operating framework — FuzeBoxOS, with its Transformation Index, productized Blueprints, and vertical apps like EventPulse, VIP Play, and Loop TV — into a clear, credible story that operators, not just technologists, would trust.',
+      solution: 'We designed and built the FuzeBox.ai website as an orchestration story told through design. The architecture mirrors the framework itself: a Platform section explaining the FuzeBoxOS framework and its productized Blueprints, a "Why FuzeBox" section that names the problem in plain operational terms before offering solutions by outcome, and proof pages anchored in real deployments — $30M in documented EBITDA impact at Lee Enterprises, 11 on-time cloud migrations at Caesars Entertainment, and a 10x improvement in technology investment value at Las Vegas Sands.\n\nThe visual design uses a dark, disciplined enterprise aesthetic: a custom logo and brand mark, structured page architecture across platform, delivery, ecosystem, and research sections, and a leadership presence featuring the executive team. The result is a site that sells the way FuzeBox operates — outcome-first, proof-backed, and built for enterprises tired of AI pilots that never reach the balance sheet.',
+      results: [
+        '$30M Documented EBITDA impact (Lee Enterprises)',
+        '11 Cloud migrations on time and on budget (Caesars)',
+        '10x Technology investment value improvement (Las Vegas Sands)',
+        '$100B+ Cumulative enterprise market value impacted',
+        '5+ Portfolio companies represented across the ecosystem'
+      ],
+      images: [
+        '/Blue-lit_conference_auditorium.png',
+        '/Cobalt-lit_stadium_event_hero.png',
+        '/FuzeBox_Website_Case_Study_Spread.png'
+      ],
+      wideImages: ['/FuzeBox_AI_Device_Trio.png'],
+      tags: ['Enterprise AI', 'Brand & Web Design', 'B2B Marketing', 'Framework Storytelling'],
+      color: 'cyan',
+      videoSrc: '/FB-INTRO-SHORT.mp4',
+      heroSrc: '/FB-INTRO-SHORT.mp4'
+    },
+    {
+      id: 'eventpulse-platform',
+      title: 'EventPulse: An AI Concierge Platform for Live Events at Any Scale',
+      category: 'AI Product Design & Build',
+      description: 'Designed and built EventPulse — a six-module event intelligence platform with a conversational AI concierge, 3D venue mapping, and real-time wayfinding, deployed everywhere from championship golf to citywide festivals.',
+      challenge: 'Live events share one fundamental problem: attendees are somewhere they don\'t know well, trying to find people, places, and moments in real time. Paper maps, static signage, and generic event apps go stale the moment conditions change — and at scale, the problem compounds. A championship golf course spreads spectators across 18 holes and hundreds of acres. A citywide festival like Atlanta\'s 404 Day scatters dozens of events across multiple venues. An industry conference like SEAT 2026 spans a convention center plus three night venues.\n\nThe challenge was to prove a bigger thesis: that a conversational AI concierge could deliver faster, more accurate answers than traditional event apps, maps, and signage — and that attendees would actually prefer it. And to do it with one platform that adapts to any live event category, not a custom build per event.',
+      solution: 'We designed and built EventPulse as six purpose-built modules working together. The AI Concierge answers natural-language questions — "Where is John Daly?" or "Where\'s the nearest restroom?" — with no menus. 3D Venue Mapping goes beyond flat maps with full-depth visualization of terrain, structures, and routes. Dynamic Routing adapts to crowd density, real-time conditions, and individual preferences, while Live Tracking follows players and performers with AI-guided directions. Moments & Highlights surfaces can\'t-miss action automatically, and Smart Notifications deliver contextual alerts without overload.\n\nThe platform proved itself across radically different event types: a 3D Las Vegas Strip experience built on Mapbox GL, interactive F1 Grand Prix circuit maps, and a full venue visualization for Super Bowl LX. In production it powered the Senior PGA Championship at The Concession, served as the official attendee layer for SEAT 2026 — 643 unique visitors, nearly 15,000 pageviews, and 87,860 personalization surfaces served — and unified Atlanta\'s 404 Day into a single intelligent citywide experience. For organizers, it doubles as the operational backbone: real-time communication, content management, and event-wide visibility, opening new engagement and revenue streams.',
+      results: [
+        '2016 Active users during 4-day championship event',
+        '89% Query satisfaction rate',
+        '4.2s Average AI response time',
+        '87,860 Personalization surfaces served at SEAT 2026',
+        '6 Event types from golf to citywide festivals'
+      ],
+      images: [
+        '/ep-monitor.png',
+        '/ep-vegas.png',
+        '/ep-ops-console.mp4',
+        '/ep-logo-white.png'
+      ],
+      wideImages: ['/map-spin.mp4'],
+      tags: ['AI Concierge', '3D Mapping', 'Live Events', 'Real-time Wayfinding'],
+      color: 'cyan',
+      videoSrc: '/map-spin.mp4',
+      heroSrc: '/map-spin.mp4'
     }
   ];
 
@@ -652,7 +703,8 @@ function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 {caseStudies.map((study, index) => {
-                  const Icon = index === 0 ? Zap : index === 1 ? Bot : index === 2 ? BarChart3 : Sparkles;
+                  const icons = [Zap, Bot, BarChart3, Sparkles, Brain, Activity];
+                  const Icon = icons[index] ?? Sparkles;
                   const isVideo = study.videoSrc.endsWith('.mov') || study.videoSrc.endsWith('.mp4');
 
                   return (

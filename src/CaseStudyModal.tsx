@@ -231,7 +231,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
             {caseStudy.results.map((result, index) => {
               const icons = [TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2];
               const Icon = icons[index % icons.length];
-              const metricMatch = result.match(/^([0-9][0-9.,]*[%xK+★s]*)/);
+              const metricMatch = result.match(/^(\$?\d[\d.,]*[BMK]?[%x+★s]*)/);
               const metric = metricMatch ? metricMatch[1] : '';
               const description = result.substring(metric.length).trim();
 
