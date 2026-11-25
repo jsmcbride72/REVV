@@ -650,9 +650,7 @@ function App() {
             </p>
           </div>
 
-          <div className="relative">
-            <div className="overflow-x-auto pb-8 scrollbar-hide">
-              <div className="flex gap-6 min-w-max px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 {caseStudies.map((study, index) => {
                   const Icon = index === 0 ? Zap : index === 1 ? Bot : index === 2 ? BarChart3 : Sparkles;
                   const isVideo = study.videoSrc.endsWith('.mov') || study.videoSrc.endsWith('.mp4');
@@ -661,7 +659,7 @@ function App() {
                     <div
                       key={study.id}
                       onClick={() => setSelectedCaseStudy(study)}
-                      className={`group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-${study.color}-${study.color === 'cyan' ? '500' : '400'}/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-${study.color}-${study.color === 'cyan' ? '500' : '400'}/20 flex flex-col cursor-pointer`}
+                      className={`group relative min-w-0 w-full h-full bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-${study.color}-${study.color === 'cyan' ? '500' : '400'}/50 transition-all duration-500 hover:shadow-2xl hover:shadow-${study.color}-${study.color === 'cyan' ? '500' : '400'}/20 flex flex-col cursor-pointer`}
                     >
                       <div className="relative h-48 overflow-hidden">
                         {isVideo ? (
@@ -703,7 +701,7 @@ function App() {
                           ))}
                         </div>
                         <div
-                          className={`w-full flex items-center justify-center gap-2 px-4 py-3 bg-${study.color}-${study.color === 'cyan' ? '500' : '400'}/10 hover:bg-${study.color}-${study.color === 'cyan' ? '500' : '400'}/20 border border-${study.color}-${study.color === 'cyan' ? '500' : '400'}/30 rounded-lg text-${study.color}-400 font-semibold text-sm transition-all duration-300 hover:scale-105 mt-auto`}
+                          className={`w-full flex items-center justify-center gap-2 px-4 py-3 bg-${study.color}-${study.color === 'cyan' ? '500' : '400'}/10 hover:bg-${study.color}-${study.color === 'cyan' ? '500' : '400'}/20 border border-${study.color}-${study.color === 'cyan' ? '500' : '400'}/30 rounded-lg text-${study.color}-400 font-semibold text-sm transition-all duration-300 mt-auto`}
                         >
                           View Full Case Study
                           <ArrowRight className="w-4 h-4" />
@@ -712,15 +710,6 @@ function App() {
                     </div>
                   );
                 })}
-              </div>
-            </div>
-
-            <div className="absolute left-0 top-0 bottom-8 w-20 bg-gradient-to-r from-neutral-950 to-transparent pointer-events-none"></div>
-            <div className="absolute right-0 top-0 bottom-8 w-20 bg-gradient-to-l from-neutral-950 to-transparent pointer-events-none"></div>
-          </div>
-
-          <div className="text-center mt-8">
-            <p className="text-neutral-500 text-sm">Scroll to explore more case studies</p>
           </div>
         </div>
       </section>
