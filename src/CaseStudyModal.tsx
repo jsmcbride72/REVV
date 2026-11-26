@@ -36,6 +36,7 @@ interface CaseStudy {
   color: 'cyan' | 'violet' | 'emerald';
   videoSrc: string;
   heroSrc?: string;
+  posterSrc?: string;
 }
 
 interface CaseStudyModalProps {
@@ -99,6 +100,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
           loop
           muted
           playsInline
+          poster={caseStudy.posterSrc}
           className="absolute inset-0 w-full h-full object-cover"
           src={heroVideo}
         />

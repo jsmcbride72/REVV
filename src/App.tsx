@@ -20,6 +20,7 @@ interface CaseStudy {
   color: 'cyan' | 'violet' | 'emerald';
   videoSrc: string;
   heroSrc?: string;
+  posterSrc?: string;
 }
 
 function App() {
@@ -225,8 +226,9 @@ function App() {
       wideImageAlts: ['Event Pulse platform overview'],
       tags: ['AI Concierge', '3D Mapping', 'Live Events', 'Real-time Wayfinding'],
       color: 'cyan',
-      videoSrc: '/map-spin.mp4',
-      heroSrc: '/map-spin.mp4'
+      videoSrc: '/ep-explainer.mp4',
+      heroSrc: '/ep-explainer.mp4',
+      posterSrc: '/ep-explainer-poster.jpg'
     }
   ];
 
@@ -729,6 +731,7 @@ function App() {
                             loop
                             muted
                             playsInline
+                            poster={study.posterSrc}
                             className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                             src={getAssetUrl(study.videoSrc)}
                           />
