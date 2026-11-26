@@ -48,6 +48,17 @@ export function renderMarkdown(markdown: string): string {
       continue;
     }
 
+    const image = /^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)$/.exec(trimmed);
+    if (image) {
+      flushParagraph();
+      flushList();
+      const alt = escapeHtml(image[1]);
+      const src = escapeHtml(image[2]);
+      const caption = image[3] ? `<figcaption>${inline(image[3])}</figcaption>` : '';
+      html.push(`<figure class="blog-figure"><img src="${src}" alt="${alt}" loading="lazy" />${caption}</figure>`);
+      continue;
+    }
+
     if (trimmed.startsWith('> ')) {
       flushParagraph();
       flushList();
