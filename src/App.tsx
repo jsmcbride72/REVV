@@ -2,6 +2,7 @@ import { Users, Target, TrendingUp, Heart, ShieldCheck, Rocket, Quote, ChevronDo
 import { useState, useEffect, useRef } from 'react';
 import ContactForm from './ContactForm';
 import CaseStudyModal from './CaseStudyModal';
+import SiteNav from './SiteNav';
 
 interface CaseStudy {
   id: string;
@@ -49,6 +50,17 @@ function App() {
       setAnimKey(k => k + 1);
     }, 10000);
   };
+
+  useEffect(() => {
+    const id = window.location.hash.replace('#', '');
+    if (!id) return;
+    const timer = window.setTimeout(() => {
+      const element = document.getElementById(id);
+      if (!element) return;
+      window.scrollTo({ top: element.getBoundingClientRect().top + window.pageYOffset - 64 });
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     timerRef.current = setInterval(() => {
@@ -248,53 +260,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
-      <nav className="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-xl border-b border-neutral-800/50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center">
-              <button
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="cursor-pointer hover:opacity-80 transition-opacity"
-                aria-label="Scroll to top"
-              >
-                <img
-                  src="/logo3.png"
-                  alt="REVV Studio"
-                  className="h-10 w-auto"
-                />
-              </button>
-            </div>
-
-            <div className="hidden md:flex items-center space-x-8">
-              <button onClick={() => scrollToSection('story')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
-                Story
-              </button>
-              <button onClick={() => scrollToSection('approach')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
-                Approach
-              </button>
-              <button onClick={() => scrollToSection('case-studies')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
-                Case Studies
-              </button>
-              <button onClick={() => scrollToSection('services')} className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
-                Services
-              </button>
-              <button
-                onClick={() => setIsContactFormOpen(true)}
-                className="px-6 py-2 bg-cyan-500 hover:bg-cyan-600 text-neutral-950 font-medium rounded-lg transition-all duration-300 hover:scale-105"
-              >
-                Contact
-              </button>
-            </div>
-
-            <button
-              onClick={() => setIsContactFormOpen(true)}
-              className="md:hidden px-6 py-2 bg-cyan-500 hover:bg-cyan-600 text-neutral-950 font-medium rounded-lg transition-all duration-300 hover:scale-105"
-            >
-              Contact
-            </button>
-          </div>
-        </div>
-      </nav>
+      <SiteNav onContact={() => setIsContactFormOpen(true)} />
 
       <section className="w-full max-w-full overflow-hidden" style={{ display: 'grid', minHeight: '100vh', position: 'relative' }}>
         {/* Video — same grid cell as content, stretches to match content height */}

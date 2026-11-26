@@ -23,6 +23,94 @@
   }
 }
 
+.blog-body {
+  color: #d4d4d4;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.blog-body > * + * {
+  margin-top: 1.25rem;
+}
+
+.blog-body h2,
+.blog-body h3 {
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 2.25rem;
+}
+
+.blog-body h2 {
+  font-size: clamp(1.375rem, 2.5vw, 1.75rem);
+}
+
+.blog-body h3 {
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+}
+
+.blog-body a {
+  color: #22d3ee;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.blog-body ul {
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.blog-body li + li {
+  margin-top: 0.5rem;
+}
+
+.blog-body strong {
+  color: #fff;
+}
+
+.blog-body .blog-figure {
+  margin-top: 2.25rem;
+  margin-bottom: 2.25rem;
+}
+
+.blog-body .blog-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.blog-body .blog-figure figcaption {
+  margin-top: 0.75rem;
+  color: #a3a3a3;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .blog-body .blog-figure {
+    width: min(56rem, calc(100vw - 3rem));
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.blog-body blockquote {
+  margin: 2rem 0;
+  padding: 0.15rem 0 0.15rem 1.25rem;
+  border-left: 2px solid #22d3ee;
+}
+
+.blog-body blockquote p {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-emerald-400;
