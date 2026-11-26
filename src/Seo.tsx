@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { DEFAULT_SHARE_IMAGE } from './lib/site.ts';
 
 interface SeoProps {
   title: string;
@@ -23,7 +24,7 @@ export default function Seo({ title, description, path, image, type = 'website' 
     const url = `${window.location.origin}${path}`;
     const imageUrl = image
       ? (image.startsWith('http') ? image : `${window.location.origin}${image}`)
-      : `${window.location.origin}/logo-5.png`;
+      : `${window.location.origin}${DEFAULT_SHARE_IMAGE}`;
 
     document.title = title;
     setMeta('description', description);

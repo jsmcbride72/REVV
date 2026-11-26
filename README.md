@@ -4,6 +4,8 @@
 
 Posts live in `src/content/blog/` as Markdown files. The site loads every `.md` file in that folder at build time. Adding a post means adding one file, plus an optional cover image in `public/blog/`. No other code changes are required.
 
+The production build also writes a static copy of the app shell to `/blog` and `/blog/<slug>`. Link unfurlers that do not run JavaScript read that file's title, excerpt, canonical URL, and cover image. The next build picks up a new Markdown file automatically.
+
 ```md
 ---
 title: Post title

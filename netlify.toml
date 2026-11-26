@@ -2,6 +2,10 @@
   command = "npm run build"
   publish = "dist"
 
+# SPA fallback. A real file in the publish directory wins over this rewrite
+# (Netlify shadowing). The production build writes dist/blog/index.html and
+# dist/blog/<slug>/index.html with crawler-readable Open Graph tags.
+# Do not set force = true, or those shells would never be served.
 [[redirects]]
   from = "/*"
   to = "/index.html"

@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import fs from 'fs'
 import path from 'path'
 import type { IncomingMessage, ServerResponse } from 'http'
+import { blogOpenGraphPlugin } from './scripts/blog-open-graph.ts'
 
 function videoRangeMiddleware() {
   return {
@@ -55,5 +56,5 @@ function videoRangeMiddleware() {
 }
 
 export default defineConfig({
-  plugins: [react(), videoRangeMiddleware()],
+  plugins: [react(), videoRangeMiddleware(), blogOpenGraphPlugin()],
 })
