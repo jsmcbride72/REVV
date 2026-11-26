@@ -68,6 +68,15 @@
   color: #fff;
 }
 
+.blog-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  color: #ecfeff;
+  background: rgba(34, 211, 238, 0.08);
+  border-radius: 0.3rem;
+  padding: 0.08em 0.35em;
+}
+
 .blog-body .blog-figure {
   margin-top: 2.25rem;
   margin-bottom: 2.25rem;
