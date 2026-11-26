@@ -28,12 +28,15 @@ interface CaseStudy {
   solution: string;
   results: string[];
   images: string[];
+  imageAlts?: string[];
   wideImages?: string[];
+  wideImageAlts?: string[];
   lessons?: Lesson[];
   tags: string[];
   color: 'cyan' | 'violet' | 'emerald';
   videoSrc: string;
   heroSrc?: string;
+  posterSrc?: string;
 }
 
 interface CaseStudyModalProps {
@@ -97,6 +100,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
           loop
           muted
           playsInline
+          poster={caseStudy.posterSrc}
           className="absolute inset-0 w-full h-full object-cover"
           src={heroVideo}
         />
@@ -115,21 +119,21 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
         </button>
 
         {/* Title block pinned to bottom of hero */}
-        <div className="absolute bottom-0 left-0 right-0 px-8 lg:px-16 pb-12">
-          <span className={`inline-block px-3 py-1 text-xs font-bold tracking-widest uppercase border rounded-full mb-5 ${colors.badge}`}>
+        <div className="absolute bottom-0 left-0 right-0 px-5 sm:px-8 lg:px-16 pb-12">
+          <span className={`inline-block max-w-full px-3 py-1 text-xs font-bold tracking-widest uppercase border rounded-full mb-5 break-words ${colors.badge}`}>
             {caseStudy.category}
           </span>
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight max-w-4xl drop-shadow-2xl">
+          <h1 className="text-[clamp(1.75rem,6vw,3.75rem)] font-black text-white leading-tight max-w-4xl drop-shadow-2xl break-words">
             {caseStudy.title}
           </h1>
         </div>
       </div>
 
       {/* ── Body content ── */}
-      <div className="max-w-5xl mx-auto px-8 lg:px-16 py-16 space-y-12">
+      <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-16 py-12 sm:py-16 space-y-12">
 
         {/* Description */}
-        <p className="text-xl lg:text-2xl text-neutral-300 leading-relaxed font-light max-w-3xl">
+        <p className="text-[clamp(1.125rem,2.4vw,1.5rem)] text-neutral-300 leading-relaxed font-light max-w-3xl break-words">
           {caseStudy.description}
         </p>
 
@@ -192,7 +196,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
                     ) : (
                       <img
                         src={image}
-                        alt={`${caseStudy.title} — wide ${index + 1}`}
+                        alt={caseStudy.wideImageAlts?.[index] || `${caseStudy.title} — wide ${index + 1}`}
                         className="w-full h-auto object-cover"
                         loading="lazy"
                       />
@@ -203,7 +207,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
               {caseStudy.images.map((image, index) => {
                 const isVideo = image.endsWith('.mov') || image.endsWith('.mp4');
                 return (
-                  <div key={index} className={`rounded-2xl overflow-hidden border ${colors.border} bg-neutral-900`}>
+                  <div key={index} className={`h-full rounded-2xl overflow-hidden border ${colors.border} bg-neutral-900`}>
                     {isVideo ? (
                       <GalleryVideo
                         src={image}
@@ -212,8 +216,12 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
                     ) : (
                       <img
                         src={image}
-                        alt={`${caseStudy.title} — ${index + 1}`}
-                        className="w-full h-[320px] object-cover object-center"
+                        alt={caseStudy.imageAlts?.[index] || `${caseStudy.title} — ${index + 1}`}
+                        className={image.endsWith('ep-superbowl-map.jpg')
+                          ? 'block h-full w-full object-cover'
+                          : image.endsWith('.jpg') || image.endsWith('.jpeg')
+                            ? 'block w-full h-auto object-contain'
+                            : 'w-full h-[320px] object-cover object-center'}
                         loading="lazy"
                       />
                     )}
@@ -231,7 +239,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
             {caseStudy.results.map((result, index) => {
               const icons = [TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2];
               const Icon = icons[index % icons.length];
-              const metricMatch = result.match(/^([0-9][0-9.,]*[%xK+★s]*)/);
+              const metricMatch = result.match(/^(\$?\d[\d.,]*[BMK]?[%x+★s]*)/);
               const metric = metricMatch ? metricMatch[1] : '';
               const description = result.substring(metric.length).trim();
 

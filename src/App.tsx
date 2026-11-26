@@ -12,12 +12,15 @@ interface CaseStudy {
   solution: string;
   results: string[];
   images: string[];
+  imageAlts?: string[];
   wideImages?: string[];
+  wideImageAlts?: string[];
   lessons?: { title: string; body: string }[];
   tags: string[];
   color: 'cyan' | 'violet' | 'emerald';
   videoSrc: string;
   heroSrc?: string;
+  posterSrc?: string;
 }
 
 function App() {
@@ -167,6 +170,65 @@ function App() {
       color: 'emerald',
       videoSrc: '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4',
       heroSrc: '/reel1-2.mp4'
+    },
+    {
+      id: 'fuzebox-ai',
+      title: 'FuzeBox AI: Turning Enterprise AI Ambition into Measurable P&L Impact',
+      category: 'AI Platform & Brand',
+      description: 'Designed and built the digital presence for FuzeBox AI — an AI-first venture whose framework turns fragmented enterprise AI efforts into orchestrated, measurable execution.',
+      challenge: 'FuzeBox AI needed a digital presence that could do justice to the framework behind it. Enterprise buyers were being sold AI tools that create "AI theater" — activity without outcomes. The site had to explain three problems every enterprise feels: the Value Realization Gap between AI capability and P&L impact, the Coordination Tax that absorbs 30-50% of enterprise effort in handoffs and decision latency, and the Tool-First Trap of pilots that never scale.\n\nThe challenge was translating a sophisticated operating framework — FuzeBoxOS, with its Transformation Index, productized Blueprints, and vertical apps like EventPulse, VIP Play, and Loop TV — into a clear, credible story that operators, not just technologists, would trust.',
+      solution: 'We designed and built the FuzeBox.ai website as an orchestration story told through design. The architecture mirrors the framework itself: a Platform section explaining the FuzeBoxOS framework and its productized Blueprints, a "Why FuzeBox" section that names the problem in plain operational terms before offering solutions by outcome, and proof pages anchored in real deployments — $30M in documented EBITDA impact at Lee Enterprises, 11 on-time cloud migrations at Caesars Entertainment, and a 10x improvement in technology investment value at Las Vegas Sands.\n\nThe visual design uses a dark, disciplined enterprise aesthetic: a custom logo and brand mark, structured page architecture across platform, delivery, ecosystem, and research sections, and a leadership presence featuring the executive team. The result is a site that sells the way FuzeBox operates — outcome-first, proof-backed, and built for enterprises tired of AI pilots that never reach the balance sheet.',
+      results: [
+        '$30M Documented EBITDA impact (Lee Enterprises)',
+        '11 Cloud migrations on time and on budget (Caesars)',
+        '10x Technology investment value improvement (Las Vegas Sands)',
+        '$100B+ Cumulative enterprise market value impacted',
+        '5+ Portfolio companies represented across the ecosystem'
+      ],
+      images: [
+        '/Blue-lit_conference_auditorium.png',
+        '/Cobalt-lit_stadium_event_hero.png',
+        '/FuzeBox_Website_Case_Study_Spread.png'
+      ],
+      wideImages: ['/FuzeBox_AI_Device_Trio.png'],
+      tags: ['Enterprise AI', 'Brand & Web Design', 'B2B Marketing', 'Framework Storytelling'],
+      color: 'cyan',
+      videoSrc: '/FB-INTRO-SHORT.mp4',
+      heroSrc: '/FB-INTRO-SHORT.mp4'
+    },
+    {
+      id: 'eventpulse-platform',
+      title: 'EventPulse: An AI Concierge Platform for Live Events at Any Scale',
+      category: 'AI Product Design & Build',
+      description: 'Designed and built EventPulse — a six-module event intelligence platform with a conversational AI concierge, 3D venue mapping, and real-time wayfinding, deployed everywhere from championship golf to citywide festivals.',
+      challenge: 'Live events share one fundamental problem: attendees are somewhere they don\'t know well, trying to find people, places, and moments in real time. Paper maps, static signage, and generic event apps go stale the moment conditions change — and at scale, the problem compounds. A championship golf course spreads spectators across 18 holes and hundreds of acres. A citywide festival like Atlanta\'s 404 Day scatters dozens of events across multiple venues. An industry conference like SEAT 2026 spans a convention center plus three night venues.\n\nThe challenge was to prove a bigger thesis: that a conversational AI concierge could deliver faster, more accurate answers than traditional event apps, maps, and signage — and that attendees would actually prefer it. And to do it with one platform that adapts to any live event category, not a custom build per event.',
+      solution: 'We designed and built EventPulse as six purpose-built modules working together. The AI Concierge answers natural-language questions — "Where is John Daly?" or "Where\'s the nearest restroom?" — with no menus. 3D Venue Mapping goes beyond flat maps with full-depth visualization of terrain, structures, and routes. Dynamic Routing adapts to crowd density, real-time conditions, and individual preferences, while Live Tracking follows players and performers with AI-guided directions. Moments & Highlights surfaces can\'t-miss action automatically, and Smart Notifications deliver contextual alerts without overload.\n\nThe platform proved itself across radically different event types: a 3D Las Vegas Strip experience built on Mapbox GL, interactive F1 Grand Prix circuit maps, and a full venue visualization for Super Bowl LX. In production it powered the Senior PGA Championship at The Concession, served as the official attendee layer for SEAT 2026 — 643 unique visitors, nearly 15,000 pageviews, and 87,860 personalization surfaces served — and unified Atlanta\'s 404 Day into a single intelligent citywide experience. For organizers, it doubles as the operational backbone: real-time communication, content management, and event-wide visibility, opening new engagement and revenue streams.',
+      results: [
+        '2016 Active users during 4-day championship event',
+        '89% Query satisfaction rate',
+        '4.2s Average AI response time',
+        '87,860 Personalization surfaces served at SEAT 2026',
+        '6 Event types from golf to citywide festivals'
+      ],
+      images: [
+        '/ep-seat-phones.jpg',
+        '/ep-vegas.png',
+        '/ep-404-phones.jpg',
+        '/ep-superbowl-map.jpg'
+      ],
+      imageAlts: [
+        'SEAT Conference attendee app screens',
+        '',
+        '404 Day Atlanta festival app screens',
+        "Super Bowl LX 3D venue map at Levi's Stadium"
+      ],
+      wideImages: ['/ep-hero-high-impact.jpg'],
+      wideImageAlts: ['Event Pulse platform overview'],
+      tags: ['AI Concierge', '3D Mapping', 'Live Events', 'Real-time Wayfinding'],
+      color: 'cyan',
+      videoSrc: '/ep-explainer.mp4',
+      heroSrc: '/ep-explainer.mp4',
+      posterSrc: '/ep-explainer-poster.jpg'
     }
   ];
 
@@ -234,7 +296,7 @@ function App() {
         </div>
       </nav>
 
-      <section style={{ display: 'grid', minHeight: '100vh', position: 'relative' }}>
+      <section className="w-full max-w-full overflow-hidden" style={{ display: 'grid', minHeight: '100vh', position: 'relative' }}>
         {/* Video — same grid cell as content, stretches to match content height */}
         <video
           key={currentSlide}
@@ -243,12 +305,12 @@ function App() {
           muted
           playsInline
           src={HERO_VIDEOS[currentSlide]}
-          style={{ gridArea: '1/1', width: '100%', objectFit: 'cover', display: 'block' }}
+          style={{ gridArea: '1/1', width: '100%', minWidth: 0, maxWidth: '100%', objectFit: 'cover', display: 'block' }}
         />
         {/* Dark gradient overlay — only under the text for readability */}
         <div style={{ gridArea: '1/1', zIndex: 1, pointerEvents: 'none', background: 'linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.6) 100%)' }} />
         {/* Content shell — determines grid cell height */}
-        <div style={{ gridArea: '1/1', zIndex: 2, display: 'flex', flexDirection: 'column' }}>
+        <div className="min-w-0 w-full max-w-full overflow-hidden" style={{ gridArea: '1/1', zIndex: 2, display: 'flex', flexDirection: 'column' }}>
 
         {/* Content track — slides with background */}
         <div
@@ -256,27 +318,27 @@ function App() {
           style={{ width: `${HERO_SLIDE_COUNT * 100}%`, transform: `translateX(-${(currentSlide / HERO_SLIDE_COUNT) * 100}%)`, zIndex: 2 }}
         >
           {/* Slide 1 content */}
-          <div className="flex items-center justify-center pt-28 sm:pt-32 lg:pt-40 pb-24 px-5 sm:px-6 lg:px-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <div className="text-center max-w-6xl px-2" key={`s0-${animKey}`}>
-              <p className="text-base sm:text-lg lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-6 sm:mb-8 opacity-0 animate-[slideInBlur_0.8s_ease-out_1.5s_forwards]">
+          <div className="flex min-w-0 items-center justify-center pt-28 sm:pt-32 lg:pt-40 pb-24 px-5 sm:px-6 lg:px-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <div className="text-center w-full min-w-0 px-2" key={`s0-${animKey}`}>
+              <p className="text-base sm:text-lg lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-6 sm:mb-8 opacity-0 animate-[slideInBlur_0.8s_ease-out_1.5s_forwards] break-words">
                 Welcome to the Revolution
               </p>
-              <p className="text-3xl sm:text-4xl lg:text-7xl font-bold text-white leading-tight mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInBlur_0.9s_ease-out_1.7s_forwards]">
+              <p className="text-[clamp(1.75rem,6vw,4.5rem)] font-bold text-white leading-tight mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInBlur_0.9s_ease-out_1.7s_forwards] max-w-full text-balance break-words">
                 The way work happens is evolving
               </p>
-              <p className="text-lg sm:text-xl lg:text-3xl font-light text-neutral-200 leading-tight drop-shadow-xl opacity-0 animate-[slideInBlur_0.8s_ease-out_1.9s_forwards]">
+              <p className="text-[clamp(1.125rem,2.5vw,1.875rem)] font-light text-neutral-200 leading-tight drop-shadow-xl opacity-0 animate-[slideInBlur_0.8s_ease-out_1.9s_forwards] max-w-full text-balance break-words">
                 Designing smarter workflows today. Building foundations for tomorrow.
               </p>
             </div>
           </div>
 
           {/* Slide 2 content */}
-          <div className="flex items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <div className="text-left max-w-2xl" key={`s1-${animKey}`}>
+          <div className="flex min-w-0 items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <div className="text-left max-w-2xl w-full min-w-0" key={`s1-${animKey}`}>
               <p className="text-xs sm:text-sm lg:text-base font-bold text-violet-400 tracking-widest uppercase mb-3 sm:mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_1.5s_forwards]">
                 NewsRing — Case Study
               </p>
-              <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards]">
+              <h2 className="text-[clamp(1.25rem,2.2vw+0.7rem,2.25rem)] font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards] max-w-full break-words">
                 Redefining Content Discovery Through Conversational AI
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
@@ -292,12 +354,12 @@ function App() {
           </div>
 
           {/* Slide 3 content */}
-          <div className="flex items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <div className="text-left max-w-2xl" key={`s2-${animKey}`}>
+          <div className="flex min-w-0 items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <div className="text-left max-w-2xl w-full min-w-0" key={`s2-${animKey}`}>
               <p className="text-xs sm:text-sm lg:text-base font-bold text-cyan-400 tracking-widest uppercase mb-3 sm:mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_1.5s_forwards]">
                 Driven — Case Study
               </p>
-              <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards]">
+              <h2 className="text-[clamp(1.25rem,2.2vw+0.7rem,2.25rem)] font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards] max-w-full break-words">
                 Revolutionizing Fleet Fuel Management for the Mobile Workforce
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
@@ -313,12 +375,12 @@ function App() {
           </div>
 
           {/* Slide 4 content */}
-          <div className="flex items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <div className="text-left max-w-2xl" key={`s3-${animKey}`}>
+          <div className="flex min-w-0 items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <div className="text-left max-w-2xl w-full min-w-0" key={`s3-${animKey}`}>
               <p className="text-xs sm:text-sm lg:text-base font-bold text-cyan-400 tracking-widest uppercase mb-3 sm:mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_1.5s_forwards]">
                 StrideGG — Case Study
               </p>
-              <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards]">
+              <h2 className="text-[clamp(1.25rem,2.2vw+0.7rem,2.25rem)] font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards] max-w-full break-words">
                 Unifying the Gaming Community Through Centralized Stats and Competitive Play
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
@@ -334,12 +396,12 @@ function App() {
           </div>
 
           {/* Slide 5 content */}
-          <div className="flex items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <div className="text-left max-w-2xl" key={`s4-${animKey}`}>
+          <div className="flex min-w-0 items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <div className="text-left max-w-2xl w-full min-w-0" key={`s4-${animKey}`}>
               <p className="text-xs sm:text-sm lg:text-base font-bold text-emerald-400 tracking-widest uppercase mb-3 sm:mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_1.5s_forwards]">
                 Proven Live — First Deployed.
               </p>
-              <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards]">
+              <h2 className="text-[clamp(1.25rem,2.2vw+0.7rem,2.25rem)] font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards] max-w-full break-words">
                 First deployed at the Senior PGA, The Concession.
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
@@ -428,14 +490,14 @@ function App() {
                 <p className="text-base lg:text-xl text-neutral-400 leading-relaxed mb-6">
                   We've seen firsthand how AI hype can distract from fundamental operational issues, and how the best technology investments are the ones that amplify human capability rather than replace it. Our approach combines strategic consulting with hands-on implementation, ensuring that every change we introduce is grounded in real workflow improvement — not theoretical frameworks.
                 </p>
-                <div className="grid grid-cols-3 gap-6 pt-8 border-t border-neutral-800">
+                <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-8 border-t border-neutral-800">
                   <div className="text-center">
                     <div className="flex justify-center mb-3">
                       <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center">
                         <Gauge className="w-5 h-5 text-cyan-400" />
                       </div>
                     </div>
-                    <div className="text-3xl lg:text-4xl font-bold text-gradient mb-2">40%</div>
+                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gradient mb-2">40%</div>
                     <p className="text-sm text-neutral-400">Average reduction in process cycle time</p>
                   </div>
                   <div className="text-center">
@@ -444,7 +506,7 @@ function App() {
                         <TrendingUp className="w-5 h-5 text-cyan-400" />
                       </div>
                     </div>
-                    <div className="text-3xl lg:text-4xl font-bold text-gradient mb-2">65%</div>
+                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gradient mb-2">65%</div>
                     <p className="text-sm text-neutral-400">Fewer handoff errors and rework loops</p>
                   </div>
                   <div className="text-center">
@@ -453,7 +515,7 @@ function App() {
                         <BarChart3 className="w-5 h-5 text-cyan-400" />
                       </div>
                     </div>
-                    <div className="text-3xl lg:text-4xl font-bold text-gradient mb-2">3-6mo</div>
+                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gradient mb-2">3-6mo</div>
                     <p className="text-sm text-neutral-400">Typical timeline to measurable outcomes</p>
                   </div>
                 </div>
@@ -650,18 +712,17 @@ function App() {
             </p>
           </div>
 
-          <div className="relative">
-            <div className="overflow-x-auto pb-8 scrollbar-hide">
-              <div className="flex gap-6 min-w-max px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 {caseStudies.map((study, index) => {
-                  const Icon = index === 0 ? Zap : index === 1 ? Bot : index === 2 ? BarChart3 : Sparkles;
+                  const icons = [Zap, Bot, BarChart3, Sparkles, Brain, Activity];
+                  const Icon = icons[index] ?? Sparkles;
                   const isVideo = study.videoSrc.endsWith('.mov') || study.videoSrc.endsWith('.mp4');
 
                   return (
                     <div
                       key={study.id}
                       onClick={() => setSelectedCaseStudy(study)}
-                      className={`group relative w-96 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-${study.color}-${study.color === 'cyan' ? '500' : '400'}/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-${study.color}-${study.color === 'cyan' ? '500' : '400'}/20 flex flex-col cursor-pointer`}
+                      className={`group relative min-w-0 w-full h-full bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-${study.color}-${study.color === 'cyan' ? '500' : '400'}/50 transition-all duration-500 hover:shadow-2xl hover:shadow-${study.color}-${study.color === 'cyan' ? '500' : '400'}/20 flex flex-col cursor-pointer`}
                     >
                       <div className="relative h-48 overflow-hidden">
                         {isVideo ? (
@@ -670,6 +731,7 @@ function App() {
                             loop
                             muted
                             playsInline
+                            poster={study.posterSrc}
                             className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                             src={getAssetUrl(study.videoSrc)}
                           />
@@ -687,7 +749,7 @@ function App() {
                       <div className="p-6 flex flex-col flex-1">
                         <div className="flex items-center gap-2 mb-3">
                           <Icon className={`w-5 h-5 text-${study.color}-400`} />
-                          <h3 className={`text-xl font-bold text-${study.color}-100 uppercase`}>{study.title}</h3>
+                          <h3 className={`min-w-0 text-lg sm:text-xl font-bold text-${study.color}-100 uppercase break-words`}>{study.title}</h3>
                         </div>
                         <p className="text-neutral-400 text-base leading-relaxed mb-4">
                           {study.description}
@@ -703,7 +765,7 @@ function App() {
                           ))}
                         </div>
                         <div
-                          className={`w-full flex items-center justify-center gap-2 px-4 py-3 bg-${study.color}-${study.color === 'cyan' ? '500' : '400'}/10 hover:bg-${study.color}-${study.color === 'cyan' ? '500' : '400'}/20 border border-${study.color}-${study.color === 'cyan' ? '500' : '400'}/30 rounded-lg text-${study.color}-400 font-semibold text-sm transition-all duration-300 hover:scale-105 mt-auto`}
+                          className={`w-full flex items-center justify-center gap-2 px-4 py-3 bg-${study.color}-${study.color === 'cyan' ? '500' : '400'}/10 hover:bg-${study.color}-${study.color === 'cyan' ? '500' : '400'}/20 border border-${study.color}-${study.color === 'cyan' ? '500' : '400'}/30 rounded-lg text-${study.color}-400 font-semibold text-sm transition-all duration-300 mt-auto`}
                         >
                           View Full Case Study
                           <ArrowRight className="w-4 h-4" />
@@ -712,15 +774,6 @@ function App() {
                     </div>
                   );
                 })}
-              </div>
-            </div>
-
-            <div className="absolute left-0 top-0 bottom-8 w-20 bg-gradient-to-r from-neutral-950 to-transparent pointer-events-none"></div>
-            <div className="absolute right-0 top-0 bottom-8 w-20 bg-gradient-to-l from-neutral-950 to-transparent pointer-events-none"></div>
-          </div>
-
-          <div className="text-center mt-8">
-            <p className="text-neutral-500 text-sm">Scroll to explore more case studies</p>
           </div>
         </div>
       </section>
@@ -752,11 +805,11 @@ function App() {
               <div className="relative">
                 <div className="flex items-center justify-between mb-8">
                   <div>
-                    <div className="flex items-center space-x-3 mb-2">
+                    <div className="flex items-start space-x-3 mb-2">
                       <div className="w-10 h-10 bg-cyan-500/10 rounded-xl flex items-center justify-center">
                         <Workflow className="w-5 h-5 text-cyan-400" />
                       </div>
-                      <h3 className="text-xl lg:text-3xl font-bold">
+                      <h3 className="min-w-0 flex-1 text-xl lg:text-3xl font-bold text-balance">
                         Digital Experience & Workflow Optimization
                       </h3>
                     </div>
@@ -861,11 +914,11 @@ function App() {
               <div className="relative">
                 <div className="flex items-center justify-between mb-8">
                   <div>
-                    <div className="flex items-center space-x-3 mb-2">
+                    <div className="flex items-start space-x-3 mb-2">
                       <div className="w-10 h-10 bg-violet-400/10 rounded-xl flex items-center justify-center">
                         <CircuitBoard className="w-5 h-5 text-violet-400" />
                       </div>
-                      <h3 className="text-xl lg:text-3xl font-bold">
+                      <h3 className="min-w-0 flex-1 text-xl lg:text-3xl font-bold text-balance">
                         Agentic AI & Intelligent Systems
                       </h3>
                     </div>
@@ -1019,7 +1072,7 @@ function App() {
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/20 group-hover:to-transparent rounded-3xl transition-all duration-700"></div>
               <div className="relative">
                 <div className="mb-6">
-                  <div className="text-6xl lg:text-7xl font-black bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent mb-2 animate-pulse">
+                  <div className="text-[clamp(3rem,8vw,4.5rem)] font-black bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent mb-2 animate-pulse">
                     3x
                   </div>
                   <div className="h-2 bg-neutral-800 rounded-full overflow-hidden mb-4">
@@ -1035,7 +1088,7 @@ function App() {
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 to-emerald-500/0 group-hover:from-emerald-500/20 group-hover:to-transparent rounded-3xl transition-all duration-700"></div>
               <div className="relative">
                 <div className="mb-6">
-                  <div className="text-6xl lg:text-7xl font-black bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent mb-2 animate-pulse">
+                  <div className="text-[clamp(3rem,8vw,4.5rem)] font-black bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent mb-2 animate-pulse">
                     94%
                   </div>
                   <div className="h-2 bg-neutral-800 rounded-full overflow-hidden mb-4">
@@ -1051,7 +1104,7 @@ function App() {
               <div className="absolute inset-0 bg-gradient-to-br from-violet-500/0 to-violet-500/0 group-hover:from-violet-500/20 group-hover:to-transparent rounded-3xl transition-all duration-700"></div>
               <div className="relative">
                 <div className="mb-6">
-                  <div className="text-6xl lg:text-7xl font-black bg-gradient-to-r from-violet-400 to-violet-300 bg-clip-text text-transparent mb-2 animate-pulse">
+                  <div className="text-[clamp(3rem,8vw,4.5rem)] font-black bg-gradient-to-r from-violet-400 to-violet-300 bg-clip-text text-transparent mb-2 animate-pulse">
                     100%
                   </div>
                   <div className="h-2 bg-neutral-800 rounded-full overflow-hidden mb-4">
@@ -1229,7 +1282,7 @@ function App() {
                 onClick={() => setOpenFaq(openFaq === 0 ? null : 0)}
                 className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-lg lg:text-xl">How do you determine if AI is right for our situation?</span>
+                <span className="min-w-0 font-semibold text-lg lg:text-xl text-balance">How do you determine if AI is right for our situation?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 0 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 0 && (
@@ -1244,7 +1297,7 @@ function App() {
                 onClick={() => setOpenFaq(openFaq === 1 ? null : 1)}
                 className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-lg lg:text-xl">What does a typical engagement look like?</span>
+                <span className="min-w-0 font-semibold text-lg lg:text-xl text-balance">What does a typical engagement look like?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 1 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 1 && (
@@ -1259,7 +1312,7 @@ function App() {
                 onClick={() => setOpenFaq(openFaq === 2 ? null : 2)}
                 className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-lg lg:text-xl">Do you work with companies of all sizes?</span>
+                <span className="min-w-0 font-semibold text-lg lg:text-xl text-balance">Do you work with companies of all sizes?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 2 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 2 && (
@@ -1274,7 +1327,7 @@ function App() {
                 onClick={() => setOpenFaq(openFaq === 3 ? null : 3)}
                 className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-lg lg:text-xl">How quickly can we expect to see results?</span>
+                <span className="min-w-0 font-semibold text-lg lg:text-xl text-balance">How quickly can we expect to see results?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 3 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 3 && (
@@ -1289,7 +1342,7 @@ function App() {
                 onClick={() => setOpenFaq(openFaq === 4 ? null : 4)}
                 className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-lg lg:text-xl">What makes you different from traditional consultants?</span>
+                <span className="min-w-0 font-semibold text-lg lg:text-xl text-balance">What makes you different from traditional consultants?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 4 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 4 && (
