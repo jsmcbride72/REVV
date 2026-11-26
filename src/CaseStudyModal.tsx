@@ -28,7 +28,9 @@ interface CaseStudy {
   solution: string;
   results: string[];
   images: string[];
+  imageAlts?: string[];
   wideImages?: string[];
+  wideImageAlts?: string[];
   lessons?: Lesson[];
   tags: string[];
   color: 'cyan' | 'violet' | 'emerald';
@@ -192,7 +194,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
                     ) : (
                       <img
                         src={image}
-                        alt={`${caseStudy.title} — wide ${index + 1}`}
+                        alt={caseStudy.wideImageAlts?.[index] || `${caseStudy.title} — wide ${index + 1}`}
                         className="w-full h-auto object-cover"
                         loading="lazy"
                       />
@@ -212,8 +214,10 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
                     ) : (
                       <img
                         src={image}
-                        alt={`${caseStudy.title} — ${index + 1}`}
-                        className="w-full h-[320px] object-cover object-center"
+                        alt={caseStudy.imageAlts?.[index] || `${caseStudy.title} — ${index + 1}`}
+                        className={image.endsWith('.jpg') || image.endsWith('.jpeg')
+                          ? 'w-full h-auto object-contain'
+                          : 'w-full h-[320px] object-cover object-center'}
                         loading="lazy"
                       />
                     )}

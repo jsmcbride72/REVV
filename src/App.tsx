@@ -12,7 +12,9 @@ interface CaseStudy {
   solution: string;
   results: string[];
   images: string[];
+  imageAlts?: string[];
   wideImages?: string[];
+  wideImageAlts?: string[];
   lessons?: { title: string; body: string }[];
   tags: string[];
   color: 'cyan' | 'violet' | 'emerald';
@@ -208,12 +210,19 @@ function App() {
         '6 Event types from golf to citywide festivals'
       ],
       images: [
-        '/ep-monitor.png',
+        '/ep-seat-phones.jpg',
         '/ep-vegas.png',
-        '/ep-ops-console.mp4',
-        '/ep-logo-white.png'
+        '/ep-404-phones.jpg',
+        '/ep-superbowl-map.jpg'
       ],
-      wideImages: ['/map-spin.mp4'],
+      imageAlts: [
+        'SEAT Conference attendee app screens',
+        '',
+        '404 Day Atlanta festival app screens',
+        "Super Bowl LX 3D venue map at Levi's Stadium"
+      ],
+      wideImages: ['/ep-hero-high-impact.jpg'],
+      wideImageAlts: ['Event Pulse platform overview'],
       tags: ['AI Concierge', '3D Mapping', 'Live Events', 'Real-time Wayfinding'],
       color: 'cyan',
       videoSrc: '/map-spin.mp4',
