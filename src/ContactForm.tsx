@@ -92,7 +92,18 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
         >
           <input type="hidden" name="form-name" value="contact" />
 
-          <input type="hidden" name="bot-field" />
+          <p className="hidden" aria-hidden="true">
+            <label>
+              Don’t fill this out if you’re human:
+              <input
+                name="bot-field"
+                value={formData["bot-field"]}
+                onChange={handleChange}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </label>
+          </p>
 
           <input
             name="name"
