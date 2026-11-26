@@ -207,7 +207,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
               {caseStudy.images.map((image, index) => {
                 const isVideo = image.endsWith('.mov') || image.endsWith('.mp4');
                 return (
-                  <div key={index} className={`rounded-2xl overflow-hidden border ${colors.border} bg-neutral-900`}>
+                  <div key={index} className={`h-full rounded-2xl overflow-hidden border ${colors.border} bg-neutral-900`}>
                     {isVideo ? (
                       <GalleryVideo
                         src={image}
@@ -217,9 +217,11 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
                       <img
                         src={image}
                         alt={caseStudy.imageAlts?.[index] || `${caseStudy.title} — ${index + 1}`}
-                        className={image.endsWith('.jpg') || image.endsWith('.jpeg')
-                          ? 'w-full h-auto object-contain'
-                          : 'w-full h-[320px] object-cover object-center'}
+                        className={image.endsWith('ep-superbowl-map.jpg')
+                          ? 'block h-full w-full object-cover'
+                          : image.endsWith('.jpg') || image.endsWith('.jpeg')
+                            ? 'block w-full h-auto object-contain'
+                            : 'w-full h-[320px] object-cover object-center'}
                         loading="lazy"
                       />
                     )}
