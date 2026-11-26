@@ -3,6 +3,7 @@ import ContactForm from '../ContactForm';
 import Seo from '../Seo';
 import SiteNav from '../SiteNav';
 import { formatPostDate, posts } from '../lib/blog';
+import { BLOG_INDEX_DESCRIPTION, BLOG_INDEX_TITLE } from '../lib/site';
 
 export default function BlogIndex() {
   const [contactOpen, setContactOpen] = useState(false);
@@ -10,8 +11,8 @@ export default function BlogIndex() {
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
       <Seo
-        title="Blog | Revv Studio"
-        description="Notes from Revv Studio on AI, product design, and the work of making agentic products feel like your product."
+        title={BLOG_INDEX_TITLE}
+        description={BLOG_INDEX_DESCRIPTION}
         path="/blog"
       />
       <SiteNav onContact={() => setContactOpen(true)} />

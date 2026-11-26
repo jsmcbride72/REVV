@@ -5,6 +5,7 @@ import Seo from '../Seo';
 import SiteNav from '../SiteNav';
 import { formatPostDate, getPost } from '../lib/blog';
 import { renderMarkdown } from '../lib/markdown';
+import { postDocumentTitle } from '../lib/site';
 
 interface BlogPostPageProps {
   slug: string;
@@ -34,7 +35,7 @@ export default function BlogPostPage({ slug }: BlogPostPageProps) {
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
       <Seo
-        title={`${post.title} | Revv Studio`}
+        title={postDocumentTitle(post.title)}
         description={post.excerpt}
         path={`/blog/${post.slug}`}
         image={post.cover}
