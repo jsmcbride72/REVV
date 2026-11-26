@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Performance Pulse · Public Scan &amp; One-CTO Onboarding Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+  /* ---- Official Brand Palette ---- */
+  --pp-brand-navy: #0E2841;         /* Primary authority / chrome / dark ink */
+  --pp-brand-paper: #F6F4EF;        /* Warm editorial canvas */
+  --pp-brand-charcoal: #4D5B69;     /* Secondary / muted ink */
+  --pp-brand-white: #FFFFFF;        /* Primary card surface */
+  --pp-brand-blue: #0070C0;         /* Primary interactive accent */
+  --pp-brand-orange: #FA4616;       /* Sparing highlight accent (UI/large only, 3.53:1 on #FFF) */
+  --pp-brand-orange-tint: #FFF3EF;  /* Soft orange tint */
+  --pp-brand-orange-ink: #B82E08;   /* 5.63:1 on #FFF3EF for text */
+
+  /* ---- Surfaces ---- */
+  --pp-bg-canvas: #F6F4EF;          /* Brand Paper page background */
+  --pp-bg-surface: #FFFFFF;         /* Brand White card / panel surface */
+  --pp-bg-subtle: #EFECE5;          /* Warm paper inset / table header */
+  --pp-bg-chrome: #0E2841;          /* Brand Navy top bar */
+  --pp-bg-chrome-subtle: #183654;   /* Elevated control on Navy chrome */
+
+  /* ---- Typography Ink (WCAG 2.2 AA >= 4.5:1) ---- */
+  --pp-ink-primary: #0E2841;        /* 15.02:1 on #FFF · 13.66:1 on #F6F4EF */
+  --pp-ink-secondary: #2C3E50;      /* 10.97:1 on #FFF ·  9.98:1 on #F6F4EF */
+  --pp-ink-muted: #4D5B69;          /*  6.96:1 on #FFF ·  6.33:1 on #F6F4EF (Brand Charcoal) */
+  --pp-ink-on-dark: #FFFFFF;        /* 15.02:1 on #0E2841 */
+  --pp-ink-on-dark-muted: #CBD5E1;  /* 10.11:1 on #0E2841 */
+
+  /* ---- Brand Interactive Accent (Brand Blue #0070C0) ---- */
+  --pp-accent: #0070C0;             /*  5.15:1 with #FFF text */
+  --pp-accent-hover: #005A9E;       /*  7.10:1 with #FFF text */
+  --pp-accent-active: #00467A;      /*  9.74:1 with #FFF text */
+  --pp-accent-tint: #EDF5FC;        /* Soft blue tint surface */
+  --pp-accent-border: #7CC0EA;      /* Accent border */
+  --pp-accent-ink: #005A9E;         /*  6.45:1 on #EDF5FC */
+
+  /* ---- Borders & Dividers (harmonized with Paper #F6F4EF) ---- */
+  --pp-border-subtle: #E3DFD5;
+  --pp-border-default: #CDC7BA;
+  --pp-border-strong: #94A0AD;
+
+  /* ---- Semantic Status (always paired with shape + text, never color alone) ---- */
+  /* Success / Verified / Connected / Approved */
+  --pp-status-ok-bg: #ECFDF5;
+  --pp-status-ok-ink: #065F46;      /* 7.6:1 on #ECFDF5 */
+  --pp-status-ok-border: #6EE7B7;
+  --pp-status-ok-solid: #047857;    /* 5.5:1 with #FFF */
+
+  /* Pending / Draft / Neutral / Not started */
+  --pp-status-neutral-bg: #EFECE5;
+  --pp-status-neutral-ink: #2C3E50; /* 9.5:1 on #EFECE5 */
+  --pp-status-neutral-border: #94A0AD;
+
+  /* Caution / Pending release (D28) / Warning */
+  --pp-status-warn-bg: #FFFBEB;
+  --pp-status-warn-ink: #92400E;    /* 7.2:1 on #FFFBEB */
+  --pp-status-warn-border: #F59E0B;
+  --pp-status-warn-accent: #D97706;
+
+  /* Blocked / Error / Rejected */
+  --pp-status-err-bg: #FEF2F2;
+  --pp-status-err-ink: #991B1B;     /* 7.7:1 on #FEF2F2 */
+  --pp-status-err-border: #F87171;
+  --pp-status-err-solid: #B91C1C;   /* 6.5:1 with #FFF */
+
+  /* Role Handoff Banner */
+  --pp-handoff-bg: #EDF5FC;
+  --pp-handoff-ink: #0E2841;        /* 13.63:1 on #EDF5FC */
+  --pp-handoff-border: #7CC0EA;
+  --pp-handoff-bar: #0070C0;
+
+  /* Locked Evidence & Locked Role View */
+  --pp-locked-bg: #F6F4EF;
+  --pp-locked-stripe: #E3DFD5;
+  --pp-locked-ink: #2C3E50;         /* 9.98:1 on #F6F4EF */
+  --pp-locked-border: #CDC7BA;
+
+  /* Workshop [OPEN] Rule Callout (Prototype Mode) */
+  --pp-open-bg: #FAF5FF;
+  --pp-open-ink: #581C87;           /* 10.1:1 on #FAF5FF */
+  --pp-open-border: #A855F7;
+  --pp-open-badge-bg: #6B21A8;      /* 9.6:1 with #FFF */
+  --pp-open-badge-ink: #FFFFFF;
+
+  /* ---- Typography (Official Performance Pulse Pairing) ---- */
+  --pp-font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --pp-font-sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --pp-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+  --pp-text-xs: 0.75rem;            /* 12px */
+  --pp-text-sm: 0.875rem;           /* 14px */
+  --pp-text-base: 1rem;             /* 16px */
+  --pp-text-lg: 1.125rem;           /* 18px */
+  --pp-text-xl: 1.5rem;             /* 24px */
+  --pp-text-2xl: 2.125rem;          /* 34px — Instrument Serif display scale */
+
+  --pp-leading-tight: 1.18;
+  --pp-leading-normal: 1.5;
+  --pp-leading-relaxed: 1.6;
+
+  /* ---- Spacing Scale (4px base) ---- */
+  --pp-space-1: 4px;
+  --pp-space-2: 8px;
+  --pp-space-3: 12px;
+  --pp-space-4: 16px;
+  --pp-space-5: 20px;
+  --pp-space-6: 24px;
+  --pp-space-8: 32px;
+  --pp-space-10: 40px;
+
+  /* ---- Radii ---- */
+  --pp-radius-sm: 6px;
+  --pp-radius-md: 10px;
+  --pp-radius-lg: 14px;
+  --pp-radius-pill: 999px;
+
+  /* ---- Elevation ---- */
+  --pp-shadow-xs: 0 1px 2px rgba(14, 40, 65, 0.05);
+  --pp-shadow-sm: 0 1px 3px rgba(14, 40, 65, 0.08), 0 1px 2px rgba(14, 40, 65, 0.04);
+  --pp-shadow-md: 0 4px 12px rgba(14, 40, 65, 0.08), 0 2px 4px rgba(14, 40, 65, 0.04);
+  --pp-shadow-lg: 0 16px 36px rgba(14, 40, 65, 0.18);
+
+  /* ---- Interactive & Accessibility ---- */
+  --pp-target-min: 44px;            /* WCAG 2.2 AA minimum target size */
+  --pp-focus-ring: 0 0 0 2px #FFFFFF, 0 0 0 5px #0070C0;
+  --pp-transition: 140ms cubic-bezier(0.2, 0, 0, 1);
+}
+  * { box-sizing: border-box; }
+  html { font-family: var(--pp-font-sans); font-size: 16px; color: var(--pp-ink-primary); background: var(--pp-bg-canvas); -webkit-font-smoothing: antialiased; }
+  body { margin: 0; line-height: 1.5; }
+  code, .mono { font-family: var(--pp-font-mono); }
+  .tnum { font-variant-numeric: tabular-nums; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+  .skip { position: absolute; left: -9999px; top: 8px; background: var(--pp-accent); color: #FFF; padding: 10px 16px; border-radius: var(--pp-radius-sm); font-weight: 600; z-index: 100; text-decoration: none; }
+  .skip:focus { left: 12px; }
+  :focus-visible { outline: none; box-shadow: var(--pp-focus-ring); }
+
+  .topbar { background: var(--pp-bg-chrome); color: var(--pp-ink-on-dark); border-bottom: 2px solid #0070C0; position: sticky; top: 0; z-index: 30; }
+  .topbar-inner { max-width: 1120px; margin: 0 auto; padding: 12px 20px; display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand-title { font-size: var(--pp-text-base); font-weight: 700; letter-spacing: -0.015em; margin: 0; line-height: 1.2; }
+  .brand-sub { font-size: var(--pp-text-xs); color: var(--pp-ink-on-dark-muted); margin: 1px 0 0; }
+  .topbar-right { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+  .company-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: var(--pp-radius-pill); background: var(--pp-bg-chrome-subtle); border: 1px solid #334155; font-size: var(--pp-text-xs); color: var(--pp-ink-on-dark); font-weight: 600; }
+  .guide-link { display: inline-flex; align-items: center; min-height: var(--pp-target-min); padding: 0 12px; border-radius: var(--pp-radius-sm); color: var(--pp-ink-on-dark); border: 1px solid #334155; text-decoration: none; font-size: var(--pp-text-xs); font-weight: 600; }
+  .guide-link:hover { background: var(--pp-bg-chrome-subtle); }
+
+  .rolebar-wrap { background: var(--pp-bg-surface); border-bottom: 1px solid var(--pp-border-subtle); }
+  .rolebar { max-width: 1120px; margin: 0 auto; padding: 10px 20px; display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; justify-content: space-between; }
+  .rolebar-group { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: var(--pp-text-sm); }
+  .rolebar label { font-size: var(--pp-text-xs); font-weight: 700; color: var(--pp-ink-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+
+  .stepper-wrap { max-width: 1120px; margin: 0 auto; padding: 16px 20px 0; }
+  nav.stepper ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+  @media (max-width: 900px) { nav.stepper ol { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); } }
+  nav.stepper button { width: 100%; min-height: 60px; padding: 10px 12px; border-radius: var(--pp-radius-md); border: 1.5px solid var(--pp-border-subtle); background: var(--pp-bg-surface); color: var(--pp-ink-primary); font: inherit; text-align: left; cursor: pointer; display: flex; flex-direction: column; justify-content: center; gap: 3px; box-shadow: var(--pp-shadow-xs); }
+  nav.stepper button:hover { border-color: var(--pp-accent-border); background: var(--pp-accent-tint); }
+  nav.stepper button[aria-current="step"] { background: var(--pp-accent); border-color: var(--pp-accent); color: #FFF; box-shadow: var(--pp-shadow-sm); }
+  nav.stepper .step-title { font-size: var(--pp-text-sm); font-weight: 700; line-height: 1.25; }
+  nav.stepper .step-meta { font-size: var(--pp-text-xs); color: var(--pp-ink-muted); display: flex; align-items: center; gap: 6px; }
+  nav.stepper button[aria-current="step"] .step-meta { color: #E0F2FE; }
+  .pulse-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--pp-brand-orange); flex: 0 0 auto; }
+
+  .layout { max-width: 1120px; margin: 0 auto; padding: 20px 20px 56px; display: block; }
+  .demo-footer { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--pp-border-subtle); }
+  @media (max-width: 1020px) { .layout { grid-template-columns: 1fr; } }
+  main { min-width: 0; outline: none; }
+
+  .screen-head { margin-bottom: 16px; }
+  .screen-head-top { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; justify-content: space-between; }
+  .screen-head h2 { margin: 0; font-family: var(--pp-font-display); font-size: var(--pp-text-2xl); font-weight: 400; letter-spacing: -0.005em; line-height: 1.15; color: var(--pp-ink-primary); }
+  .screen-goal { margin: 6px 0 0; font-size: var(--pp-text-sm); color: var(--pp-ink-muted); }
+
+  .card { background: var(--pp-bg-surface); border: 1px solid var(--pp-border-subtle); border-radius: var(--pp-radius-lg); padding: 20px; margin-bottom: 16px; box-shadow: var(--pp-shadow-xs); }
+  .card.soft { background: var(--pp-bg-subtle); }
+  .card-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; margin-bottom: 14px; }
+  .card h3 { margin: 0; font-size: var(--pp-text-lg); font-weight: 700; letter-spacing: -0.01em; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .card h4 { margin: 0 0 8px; font-size: var(--pp-text-base); font-weight: 700; }
+  .note { font-size: var(--pp-text-sm); color: var(--pp-ink-muted); margin: 6px 0 0; }
+  .divider { border: 0; border-top: 1px solid var(--pp-border-subtle); margin: 18px 0; }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 12px; }
+  .kpi { background: var(--pp-bg-subtle); border: 1px solid var(--pp-border-subtle); border-radius: var(--pp-radius-md); padding: 12px 14px; }
+  .kpi-label { font-size: var(--pp-text-xs); font-weight: 600; color: var(--pp-ink-muted); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 4px; }
+  .kpi-val { font-size: var(--pp-text-base); font-weight: 700; color: var(--pp-ink-primary); }
+  .kpi-sub { font-size: var(--pp-text-xs); color: var(--pp-ink-muted); margin-top: 2px; }
+
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--pp-radius-pill); font-size: var(--pp-text-xs); font-weight: 600; line-height: 1.3; border: 1px solid transparent; white-space: nowrap; }
+  .chip-ok { background: var(--pp-status-ok-bg); color: var(--pp-status-ok-ink); border-color: var(--pp-status-ok-border); }
+  .chip-neutral { background: var(--pp-status-neutral-bg); color: var(--pp-status-neutral-ink); border: 1px dashed var(--pp-status-neutral-border); }
+  .chip-warn { background: var(--pp-status-warn-bg); color: var(--pp-status-warn-ink); border: 1px dashed var(--pp-status-warn-border); }
+  .chip-err { background: var(--pp-status-err-bg); color: var(--pp-status-err-ink); border-color: var(--pp-status-err-border); }
+  .chip-role { background: var(--pp-handoff-bg); color: var(--pp-handoff-ink); border-color: var(--pp-handoff-border); }
+  .chip-open { background: var(--pp-open-badge-bg); color: var(--pp-open-badge-ink); font-family: var(--pp-font-mono); border-radius: var(--pp-radius-sm); }
+  .chip-assume { background: var(--pp-bg-subtle); color: var(--pp-ink-secondary); border: 1px dashed var(--pp-border-strong); font-family: var(--pp-font-mono); border-radius: var(--pp-radius-sm); }
+
+  .banner { border-radius: var(--pp-radius-md); padding: 14px 16px; margin-bottom: 14px; display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; justify-content: space-between; }
+  .banner-copy { flex: 1 1 250px; }
+  .banner-title { font-weight: 700; font-size: var(--pp-text-sm); display: flex; align-items: center; gap: 8px; margin-bottom: 2px; }
+  .banner-desc { font-size: var(--pp-text-sm); margin: 0; }
+  .banner-handoff { background: var(--pp-handoff-bg); color: var(--pp-handoff-ink); border: 1px solid var(--pp-handoff-border); border-left: 4px solid var(--pp-handoff-bar); }
+  .banner-warn { background: var(--pp-status-warn-bg); color: var(--pp-status-warn-ink); border: 1px dashed var(--pp-status-warn-border); border-left: 4px solid var(--pp-status-warn-accent); }
+  .banner-err { background: var(--pp-status-err-bg); color: var(--pp-status-err-ink); border: 1px solid var(--pp-status-err-border); border-left: 4px solid var(--pp-status-err-solid); }
+  .banner-info { background: var(--pp-bg-subtle); color: var(--pp-ink-primary); border: 1px solid var(--pp-border-default); border-left: 4px solid var(--pp-ink-secondary); }
+
+  .open-callout { background: var(--pp-open-bg); color: var(--pp-open-ink); border: 1.5px dashed var(--pp-open-border); border-radius: var(--pp-radius-md); padding: 11px 14px; margin-top: 14px; font-size: var(--pp-text-sm); display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
+  .assume-note { font-size: var(--pp-text-xs); color: var(--pp-ink-muted); display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 12px; }
+
+  .locked-panel, .locked-cell { background: repeating-linear-gradient(-45deg, var(--pp-locked-bg), var(--pp-locked-bg) 10px, #F1F5F9 10px, #F1F5F9 20px); color: var(--pp-locked-ink); }
+  .locked-panel { border: 1px solid var(--pp-locked-border); border-radius: var(--pp-radius-md); padding: 14px 16px; display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; justify-content: space-between; }
+  .locked-cell { padding: 12px 14px !important; }
+
+  .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  button.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: var(--pp-target-min); min-width: var(--pp-target-min); padding: 9px 16px; border-radius: var(--pp-radius-sm); font: inherit; font-size: var(--pp-text-sm); font-weight: 600; cursor: pointer; border: 1.5px solid var(--pp-border-default); background: var(--pp-bg-surface); color: var(--pp-ink-primary); box-shadow: var(--pp-shadow-xs); }
+  button.btn:hover:not([aria-disabled="true"]) { background: var(--pp-bg-subtle); border-color: var(--pp-border-strong); }
+  button.btn.primary { background: var(--pp-accent); border-color: var(--pp-accent); color: #FFF; }
+  button.btn.primary:hover:not([aria-disabled="true"]) { background: var(--pp-accent-hover); border-color: var(--pp-accent-hover); }
+  button.btn.danger { background: var(--pp-status-err-bg); border-color: var(--pp-status-err-border); color: var(--pp-status-err-ink); }
+  button.btn[aria-disabled="true"] { background: var(--pp-bg-subtle); border: 1.5px dashed var(--pp-border-strong); color: var(--pp-ink-muted); cursor: not-allowed; box-shadow: none; }
+
+  select, input[type="number"], input[type="date"], textarea { font: inherit; font-size: var(--pp-text-sm); min-height: var(--pp-target-min); padding: 8px 12px; border: 1.5px solid var(--pp-border-default); border-radius: var(--pp-radius-sm); background: var(--pp-bg-surface); color: var(--pp-ink-primary); }
+  select:disabled, input:disabled, textarea:disabled { background: var(--pp-bg-subtle); color: var(--pp-ink-muted); cursor: not-allowed; }
+  textarea { width: 100%; min-height: 76px; resize: vertical; }
+  .field { margin: 12px 0; }
+  .field > label { display: block; font-size: var(--pp-text-sm); font-weight: 600; margin-bottom: 6px; }
+  .check-row { display: flex; align-items: center; gap: 10px; min-height: var(--pp-target-min); padding: 4px 0; }
+  .check-row input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--pp-accent); cursor: pointer; flex: 0 0 auto; }
+  .check-row label { font-size: var(--pp-text-sm); font-weight: 600; cursor: pointer; }
+
+  .switch-row { display: flex; align-items: center; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--pp-border-subtle); }
+  .switch-row:last-of-type { border-bottom: none; }
+  .switch-btn { position: relative; width: 52px; height: 30px; min-height: 30px; border-radius: var(--pp-radius-pill); border: 2px solid var(--pp-border-strong); background: var(--pp-bg-subtle); cursor: pointer; flex: 0 0 auto; padding: 0; }
+  .switch-btn::before { content: ""; position: absolute; inset: -8px -4px; }
+  .switch-btn::after { content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--pp-ink-secondary); transition: transform var(--pp-transition); }
+  .switch-btn[aria-checked="true"] { background: var(--pp-accent); border-color: var(--pp-accent); }
+  .switch-btn[aria-checked="true"]::after { transform: translateX(22px); background: #FFF; }
+  .switch-btn[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; }
+  .switch-label { font-size: var(--pp-text-sm); font-weight: 500; }
+
+  .table-wrap { width: 100%; overflow-x: auto; border: 1px solid var(--pp-border-subtle); border-radius: var(--pp-radius-md); }
+  table { border-collapse: collapse; width: 100%; font-size: var(--pp-text-sm); min-width: 520px; }
+  th, td { padding: 11px 14px; text-align: left; vertical-align: middle; border-bottom: 1px solid var(--pp-border-subtle); }
+  thead th { background: var(--pp-bg-subtle); color: var(--pp-ink-secondary); font-size: var(--pp-text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  tbody tr:last-child td, tbody tr:last-child th { border-bottom: none; }
+  tbody th { font-weight: 600; color: var(--pp-ink-primary); }
+
+  .grid4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+  .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .weight-card { border: 1px solid var(--pp-border-subtle); border-radius: var(--pp-radius-md); padding: 14px; background: #FAFBFC; }
+  .weight-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .weight-card label { font-size: var(--pp-text-sm); font-weight: 700; }
+  .weight-card input[type="range"] { width: 100%; height: 36px; accent-color: var(--pp-accent); cursor: pointer; }
+  .weight-card input[type="number"] { width: 78px; text-align: right; font-weight: 700; }
+  .alloc-bar { height: 12px; border-radius: var(--pp-radius-pill); background: var(--pp-bg-subtle); overflow: hidden; display: flex; margin: 14px 0 8px; border: 1px solid var(--pp-border-subtle); }
+  .alloc-seg { height: 100%; }
+  .export-card { border: 1px solid var(--pp-border-subtle); border-radius: var(--pp-radius-md); padding: 16px; background: #FAFBFC; display: flex; flex-direction: column; gap: 10px; }
+
+  .bar-track { width: 100%; min-width: 100px; height: 10px; border-radius: var(--pp-radius-pill); background: var(--pp-bg-subtle); overflow: hidden; border: 1px solid var(--pp-border-subtle); }
+  .bar-fill { height: 100%; border-radius: var(--pp-radius-pill); }
+
+  aside.panel { background: var(--pp-bg-surface); border: 1px solid var(--pp-border-subtle); border-radius: var(--pp-radius-lg); padding: 18px; box-shadow: var(--pp-shadow-xs); position: sticky; top: 84px; }
+  @media (max-width: 1020px) { aside.panel { position: static; } }
+  aside.panel h2 { margin: 0 0 4px; font-size: var(--pp-text-base); font-weight: 700; display: flex; align-items: center; justify-content: space-between; }
+  aside.panel .field { margin: 12px 0; }
+  aside.panel label { font-size: var(--pp-text-xs); font-weight: 700; color: var(--pp-ink-secondary); }
+  aside.panel select { width: 100%; }
+  .rail-footer { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--pp-border-subtle); display: flex; flex-wrap: wrap; gap: 8px; }
+
+  dialog { border: 1px solid var(--pp-border-default); border-radius: var(--pp-radius-lg); padding: 24px; max-width: 480px; width: calc(100% - 32px); box-shadow: var(--pp-shadow-lg); color: var(--pp-ink-primary); }
+  dialog::backdrop { background: rgba(15, 27, 45, 0.55); }
+  dialog h3 { margin: 0 0 8px; font-size: var(--pp-text-xl); }
+
+  @media (max-width: 600px) {
+    .topbar-inner, .rolebar, .stepper-wrap, .layout { padding-left: 14px; padding-right: 14px; }
+    .card { padding: 16px; }
+    .screen-head h2 { font-size: 1.375rem; }
+  }
+
+  /* ---- Two-Phase Stepper ---- */
+  .stepper-phases { display: flex; flex-direction: column; gap: 10px; }
+  .phase-group { display: flex; flex-direction: column; gap: 6px; }
+  .phase-label {
+    font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--pp-ink-muted); margin: 0; display: flex; align-items: center; gap: 6px;
+  }
+  .phase-label::before {
+    content: ""; width: 7px; height: 7px; border-radius: 999px; background: var(--pp-brand-blue); display: inline-block;
+  }
+  .phase-group.p2 .phase-label::before { background: var(--pp-brand-navy); }
+  .stepper ol.phase1-list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .stepper ol.phase2-list { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  @media (max-width: 900px) {
+    .stepper ol.phase1-list, .stepper ol.phase2-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .stepper ol.phase1-list, .stepper ol.phase2-list { grid-template-columns: 1fr; }
+  }
+  /* ---- Phase 1 Components ---- */
+  .field-err { color: var(--pp-status-err-ink); font-size: var(--pp-text-sm); font-weight: 600; margin: 6px 0 0; }
+  .privacy-box {
+    margin-top: 16px; padding: 12px 14px; border-radius: var(--pp-radius-md);
+    background: var(--pp-bg-canvas); border: 1px solid var(--pp-border-subtle);
+    font-size: var(--pp-text-sm); color: var(--pp-ink-primary);
+  }
+  .privacy-box strong { color: var(--pp-brand-navy); }
+
+  input[type="email"], input[type="text"] {
+    width: 100%; min-height: 44px; padding: 10px 14px;
+    border: 1px solid var(--pp-border-default); border-radius: var(--pp-radius-md);
+    background: var(--pp-bg-surface); color: var(--pp-ink-primary);
+    font-family: var(--pp-font-sans); font-size: var(--pp-text-base);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  input[type="email"]:focus, input[type="text"]:focus {
+    outline: none; border-color: var(--pp-brand-blue); box-shadow: 0 0 0 3px var(--pp-accent-tint);
+  }
+  input[aria-invalid="true"] { border-color: var(--pp-status-err-solid); background: var(--pp-status-err-bg); }
+
+  .code-input {
+    font-family: var(--pp-font-mono); font-size: 1.5rem; font-weight: 700; letter-spacing: 0.28em;
+    text-align: center; max-width: 240px; padding: 10px 14px !important;
+  }
+  .scan-bar-wrap { margin: 14px 0 16px; }
+  .scan-bar-meta { display: flex; justify-content: space-between; font-size: var(--pp-text-xs); font-weight: 700; color: var(--pp-ink-muted); margin-bottom: 6px; }
+  .scan-bar-track { height: 10px; background: var(--pp-bg-subtle); border-radius: 999px; overflow: hidden; }
+  .scan-bar-fill { height: 100%; background: var(--pp-brand-blue); border-radius: 999px; transition: width 0.35s ease; }
+  .scan-steps { list-style: none; padding: 0; margin: 0 0 16px; display: flex; flex-direction: column; gap: 10px; }
+  .scan-steps li {
+    display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+    border: 1px solid var(--pp-border-subtle); border-radius: var(--pp-radius-md);
+    background: var(--pp-bg-canvas); font-size: var(--pp-text-sm); font-weight: 500;
+  }
+  .add-sys-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--pp-border-subtle); }
+  .add-sys-row .field { margin: 0; flex: 1 1 240px; }
+  .pulse-panel { margin-top: 14px; display: flex; flex-direction: column; gap: 12px; }
+  .pulse-q {
+    border: 1px solid var(--pp-border-subtle); border-radius: var(--pp-radius-md);
+    padding: 12px 14px; margin: 0; background: var(--pp-bg-canvas);
+  }
+  .pulse-q legend { font-size: var(--pp-text-sm); font-weight: 700; color: var(--pp-ink-primary); padding: 0 4px; }
+  .pulse-opts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+  .pulse-opt {
+    display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; min-height: 44px;
+    border: 1px solid var(--pp-border-default); border-radius: var(--pp-radius-md);
+    background: var(--pp-bg-surface); font-size: var(--pp-text-sm); font-weight: 600; cursor: pointer;
+  }
+  .pulse-opt input[type="radio"] { width: 18px; height: 18px; accent-color: var(--pp-brand-blue); margin: 0; }
+  .table-input { width: 100%; min-width: 120px; max-width: 220px; min-height: 40px; padding: 6px 10px; font-size: var(--pp-text-sm); }
+  @media (max-width: 640px) { .table-input { min-width: 96px; max-width: 100%; } }
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to screen content</a>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <svg class="brand-svg" style="height:24px;width:auto;display:block;align-self:flex-start;" role="img" aria-label="Performance Pulse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 738.03 78.15"><defs><linearGradient id="pp-mk-hdr" x1="68.93" y1="8.75" x2="25.07" y2="74.13" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#cce0f4"/><stop offset=".04" stop-color="#c2dcf2"/><stop offset=".1" stop-color="#a9d2ee"/><stop offset=".18" stop-color="#7fc2e7"/><stop offset=".27" stop-color="#46abdd"/><stop offset=".33" stop-color="#1e9cd7"/><stop offset=".67" stop-color="#0070c0"/><stop offset=".93" stop-color="#083b8c"/></linearGradient></defs><path fill="url(#pp-mk-hdr)" d="M96.94,41.01c-.31-.67-.91-1.08-1.56-1.08h-13.37c-.21,0-.43.07-.65.18.08-.21.12-.41.12-.61V1.69c0-.93-.65-1.69-1.44-1.69-.48,0-.81.27-1.01.5l-30.2,35.92c-.29.34-.71.54-1.15.54h-30.57c-.13,0-.26.03-.4.08.15-.32.23-.62.23-.93v-16.13c0-1.18-.79-2.11-1.8-2.11-.61,0-1.03.35-1.27.64L.52,34.64c-.57.68-.68,1.66-.28,2.5.31.67.91,1.08,1.56,1.08h13.37c.21,0,.43-.07.65-.18-.08.21-.12.41-.12.61v37.82c0,.93.65,1.69,1.44,1.69.48,0,.81-.27,1.01-.5l30.2-35.92c.29-.34.71-.54,1.15-.54h30.57c.13,0,.26-.03.4-.08-.15.32-.23.62-.23.94v16.13c0,1.18.79,2.11,1.8,2.11.61,0,1.03-.35,1.27-.64l13.37-16.13c.57-.68.68-1.66.28-2.5Z"/><path fill="#fff" d="M145.84,14.56c-1.89-1.49-4.23-2.44-7.01-2.87-.64-.12-1.31-.2-2-.23-.69-.03-1.28-.05-1.78-.05h-20.3v51.38h6.35v-18.98h13.95c.5,0,1.09-.02,1.78-.07.69-.05,1.36-.12,2-.21,2.76-.43,5.08-1.38,6.98-2.85,1.89-1.47,3.32-3.34,4.28-5.58.96-2.25,1.45-4.74,1.45-7.48s-.48-5.19-1.43-7.44c-.95-2.25-2.37-4.12-4.26-5.6ZM144.31,31.79c-.49,1.37-1.24,2.56-2.27,3.57-1.02,1.01-2.36,1.71-4,2.09-.52.12-1.08.2-1.66.25-.58.05-1.1.07-1.55.07h-13.74v-20.34h13.74c.45,0,.97.02,1.55.07.58.05,1.14.13,1.66.25,1.64.38,2.97,1.08,4,2.09,1.02,1.01,1.78,2.2,2.27,3.57.49,1.37.73,2.77.73,4.19s-.24,2.83-.73,4.19Z"/><path fill="#fff" d="M189.25,45.3h3.28c.19-4.57-.4-8.5-1.77-11.81-1.37-3.31-3.41-5.85-6.14-7.64-2.72-1.78-6.02-2.68-9.9-2.68s-6.99.84-9.76,2.51c-2.77,1.68-4.93,4.06-6.48,7.14-1.55,3.08-2.32,6.73-2.32,10.94s.79,7.54,2.36,10.54,3.76,5.35,6.58,7.03c2.82,1.68,6.12,2.52,9.9,2.52s7.11-.93,10.12-2.8c3.01-1.87,5.26-4.5,6.76-7.9l-6.1-2.11c-1.07,2.19-2.55,3.87-4.42,5.03-1.88,1.17-4.09,1.75-6.64,1.75-3.78,0-6.7-1.25-8.74-3.75-1.77-2.16-2.77-5.09-3.01-8.78h26.27ZM165.98,32.67c2.05-2.52,5.03-3.78,8.96-3.78,3.66,0,6.42,1.17,8.28,3.51,1.46,1.85,2.36,4.46,2.72,7.8h-22.83c.38-3.13,1.34-5.64,2.88-7.53Z"/><path fill="#fff" d="M216.65,24.02c-1.31.08-2.59.33-3.85.75-1.26.42-2.39,1.03-3.39,1.84-.9.64-1.72,1.46-2.44,2.46-.31.42-.58.88-.84,1.34v-6.15h-5.67v38.54h6.39v-19.34c0-1.52.13-3.02.39-4.48.26-1.46.73-2.82,1.41-4.07s1.64-2.32,2.87-3.23c1.36-.98,2.83-1.55,4.42-1.71,1.59-.17,3.06-.08,4.39.25v-5.96c-1.14-.24-2.37-.32-3.68-.23Z"/><path fill="#fff" d="M239.29,10.47c-1.08.1-2.15.36-3.19.79-1.05.43-2.01,1.12-2.89,2.07-.76.83-1.31,1.74-1.66,2.73-.34.99-.56,2-.64,3.05-.08,1.05-.13,2.06-.13,3.03v2.11h-6.53v5.25h6.53v33.29h6.35V29.49h10.13v-5.25h-10.13v-3.1c0-1.83.46-3.21,1.39-4.14.93-.93,2.33-1.39,4.21-1.39h4.53v-5.28h-4.89c-.98,0-2,.05-3.09.14Z"/><path fill="#fff" d="M277.92,25.78c-2.78-1.74-6.1-2.6-9.95-2.6s-7.03.85-9.81,2.55-4.94,4.08-6.46,7.14c-1.52,3.06-2.28,6.6-2.28,10.62s.75,7.52,2.25,10.58c1.5,3.06,3.63,5.45,6.4,7.19,2.77,1.74,6.07,2.61,9.9,2.61s7.14-.86,9.92-2.59,4.92-4.12,6.42-7.17c1.5-3.06,2.25-6.59,2.25-10.62s-.74-7.48-2.23-10.53c-1.49-3.04-3.62-5.44-6.4-7.17ZM276.86,53.83c-1.96,2.66-4.93,4-8.9,4s-6.82-1.31-8.81-3.93-3-6.09-3-10.42c0-2.81.43-5.28,1.28-7.42.86-2.14,2.15-3.82,3.89-5.03,1.74-1.21,3.95-1.82,6.64-1.82,3.95,0,6.91,1.3,8.88,3.89,1.97,2.59,2.96,6.05,2.96,10.38s-.98,7.68-2.94,10.35Z"/><path fill="#fff" d="M310.6,24.02c-1.31.08-2.59.33-3.85.75-1.26.42-2.39,1.03-3.39,1.84-.9.64-1.72,1.46-2.44,2.46-.31.42-.58.88-.84,1.34v-6.15h-5.67v38.54h6.39v-19.34c0-1.52.13-3.02.39-4.48.26-1.46.73-2.82,1.41-4.07s1.64-2.32,2.87-3.23c1.36-.98,2.83-1.55,4.42-1.71,1.59-.17,3.06-.08,4.39.25v-5.96c-1.14-.24-2.37-.32-3.68-.23Z"/><path fill="#fff" d="M360.56,23.25c-2.57,0-4.88.57-6.92,1.71-2,1.11-3.57,2.67-4.74,4.66,0,0,0,0,0,0-1.05-2.03-2.53-3.6-4.46-4.71-1.93-1.11-4.19-1.66-6.78-1.66s-4.91.57-6.96,1.71c-1.6.89-2.92,2.04-4,3.43v-4.14h-5.67v38.54h6.39v-24.48c0-2.81.77-5.07,2.32-6.8,1.55-1.72,3.57-2.59,6.07-2.59s4.54.84,6.07,2.53c1.52,1.69,2.28,4,2.28,6.92l-.04,24.41h6.32l.03-24.48h0c0-2.16.4-3.94,1.21-5.32s1.86-2.4,3.14-3.07c1.29-.67,2.64-1,4.07-1,2.45,0,4.44.81,5.98,2.44,1.53,1.63,2.3,3.88,2.3,6.76l-.04,24.66h6.35l.04-26.05c0-4.09-1.15-7.36-3.46-9.81s-5.47-3.68-9.49-3.68Z"/><path fill="#fff" d="M412.4,30.71c-1.09-2.52-2.9-4.41-5.41-5.66s-5.51-1.87-9.01-1.87c-4.35,0-7.86.96-10.53,2.89-2.66,1.93-4.46,4.58-5.39,7.96l6.03,1.82c.71-2.35,1.94-4.07,3.69-5.14,1.75-1.07,3.79-1.61,6.12-1.61,3.52,0,5.99.83,7.42,2.48,1.28,1.49,1.96,3.68,2.06,6.58-1.37.19-2.78.38-4.27.58-2.33.31-4.63.65-6.89,1.02-2.26.37-4.31.8-6.14,1.3-1.95.57-3.63,1.35-5.05,2.35-1.42,1-2.5,2.24-3.27,3.71s-1.14,3.22-1.14,5.25.49,3.97,1.48,5.71c.99,1.74,2.45,3.13,4.39,4.19,1.94,1.06,4.35,1.59,7.23,1.59,3.71,0,6.87-.79,9.49-2.37,1.91-1.15,3.49-2.73,4.78-4.71v6.01h5.64v-23.83c0-1.52-.07-2.98-.21-4.37-.14-1.39-.49-2.68-1.03-3.87ZM406.69,49.65c-.31,1.59-.98,3.06-2,4.41-1.02,1.34-2.37,2.43-4.05,3.25-1.68.82-3.66,1.23-5.94,1.23-1.83,0-3.31-.3-4.44-.89-1.13-.59-1.96-1.37-2.5-2.32-.54-.95-.8-1.95-.8-3,0-1.19.28-2.19.84-3.01.56-.82,1.3-1.5,2.21-2.03.92-.53,1.9-.97,2.94-1.3,1.43-.4,3.03-.75,4.8-1.03,1.77-.29,3.66-.56,5.67-.82,1.28-.17,2.59-.36,3.89-.54-.01.61-.03,1.31-.06,2.12-.05,1.45-.24,2.77-.57,3.96Z"/><path fill="#fff" d="M454.97,31.92c-.67-1.59-1.58-3.04-2.75-4.35-1.17-1.31-2.63-2.36-4.39-3.14-1.76-.79-3.89-1.18-6.39-1.18-3.31,0-6.18.72-8.62,2.16-1.67.99-3.07,2.29-4.23,3.87v-5.03h-5.71v38.54h6.42v-20.3c0-2.24.26-4.18.77-5.83.51-1.65,1.23-3.02,2.16-4.1.93-1.08,2.04-1.9,3.34-2.44,1.3-.55,2.74-.82,4.34-.82,2.05,0,3.74.39,5.08,1.18,1.34.78,2.41,1.85,3.19,3.21.79,1.36,1.34,2.88,1.68,4.57.33,1.69.5,3.44.5,5.25v19.3h6.42v-21.3c0-1.45-.14-3.01-.41-4.67-.27-1.66-.74-3.29-1.41-4.89Z"/><path fill="#fff" d="M475.41,31.04c1.71-1.22,3.89-1.84,6.53-1.84,2.33,0,4.41.62,6.23,1.85,1.82,1.24,3.15,2.97,3.98,5.21l6.28-1.89c-1-3.47-2.97-6.21-5.91-8.21-2.94-2-6.44-3-10.51-3-3.85,0-7.15.86-9.88,2.59-2.74,1.72-4.84,4.12-6.32,7.17-1.47,3.06-2.22,6.58-2.25,10.58.02,3.93.75,7.42,2.19,10.49,1.44,3.07,3.52,5.48,6.24,7.23,2.72,1.75,6.04,2.62,9.94,2.62s7.41-.95,10.24-2.85c2.83-1.9,4.91-4.65,6.24-8.24l-6.42-1.68c-.88,2.19-2.15,3.86-3.8,5.01-1.65,1.15-3.74,1.73-6.26,1.73-3.83,0-6.71-1.31-8.65-3.94-1.94-2.63-2.93-6.08-2.98-10.36.02-2.78.45-5.25,1.28-7.4.83-2.15,2.11-3.84,3.82-5.07Z"/><path fill="#fff" d="M535.61,45.3h3.28c.19-4.57-.4-8.5-1.77-11.81-1.37-3.31-3.41-5.85-6.14-7.64-2.72-1.78-6.02-2.68-9.9-2.68s-6.99.84-9.76,2.51c-2.77,1.68-4.93,4.06-6.48,7.14-1.55,3.08-2.32,6.73-2.32,10.94s.79,7.54,2.36,10.54,3.76,5.35,6.58,7.03c2.82,1.68,6.12,2.52,9.9,2.52s7.11-.93,10.12-2.8c3.01-1.87,5.26-4.5,6.76-7.9l-6.1-2.11c-1.07,2.19-2.55,3.87-4.42,5.03-1.88,1.17-4.09,1.75-6.64,1.75-3.78,0-6.7-1.25-8.74-3.75-1.77-2.16-2.77-5.09-3.01-8.78h26.27ZM512.34,32.67c2.05-2.52,5.03-3.78,8.96-3.78,3.66,0,6.42,1.17,8.28,3.51,1.46,1.85,2.36,4.46,2.72,7.8h-22.83c.38-3.13,1.34-5.64,2.88-7.53Z"/><path fill="#fff" d="M592.18,14.56c-1.89-1.49-4.23-2.44-7.01-2.87-.64-.12-1.31-.2-2-.23-.69-.03-1.28-.05-1.78-.05h-20.3v51.38h6.35v-18.98h13.95c.5,0,1.09-.02,1.78-.07.69-.05,1.36-.12,2-.21,2.76-.43,5.08-1.38,6.98-2.85,1.89-1.47,3.32-3.34,4.28-5.58.96-2.25,1.45-4.74,1.45-7.48s-.48-5.19-1.43-7.44c-.95-2.25-2.37-4.12-4.26-5.6ZM590.65,31.79c-.49,1.37-1.24,2.56-2.27,3.57-1.02,1.01-2.36,1.71-4,2.09-.52.12-1.08.2-1.66.25-.58.05-1.1.07-1.55.07h-13.74v-20.34h13.74c.45,0,.97.02,1.55.07.58.05,1.14.13,1.66.25,1.64.38,2.97,1.08,4,2.09,1.02,1.01,1.78,2.2,2.27,3.57.49,1.37.73,2.77.73,4.19s-.24,2.83-.73,4.19Z"/><path fill="#fff" d="M631.77,44.55c0,2.21-.26,4.15-.77,5.82-.51,1.66-1.23,3.04-2.16,4.12-.93,1.08-2.04,1.9-3.34,2.44-1.3.55-2.74.82-4.34.82-2.02,0-3.71-.39-5.05-1.18-1.34-.79-2.41-1.86-3.21-3.21-.8-1.36-1.36-2.88-1.7-4.57-.33-1.69-.5-3.44-.5-5.25v-19.3h-6.42v21.3c0,1.45.14,3.01.41,4.68.27,1.66.74,3.29,1.41,4.89.67,1.59,1.58,3.05,2.75,4.35,1.17,1.31,2.63,2.35,4.39,3.14,1.76.79,3.89,1.18,6.39,1.18,3.31,0,6.18-.72,8.62-2.16,1.67-.99,3.07-2.29,4.23-3.87v5.03h5.67V24.25h-6.39v20.3Z"/><rect fill="#fff" x="648.86" y="10.33" width="6.35" height="52.45"/><path fill="#fff" d="M690.45,43.25c-1.96-1.01-4.65-1.95-8.05-2.8-3.02-.76-5.32-1.44-6.9-2.03-1.58-.59-2.66-1.22-3.25-1.87-.58-.65-.87-1.46-.87-2.41,0-1.64.78-2.95,2.34-3.93,1.56-.98,3.59-1.43,6.08-1.36,2.62.07,4.77.71,6.46,1.91,1.69,1.2,2.69,2.83,3,4.87l6.49-1.18c-.26-2.26-1.1-4.24-2.52-5.94-1.42-1.7-3.28-3.02-5.58-3.94s-4.92-1.39-7.85-1.39-5.54.47-7.76,1.41c-2.22.94-3.95,2.25-5.19,3.94-1.24,1.69-1.86,3.66-1.86,5.92,0,1.85.42,3.43,1.25,4.71.83,1.29,2.22,2.41,4.17,3.37,1.95.96,4.63,1.9,8.03,2.8,3.14.86,5.49,1.58,7.05,2.18,1.56.6,2.59,1.23,3.09,1.91.5.68.75,1.55.75,2.62,0,1.88-.76,3.37-2.27,4.46-1.51,1.09-3.57,1.64-6.19,1.64-2.78,0-5.11-.61-6.99-1.84-1.88-1.23-3.08-2.88-3.6-4.98l-6.49,1.03c.67,3.62,2.47,6.43,5.41,8.44,2.94,2.01,6.7,3.01,11.29,3.01s8.58-1.06,11.31-3.19c2.73-2.13,4.1-5.05,4.1-8.76,0-2-.42-3.68-1.25-5.05-.83-1.37-2.23-2.56-4.19-3.57Z"/><path fill="#fff" d="M726.83,56.08c-1.88,1.17-4.09,1.75-6.64,1.75-3.78,0-6.7-1.25-8.74-3.75-1.77-2.16-2.77-5.09-3.01-8.78h29.56c.19-4.57-.4-8.5-1.77-11.81-1.37-3.31-3.41-5.85-6.14-7.64-2.72-1.78-6.02-2.68-9.9-2.68s-6.99.84-9.76,2.51c-2.77,1.68-4.93,4.06-6.48,7.14-1.55,3.08-2.32,6.73-2.32,10.94s.79,7.54,2.36,10.54,3.76,5.35,6.58,7.03c2.82,1.68,6.12,2.52,9.9,2.52s7.11-.93,10.12-2.8c3.01-1.87,5.26-4.5,6.76-7.9l-6.1-2.11c-1.07,2.19-2.55,3.87-4.42,5.03ZM711.45,32.67c2.05-2.52,5.03-3.78,8.96-3.78,3.66,0,6.42,1.17,8.28,3.51,1.46,1.85,2.36,4.46,2.72,7.8h-22.83c.38-3.13,1.34-5.64,2.88-7.53Z"/></svg>
+        <p class="brand-sub" id="brand-sub" style="margin:0;">Public Scan &amp; One-CTO Onboarding · Performance Pulse</p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span class="company-pill" id="company-pill"><span class="pulse-dot" aria-hidden="true"></span>Public Scan · Demo</span>
+      <a class="guide-link" href="../style-guide.html">Design System →</a>
+    </div>
+  </div>
+</header>
+
+<div class="rolebar-wrap">
+  <div class="rolebar" role="region" aria-label="Current role and expected actor">
+    <div class="rolebar-group">
+      <label for="role-select">Acting as</label>
+      <span class="chip chip-role" id="role-chip">AI Lead</span>
+      <select id="role-select" aria-label="Switch acting role">
+        <option value="vis">Visitor</option>
+        <option value="ai">AI Lead</option>
+        <option value="sec">Security Reviewer</option>
+        <option value="sys">System Admin</option>
+        <option value="spon">Executive Sponsor</option>
+      </select>
+    </div>
+    <div class="rolebar-group">
+      <span class="note" style="margin:0;">Expected actor: <strong id="expected-role" style="color:var(--pp-ink-primary);">AI Lead</strong></span>
+      
+    </div>
+  </div>
+</div>
+
+<div class="stepper-wrap">
+  <nav class="stepper" aria-label="Public scan and onboarding steps">
+    <div id="stepper" class="stepper-phases"></div>
+  </nav>
+</div>
+
+<div class="layout">
+  <main id="main" tabindex="-1"></main>
+  <div class="demo-footer" aria-label="Demo navigation">
+    <div class="row">
+      <button type="button" class="btn" id="prev">← Previous screen</button>
+      <button type="button" class="btn" id="next">Next screen →</button>
+    </div>
+    <button type="button" class="btn" id="reset">Reset demo</button>
+  </div>
+</div>
+
+<div id="live" class="sr" aria-live="polite" aria-atomic="true"></div>
+
+<dialog id="baseline-dialog" aria-labelledby="bd-h">
+  <h3 id="bd-h">Record Baseline Date</h3>
+  <div id="bd-desc" class="note" style="color:var(--pp-ink-secondary);margin-bottom:14px;"></div>
+  <div class="field"><label for="bd-date">Baseline date (America/New_York)</label><input type="date" id="bd-date" value="2026-11-26" style="width:100%;"></div>
+  <div class="row" style="justify-content:flex-end;margin-top:18px;">
+    <button type="button" class="btn" id="bd-cancel">Cancel</button>
+    <button type="button" class="btn primary" id="bd-confirm">Record Baseline Date</button>
+  </div>
+</dialog>
+<script>
+(function () {
+  var ROLES = { vis: "Visitor", ai: "AI Lead", sec: "Security Reviewer", sys: "System Admin", spon: "Executive Sponsor" };
+  var P1 = [
+    { id: "a", name: "Start", expected: "vis" },
+    { id: "b", name: "Verify Code", expected: "vis" },
+    { id: "c", name: "Outside-In Scan", expected: "vis" },
+    { id: "d", name: "Results & Systems", expected: "vis" }
+  ];
+  var SCREENS = [
+    { id: 1, name: "Record Ready", expected: "ai" },
+    { id: 2, name: "Trust & Consent", expected: "sec" },
+    { id: 3, name: "Settings & Connections", expected: "ai" },
+    { id: 4, name: "Weights & Exports", expected: "ai" },
+    { id: 5, name: "Findings & Baseline", expected: "ai" }
+  ];
+  var ORDER = ["a", "b", "c", "d", 1, 2, 3, 4, 5];
+  var CONNECTORS = [
+    ["entra", "Microsoft Entra ID", "Identity", "IT lead (sample)"],
+    ["openai", "OpenAI", "AI / Models", "AI Lead (sample)"],
+    ["anthropic", "Anthropic", "AI / Models", "AI Lead (sample)"],
+    ["github", "GitHub", "Engineering", "CTO (sample)"]
+  ];
+  var AREAS = [
+    ["finance", "Finance", "#1D4ED8"],
+    ["hr", "HR", "#0F766E"],
+    ["crm", "CRM", "#6D28D9"],
+    ["eng", "Engineering / AI", "#B45309"]
+  ];
+  var PERSONAL = ["gmail.com", "googlemail.com", "outlook.com", "hotmail.com", "live.com", "yahoo.com", "icloud.com", "me.com", "aol.com", "proton.me", "protonmail.com"];
+  var USE_LABEL = { yes: "We use it", no: "We don't", unsure: "Not stated" };
+  var scanTimer = null;
+
+  function isP1(id) { return typeof id === "string"; }
+  function parseId(v) { return /^[a-d]$/i.test(String(v)) ? String(v).toLowerCase() : +v; }
+  function scr(id) { return isP1(id) ? P1.filter(function (x) { return x.id === id; })[0] : SCREENS[id - 1]; }
+  function companyFrom(domain) {
+    var base = String(domain).split(".")[0] || "company";
+    return base.toLowerCase() === "acme" ? "ACME Company" : base.charAt(0).toUpperCase() + base.slice(1) + " (sample)";
+  }
+  function freshSystems() {
+    return [
+      { id: "entra", name: "Microsoft Entra ID", cat: "Identity", inf: "Detected", use: "unsure", owner: "" },
+      { id: "github", name: "GitHub", cat: "Engineering", inf: "Detected", use: "unsure", owner: "" },
+      { id: "sf", name: "Salesforce", cat: "CRM", inf: "Likely footprint", use: "unsure", owner: "" },
+      { id: "workday", name: "Workday", cat: "HR", inf: "Likely footprint", use: "unsure", owner: "" },
+      { id: "openai", name: "OpenAI", cat: "AI / Models", inf: "Detected", use: "unsure", owner: "" }
+    ];
+  }
+  var SAMPLE_SYSTEMS = [
+    { id: "entra", name: "Microsoft Entra ID", cat: "Identity", inf: "Detected", use: "yes", owner: "IT lead (sample)" },
+    { id: "github", name: "GitHub", cat: "Engineering", inf: "Detected", use: "yes", owner: "CTO (sample)" },
+    { id: "sf", name: "Salesforce", cat: "CRM", inf: "Likely footprint", use: "unsure", owner: "" },
+    { id: "workday", name: "Workday", cat: "HR", inf: "Likely footprint", use: "yes", owner: "HR ops (sample)" },
+    { id: "openai", name: "OpenAI", cat: "AI / Models", inf: "Detected", use: "yes", owner: "AI Lead (sample)" }
+  ];
+
+  function initial() {
+    return {
+      screen: "a", role: "vis",
+      email: "", emailErr: "", codeSent: false, code: "", codeErr: "", verified: false, resends: 0,
+      scan: "idle", scanStep: 0, companyOk: null, domain: "", company: "", domainInput: "", domainErr: "",
+      systems: freshSystems(), newSys: "", newSysErr: "", pulseOpen: false, pulse: { q1: "", q2: "" }, exited: false, continued: false,
+      r1: "own", r2: "one", r3: false, r4: "A", wrule: "warn",
+      confirmed: false, flagOpen: false, callBooked: false, sponsor: "signed",
+      reviewed: false, approval: "pending", changesOpen: false, released: false, cosign: "none",
+      settings: { refresh: true, notify: true, confirm: false },
+      conn: { entra: "none", openai: "none", anthropic: "none", github: "none" },
+      collection: false,
+      weights: { finance: 25, hr: 25, crm: 25, eng: 25 },
+      exports: { finance: false, hr: false, crm: false },
+      expErr: {}, viewer: "ai", open: {}, baseline: null, baselineSign: "none"
+    };
+  }
+
+  var S = initial();
+  (function applyParams() {
+    var p = new URLSearchParams(window.location.search);
+    if (p.get("s")) {
+      var sid = parseId(p.get("s"));
+      if (ORDER.indexOf(sid) >= 0) {
+        S.screen = sid;
+        if (!isP1(sid)) S.role = "ai";
+      }
+    }
+    if (p.get("demo") === "code") {
+      S.email = "cto@acme.com"; S.domain = "acme.com"; S.company = "ACME Company"; S.codeSent = true;
+    } else if (p.get("demo") === "scanning") {
+      S.email = "cto@acme.com"; S.domain = "acme.com"; S.company = "ACME Company"; S.codeSent = true; S.verified = true; S.scan = "running"; S.scanStep = 1;
+    } else if (p.get("demo") === "scanned") {
+      S.email = "cto@acme.com"; S.domain = "acme.com"; S.company = "ACME Company"; S.codeSent = true; S.verified = true; S.scan = "done"; S.scanStep = 3; S.companyOk = "yes";
+      S.systems[0].use = "yes"; S.systems[1].use = "yes"; S.systems[4].use = "yes";
+    } else if (p.get("demo") === "results") {
+      S.email = "cto@acme.com"; S.domain = "acme.com"; S.company = "ACME Company"; S.codeSent = true; S.verified = true; S.scan = "done"; S.scanStep = 3; S.companyOk = "yes";
+      S.systems[0].use = "yes"; S.systems[0].owner = "IT lead"; S.systems[1].use = "yes"; S.systems[1].owner = "CTO"; S.systems[3].use = "yes"; S.systems[3].owner = "HR ops"; S.systems[4].use = "yes"; S.systems[4].owner = "AI Lead";
+    }
+    if (p.get("role") && ROLES[p.get("role")]) S.role = p.get("role");
+    if (p.get("viewer")) S.viewer = p.get("viewer");
+    if (p.get("confirmed") === "1") { S.confirmed = true; S.sponsor = "signed"; }
+    if (p.get("approved") === "1") { S.confirmed = true; S.sponsor = "signed"; S.reviewed = true; S.approval = "approved"; }
+    if (p.get("connected") === "1") { S.conn.entra = "connected"; S.conn.github = "connected"; S.conn.openai = "stub"; S.exports.finance = true; S.exports.hr = true; }
+    if (p.get("open")) { p.get("open").split(",").forEach(function (k) { S.open[k] = true; }); }
+  })();
+
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[c]; }); }
+  function announce(msg) { var el = $("live"); el.textContent = ""; window.setTimeout(function () { el.textContent = msg; }, 20); }
+  function total() { return S.weights.finance + S.weights.hr + S.weights.crm + S.weights.eng; }
+  function anyConnected() { return Object.keys(S.conn).some(function (k) { return S.conn[k] === "connected"; }); }
+  function consentOk() { return S.approval === "approved" && (S.r4 !== "B" || S.cosign === "signed"); }
+  function sponsorOk() { return S.r4 !== "A" || S.sponsor === "signed"; }
+  function chip(kind, glyph, text) { return '<span class="chip chip-' + kind + '"><span aria-hidden="true">' + glyph + '</span> ' + esc(text) + '</span>'; }
+  function btn(id, label, opts) {
+    opts = opts || {};
+    var dis = opts.disabled ? ' aria-disabled="true"' : "";
+    var desc = opts.describedby ? ' aria-describedby="' + opts.describedby + '"' : "";
+    var cls = "btn" + (opts.primary ? " primary" : "") + (opts.danger ? " danger" : "");
+    return '<button type="button" class="' + cls + '" data-act="' + id + '"' + dis + desc + (opts.data ? ' data-k="' + opts.data + '"' : "") + ">" + esc(label) + "</button>";
+  }
+  function fieldErr(id, msg) { return msg ? '<p id="' + id + '" class="field-err" role="alert">' + esc(msg) + '</p>' : '<p id="' + id + '" class="sr"></p>'; }
+  function privacyBox() { return '<div class="privacy-box"><strong>Your results are private to you.</strong> We keep a record of your company so a consultant can follow up.</div>'; }
+  function confirmedCount() { return S.systems.filter(function (x) { return x.use === "yes"; }).length; }
+  function rr() {
+    return S.continued
+      ? { email: S.email, domain: S.domain, company: S.company, systems: S.systems, live: true }
+      : { email: "cto@acme.example (sample)", domain: "acme.example", company: "ACME Company", systems: SAMPLE_SYSTEMS, live: false };
+  }
+  function ownerOf(id, fallback) {
+    var s = rr().systems.filter(function (x) { return x.id === id && x.use === "yes" && x.owner; })[0];
+    return s ? s.owner : fallback;
+  }
+  function handoffBanner(sc) {
+    if (S.role === sc.expected) return "";
+    return '<div class="banner banner-handoff" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">⇄</span> Role Handoff · This step belongs to the ' + esc(ROLES[sc.expected]) + '</div><p class="banner-desc">You are acting as <strong>' + esc(ROLES[S.role]) + '</strong>. You can view this screen, but the owner\'s actions stay read-only.</p></div><div class="row">' +
+      btn("switch", "Switch to " + ROLES[sc.expected], { primary: true, data: sc.expected }) +
+      btn("assign", "Assign to another person", { data: sc.expected }) + '</div></div>';
+  }
+
+  function pA() {
+    var h = '<div class="screen-head"><div class="screen-head-top"><h2 id="screen-title">A · Start <span style="font-weight:400;color:var(--pp-ink-muted);">(Scan Screen 1)</span></h2>' +
+      chip("role", "●", "Phase 1 · Public Scan") + '</div>' +
+      '<p class="screen-goal">See what public signals already reveal about your company — using only your work email.</p></div>';
+    h += '<section class="card" aria-labelledby="pa-h"><div class="card-head"><h3 id="pa-h">See what we can already tell about your company.</h3></div>' +
+      '<p style="margin:0 0 14px;color:var(--pp-ink-secondary);font-size:var(--pp-text-base);">We scan public information about your company. Enter your work email and we\u2019ll send you a six-digit code. No password needed.</p>' +
+      '<div class="field" style="max-width:440px;"><label for="p-email">Work email</label>' +
+      '<input type="email" id="p-email" autocomplete="email" spellcheck="false" placeholder="cto@acme.com" value="' + esc(S.email) + '" aria-describedby="p-email-hint p-email-err"' + (S.emailErr ? ' aria-invalid="true"' : "") + '>' +
+      '<p id="p-email-hint" class="note" style="margin:6px 0 0;">Your email domain tells us which company to scan. One company at a time.</p>' +
+      fieldErr("p-email-err", S.emailErr) + '</div>' +
+      '<div class="row" style="margin-top:16px;">' + btn("sendCode", "Send code", { primary: true }) + '</div>' +
+      privacyBox() + '</section>';
+    h += '<p class="note">Demo tip: enter any work email (e.g. <code>cto@acme.com</code>) to run the scan, or try a personal address like <code>name@gmail.com</code> to test domain validation.</p>';
+    return h;
+  }
+
+  function pB() {
+    var h = '<div class="screen-head"><div class="screen-head-top"><h2 id="screen-title">B · Enter your code <span style="font-weight:400;color:var(--pp-ink-muted);">(Scan Screen 2)</span></h2>' +
+      (S.verified ? chip("ok", "✓", "Email verified") : chip("neutral", "○", "Awaiting verification")) + '</div>' +
+      '<p class="screen-goal">Enter the six-digit code sent to your work inbox to verify your address and launch the outside-in scan.</p></div>';
+    if (!S.codeSent) {
+      return h + '<div class="banner banner-warn" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">▲</span> No code sent yet</div><p class="banner-desc">Start by entering your work email on Screen A.</p></div>' + btn("go", "Go to Start", { primary: true, data: "a" }) + '</div>';
+    }
+    h += '<section class="card" aria-labelledby="pb-h"><div class="card-head"><h3 id="pb-h">Check your email</h3>' + chip("info", "✉", S.email) + '</div>' +
+      '<p style="margin:0 0 14px;color:var(--pp-ink-secondary);">We sent a one-time six-digit code to <strong>' + esc(S.email) + '</strong>.</p>' +
+      '<div class="field"><label for="p-code">Six-digit code</label>' +
+      '<input type="text" id="p-code" class="code-input" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="123456" value="' + esc(S.code) + '" aria-describedby="p-code-hint p-code-err"' + (S.codeErr ? ' aria-invalid="true"' : "") + '>' +
+      '<p id="p-code-hint" class="note" style="margin:6px 0 0;">Paste or type the code. It works once.</p>' +
+      fieldErr("p-code-err", S.codeErr) + '</div>' +
+      '<div class="row" style="margin-top:16px;">' +
+      btn("verifyCode", "Verify and start the scan", { primary: true }) +
+      btn("resend", S.resends >= 3 ? "Resend limit reached" : "Resend code", { disabled: S.resends >= 3, describedby: "p-resend" }) +
+      btn("go", "Use a different email", { data: "a" }) + '</div>' +
+      '<p id="p-resend" class="note" style="margin:12px 0 0;">' + (S.resends ? "Code resent (" + S.resends + " of 3)." : "Didn\u2019t get it? Check spam, then resend.") + (S.resends >= 3 ? " Wait a few minutes, or book a call." : "") + '</p></section>';
+    h += '<p class="note">Demo tip: any six digits verify (e.g. <code>123456</code>). Try <code>000000</code> for a wrong-code error or <code>999999</code> for an expired code.</p>';
+    return h;
+  }
+
+  function scanStepsHtml() {
+    var names = ["Matching your email domain to a company", "Reading public records and web signals", "Detecting the tools you use"];
+    return '<ol class="scan-steps">' + names.map(function (n, i) {
+      var st = S.scan === "done" || i < S.scanStep ? "Done" : (i === S.scanStep ? "In progress" : "Waiting");
+      var c = st === "Done" ? chip("ok", "✓", "Done") : (st === "In progress" ? chip("info", "◷", "In progress") : chip("neutral", "○", "Waiting"));
+      return '<li>' + c + '<span>' + esc(n) + '</span></li>';
+    }).join("") + '</ol>';
+  }
+
+  function pC() {
+    var h = '<div class="screen-head"><div class="screen-head-top"><h2 id="screen-title">C · Outside-In Scan <span style="font-weight:400;color:var(--pp-ink-muted);">(Scan Screen 3)</span></h2>' +
+      (S.companyOk === "yes" ? chip("ok", "✓", "Company confirmed") : (S.scan === "running" || S.scan === "slow" ? chip("info", "◷", "Scanning…") : chip("neutral", "○", "Awaiting confirmation"))) + '</div>' +
+      '<p class="screen-goal">We scan public records for your domain, confirm your company, and check which detected tools you actually use.</p></div>';
+    if (!S.verified) {
+      return h + '<div class="banner banner-warn" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">▲</span> Email not verified yet</div><p class="banner-desc">Verify your work email with the six-digit code first.</p></div>' + btn("go", "Go to code", { primary: true, data: "b" }) + '</div>';
+    }
+    if (S.scan === "running" || S.scan === "slow") {
+      var pct = Math.round((S.scanStep / 3) * 100);
+      h += '<section class="card" aria-labelledby="pc-h" aria-busy="true"><div class="card-head"><h3 id="pc-h">Scanning public information for ' + esc(S.domain) + '\u2026</h3>' + chip("info", "◷", S.scanStep + " of 3 steps") + '</div>' +
+        '<div class="scan-bar-wrap"><div class="scan-bar-meta"><span>Scan progress</span><span class="tnum">' + pct + '%</span></div><div class="scan-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="3" aria-valuenow="' + S.scanStep + '" aria-label="Scan progress"><div class="scan-bar-fill" style="width:' + Math.max(12, pct) + '%;"></div></div></div>' +
+        scanStepsHtml();
+      if (S.scan === "slow") {
+        h += '<div class="banner banner-warn" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">▲</span> This is taking longer than usual</div><p class="banner-desc">Keep waiting, or we\u2019ll email your results when they\u2019re ready.</p></div><div class="row">' + btn("resumeScan", "Keep waiting") + btn("exitScan", "Email me when ready") + '</div></div>';
+      }
+      h += '<div class="row">' + btn("completeScan", "Complete scan now (demo)", { primary: true }) + (S.scan === "running" ? btn("slowScan", "Simulate slow scan") : "") + '</div></section>';
+      return h;
+    }
+    if (S.scan === "notfound" || S.companyOk === "no") {
+      h += '<section class="card" aria-labelledby="pc-nf"><div class="card-head"><h3 id="pc-nf">' + (S.scan === "notfound" ? "We couldn\u2019t match " + esc(S.domain) + " to a company." : "Sorry about that. Which company is yours?") + '</h3></div>' +
+        '<div class="field" style="max-width:440px;"><label for="p-domain">Your company\u2019s website (e.g. acme.com)</label>' +
+        '<input type="text" id="p-domain" autocomplete="url" spellcheck="false" placeholder="acme.com" value="' + esc(S.domainInput) + '" aria-describedby="p-domain-err"' + (S.domainErr ? ' aria-invalid="true"' : "") + '>' +
+        fieldErr("p-domain-err", S.domainErr) + '</div>' +
+        '<div class="row" style="margin-top:16px;">' + btn("rescan", "Scan this company", { primary: true }) + btn("bookCall", "Book a call instead") + '</div></section>';
+      if (S.callBooked) h += '<div class="banner banner-info" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">✓</span> Call request noted</div><p class="banner-desc">A Performance Pulse consultant will follow up to run a guided scan with you.</p></div></div>';
+      return h;
+    }
+    h += '<section class="card" aria-labelledby="pc-h"><div class="card-head"><h3 id="pc-h">We think you\u2019re ' + esc(S.company) + '\u2026 Right?</h3>' + (S.companyOk === "yes" ? chip("ok", "✓", "Company confirmed") : chip("info", "●", "Match found")) + '</div>' +
+      '<div class="kpi-grid">' +
+      '<div class="kpi"><div class="kpi-label">Company</div><div class="kpi-val">' + esc(S.company) + '</div><div class="kpi-sub">Matched from work email</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Domain</div><div class="kpi-val mono" style="font-size:var(--pp-text-base);">' + esc(S.domain) + '</div><div class="kpi-sub">Public web &amp; DNS signals</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Public signals</div><div class="kpi-val tnum">5 tools detected</div><div class="kpi-sub">Sample scan output</div></div></div>';
+    if (S.companyOk !== "yes") {
+      h += '<div class="row" style="margin-top:16px;">' + btn("companyYes", "Yes, that\u2019s us", { primary: true }) + btn("companyNo", "No, that\u2019s not us") + btn("notFound", "Simulate company not found") + '</div></section>';
+      return h;
+    }
+    h += '</section>';
+    h += '<section class="card soft" aria-labelledby="pc-sys"><div class="card-head"><h3 id="pc-sys">Tools we found. Do you use them?</h3></div>' +
+      '<p class="note" style="margin-top:0;margin-bottom:12px;">We keep both what we inferred and what you tell us.</p>' +
+      '<div class="table-wrap"><table><caption class="sr">Tools inferred by the scan, with your answer</caption><thead><tr><th scope="col">System</th><th scope="col">Category</th><th scope="col">What we inferred</th><th scope="col">Your answer</th></tr></thead><tbody>';
+    S.systems.forEach(function (s) {
+      var infChip = s.inf === "Detected" ? chip("ok", "✓", "Detected") : chip("warn", "▲", s.inf);
+      h += '<tr><th scope="row">' + esc(s.name) + '</th><td>' + esc(s.cat) + '</td><td>' + infChip + '</td><td>' +
+        '<label class="sr" for="use-' + s.id + '">Do you use ' + esc(s.name) + '?</label>' +
+        '<select id="use-' + s.id + '" data-use="' + s.id + '" class="table-input">' +
+        ["unsure", "yes", "no"].map(function (v) { return '<option value="' + v + '"' + (s.use === v ? " selected" : "") + '>' + (v === "unsure" ? "Not sure yet" : USE_LABEL[v]) + '</option>'; }).join("") +
+        '</select></td></tr>';
+    });
+    h += '</tbody></table></div></section>';
+    h += '<div class="row">' + btn("go", "Next: your results and systems →", { primary: true, data: "d" }) + '</div>';
+    return h;
+  }
+
+  function pD() {
+    var n = confirmedCount();
+    var tools = S.systems.filter(function (s) { return s.inf !== "Not detected"; }).length;
+    var h = '<div class="screen-head"><div class="screen-head-top"><h2 id="screen-title">D · Your Results &amp; Systems <span style="font-weight:400;color:var(--pp-ink-muted);">(Scan Screen 4)</span></h2>' +
+      (n > 0 ? chip("ok", "✓", n + " system" + (n === 1 ? "" : "s") + " confirmed") : chip("warn", "▲", "Confirm at least 1 system")) + '</div>' +
+      '<p class="screen-goal">Review your outside-in scan results, confirm who runs each system, and choose whether to continue into onboarding or book a call.</p></div>';
+    if (S.companyOk !== "yes") {
+      return h + '<div class="banner banner-warn" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">▲</span> Scan not confirmed yet</div><p class="banner-desc">Confirm your company on the scan screen first.</p></div>' + btn("go", "Go to scan", { primary: true, data: "c" }) + '</div>';
+    }
+    if (S.exited) {
+      h += '<div class="banner banner-ok" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">✓</span> Results emailed to ' + esc(S.email) + '</div><p class="banner-desc">You can come back any time with a new code. Follow-up emails with your results start now.</p></div>' + btn("undoExit", "Back to my results") + '</div>';
+    }
+    h += '<section class="card" aria-labelledby="pd-res"><div class="card-head"><h3 id="pd-res">Your scan results</h3>' + chip("role", "●", "Outside-in snapshot") + '</div>' +
+      '<div class="kpi-grid">' +
+      '<div class="kpi"><div class="kpi-label">Company</div><div class="kpi-val">' + esc(S.company) + '</div><div class="kpi-sub mono">' + esc(S.domain) + '</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Verified work email</div><div class="kpi-val" style="font-size:var(--pp-text-base);">' + esc(S.email) + '</div><div class="kpi-sub">One-time code verified</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Tools detected</div><div class="kpi-val tnum">' + tools + ' tools</div><div class="kpi-sub">From public records (sample)</div></div>' +
+      '<div class="kpi"><div class="kpi-label">You confirmed</div><div class="kpi-val tnum">' + n + ' in use</div><div class="kpi-sub">Drives onboarding scope</div></div></div>' +
+      privacyBox() + '</section>';
+    h += '<section class="card soft" aria-labelledby="pd-sys"><div class="card-head"><h3 id="pd-sys">Your systems</h3></div>' +
+      '<p style="margin:0 0 4px;font-weight:600;color:var(--pp-ink-primary);">This list decides what we ask for later. Tell us who runs each one.</p>' +
+      '<p class="note" style="margin:0 0 12px;">We only ask for data from rows you confirm.</p>' +
+      '<div class="table-wrap"><table><caption class="sr">Systems with your answer and who runs each</caption><thead><tr><th scope="col">System</th><th scope="col">Inferred</th><th scope="col">You said</th><th scope="col">Who runs it</th></tr></thead><tbody>';
+    S.systems.forEach(function (s) {
+      var infChip = s.inf === "Detected" ? chip("ok", "✓", "Detected") : (s.inf === "Not detected" ? chip("neutral", "○", "Added by you") : chip("warn", "▲", s.inf));
+      h += '<tr><th scope="row">' + esc(s.name) + ' <span style="font-weight:400;color:var(--pp-ink-muted);">· ' + esc(s.cat) + '</span></th><td>' + infChip + '</td><td>' +
+        '<label class="sr" for="use2-' + s.id + '">Do you use ' + esc(s.name) + '?</label>' +
+        '<select id="use2-' + s.id + '" data-use="' + s.id + '" class="table-input">' +
+        ["unsure", "yes", "no"].map(function (v) { return '<option value="' + v + '"' + (s.use === v ? " selected" : "") + '>' + (v === "unsure" ? "Not sure yet" : USE_LABEL[v]) + '</option>'; }).join("") +
+        '</select></td><td>' +
+        (s.use === "yes" ? '<label class="sr" for="own-' + s.id + '">Who runs ' + esc(s.name) + '?</label><input type="text" id="own-' + s.id + '" data-owner="' + s.id + '" class="table-input" value="' + esc(s.owner) + '" placeholder="Name or role">' : '<span class="note" style="margin:0;">Only for systems you use</span>') +
+        '</td></tr>';
+    });
+    h += '</tbody></table></div>' +
+      '<div class="add-sys-row"><div class="field"><label for="p-newsys">Add a system we missed</label><input type="text" id="p-newsys" placeholder="e.g. Snowflake, Slack, NetSuite" value="' + esc(S.newSys) + '" aria-describedby="p-newsys-err"' + (S.newSysErr ? ' aria-invalid="true"' : "") + '>' + fieldErr("p-newsys-err", S.newSysErr) + '</div>' + btn("addSys", "Add system") + '</div></section>';
+    h += '<section class="card" aria-labelledby="pd-pc"><div class="card-head"><h3 id="pd-pc">Optional pulse check</h3>' + chip("neutral", "○", "Optional · 2 questions") + '</div>' +
+      '<p class="note" style="margin-top:0;margin-bottom:12px;">A few self-assessment questions. Your answers are saved with your results.</p>' +
+      '<button type="button" class="btn" data-act="pulse" aria-expanded="' + S.pulseOpen + '" aria-controls="pd-pulse">' + (S.pulseOpen ? "Hide questions" : "Answer the pulse check") + '</button>' +
+      '<div id="pd-pulse" class="pulse-panel"' + (S.pulseOpen ? "" : " hidden") + '>' +
+      [["q1", "How widely is AI used across your company today? (sample wording)", ["Not yet", "Some teams", "Widely"]],
+       ["q2", "Do you have an AI use policy? (sample wording)", ["No", "Drafting one", "Yes"]]].map(function (q) {
+        return '<fieldset class="pulse-q"><legend>' + esc(q[1]) + '</legend><div class="pulse-opts">' +
+          q[2].map(function (o, i) {
+            var id = "pq-" + q[0] + "-" + i;
+            return '<label class="pulse-opt" for="' + id + '"><input type="radio" name="pq-' + q[0] + '" id="' + id + '" value="' + esc(o) + '" data-pulse="' + q[0] + '"' + (S.pulse[q[0]] === o ? " checked" : "") + '><span>' + esc(o) + '</span></label>';
+          }).join("") + '</div></fieldset>';
+      }).join("") + '</div></section>';
+    var canGo = n > 0;
+    h += '<section class="card" aria-labelledby="pd-next"><div class="card-head"><h3 id="pd-next">What next?</h3></div>' +
+      '<p style="margin:0 0 14px;color:var(--pp-ink-secondary);">A consultant follows up. No internal data is collected until you agree.</p>' +
+      '<div class="row">' +
+      btn("continueRR", "Continue to Record Ready →", { primary: true, disabled: !canGo, describedby: "pd-next-hint" }) +
+      btn("bookCall", "Book a call") +
+      btn("exitSave", "Email my results and exit") + '</div>' +
+      '<p id="pd-next-hint" class="note" style="margin:12px 0 0;">' +
+      (canGo ? "Continuing creates your company record with your verified email, domain, and the " + n + " system" + (n === 1 ? "" : "s") + " you confirmed, plus who runs each." : "Blocked: mark at least one system \u201cWe use it\u201d to continue.") + '</p>';
+    if (S.callBooked) h += '<div class="banner banner-info" style="margin-top:12px;margin-bottom:0;" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">✓</span> Call request noted</div><p class="banner-desc">A Performance Pulse consultant will follow up to walk through your scan results.</p></div></div>';
+    h += '</section>';
+    return h;
+  }
+
+  function startScan() { window.clearTimeout(scanTimer); S.scan = "running"; S.scanStep = 0; S.companyOk = null; tick(); }
+  function tick() {
+    scanTimer = window.setTimeout(function () {
+      if (S.scan !== "running") return;
+      S.scanStep += 1;
+      if (S.scanStep >= 3) { finishScan(); return; }
+      if (S.screen === "c") render();
+      tick();
+    }, 650);
+  }
+  function finishScan() {
+    window.clearTimeout(scanTimer); S.scan = "done"; S.scanStep = 3;
+    if (S.screen === "c") {
+      render();
+      announce("Scan complete. We think you're " + S.company + ". Is that right?");
+      var b = document.querySelector('[data-act="companyYes"]');
+      if (b) b.focus();
+    }
+  }
+
+  function s1() {
+    var owner = S.role === "ai";
+    var rec = rr();
+    var h = '<div class="screen-head"><div class="screen-head-top"><h2 id="screen-title">1 · Record Ready <span style="font-weight:400;color:var(--pp-ink-muted);">(Scan Screen 5)</span></h2>' +
+      (S.confirmed ? chip("ok", "✓", "Record confirmed") : chip("neutral", "○", "Saved · awaiting confirmation")) +
+      '</div><p class="screen-goal">Your company record is saved. Review the revenue band, from-price, and confirmed systems, book a call if needed, or hand off to Security Reviewer.</p></div>' + handoffBanner(SCREENS[0]);
+    if (rec.live) {
+      h += '<div class="banner banner-ok" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">✓</span> Carried forward from Public Scan</div><p class="banner-desc">Verified email <strong>' + esc(rec.email) + '</strong>, domain <strong>' + esc(rec.domain) + '</strong>, and your confirmed systems are pre-populated below.</p></div></div>';
+    }
+    h += '<section class="card" aria-labelledby="rec-h"><div class="card-head"><h3 id="rec-h">Company record</h3>' + chip("role", "⇄", "Owned by AI Lead") + '</div><div class="kpi-grid">' +
+      '<div class="kpi"><div class="kpi-label">Company</div><div class="kpi-val">' + esc(rec.company) + '</div><div class="kpi-sub">' + esc(rec.domain) + '</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Revenue band</div><div class="kpi-val tnum">$50M–$100M</div><div class="kpi-sub">Sample classification</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Revenue-based from-price</div><div class="kpi-val tnum">$42,000 / yr</div><div class="kpi-sub">Sample, not a quote</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Proposal scope</div><div class="kpi-val">4 focus areas</div><div class="kpi-sub">Finance, HR, CRM, Eng/AI</div></div></div>' +
+      privacyBox() + '</section>';
+    h += '<section class="card soft" aria-labelledby="scan-h"><div class="card-head"><h3 id="scan-h">Systems: inferred vs stated</h3></div>' +
+      '<p class="note" style="margin-top:0;margin-bottom:12px;">Inferred = outside-in scan. Stated = confirmed by the company in the self-serve scan with its system owner.</p>' +
+      '<div class="table-wrap"><table><caption class="sr">Systems inferred by the scan and stated by the company, with owners</caption><thead><tr><th scope="col">System</th><th scope="col">Category</th><th scope="col">Inferred (scan)</th><th scope="col">Stated (company)</th><th scope="col">System owner</th></tr></thead><tbody>';
+    rec.systems.forEach(function (sys) {
+      var infChip = sys.inf === "Detected" ? chip("ok", "✓", "Detected") : (sys.inf === "Not detected" ? chip("neutral", "○", "Added") : chip("warn", "▲", sys.inf));
+      var stChip = sys.use === "yes" ? chip("ok", "✓", "Confirmed") : (sys.use === "no" ? chip("err", "◆", "We don't use it") : chip("neutral", "○", "Not stated"));
+      h += '<tr><th scope="row">' + esc(sys.name) + '</th><td>' + esc(sys.cat) + '</td><td>' + infChip + '</td><td>' + stChip + '</td><td>' + (sys.use === "yes" && sys.owner ? esc(sys.owner) : '<span style="color:var(--pp-ink-muted);">Not recorded</span>') + '</td></tr>';
+    });
+    h += '</tbody></table></div></section>';
+    h += '<section class="card" aria-labelledby="act1-h"><div class="card-head"><h3 id="act1-h">Confirmation &amp; handoff</h3></div><div class="row">' +
+      btn("confirm", S.confirmed ? "Record confirmed ✓" : "Confirm record", { primary: !S.confirmed, disabled: !owner || S.confirmed }) +
+      btn("flag", "Flag a correction", { disabled: !owner }) + btn("bookCall", "Book a call") + '</div>';
+    if (S.callBooked) h += '<div class="banner banner-info" style="margin-top:12px;margin-bottom:0;" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">✓</span> Call request noted</div><p class="banner-desc">A Performance Pulse onboarding specialist will follow up to walk through your saved record and proposal.</p></div></div>';
+    if (S.flagOpen) h += '<div class="field"><label for="flag-reason">What needs correcting? (sent to Performance Pulse Sales / Assessor)</label><textarea id="flag-reason" rows="2"></textarea></div>';
+    var spChip = S.sponsor === "signed" ? chip("ok", "✓", "Signed by Executive Sponsor (demo stub)") : (S.sponsor === "requested" ? chip("warn", "◷", "Requested · awaiting Sponsor") : chip("neutral", "○", "Not requested"));
+    h += '<hr class="divider"><div class="card-head"><h4 style="margin:0;">Executive Sponsor sign-off</h4>' + spChip + '</div><div class="row">' +
+      btn("reqSponsor", "Request Sponsor sign-off", { disabled: !S.confirmed || S.sponsor !== "none" || !owner }) +
+      btn("signSponsor", "Sign proposal (as Sponsor)", { primary: S.role === "spon" && S.sponsor !== "signed", disabled: S.role !== "spon" || S.sponsor === "signed" }) + '</div>';
+    h += '<hr class="divider"><div class="row">' + btn("handoffSec", "Hand off to Security Reviewer →", { primary: true, disabled: !S.confirmed, describedby: "h1-hint" }) +
+      '<span id="h1-hint" class="note" style="margin:0;">' + (S.confirmed ? "Ready to hand off to Security Reviewer." : "Blocked: confirm the record first.") + '</span></div></section>';
+    return h;
+  }
+
+  function s2() {
+    var owner = S.role === "sec";
+    var stChip = S.approval === "approved" ? chip("ok", "✓", "Approved · Security Reviewer · 26 Nov 2026 · scope v1") : (S.approval === "changes" ? chip("err", "◆", "Changes requested") : chip("neutral", "○", "Awaiting one-time approval"));
+    var h = '<div class="screen-head"><div class="screen-head-top"><h2 id="screen-title">2 · Trust &amp; Consent</h2>' + stChip + '</div>' +
+      '<p class="screen-goal">Security Reviewer verifies exactly what will be pulled, for how long and for whom, then records a one-time approval.</p></div>' + handoffBanner(SCREENS[1]);
+    if (!S.confirmed) h += '<div class="banner banner-err" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">◆</span> Blocked: record not confirmed</div><p class="banner-desc">The AI Lead must confirm the company record on Screen 1 before approval can be recorded.</p></div>' + btn("go", "Go to Screen 1", { data: "1" }) + '</div>';
+    if (S.role === "ai" && S.approval === "pending") h += '<div class="banner banner-info" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">◷</span> Waiting view (AI Lead)</div><p class="banner-desc">Awaiting Security Reviewer approval since 26 Nov 2026.</p></div>' + btn("resend", "Resend request") + '</div>';
+    h += '<section class="card" aria-labelledby="pack-h"><div class="card-head"><h3 id="pack-h">Security pack · data scope (sample)</h3>' + chip("role", "⇄", "Owned by Security Reviewer") + '</div>' +
+      '<div class="table-wrap"><table><caption class="sr">Data scope by source</caption><thead><tr><th scope="col">Source</th><th scope="col">What is pulled</th><th scope="col">Collected when</th></tr></thead><tbody>' +
+      '<tr><th scope="row">Microsoft Entra ID</th><td>Identity metadata (users, groups); no passwords</td><td>After approval + connection</td></tr>' +
+      '<tr><th scope="row">GitHub</th><td>Repository metadata; no source code</td><td>After approval + connection</td></tr>' +
+      '<tr><th scope="row">OpenAI / Anthropic</th><td>Model-provider usage &amp; spend metadata</td><td>After approval + connection</td></tr>' +
+      '<tr><th scope="row">Finance / HR / CRM exports</th><td>Only files attached on Screen 4; personal data stripped in the browser</td><td>On upload</td></tr></tbody></table></div></section>';
+    h += '<section class="card soft" aria-labelledby="demo-h"><div class="card-head"><h3 id="demo-h">Demo data preview</h3></div>' +
+      '<p class="note" style="margin-top:0;margin-bottom:12px;">The Security Reviewer sees the security pack and demo data.</p>' +
+      '<div class="kpi-grid"><div class="kpi"><div class="kpi-label">Entra ID · Group count</div><div class="kpi-val tnum">42 groups</div><div class="kpi-sub">Demo sample</div></div>' +
+      '<div class="kpi"><div class="kpi-label">GitHub · Active repos</div><div class="kpi-val tnum">118 repos</div><div class="kpi-sub">Demo sample</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Model providers · Monthly API</div><div class="kpi-val tnum">~1.2M calls</div><div class="kpi-sub">Demo sample</div></div></div></section>';
+    h += '<section class="card soft" aria-labelledby="life-h"><div class="card-head"><h3 id="life-h">What happens after approval</h3></div>' +
+      '<p style="margin:0 0 8px;font-size:var(--pp-text-sm);">One approval, before collection. No separate release step: pulled data goes straight to analysis (logged decision).</p>' +
+      '<p style="margin:0;font-size:var(--pp-text-sm);"><strong>Retention period:</strong> Confirmed during rollout.</p></section>';
+    h += '<section class="card" aria-labelledby="dec-h"><div class="card-head"><h3 id="dec-h">Decision</h3>' + stChip + '</div>';
+    if (S.approval !== "approved") {
+      h += '<div class="check-row"><input type="checkbox" id="reviewed"' + (S.reviewed ? " checked" : "") + (owner ? "" : " disabled") + '><label for="reviewed">I have reviewed the data scope and retention above</label></div>' +
+        '<div class="row" style="margin-top:10px;">' +
+        btn("approve", "Approve (one-time)", { primary: true, disabled: !owner || !S.reviewed || !S.confirmed, describedby: "ap-hint" }) +
+        btn("changes", "Request changes", { disabled: !owner }) + '</div>' +
+        '<p id="ap-hint" class="note">' + (!owner ? "Only the Security Reviewer can approve." : (!S.reviewed ? "Tick the review checkbox to enable approval." : "Approval unlocks data collection.")) + '</p>';
+      if (S.changesOpen) h += '<div class="field"><label for="chg">Reason (required; returned to AI Lead)</label><textarea id="chg" rows="2"></textarea></div>' + btn("sendChanges", "Send back to AI Lead");
+    } else {
+      h += '<div class="row">' + btn("revoke", "Revoke consent", { danger: true, disabled: !owner }) + '<span class="note" style="margin:0;">Revoking immediately stops collection.</span></div>';
+    }
+    h += '<hr class="divider"><div class="row">' + btn("handbackAi", "Hand back to AI Lead →", { primary: true, disabled: !consentOk(), describedby: "h2-hint" }) +
+      '<span id="h2-hint" class="note" style="margin:0;">' + (consentOk() ? "Approval recorded. AI Lead can now run Day-One Settings." : "Blocked: approval must be recorded first.") + '</span></div></section>';
+    return h;
+  }
+
+  function s3() {
+    var isAi = S.role === "ai", isSys = S.role === "sys";
+    var h = '<div class="screen-head"><div class="screen-head-top"><h2 id="screen-title">3 · Day-One Settings &amp; Connections</h2>' +
+      (anyConnected() ? chip("ok", "✓", "Connected") : chip("neutral", "○", "No connectors linked")) +
+      '</div><p class="screen-goal">AI Lead sets three day-one defaults (3a), then System Admin connects approved systems (3b).</p></div>';
+    if (!isAi && !isSys) {
+      h += '<div class="banner banner-handoff" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">⇄</span> Role Handoff · AI Lead (3a) or System Admin (3b)</div><p class="banner-desc">You are acting as <strong>' + esc(ROLES[S.role]) + '</strong>. Switch roles to edit settings or connect systems.</p></div><div class="row">' + btn("switch", "Switch to AI Lead", { primary: true, data: "ai" }) + btn("switch", "Switch to System Admin", { data: "sys" }) + '</div></div>';
+    }
+    if (!consentOk()) h += '<div class="banner banner-err" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">◆</span> Blocked: Security approval required</div><p class="banner-desc">Connections and data collection stay locked until Security Reviewer approves on Screen 2.</p></div>' + btn("go", "Go to Trust & Consent", { data: "2" }) + '</div>';
+    h += '<section class="card" aria-labelledby="s3a-h"><div class="card-head"><h3 id="s3a-h">3a · Three day-one settings</h3>' + chip("role", "⇄", "Owned by AI Lead") + '</div>';
+    if (!isAi) h += '<p class="note" style="margin-top:0;">Read-only while acting as ' + esc(ROLES[S.role]) + '. ' + btn("switch", "Switch to AI Lead", { data: "ai" }) + '</p>';
+    [["refresh", "Scheduled data refresh", "Pulls updated metadata weekly after baseline is recorded."],
+     ["notify", "Area Owner notifications", "Notifies assigned owners when exports or reviews are needed."],
+     ["confirm", "Manual confirmation before each pull", "Requires AI Lead check-in before running a new collection."]].forEach(function (it) {
+      var on = S.settings[it[0]];
+      h += '<div class="setting-row"><div class="setting-copy"><div class="setting-title">' + esc(it[1]) + '</div><div class="setting-desc">' + esc(it[2]) + '</div></div>' +
+        '<button type="button" class="switch" role="switch" aria-checked="' + on + '" aria-label="' + esc(it[1]) + '" data-act="setting" data-k="' + it[0] + '"' + (isAi ? "" : ' aria-disabled="true"') + '></button></div>';
+    });
+    h += '<div class="row" style="margin-top:14px;">' + btn("handoffSys", "Hand off connections to System Admin →", { primary: isAi, disabled: !isAi }) + '</div></section>';
+    h += '<section class="card" aria-labelledby="s3b-h"><div class="card-head"><h3 id="s3b-h">3b · System connections</h3>' + chip("role", "⇄", "Owned by System Admin") + '</div>';
+    if (!isSys) h += '<div class="banner banner-handoff" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">⇄</span> System Admin owns connections</div><p class="banner-desc">Switch to System Admin to link Entra ID, OpenAI, Anthropic, or GitHub.</p></div><div class="row">' + btn("switch", "Switch to System Admin", { primary: true, data: "sys" }) + btn("assign", "Assign to another person", { data: "sys" }) + '</div></div>';
+    h += '<div class="table-wrap"><table><caption class="sr">System connectors and statuses</caption><thead><tr><th scope="col">System</th><th scope="col">Category</th><th scope="col">Owner</th><th scope="col">Status</th><th scope="col">Action</th></tr></thead><tbody>';
+    CONNECTORS.forEach(function (c) {
+      var st = S.conn[c[0]], ownerLabel = ownerOf(c[0], c[3]);
+      var stChip = st === "connected" ? chip("ok", "✓", "Connected") : (st === "connecting" ? chip("info", "◷", "Connecting…") : (st === "stub" ? chip("warn", "○", "Stubbed (demo)") : (st === "error" ? chip("err", "◆", "Auth failed") : chip("neutral", "○", "Not connected"))));
+      var acts = st === "connected" ? btn("disconnect", "Disconnect", { data: c[0], disabled: !isSys }) : (st === "stub" ? btn("connect", "Connect", { primary: true, data: c[0], disabled: !isSys || !consentOk() }) + " " + btn("disconnect", "Clear", { data: c[0], disabled: !isSys }) : btn("connect", "Connect", { primary: true, data: c[0], disabled: !isSys || !consentOk() }) + " " + btn("stub", "Stub", { data: c[0], disabled: !isSys }) + " " + btn("fail", "Simulate error", { data: c[0], disabled: !isSys }));
+      h += '<tr><th scope="row">' + esc(c[1]) + '</th><td>' + esc(c[2]) + '</td><td>' + esc(ownerLabel) + '</td><td>' + stChip + '</td><td><div class="row">' + acts + '</div></td></tr>';
+    });
+    h += '</tbody></table></div><hr class="divider"><div class="row">' +
+      btn("startCollection", S.collection ? "Collection running ✓" : "Start collection", { primary: isSys && consentOk() && anyConnected() && !S.collection, disabled: !isSys || !consentOk() || !anyConnected() || S.collection, describedby: "col-hint" }) +
+      btn("handbackAi3", "Hand back to AI Lead (Screen 4) →", { primary: !isSys || S.collection }) +
+      '<span id="col-hint" class="note" style="margin:0;">' + (!consentOk() ? "Blocked: consent required." : (!anyConnected() ? "Connect at least one system to start." : (S.collection ? "Metadata pull active." : "Ready to pull approved metadata."))) + '</span></div></section>';
+    return h;
+  }
+
+  function totalMsg(t) { return t === 100 ? "Total: 100% — balanced." : "Total: " + t + "% (" + (t > 100 ? (t - 100) + "% over" : (100 - t) + "% under") + " 100%). Soft warning — you can still continue."; }
+  function scopeText(area) { return "Executive Sponsor, AI Lead, Ask User, and " + area.toUpperCase() + " Area Owner only (other Area Owners blocked)."; }
+
+  function s4() {
+    var owner = S.role === "ai" || S.role === "sys", t = total();
+    var h = '<div class="screen-head"><div class="screen-head-top"><h2 id="screen-title">4 · Focus-Area Weights &amp; Exports</h2>' +
+      (t === 100 ? chip("ok", "✓", "Weights balanced · 100%") : chip("warn", "▲", "Total " + t + "%")) +
+      '</div><p class="screen-goal">AI Lead sets the priority of each focus area and attaches the agreed Finance, HR, and CRM exports.</p></div>' + handoffBanner(SCREENS[3]);
+    h += '<section class="card" aria-labelledby="w-h"><div class="card-head"><h3 id="w-h">Focus-area weights (%)</h3>' + chip("role", "⇄", "Owned by AI Lead") + '</div><div class="grid4">';
+    AREAS.forEach(function (a) {
+      h += '<div class="weight-card"><div class="weight-card-top"><label for="w-' + a[0] + '">' + esc(a[1]) + '</label><label class="sr" for="wn-' + a[0] + '">' + esc(a[1]) + ' weight percentage</label>' +
+        '<input type="number" class="tnum" id="wn-' + a[0] + '" min="0" max="100" step="1" value="' + S.weights[a[0]] + '" data-wn="' + a[0] + '"' + (owner ? "" : " disabled") + '></div>' +
+        '<input type="range" id="w-' + a[0] + '" min="0" max="100" step="5" value="' + S.weights[a[0]] + '" data-w="' + a[0] + '" aria-describedby="w-total"' + (owner ? "" : " disabled") + '></div>';
+    });
+    h += '</div>';
+    var denom = Math.max(100, t || 1);
+    h += '<div class="alloc-bar" aria-hidden="true">' + AREAS.map(function (a) { return '<div class="alloc-seg" style="width:' + (S.weights[a[0]] / denom * 100) + '%;background:' + a[2] + ';"></div>'; }).join("") + '</div>';
+    h += '<div class="row" style="justify-content:space-between;margin-top:8px;"><p id="w-total" aria-live="polite" style="margin:0;font-size:var(--pp-text-sm);font-weight:600;color:' + (t === 100 ? "var(--pp-status-ok-ink)" : "var(--pp-status-warn-ink)") + ';">' + esc(totalMsg(t)) + '</p><div class="row">' +
+      btn("rebalance", "Rebalance to 100%", { disabled: !owner || t === 100 || t === 0 }) + btn("even", "Reset even (25% each)", { disabled: !owner }) + '</div></div></section>';
+    h += '<section class="card" aria-labelledby="x-h"><div class="card-head"><h3 id="x-h">Exports</h3><span class="note" style="margin:0;">System Admin can also provide an export when assigned.</span></div><div class="grid3">';
+    [["finance", "Finance"], ["hr", "HR"], ["crm", "CRM"]].forEach(function (a) {
+      var on = S.exports[a[0]];
+      h += '<div class="export-card"><div class="card-head" style="margin-bottom:0;"><h4>' + a[1] + ' export</h4>' + (on ? chip("ok", "✓", a[0] + "_sample.csv") : chip("neutral", "○", "Not attached")) + '</div>' +
+        (on ? '<div>' + chip("ok", "✓", "Personal data stripped in browser") + '</div>' : "") +
+        (S.expErr[a[0]] ? '<div class="banner banner-err" style="margin:0;padding:10px 12px;" role="alert"><div class="banner-title"><span aria-hidden="true">◆</span> File rejected: use .csv or .xlsx under 50 MB.</div></div>' : "") +
+        '<div class="row">' + btn("attach", on ? "Remove file" : "Attach sample file", { primary: !on && owner, data: a[0], disabled: !owner }) + (on ? "" : btn("badfile", "Simulate bad file", { data: a[0], disabled: !owner })) + '</div>' +
+        '<p class="note" style="margin:0;font-size:var(--pp-text-xs);"><strong>Evidence visible to:</strong> ' + esc(scopeText(a[0])) + '</p>' +
+        (on ? "" : '<p class="note" style="margin:0;font-size:var(--pp-text-xs);">If skipped, ' + a[1] + ' uses outside-in data only.</p>') + '</div>';
+    });
+    h += '</div></section><div class="row">' + btn("toFindings", "Continue to Findings →", { primary: true, describedby: "w-total" }) + '</div>';
+    return h;
+  }
+
+  function coverage(key) {
+    var base = { finance: 22, hr: 20, crm: 18, eng: anyConnected() && S.conn.entra === "connected" ? 24 : 16 }[key];
+    var boosted = key === "eng" ? (S.conn.github === "connected" || S.conn.openai === "connected" || S.conn.anthropic === "connected") : S.exports[key];
+    return Math.min(98, base + (boosted ? 42 : 0) + Math.round(S.weights[key] * 0.16));
+  }
+  function canSee(area) {
+    if (S.viewer === "ai" || S.viewer === "spon") return true;
+    if (S.viewer === "sys" || S.viewer === "sec") return false;
+    var own = S.viewer === "fin" ? "finance" : "hr";
+    return area === own || area === "scan";
+  }
+
+  function s5() {
+    var h = '<div class="screen-head"><div class="screen-head-top"><h2 id="screen-title">5 · Findings &amp; Baseline Date</h2>' +
+      (S.baseline ? chip("ok", "✓", "Baseline recorded · " + S.baseline) : chip("neutral", "○", "Baseline not recorded")) +
+      '</div><p class="screen-goal">Review findings by focus area and their sources, then record the Baseline Date that future comparisons use.</p></div>' + handoffBanner(SCREENS[4]);
+    if (!consentOk()) h += '<div class="banner banner-err" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">◆</span> Findings limited: consent not approved</div><p class="banner-desc">Only outside-in scan findings are shown. Baseline Date cannot be recorded until Trust &amp; Consent is approved.</p></div>' + btn("go", "Go to Trust & Consent", { data: "2" }) + '</div>';
+    var noData = !anyConnected() && !S.exports.finance && !S.exports.hr && !S.exports.crm;
+    if (noData) h += '<div class="banner banner-warn" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">▲</span> Outside-in only: coverage is limited</div><p class="banner-desc">Add system connections or attach exports to deepen area coverage.</p></div><div class="row">' + btn("go", "Add connections", { data: "3" }) + btn("go", "Attach exports", { data: "4" }) + '</div></div>';
+    var avg = Math.round(AREAS.reduce(function (sum, a) { return sum + coverage(a[0]); }, 0) / 4);
+    var isAreaOwner = S.viewer === "fin" || S.viewer === "hr";
+    h += '<section class="card" aria-labelledby="cov-h"><div class="card-head"><h3 id="cov-h">Coverage by focus area (illustrative)</h3>' + (isAreaOwner ? "" : '<span class="chip chip-role tnum">Average readiness: ' + avg + '%</span>') + '</div>' +
+      '<div class="table-wrap"><table><caption class="sr">Coverage by focus area</caption><thead><tr><th scope="col">Focus area</th><th scope="col">Weight</th><th scope="col">Coverage</th><th scope="col" aria-hidden="true">Progress</th></tr></thead><tbody>';
+    AREAS.forEach(function (a) {
+      var c = coverage(a[0]);
+      h += '<tr><th scope="row">' + esc(a[1]) + '</th><td class="tnum">' + S.weights[a[0]] + '%</td><td class="tnum"><strong>' + c + '%</strong></td><td aria-hidden="true"><div class="bar-track"><div class="bar-fill" style="width:' + c + '%;background:' + a[2] + ';"></div></div></td></tr>';
+    });
+    h += '</tbody></table></div></section>';
+    h += '<section class="card" aria-labelledby="f-h"><div class="card-head"><h3 id="f-h">Findings by area</h3><div class="row"><label for="viewer" style="font-size:var(--pp-text-xs);font-weight:700;color:var(--pp-ink-muted);text-transform:uppercase;">Viewing as</label><select id="viewer">' +
+      [["ai", "AI Lead"], ["spon", "Executive Sponsor"], ["fin", "Area Owner · Finance"], ["hr", "Area Owner · HR"], ["sec", "Security Reviewer"], ["sys", "System Admin"]].map(function (v) { return '<option value="' + v[0] + '"' + (S.viewer === v[0] ? " selected" : "") + '>' + v[1] + '</option>'; }).join("") + '</select></div></div>';
+    if (S.viewer === "spon") h += '<p class="note" style="margin-top:0;margin-bottom:12px;">Executive Sponsor sees all company data and receives the report first.</p>';
+    if (S.viewer === "sys" || S.viewer === "sec") {
+      var isSec = S.viewer === "sec";
+      h += '<div class="locked-panel" role="note"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">🔒</span> Locked Role View · ' + (isSec ? "Security Reviewer" : "System Admin") + '</div><p class="banner-desc">' +
+        (isSec ? "Security Reviewer sees the security pack and approval record only. There is no findings view for this role." : "System Admin sees the assigned connection task only. There is no findings view for this role.") +
+        '</p></div>' + btn("go", isSec ? "Return to Trust & Consent" : "Return to Connections", { data: isSec ? "2" : "3" }) + '</div></section>';
+      return h + baselineBlock();
+    }
+    var F = [
+      ["scan", "Outside-in", "Public-records scan detected Entra, GitHub and a CRM footprint", "Scan"],
+      ["finance", "Finance", S.exports.finance ? "Working-capital cycle flagged against peers" : "Outside-in only: attach a Finance export to deepen", S.exports.finance ? "Finance export" : "Scan"],
+      ["hr", "HR", S.exports.hr ? "Span-of-control variance in two functions" : "Outside-in only: attach an HR export to deepen", S.exports.hr ? "HR export" : "Scan"],
+      ["crm", "CRM", S.exports.crm ? "Pipeline coverage below target in one segment" : "Outside-in only: attach a CRM export to deepen", S.exports.crm ? "CRM export" : "Scan"],
+      ["eng", "Engineering / AI", (S.conn.github === "connected" || S.conn.openai === "connected" || S.conn.anthropic === "connected") ? "Repo/model-provider metadata in scope" : "No model or GitHub connection: connect one to deepen", "Connectors"]
+    ];
+    h += '<div class="table-wrap"><table><caption class="sr">Findings by focus area</caption><thead><tr><th scope="col">Area</th><th scope="col">Finding (sample)</th><th scope="col">Source</th><th scope="col">Evidence</th></tr></thead><tbody>';
+    F.forEach(function (f) {
+      var ok = canSee(f[0]), open = !!S.open[f[0]];
+      h += '<tr><th scope="row">' + esc(f[1]) + '</th><td>' + esc(f[2]) + '</td><td>' + chip(f[3] === "Scan" ? "neutral" : "ok", f[3] === "Scan" ? "○" : "✓", f[3]) + '</td><td>' +
+        (ok ? '<button type="button" class="btn" data-act="drill" data-k="' + f[0] + '" aria-expanded="' + open + '" aria-controls="ev-' + f[0] + '">' + (open ? "Hide evidence" : "View evidence") + '</button>' : chip("locked", "🔒", "Restricted")) + '</td></tr>';
+      if (ok && open) h += '<tr id="ev-' + f[0] + '"><td colspan="4"><div class="evidence-drawer"><strong>Source evidence (sample) · ' + esc(f[1]) + '</strong><p style="margin:6px 0 0;">Derived from ' + esc(f[3]) + '. Personal data stripped in the browser prior to upload. Traceable to company record.</p></div></td></tr>';
+      else if (!ok) h += '<tr><td colspan="4"><div class="locked-panel"><div class="banner-copy"><div class="banner-title"><span aria-hidden="true">🔒</span> Evidence restricted to ' + esc(f[1]) + ' Area Owner, AI Lead &amp; Executive Sponsor</div><p class="banner-desc">You can see the company-level finding summary above, while source files remain scoped to their area.</p></div>' + btn("reqAccess", "Request access from AI Lead") + '</div></td></tr>';
+    });
+    h += '</tbody></table></div></section>';
+    return h + baselineBlock();
+  }
+
+  function baselineBlock() {
+    var h = '<section class="card" aria-labelledby="base-h"><div class="card-head"><h3 id="base-h">Baseline Date</h3>' + (S.baseline ? chip("ok", "✓", "Recorded · " + S.baseline) : chip("neutral", "○", "Not recorded")) + '</div>';
+    if (S.baseline) h += '<p style="margin:0 0 12px;font-size:var(--pp-text-sm);"><strong>Snapshot recorded:</strong> ' + esc(S.baseline) + ' (America/New_York) · by AI Lead · <span class="mono">snapshot #0001</span></p>' + btn("clearBaseline", "Clear baseline (prototype only)");
+    else h += '<div class="row">' + btn("baseline", "Record Baseline Date…", { primary: true, disabled: S.role !== "ai" || !consentOk() || !sponsorOk(), describedby: "b-hint" }) + '<span id="b-hint" class="note" style="margin:0;">' + (S.role !== "ai" ? "Only the AI Lead records the baseline." : (!consentOk() ? "Blocked: Security approval needed." : "Locks today's findings as the reference point.")) + '</span></div>';
+    return h + '</section>';
+  }
+
+  function renderStepper() {
+    var done = { a: S.codeSent, b: S.verified, c: S.companyOk === "yes", d: S.continued, 1: S.confirmed, 2: consentOk(), 3: S.conn.entra !== "none" || anyConnected(), 4: total() === 100 && (S.exports.finance || S.exports.hr || S.exports.crm), 5: !!S.baseline };
+    function item(s, label) {
+      var st = done[s.id] ? "✓ Done" : (s.id === S.screen ? "● Current" : "○ Not started");
+      return '<li><button type="button" data-goto="' + s.id + '"' + (s.id === S.screen ? ' aria-current="step"' : "") + '><span class="step-title">' + label + ' · ' + esc(s.name) + '</span><span class="step-meta"><span>' + esc(ROLES[s.expected]) + '</span><span>·</span><span>' + st + '</span></span></button></li>';
+    }
+    $("stepper").innerHTML =
+      '<div class="phase-group p1"><p class="phase-label" id="ph1">Phase 1 · Public Scan</p><ol class="phase1-list" aria-labelledby="ph1">' + P1.map(function (s) { return item(s, s.id.toUpperCase()); }).join("") + '</ol></div>' +
+      '<div class="phase-group p2"><p class="phase-label" id="ph2">Phase 2 · One-CTO Onboarding</p><ol class="phase2-list" aria-labelledby="ph2">' + SCREENS.map(function (s) { return item(s, String(s.id)); }).join("") + '</ol></div>';
+  }
+
+  function render(focusMain) {
+    var active = document.activeElement, aId = active && active.id, aAct = active && active.getAttribute && active.getAttribute("data-act"), aK = active && active.getAttribute && active.getAttribute("data-k");
+    var sc = scr(S.screen);
+    renderStepper();
+    $("role-chip").textContent = ROLES[S.role];
+    $("role-select").value = S.role;
+    $("expected-role").textContent = S.screen === 3 ? "AI Lead (3a) → System Admin (3b)" : ROLES[sc.expected];
+    var compLabel = isP1(S.screen) ? (S.company ? S.company + " · Public Scan" : "Public Scan · Demo") : (rr().company + " · $50M–$100M");
+    $("company-pill").innerHTML = '<span class="pulse-dot" aria-hidden="true"></span>' + esc(compLabel);
+    $("main").innerHTML = isP1(S.screen) ? { a: pA, b: pB, c: pC, d: pD }[S.screen]() : [s1, s2, s3, s4, s5][S.screen - 1]();
+    var idx = ORDER.indexOf(S.screen);
+    $("prev").setAttribute("aria-disabled", String(idx === 0));
+    $("next").setAttribute("aria-disabled", String(idx === ORDER.length - 1));
+    document.title = (isP1(S.screen) ? S.screen.toUpperCase() : S.screen) + " · " + sc.name + " · Performance Pulse Prototype";
+    if (focusMain) { $("main").focus(); return; }
+    var target = aId ? $(aId) : null;
+    if (!target && aAct) target = document.querySelector('[data-act="' + aAct + '"]' + (aK ? '[data-k="' + aK + '"]' : ""));
+    if (target && target.focus) target.focus();
+  }
+
+  function go(n) {
+    n = parseId(n);
+    if (ORDER.indexOf(n) < 0) n = "a";
+    if (isP1(n)) S.role = "vis"; else if (S.role === "vis") S.role = "ai";
+    S.screen = n; render(true);
+    announce((isP1(n) ? "Phase 1, screen " + n.toUpperCase() : "Phase 2, screen " + n) + ": " + scr(n).name);
+  }
+
+  document.addEventListener("click", function (e) {
+    var g = e.target.closest("[data-goto]"); if (g) { go(g.getAttribute("data-goto")); return; }
+    var b = e.target.closest("[data-act]"); if (!b) return;
+    if (b.getAttribute("aria-disabled") === "true") { var d = b.getAttribute("aria-describedby"); announce("Action blocked. " + (d && $(d) ? $(d).textContent : "")); return; }
+    var a = b.getAttribute("data-act"), k = b.getAttribute("data-k"), msg = "";
+    switch (a) {
+      case "switch": S.role = k; msg = "Now acting as " + ROLES[k]; break;
+      case "assign": msg = "Prototype: assignment sent to " + ROLES[k] + "."; break;
+      case "go": go(k); return;
+      case "sendCode": {
+        var em = S.email.trim(), dom = em.split("@")[1] || "";
+        if (!em) S.emailErr = "Enter your work email.";
+        else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) S.emailErr = "Enter an email like name@company.com.";
+        else if (PERSONAL.indexOf(dom.toLowerCase()) >= 0) S.emailErr = "Use your work email. We use its domain to find your company, so personal addresses like " + dom.toLowerCase() + " can\u2019t be scanned.";
+        else { S.emailErr = ""; S.email = em; S.domain = dom.toLowerCase(); S.company = companyFrom(S.domain); S.codeSent = true; S.code = ""; S.codeErr = ""; S.verified = false; S.resends = 0; S.systems = freshSystems(); S.continued = false; S.scan = "idle"; S.companyOk = null; go("b"); announce("Code sent to " + em + "."); return; }
+        render(); var ef = $("p-email"); if (ef) ef.focus(); announce(S.emailErr); return;
+      }
+      case "verifyCode": {
+        var c = S.code.trim();
+        if (!/^\d{6}$/.test(c)) S.codeErr = "Enter the six digits from the email.";
+        else if (c === "000000") S.codeErr = "That code doesn\u2019t match. Check the latest email, or resend.";
+        else if (c === "999999") S.codeErr = "That code has expired. Send a new one.";
+        else { S.codeErr = ""; S.verified = true; startScan(); go("c"); announce("Email verified. Scanning public information."); return; }
+        render(); var cf = $("p-code"); if (cf) cf.focus(); announce(S.codeErr); return;
+      }
+      case "resend": if (S.screen === "b") { S.resends += 1; S.code = ""; S.codeErr = ""; msg = "New code sent to " + S.email + "."; } else { msg = "Reminder sent to Security Reviewer."; } break;
+      case "completeScan": finishScan(); return;
+      case "slowScan": window.clearTimeout(scanTimer); S.scan = "slow"; msg = "The scan is taking longer than usual."; break;
+      case "resumeScan": S.scan = "running"; tick(); msg = "Still scanning."; break;
+      case "exitScan": window.clearTimeout(scanTimer); S.scan = "done"; S.scanStep = 3; S.companyOk = "yes"; S.exited = true; go("d"); announce("We'll email your results to " + S.email + " when they're ready."); return;
+      case "companyYes": S.companyOk = "yes"; msg = "Company confirmed. Now tell us which tools you use."; break;
+      case "companyNo": S.companyOk = "no"; S.domainInput = ""; S.domainErr = ""; msg = "Tell us your company's website."; break;
+      case "notFound": S.scan = "notfound"; S.domainInput = ""; S.domainErr = ""; msg = "We couldn't match your domain to a company."; break;
+      case "rescan": {
+        var dm = S.domainInput.trim().toLowerCase().replace(/^https?:\/\//, "").replace(/\/.*$/, "");
+        if (!/^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(dm)) { S.domainErr = "Enter a website like acme.com."; render(); var df = $("p-domain"); if (df) df.focus(); announce(S.domainErr); return; }
+        S.domainErr = ""; S.domain = dm; S.company = companyFrom(dm); startScan(); render(true); announce("Scanning public information for " + dm + "."); return;
+      }
+      case "addSys": {
+        var nm = S.newSys.trim();
+        if (!nm) { S.newSysErr = "Enter a system name."; render(); var nf = $("p-newsys"); if (nf) nf.focus(); announce(S.newSysErr); return; }
+        S.systems.push({ id: "c" + S.systems.length, name: nm, cat: "Added by you", inf: "Not detected", use: "yes", owner: "" }); S.newSys = ""; S.newSysErr = ""; msg = nm + " added as a system you use."; break;
+      }
+      case "pulse": S.pulseOpen = !S.pulseOpen; break;
+      case "exitSave": S.exited = true; msg = "Results emailed to " + S.email + ". You can come back any time."; break;
+      case "undoExit": S.exited = false; msg = "Back to your results."; break;
+      case "continueRR": S.continued = true; S.confirmed = false; S.callBooked = false; S.role = "ai"; S.screen = 1; render(true); announce("Company record created for " + S.company + ". Now acting as AI Lead on Record Ready."); return;
+      case "confirm": S.confirmed = true; msg = "Record confirmed."; break;
+      case "flag": S.flagOpen = !S.flagOpen; break;
+      case "bookCall": S.callBooked = !S.callBooked; msg = S.callBooked ? "Call request noted." : "Call request dismissed."; break;
+      case "reqSponsor": S.sponsor = "requested"; msg = "Sponsor sign-off requested."; break;
+      case "signSponsor": S.sponsor = "signed"; msg = "Proposal signed by Executive Sponsor."; break;
+      case "handoffSec": S.role = "sec"; go(2); return;
+      case "approve": S.approval = "approved"; S.changesOpen = false; msg = "One-time approval recorded."; break;
+      case "changes": S.changesOpen = !S.changesOpen; break;
+      case "sendChanges": S.approval = "changes"; S.changesOpen = false; msg = "Changes requested from AI Lead."; break;
+      case "revoke": S.approval = "pending"; S.reviewed = false; S.released = false; S.collection = false; msg = "Consent revoked."; break;
+      case "handbackAi": S.role = "ai"; go(3); return;
+      case "setting": S.settings[k] = !S.settings[k]; msg = "Setting updated."; break;
+      case "handoffSys": S.role = "sys"; msg = "Handed off to System Admin."; break;
+      case "connect": S.conn[k] = "connecting"; render(); window.setTimeout(function () { S.conn[k] = "connected"; render(); announce("Connected."); }, 260); return;
+      case "stub": S.conn[k] = "stub"; msg = "Stubbed for demo."; break;
+      case "disconnect": S.conn[k] = "none"; msg = "Disconnected."; break;
+      case "fail": S.conn[k] = "error"; msg = "Simulated authorisation error."; break;
+      case "startCollection": S.collection = true; msg = "Collection started."; break;
+      case "handbackAi3": S.role = "ai"; go(4); return;
+      case "rebalance":
+        var t = total();
+        if (t > 0) { var keys = ["finance", "hr", "crm", "eng"], acc = 0; keys.forEach(function (key, i) { if (i < 3) { S.weights[key] = Math.round(S.weights[key] / t * 100); acc += S.weights[key]; } else S.weights[key] = Math.max(0, 100 - acc); }); }
+        msg = "Weights rebalanced to 100%."; break;
+      case "even": S.weights = { finance: 25, hr: 25, crm: 25, eng: 25 }; msg = "Reset to 25% each."; break;
+      case "attach": S.exports[k] = !S.exports[k]; S.expErr[k] = false; msg = S.exports[k] ? "Sample file attached." : "Sample file removed."; break;
+      case "badfile": S.expErr[k] = true; msg = "File rejected."; break;
+      case "toFindings": go(5); return;
+      case "drill": S.open[k] = !S.open[k]; break;
+      case "reqAccess": msg = "Access request sent to AI Lead."; break;
+      case "baseline": openBaseline(); return;
+      case "clearBaseline": S.baseline = null; S.baselineSign = "none"; msg = "Baseline cleared."; break;
+    }
+    render(); if (msg) announce(msg);
+  });
+
+  document.addEventListener("input", function (e) {
+    var t = e.target;
+    if (t.id === "p-email") { S.email = t.value; return; }
+    if (t.id === "p-code") { S.code = t.value; return; }
+    if (t.id === "p-domain") { S.domainInput = t.value; return; }
+    if (t.id === "p-newsys") { S.newSys = t.value; return; }
+    if (t.getAttribute("data-owner")) { var o = S.systems.filter(function (x) { return x.id === t.getAttribute("data-owner"); })[0]; if (o) o.owner = t.value; return; }
+    var k = t.getAttribute("data-w") || t.getAttribute("data-wn"); if (!k) return;
+    var v = Math.max(0, Math.min(100, parseInt(t.value, 10) || 0)); S.weights[k] = v;
+    var r = $("w-" + k), n = $("wn-" + k); if (r && r !== t) r.value = v; if (n && n !== t) n.value = v;
+    var tot = total(), wt = $("w-total"); if (wt) { wt.textContent = totalMsg(tot); wt.style.color = tot === 100 ? "var(--pp-status-ok-ink)" : "var(--pp-status-warn-ink)"; }
+    renderStepper();
+  });
+
+  document.addEventListener("change", function (e) {
+    var t = e.target, id = t.id;
+    if (t.getAttribute("data-use")) { var sy = S.systems.filter(function (x) { return x.id === t.getAttribute("data-use"); })[0]; if (sy) { sy.use = t.value; render(); announce(sy.name + ": " + USE_LABEL[sy.use]); } return; }
+    if (t.getAttribute("data-pulse")) { S.pulse[t.getAttribute("data-pulse")] = t.value; announce("Answer saved."); return; }
+    if (id === "reviewed") { S.reviewed = t.checked; render(); }
+    else if (id === "viewer") { S.viewer = t.value; render(); announce("Viewing as " + t.options[t.selectedIndex].text); }
+    else if (t.getAttribute("data-w") || t.getAttribute("data-wn")) { render(); }
+  });
+
+  $("role-select").addEventListener("change", function (e) { S.role = e.target.value; render(); announce("Acting as " + ROLES[S.role]); });
+  $("prev").addEventListener("click", function () { var i = ORDER.indexOf(S.screen); if (i > 0) go(ORDER[i - 1]); });
+  $("next").addEventListener("click", function () { var i = ORDER.indexOf(S.screen); if (i < ORDER.length - 1) go(ORDER[i + 1]); });
+  $("reset").addEventListener("click", function () { window.clearTimeout(scanTimer); S = initial(); go("a"); announce("Prototype reset."); });
+
+  var dlg = $("baseline-dialog"), lastFocus = null;
+  function openBaseline() {
+    lastFocus = document.activeElement;
+    var srcs = ["Outside-in scan"].concat(Object.keys(S.exports).filter(function (k) { return S.exports[k]; }).map(function (k) { return k.toUpperCase() + " export"; })).concat(CONNECTORS.filter(function (c) { return S.conn[c[0]] === "connected"; }).map(function (c) { return c[1]; }));
+    $("bd-desc").innerHTML = "<p style='margin:0 0 8px;'>Locks today's findings and weights as the reference point for future comparison.</p><p style='margin:0 0 6px;'><strong>Sources included:</strong> " + esc(srcs.join(", ")) + "</p><p style='margin:0;'><strong>Weights:</strong> " + AREAS.map(function (a) { return a[1] + " " + S.weights[a[0]] + "%"; }).join(" · ") + "</p>";
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
+    $("bd-date").focus();
+  }
+  function closeBaseline() { if (dlg.close) dlg.close(); else dlg.removeAttribute("open"); if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+  $("bd-cancel").addEventListener("click", function () { closeBaseline(); announce("Baseline not recorded."); });
+  $("bd-confirm").addEventListener("click", function () {
+    var v = $("bd-date").value; if (!v) { $("bd-date").setAttribute("aria-invalid", "true"); return; }
+    var p = v.split("-"), months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    S.baseline = (+p[2]) + " " + months[+p[1] - 1] + " " + p[0];
+    closeBaseline(); render(); announce("Baseline Date recorded: " + S.baseline);
+  });
+
+  render();
+})();
+
+</script>
+</body>
+</html>
