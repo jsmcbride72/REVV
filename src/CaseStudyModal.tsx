@@ -119,21 +119,21 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
         </button>
 
         {/* Title block pinned to bottom of hero */}
-        <div className="absolute bottom-0 left-0 right-0 px-8 lg:px-16 pb-12">
-          <span className={`inline-block px-3 py-1 text-xs font-bold tracking-widest uppercase border rounded-full mb-5 ${colors.badge}`}>
+        <div className="absolute bottom-0 left-0 right-0 px-5 sm:px-8 lg:px-16 pb-12">
+          <span className={`inline-block max-w-full px-3 py-1 text-xs font-bold tracking-widest uppercase border rounded-full mb-5 break-words ${colors.badge}`}>
             {caseStudy.category}
           </span>
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight max-w-4xl drop-shadow-2xl">
+          <h1 className="text-[clamp(1.75rem,6vw,3.75rem)] font-black text-white leading-tight max-w-4xl drop-shadow-2xl break-words">
             {caseStudy.title}
           </h1>
         </div>
       </div>
 
       {/* ── Body content ── */}
-      <div className="max-w-5xl mx-auto px-8 lg:px-16 py-16 space-y-12">
+      <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-16 py-12 sm:py-16 space-y-12">
 
         {/* Description */}
-        <p className="text-xl lg:text-2xl text-neutral-300 leading-relaxed font-light max-w-3xl">
+        <p className="text-[clamp(1.125rem,2.4vw,1.5rem)] text-neutral-300 leading-relaxed font-light max-w-3xl break-words">
           {caseStudy.description}
         </p>
 

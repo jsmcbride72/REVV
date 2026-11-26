@@ -296,7 +296,7 @@ function App() {
         </div>
       </nav>
 
-      <section style={{ display: 'grid', minHeight: '100vh', position: 'relative' }}>
+      <section className="w-full max-w-full overflow-hidden" style={{ display: 'grid', minHeight: '100vh', position: 'relative' }}>
         {/* Video — same grid cell as content, stretches to match content height */}
         <video
           key={currentSlide}
@@ -305,12 +305,12 @@ function App() {
           muted
           playsInline
           src={HERO_VIDEOS[currentSlide]}
-          style={{ gridArea: '1/1', width: '100%', objectFit: 'cover', display: 'block' }}
+          style={{ gridArea: '1/1', width: '100%', minWidth: 0, maxWidth: '100%', objectFit: 'cover', display: 'block' }}
         />
         {/* Dark gradient overlay — only under the text for readability */}
         <div style={{ gridArea: '1/1', zIndex: 1, pointerEvents: 'none', background: 'linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.6) 100%)' }} />
         {/* Content shell — determines grid cell height */}
-        <div style={{ gridArea: '1/1', zIndex: 2, display: 'flex', flexDirection: 'column' }}>
+        <div className="min-w-0 w-full max-w-full overflow-hidden" style={{ gridArea: '1/1', zIndex: 2, display: 'flex', flexDirection: 'column' }}>
 
         {/* Content track — slides with background */}
         <div
@@ -318,27 +318,27 @@ function App() {
           style={{ width: `${HERO_SLIDE_COUNT * 100}%`, transform: `translateX(-${(currentSlide / HERO_SLIDE_COUNT) * 100}%)`, zIndex: 2 }}
         >
           {/* Slide 1 content */}
-          <div className="flex items-center justify-center pt-28 sm:pt-32 lg:pt-40 pb-24 px-5 sm:px-6 lg:px-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <div className="text-center max-w-6xl px-2" key={`s0-${animKey}`}>
-              <p className="text-base sm:text-lg lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-6 sm:mb-8 opacity-0 animate-[slideInBlur_0.8s_ease-out_1.5s_forwards]">
+          <div className="flex min-w-0 items-center justify-center pt-28 sm:pt-32 lg:pt-40 pb-24 px-5 sm:px-6 lg:px-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <div className="text-center w-full min-w-0 px-2" key={`s0-${animKey}`}>
+              <p className="text-base sm:text-lg lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-6 sm:mb-8 opacity-0 animate-[slideInBlur_0.8s_ease-out_1.5s_forwards] break-words">
                 Welcome to the Revolution
               </p>
-              <p className="text-3xl sm:text-4xl lg:text-7xl font-bold text-white leading-tight mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInBlur_0.9s_ease-out_1.7s_forwards]">
+              <p className="text-[clamp(1.75rem,6vw,4.5rem)] font-bold text-white leading-tight mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInBlur_0.9s_ease-out_1.7s_forwards] max-w-full text-balance break-words">
                 The way work happens is evolving
               </p>
-              <p className="text-lg sm:text-xl lg:text-3xl font-light text-neutral-200 leading-tight drop-shadow-xl opacity-0 animate-[slideInBlur_0.8s_ease-out_1.9s_forwards]">
+              <p className="text-[clamp(1.125rem,2.5vw,1.875rem)] font-light text-neutral-200 leading-tight drop-shadow-xl opacity-0 animate-[slideInBlur_0.8s_ease-out_1.9s_forwards] max-w-full text-balance break-words">
                 Designing smarter workflows today. Building foundations for tomorrow.
               </p>
             </div>
           </div>
 
           {/* Slide 2 content */}
-          <div className="flex items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <div className="text-left max-w-2xl" key={`s1-${animKey}`}>
+          <div className="flex min-w-0 items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <div className="text-left max-w-2xl w-full min-w-0" key={`s1-${animKey}`}>
               <p className="text-xs sm:text-sm lg:text-base font-bold text-violet-400 tracking-widest uppercase mb-3 sm:mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_1.5s_forwards]">
                 NewsRing — Case Study
               </p>
-              <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards]">
+              <h2 className="text-[clamp(1.25rem,2.2vw+0.7rem,2.25rem)] font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards] max-w-full break-words">
                 Redefining Content Discovery Through Conversational AI
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
@@ -354,12 +354,12 @@ function App() {
           </div>
 
           {/* Slide 3 content */}
-          <div className="flex items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <div className="text-left max-w-2xl" key={`s2-${animKey}`}>
+          <div className="flex min-w-0 items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <div className="text-left max-w-2xl w-full min-w-0" key={`s2-${animKey}`}>
               <p className="text-xs sm:text-sm lg:text-base font-bold text-cyan-400 tracking-widest uppercase mb-3 sm:mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_1.5s_forwards]">
                 Driven — Case Study
               </p>
-              <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards]">
+              <h2 className="text-[clamp(1.25rem,2.2vw+0.7rem,2.25rem)] font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards] max-w-full break-words">
                 Revolutionizing Fleet Fuel Management for the Mobile Workforce
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
@@ -375,12 +375,12 @@ function App() {
           </div>
 
           {/* Slide 4 content */}
-          <div className="flex items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <div className="text-left max-w-2xl" key={`s3-${animKey}`}>
+          <div className="flex min-w-0 items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <div className="text-left max-w-2xl w-full min-w-0" key={`s3-${animKey}`}>
               <p className="text-xs sm:text-sm lg:text-base font-bold text-cyan-400 tracking-widest uppercase mb-3 sm:mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_1.5s_forwards]">
                 StrideGG — Case Study
               </p>
-              <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards]">
+              <h2 className="text-[clamp(1.25rem,2.2vw+0.7rem,2.25rem)] font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards] max-w-full break-words">
                 Unifying the Gaming Community Through Centralized Stats and Competitive Play
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
@@ -396,12 +396,12 @@ function App() {
           </div>
 
           {/* Slide 5 content */}
-          <div className="flex items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
-            <div className="text-left max-w-2xl" key={`s4-${animKey}`}>
+          <div className="flex min-w-0 items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
+            <div className="text-left max-w-2xl w-full min-w-0" key={`s4-${animKey}`}>
               <p className="text-xs sm:text-sm lg:text-base font-bold text-emerald-400 tracking-widest uppercase mb-3 sm:mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_1.5s_forwards]">
                 Proven Live — First Deployed.
               </p>
-              <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards]">
+              <h2 className="text-[clamp(1.25rem,2.2vw+0.7rem,2.25rem)] font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards] max-w-full break-words">
                 First deployed at the Senior PGA, The Concession.
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
@@ -490,14 +490,14 @@ function App() {
                 <p className="text-base lg:text-xl text-neutral-400 leading-relaxed mb-6">
                   We've seen firsthand how AI hype can distract from fundamental operational issues, and how the best technology investments are the ones that amplify human capability rather than replace it. Our approach combines strategic consulting with hands-on implementation, ensuring that every change we introduce is grounded in real workflow improvement — not theoretical frameworks.
                 </p>
-                <div className="grid grid-cols-3 gap-6 pt-8 border-t border-neutral-800">
+                <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-8 border-t border-neutral-800">
                   <div className="text-center">
                     <div className="flex justify-center mb-3">
                       <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center">
                         <Gauge className="w-5 h-5 text-cyan-400" />
                       </div>
                     </div>
-                    <div className="text-3xl lg:text-4xl font-bold text-gradient mb-2">40%</div>
+                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gradient mb-2">40%</div>
                     <p className="text-sm text-neutral-400">Average reduction in process cycle time</p>
                   </div>
                   <div className="text-center">
@@ -506,7 +506,7 @@ function App() {
                         <TrendingUp className="w-5 h-5 text-cyan-400" />
                       </div>
                     </div>
-                    <div className="text-3xl lg:text-4xl font-bold text-gradient mb-2">65%</div>
+                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gradient mb-2">65%</div>
                     <p className="text-sm text-neutral-400">Fewer handoff errors and rework loops</p>
                   </div>
                   <div className="text-center">
@@ -515,7 +515,7 @@ function App() {
                         <BarChart3 className="w-5 h-5 text-cyan-400" />
                       </div>
                     </div>
-                    <div className="text-3xl lg:text-4xl font-bold text-gradient mb-2">3-6mo</div>
+                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gradient mb-2">3-6mo</div>
                     <p className="text-sm text-neutral-400">Typical timeline to measurable outcomes</p>
                   </div>
                 </div>
@@ -749,7 +749,7 @@ function App() {
                       <div className="p-6 flex flex-col flex-1">
                         <div className="flex items-center gap-2 mb-3">
                           <Icon className={`w-5 h-5 text-${study.color}-400`} />
-                          <h3 className={`text-xl font-bold text-${study.color}-100 uppercase`}>{study.title}</h3>
+                          <h3 className={`min-w-0 text-lg sm:text-xl font-bold text-${study.color}-100 uppercase break-words`}>{study.title}</h3>
                         </div>
                         <p className="text-neutral-400 text-base leading-relaxed mb-4">
                           {study.description}
@@ -805,11 +805,11 @@ function App() {
               <div className="relative">
                 <div className="flex items-center justify-between mb-8">
                   <div>
-                    <div className="flex items-center space-x-3 mb-2">
+                    <div className="flex items-start space-x-3 mb-2">
                       <div className="w-10 h-10 bg-cyan-500/10 rounded-xl flex items-center justify-center">
                         <Workflow className="w-5 h-5 text-cyan-400" />
                       </div>
-                      <h3 className="text-xl lg:text-3xl font-bold">
+                      <h3 className="min-w-0 flex-1 text-xl lg:text-3xl font-bold text-balance">
                         Digital Experience & Workflow Optimization
                       </h3>
                     </div>
@@ -914,11 +914,11 @@ function App() {
               <div className="relative">
                 <div className="flex items-center justify-between mb-8">
                   <div>
-                    <div className="flex items-center space-x-3 mb-2">
+                    <div className="flex items-start space-x-3 mb-2">
                       <div className="w-10 h-10 bg-violet-400/10 rounded-xl flex items-center justify-center">
                         <CircuitBoard className="w-5 h-5 text-violet-400" />
                       </div>
-                      <h3 className="text-xl lg:text-3xl font-bold">
+                      <h3 className="min-w-0 flex-1 text-xl lg:text-3xl font-bold text-balance">
                         Agentic AI & Intelligent Systems
                       </h3>
                     </div>
@@ -1072,7 +1072,7 @@ function App() {
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/20 group-hover:to-transparent rounded-3xl transition-all duration-700"></div>
               <div className="relative">
                 <div className="mb-6">
-                  <div className="text-6xl lg:text-7xl font-black bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent mb-2 animate-pulse">
+                  <div className="text-[clamp(3rem,8vw,4.5rem)] font-black bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent mb-2 animate-pulse">
                     3x
                   </div>
                   <div className="h-2 bg-neutral-800 rounded-full overflow-hidden mb-4">
@@ -1088,7 +1088,7 @@ function App() {
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 to-emerald-500/0 group-hover:from-emerald-500/20 group-hover:to-transparent rounded-3xl transition-all duration-700"></div>
               <div className="relative">
                 <div className="mb-6">
-                  <div className="text-6xl lg:text-7xl font-black bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent mb-2 animate-pulse">
+                  <div className="text-[clamp(3rem,8vw,4.5rem)] font-black bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent mb-2 animate-pulse">
                     94%
                   </div>
                   <div className="h-2 bg-neutral-800 rounded-full overflow-hidden mb-4">
@@ -1104,7 +1104,7 @@ function App() {
               <div className="absolute inset-0 bg-gradient-to-br from-violet-500/0 to-violet-500/0 group-hover:from-violet-500/20 group-hover:to-transparent rounded-3xl transition-all duration-700"></div>
               <div className="relative">
                 <div className="mb-6">
-                  <div className="text-6xl lg:text-7xl font-black bg-gradient-to-r from-violet-400 to-violet-300 bg-clip-text text-transparent mb-2 animate-pulse">
+                  <div className="text-[clamp(3rem,8vw,4.5rem)] font-black bg-gradient-to-r from-violet-400 to-violet-300 bg-clip-text text-transparent mb-2 animate-pulse">
                     100%
                   </div>
                   <div className="h-2 bg-neutral-800 rounded-full overflow-hidden mb-4">
@@ -1282,7 +1282,7 @@ function App() {
                 onClick={() => setOpenFaq(openFaq === 0 ? null : 0)}
                 className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-lg lg:text-xl">How do you determine if AI is right for our situation?</span>
+                <span className="min-w-0 font-semibold text-lg lg:text-xl text-balance">How do you determine if AI is right for our situation?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 0 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 0 && (
@@ -1297,7 +1297,7 @@ function App() {
                 onClick={() => setOpenFaq(openFaq === 1 ? null : 1)}
                 className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-lg lg:text-xl">What does a typical engagement look like?</span>
+                <span className="min-w-0 font-semibold text-lg lg:text-xl text-balance">What does a typical engagement look like?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 1 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 1 && (
@@ -1312,7 +1312,7 @@ function App() {
                 onClick={() => setOpenFaq(openFaq === 2 ? null : 2)}
                 className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-lg lg:text-xl">Do you work with companies of all sizes?</span>
+                <span className="min-w-0 font-semibold text-lg lg:text-xl text-balance">Do you work with companies of all sizes?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 2 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 2 && (
@@ -1327,7 +1327,7 @@ function App() {
                 onClick={() => setOpenFaq(openFaq === 3 ? null : 3)}
                 className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-lg lg:text-xl">How quickly can we expect to see results?</span>
+                <span className="min-w-0 font-semibold text-lg lg:text-xl text-balance">How quickly can we expect to see results?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 3 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 3 && (
@@ -1342,7 +1342,7 @@ function App() {
                 onClick={() => setOpenFaq(openFaq === 4 ? null : 4)}
                 className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
               >
-                <span className="font-semibold text-lg lg:text-xl">What makes you different from traditional consultants?</span>
+                <span className="min-w-0 font-semibold text-lg lg:text-xl text-balance">What makes you different from traditional consultants?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 4 ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === 4 && (
