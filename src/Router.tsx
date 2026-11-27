@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import App from './App';
 import BlogIndex from './pages/BlogIndex';
 import BlogPostPage from './pages/BlogPost';
+import CaseStudyPage from './pages/CaseStudyPage';
 
 export default function Router() {
   const [path, setPath] = useState(() => window.location.pathname);
@@ -15,5 +16,9 @@ export default function Router() {
   const postMatch = path.match(/^\/blog\/([^/]+)\/?$/);
   if (postMatch) return <BlogPostPage slug={decodeURIComponent(postMatch[1])} />;
   if (path === '/blog' || path === '/blog/') return <BlogIndex />;
+
+  const workMatch = path.match(/^\/work\/([^/]+)\/?$/);
+  if (workMatch) return <CaseStudyPage id={decodeURIComponent(workMatch[1])} />;
+
   return <App />;
 }

@@ -4,7 +4,7 @@
 
 Posts live in `src/content/blog/` as Markdown files. The site loads every `.md` file in that folder at build time. Adding a post means adding one file, plus an optional cover image in `public/blog/`. No other code changes are required.
 
-The production build also writes a static copy of the app shell to `/blog` and `/blog/<slug>`. Link unfurlers that do not run JavaScript read that file's title, excerpt, canonical URL, and cover image. The next build picks up a new Markdown file automatically.
+The production build writes a static copy of the app shell for `/`, `/blog`, `/blog/<slug>`, and `/work/<case-study>`. Link unfurlers that do not run JavaScript read that file's title, description, canonical URL, and share image. The same build writes `robots.txt` and `sitemap.xml`, and a new Markdown file is included on the next build without a manual sitemap edit.
 
 ```md
 ---

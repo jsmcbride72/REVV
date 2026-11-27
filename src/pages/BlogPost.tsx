@@ -5,7 +5,7 @@ import Seo from '../Seo';
 import SiteNav from '../SiteNav';
 import { formatPostDate, getPost } from '../lib/blog';
 import { renderMarkdown } from '../lib/markdown';
-import { postDocumentTitle } from '../lib/site';
+import { pageForPost } from '../lib/public-pages';
 
 interface BlogPostPageProps {
   slug: string;
@@ -18,7 +18,12 @@ export default function BlogPostPage({ slug }: BlogPostPageProps) {
   if (!post) {
     return (
       <div className="min-h-screen bg-neutral-950 text-neutral-100">
-        <Seo title="Post not found | Revv Studio" description="That blog post is not on this site." path={`/blog/${slug}`} />
+        <Seo
+          title="Post not found | Revv Studio"
+          description="That blog post is not on this site."
+          path={`/blog/${slug}`}
+          robots="noindex"
+        />
         <SiteNav onContact={() => setContactOpen(true)} />
         <main className="max-w-3xl mx-auto px-6 pt-32 pb-20">
           <h1 className="text-[clamp(2rem,6vw,3rem)] font-bold mb-4">Post not found</h1>
@@ -32,14 +37,19 @@ export default function BlogPostPage({ slug }: BlogPostPageProps) {
     );
   }
 
+  const page = pageForPost(post);
+
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
       <Seo
-        title={postDocumentTitle(post.title)}
-        description={post.excerpt}
-        path={`/blog/${post.slug}`}
-        image={post.cover}
-        type="article"
+        title={page.title}
+        description={page.description}
+        path={page.path}
+        image={page.image}
+        imageAlt={page.imageAlt}
+        type={page.type}
+        publishedTime={page.publishedTime}
+        jsonLd={page.jsonLd}
       />
       <SiteNav onContact={() => setContactOpen(true)} />
       <article className="pt-28 pb-20">
@@ -65,7 +75,7 @@ export default function BlogPostPage({ slug }: BlogPostPageProps) {
         <div className="max-w-5xl mx-auto px-6 mb-12">
           <img
             src={post.cover}
-            alt=""
+            alt={`Cover image for ${post.title}`}
             className="w-full aspect-video object-cover rounded-2xl"
           />
         </div>
@@ -88,6 +98,18 @@ export default function BlogPostPage({ slug }: BlogPostPageProps) {
           </section>
         )}
       </article>
+      <footer className="border-t border-neutral-800 py-12">
+        <div className="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div className="text-center sm:text-left">
+            <span className="font-bold">Revv Studio</span>
+            <p className="text-neutral-500 text-sm">Scott McBride · Jacksonville, FL</p>
+          </div>
+          <nav aria-label="Footer" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+            <a href="/#case-studies" className="text-neutral-400 hover:text-cyan-400">Case Studies</a>
+            <a href="/blog" className="text-neutral-400 hover:text-cyan-400">Blog</a>
+          </nav>
+        </div>
+      </footer>
       <ContactForm isOpen={contactOpen} onClose={() => setContactOpen(false)} />
     </div>
   );

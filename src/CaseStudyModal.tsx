@@ -1,65 +1,25 @@
 import { ChevronLeft, TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2 } from 'lucide-react';
-import { useEffect } from 'react';
+import type { CaseStudy } from './lib/case-studies';
 
-function GalleryVideo({ src, className }: { src: string; className: string }) {
+function GalleryVideo({ src, className, label }: { src: string; className: string; label: string }) {
   return (
     <video
       autoPlay
       muted
       loop
       playsInline
+      aria-label={label}
       className={className}
       src={src}
     />
   );
 }
 
-interface Lesson {
-  title: string;
-  body: string;
-}
-
-interface CaseStudy {
-  id: string;
-  title: string;
-  category: string;
-  description: string;
-  challenge: string;
-  solution: string;
-  results: string[];
-  images: string[];
-  imageAlts?: string[];
-  wideImages?: string[];
-  wideImageAlts?: string[];
-  lessons?: Lesson[];
-  tags: string[];
-  color: 'cyan' | 'violet' | 'emerald';
-  videoSrc: string;
-  heroSrc?: string;
-  posterSrc?: string;
-}
-
 interface CaseStudyModalProps {
-  caseStudy: CaseStudy | null;
-  isOpen: boolean;
-  onClose: () => void;
+  caseStudy: CaseStudy;
 }
 
-export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalProps) {
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
-
-  if (!isOpen || !caseStudy) return null;
-
+export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
   const colorClasses = {
     cyan: {
       border: 'border-cyan-500/30',
@@ -91,7 +51,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
   const heroVideo = caseStudy.heroSrc ?? caseStudy.videoSrc;
 
   return (
-    <div className="fixed inset-0 z-50 bg-neutral-950 overflow-y-auto">
+    <main className="fixed inset-0 z-50 bg-neutral-950 overflow-y-auto">
 
       {/* ── Hero spotlight ── */}
       <div className="relative w-full h-[85vh] overflow-hidden">
@@ -110,13 +70,13 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
         <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/60 via-transparent to-transparent" />
 
         {/* Back button */}
-        <button
-          onClick={onClose}
+        <a
+          href="/#case-studies"
           className="absolute top-6 left-6 flex items-center gap-2 px-4 py-2.5 bg-neutral-950/60 backdrop-blur-md border border-white/10 rounded-xl text-white text-sm font-semibold hover:bg-neutral-950/80 hover:border-white/20 transition-all duration-200 group"
         >
           <ChevronLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform duration-200" />
           Back
-        </button>
+        </a>
 
         {/* Title block pinned to bottom of hero */}
         <div className="absolute bottom-0 left-0 right-0 px-5 sm:px-8 lg:px-16 pb-12">
@@ -139,7 +99,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
 
         {/* Challenge */}
         <div className={`bg-gradient-to-br ${colors.bg} to-transparent border ${colors.border} rounded-2xl p-8`}>
-          <h3 className={`text-2xl font-bold mb-4 ${colors.text}`}>The Challenge</h3>
+          <h2 className={`text-2xl font-bold mb-4 ${colors.text}`}>The Challenge</h2>
           <div className="space-y-4">
             {caseStudy.challenge.split('\n\n').map((para, i) => (
               <p key={i} className="text-neutral-300 leading-relaxed text-base">{para}</p>
@@ -149,7 +109,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
 
         {/* Solution */}
         <div className="bg-neutral-900/60 border border-neutral-800 rounded-2xl p-8">
-          <h3 className="text-2xl font-bold mb-4 text-white">Our Solution</h3>
+          <h2 className="text-2xl font-bold mb-4 text-white">Our Solution</h2>
           <div className="space-y-4">
             {caseStudy.solution.split('\n\n').map((para, i) => (
               <p key={i} className="text-neutral-300 leading-relaxed text-base">{para}</p>
@@ -160,7 +120,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
         {/* Lessons Learned */}
         {caseStudy.lessons && caseStudy.lessons.length > 0 && (
           <div>
-            <h3 className="text-2xl font-bold mb-6 text-white">Lessons Learned</h3>
+            <h2 className="text-2xl font-bold mb-6 text-white">Lessons Learned</h2>
             <div className="space-y-4">
               {caseStudy.lessons.map((lesson, index) => (
                 <div key={index} className={`bg-gradient-to-br ${colors.bg} to-transparent border ${colors.border} rounded-2xl p-6`}>
@@ -169,7 +129,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
                       <span className={`text-sm font-black ${colors.text}`}>{index + 1}</span>
                     </div>
                     <div>
-                      <h4 className={`text-lg font-bold mb-2 ${colors.text}`}>{lesson.title}</h4>
+                      <h3 className={`text-lg font-bold mb-2 ${colors.text}`}>{lesson.title}</h3>
                       <p className="text-neutral-300 leading-relaxed text-base">{lesson.body}</p>
                     </div>
                   </div>
@@ -182,7 +142,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
         {/* Gallery */}
         {(caseStudy.images.length > 0 || (caseStudy.wideImages && caseStudy.wideImages.length > 0)) && (
           <div>
-            <h3 className="text-2xl font-bold mb-6 text-white">Product Gallery</h3>
+            <h2 className="text-2xl font-bold mb-6 text-white">Product Gallery</h2>
             <div className="grid lg:grid-cols-2 gap-6">
               {(caseStudy.wideImages ?? []).map((image, index) => {
                 const isVideo = image.endsWith('.mov') || image.endsWith('.mp4');
@@ -191,6 +151,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
                     {isVideo ? (
                       <GalleryVideo
                         src={image}
+                        label={caseStudy.title}
                         className="w-full h-auto min-h-[320px] object-cover"
                       />
                     ) : (
@@ -211,6 +172,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
                     {isVideo ? (
                       <GalleryVideo
                         src={image}
+                        label={caseStudy.title}
                         className="w-full h-auto min-h-[260px] object-cover"
                       />
                     ) : (
@@ -234,7 +196,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
 
         {/* Impact metrics */}
         <div className={`bg-gradient-to-br ${colors.bg} to-transparent border ${colors.border} rounded-2xl p-8`}>
-          <h3 className={`text-3xl font-bold mb-8 ${colors.text}`}>Impact Metrics</h3>
+          <h2 className={`text-3xl font-bold mb-8 ${colors.text}`}>Impact Metrics</h2>
           <div className="grid md:grid-cols-2 gap-4">
             {caseStudy.results.map((result, index) => {
               const icons = [TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2];
@@ -268,7 +230,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
 
         {/* Tags */}
         <div className="pb-8">
-          <h3 className="text-xs font-bold text-neutral-500 mb-4 tracking-widest uppercase">Technologies & Approaches</h3>
+          <h2 className="text-xs font-bold text-neutral-500 mb-4 tracking-widest uppercase">Technologies & Approaches</h2>
           <div className="flex flex-wrap gap-2">
             {caseStudy.tags.map((tag, index) => (
               <span key={index} className={`px-3 py-1.5 border rounded-full text-sm ${colors.tag}`}>
@@ -277,7 +239,12 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
             ))}
           </div>
         </div>
+
+        <nav aria-label="Related" className="flex flex-wrap gap-x-6 gap-y-2 text-sm pb-4">
+          <a href="/" className="text-cyan-400 hover:text-cyan-300">Revv Studio</a>
+          <a href="/blog" className="text-cyan-400 hover:text-cyan-300">Blog</a>
+        </nav>
       </div>
-    </div>
+    </main>
   );
 }
