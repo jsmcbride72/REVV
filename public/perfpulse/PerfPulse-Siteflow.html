@@ -3,23 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Performance Pulse — Sitemap / Siteflow</title>
+  <title>Performance Pulse — Sitemap & Siteflow</title>
   <style>
-
 :root {
   --navy: #0E2841;
   --navy-2: #183654;
   --paper: #F6F4EF;
+  --surface: #FAF9F6;
   --white: #FFFFFF;
-  --charcoal: #4D5B69;
   --ink: #0E2841;
-  --ink-2: #2C3E50;
+  --ink-2: #33475B;
+  --muted: #526272;
   --blue: #0070C0;
   --blue-ink: #005A9E;
-  --border: #CDC7BA;
-  --subtle: #E3DFD5;
-  --tint: #EDF5FC;
-  --sans: Inter, "Source Sans Pro", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --blue-tint: #EDF5FC;
+  --orange: #C83E0E;
+  --orange-bg: #FFF5F0;
+  --orange-border: #E8704A;
+  --border: #D5D0C5;
+  --subtle: #E5E1D8;
+  --later-bg: #F2EFE8;
+  --later-border: #B8B2A6;
+  --sans: Inter, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -28,7 +33,8 @@ body {
   color: var(--ink);
   font-family: var(--sans);
   background: var(--paper);
-  line-height: 1.5;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
 }
 header.app-header {
   background: var(--navy);
@@ -36,24 +42,24 @@ header.app-header {
   padding: 28px 32px 24px;
 }
 header .brand {
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #CBD5E1;
-  font-weight: 600;
-  margin: 0 0 8px;
+  font-weight: 700;
+  margin: 0 0 6px;
 }
 header h1 {
   margin: 0 0 8px;
   font-size: 28px;
-  font-weight: 650;
+  font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.2;
 }
 header .dek {
   margin: 0;
-  max-width: 68ch;
-  color: #CBD5E1;
+  max-width: 72ch;
+  color: #DCE5EE;
   font-size: 15px;
 }
 nav.jump {
@@ -62,7 +68,7 @@ nav.jump {
   z-index: 20;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 16px;
+  gap: 8px 20px;
   padding: 12px 32px;
   background: var(--navy-2);
   border-bottom: 1px solid #24527a;
@@ -70,155 +76,578 @@ nav.jump {
 nav.jump a {
   color: #FFFFFF;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 600;
   padding: 4px 0;
   border-bottom: 2px solid transparent;
 }
 nav.jump a:hover, nav.jump a:focus {
   border-bottom-color: #7CC0EA;
+  outline: none;
 }
-main { padding: 28px 32px 64px; max-width: 1440px; margin: 0 auto; }
-section {
+main {
+  padding: 28px 32px 64px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+section.card {
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 24px 24px 16px;
+  padding: 26px 26px 24px;
   margin: 0 0 28px;
-  box-shadow: 0 1px 0 rgba(14,40,65,0.04);
+  box-shadow: 0 1px 2px rgba(14,40,65,0.05);
 }
-section h2 {
+.eyebrow {
   margin: 0 0 4px;
-  font-size: 22px;
-  letter-spacing: -0.02em;
-}
-section .eyebrow {
-  margin: 0 0 4px;
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--blue-ink);
 }
-section .caption {
-  margin: 0 0 16px;
+section.card h2 {
+  margin: 0 0 6px;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--navy);
+}
+.caption {
+  margin: 0 0 18px;
   color: var(--ink-2);
   font-size: 14.5px;
-  max-width: 80ch;
+  max-width: 82ch;
 }
-.hint {
-  margin: 0 0 10px;
-  font-size: 12px;
-  color: var(--charcoal);
-}
-.diagram-fit {
-  background: var(--white);
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin: 0 0 18px;
+  padding: 10px 14px;
+  background: var(--surface);
   border: 1px solid var(--subtle);
   border-radius: 8px;
-  overflow: auto;
-  padding: 8px;
+  font-size: 12.5px;
+  color: var(--ink-2);
 }
-.diagram-fit svg {
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 500;
+}
+.swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.swatch.start { background: var(--navy); }
+.swatch.step { background: var(--white); border: 2px solid var(--blue); }
+.swatch.decision { background: var(--orange-bg); border: 2px solid var(--orange-border); }
+.swatch.handoff { background: var(--blue-tint); border: 1.5px solid var(--blue); }
+.swatch.later { background: var(--later-bg); border: 1.5px dashed var(--later-border); }
+
+/* 4-surface Siteflow grid */
+.surface-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.surface-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.surface-head {
+  border-bottom: 1px solid var(--subtle);
+  padding-bottom: 10px;
+}
+.surface-head h3 {
+  margin: 0 0 2px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.surface-head p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+.surface-links {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.link-pill {
+  background: var(--blue-tint);
+  border: 1px solid #B6D7F2;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--navy);
+}
+.link-pill strong {
   display: block;
-  width: 100%;
-  height: auto;
-  max-width: 1920px;
-  margin: 0 auto;
+  color: var(--blue-ink);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
 }
-.diagram-tall {
-  background: var(--white);
-  border: 1px solid var(--subtle);
+
+/* Flow nodes */
+.flow-col {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+}
+.node {
   border-radius: 8px;
-  overflow: auto;
-  padding: 16px;
+  padding: 11px 14px;
+  font-size: 13.5px;
+  line-height: 1.4;
+  background: var(--white);
+  border: 1.5px solid var(--blue);
+  color: var(--ink);
+}
+.node strong {
+  display: block;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+.node .sub {
+  display: block;
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+.node.start {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+  border-radius: 22px;
+  text-align: center;
+  font-weight: 600;
+}
+.node.start strong { color: var(--white); margin-bottom: 0; }
+.node.start .sub { color: #DCE5EE; margin-top: 2px; }
+.node.decision {
+  background: var(--orange-bg);
+  border: 1.5px solid var(--orange-border);
+}
+.node.decision .badge {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--orange);
+  margin-bottom: 3px;
+}
+.node.handoff {
+  background: var(--blue-tint);
+  border: 1.5px solid var(--blue);
+  font-weight: 600;
+  color: var(--blue-ink);
   text-align: center;
 }
-.diagram-tall svg {
+.node.later {
+  background: var(--later-bg);
+  border: 1.5px dashed var(--later-border);
+  color: var(--ink-2);
+}
+.node.later strong { color: var(--ink-2); }
+
+.arrow-down {
+  text-align: center;
+  color: var(--blue-ink);
+  font-size: 16px;
+  line-height: 1;
+  padding: 4px 0;
+  font-weight: 700;
+  user-select: none;
+}
+.arrow-label {
   display: inline-block;
-  width: min(100%, 520px);
-  height: auto;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--blue-ink);
+  background: var(--blue-tint);
+  padding: 1px 8px;
+  border-radius: 999px;
+  margin-left: 6px;
+  vertical-align: middle;
 }
-.diagram-scroll {
-  background: var(--white);
-  border: 1px solid var(--subtle);
+
+.branch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+.branch-grid.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.branch-card {
   border-radius: 8px;
-  overflow: auto;
-  padding: 12px;
-  -webkit-overflow-scrolling: touch;
+  padding: 10px 12px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  font-size: 12.5px;
+  color: var(--ink-2);
 }
-.diagram-scroll svg {
+.branch-card.primary {
+  border: 1.5px solid var(--blue);
+  background: var(--white);
+}
+.branch-card.muted {
+  background: var(--later-bg);
+  border: 1px dashed var(--later-border);
+}
+.branch-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--blue-ink);
+  background: var(--blue-tint);
+  padding: 1px 7px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+.branch-tag.warn {
+  color: var(--orange);
+  background: var(--orange-bg);
+}
+.branch-tag.neutral {
+  color: var(--ink-2);
+  background: #E4DFD4;
+}
+.branch-card strong {
   display: block;
-  width: auto;
-  max-width: none;
-  height: auto;
+  color: var(--navy);
+  font-size: 13px;
+  margin-bottom: 2px;
 }
+
+/* Sub-group inside PortCo workspace */
+.sub-panel {
+  background: var(--white);
+  border: 1px solid #B6D7F2;
+  border-radius: 8px;
+  padding: 12px;
+}
+.sub-panel-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blue-ink);
+  margin: 0 0 8px;
+}
+.mini-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+  gap: 8px;
+}
+.mini-step {
+  background: var(--blue-tint);
+  border: 1px solid #B6D7F2;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.mini-step span {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--blue-ink);
+  margin-bottom: 2px;
+}
+.node-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+/* 9-screen path strip */
+.phase-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+}
+.phase-block:last-child { margin-bottom: 0; }
+.phase-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue-ink);
+  margin: 0 0 12px;
+}
+.step-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.step-card {
+  flex: 1 1 160px;
+  background: var(--white);
+  border: 1.5px solid var(--blue);
+  border-radius: 8px;
+  padding: 11px 13px;
+  min-width: 145px;
+}
+.step-card .num {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blue-ink);
+  margin-bottom: 2px;
+}
+.step-card .title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.step-card .desc {
+  font-size: 12.5px;
+  color: var(--ink-2);
+  margin-top: 2px;
+}
+.step-card.end {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+.step-card.end .num { color: #9ED0F5; }
+.step-card.end .title { color: var(--white); }
+.step-card.end .desc { color: #DCE5EE; }
+.step-arrow {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue-ink);
+  flex: 0 0 auto;
+  user-select: none;
+}
+
+/* Journey stage columns */
+.stages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+.stages.cols-5 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.stage {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.stage-title {
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--subtle);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.stage-num {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+  margin-right: 6px;
+  vertical-align: 1px;
+}
+.callout-note {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 8px 8px 0;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
 footer.app-footer {
-  padding: 20px 32px 40px;
-  color: var(--charcoal);
+  padding: 16px 32px 44px;
+  color: var(--muted);
   font-size: 12.5px;
   max-width: 1440px;
   margin: 0 auto;
 }
 footer.app-footer p { margin: 0 0 6px; }
-@media print {
-  nav.jump { position: static; }
-  section { break-inside: avoid; box-shadow: none; }
-  .diagram-scroll { overflow: visible; }
+
+@media (max-width: 980px) {
+  .surface-grid, .stages, .surface-links { grid-template-columns: 1fr; }
 }
 @media (max-width: 700px) {
   header.app-header, nav.jump, main, footer.app-footer { padding-left: 16px; padding-right: 16px; }
-  section { padding: 16px; }
+  section.card { padding: 18px 16px; }
+  .branch-grid, .branch-grid.cols-3, .node-grid { grid-template-columns: 1fr; }
+  .step-arrow { display: none; }
 }
-
-  </style>
+@media print {
+  nav.jump { position: static; }
+  section.card { break-inside: avoid; box-shadow: none; }
+}
+</style>
 </head>
 <body>
   <header class="app-header">
-    <p class="brand">Performance Pulse</p>
-    <h1>Sitemap / Siteflow</h1>
-    <p class="dek">The four product surfaces — Public site, PortCo workspace, PE firm workspace, and PerfPulse internal — and how sales handoff, record creation, and onboarding launch connect them.</p>
+    <p class="brand">Performance Pulse · UX Architecture</p>
+    <h1>Sitemap & Siteflow</h1>
+    <p class="dek">Four product surfaces scoped by data ownership and how the Public Site, PortCo Workspace, PE Firm Workspace, and Internal tools connect.</p>
   </header>
-  <nav class="jump" aria-label="On this page">
-    <a href="#siteflow">Sitemap / Siteflow</a>
+  <nav class="jump" aria-label="Jump to section">
+  <a href="#siteflow">Sitemap & Siteflow</a>
   </nav>
   <main>
-    
-<section id="siteflow">
-  <p class="eyebrow">Information architecture</p>
-  <h2>Sitemap / Siteflow</h2>
-  <p class="caption">The product has four surfaces, each scoped by who owns the data. The One-CTO prototype screens sit inside the PortCo workspace, under Onboarding. Sales handoff, company-record creation, and launch-onboarding connect the surfaces.</p>
-  
-  <div class="diagram-fit">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080" style="background:#FFFFFF;font-family:Inter, 'Source Sans Pro', 'Liberation Sans', Arial, sans-serif">
-  <defs>
-    <marker id="arrowHead" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
-      <polygon points="0 0, 10 4, 0 8" fill="#0070C0"/>
-    </marker>
-  </defs>
-  <rect width="1920" height="1080" fill="#FFFFFF"/><rect x="0" y="0" width="1920" height="88" fill="#0E2841"/><text x="28" y="38" fill="#FFFFFF" font-family="Inter, 'Source Sans Pro', 'Liberation Sans', Arial, sans-serif" font-size="22" font-weight="600">Performance Pulse</text><text x="28" y="68" fill="#CBD5E1" font-family="Inter, 'Source Sans Pro', 'Liberation Sans', Arial, sans-serif" font-size="16">Sitemap / Siteflow  ·  Four product surfaces, scoped by who owns the data</text><g><rect x="28" y="116" width="904" height="418" rx="10" ry="10" fill="#F6F4EF" stroke="#CDC7BA" stroke-width="1.5"/><text x="44" y="140" fill="#0E2841" font-family="Inter, 'Source Sans Pro', 'Liberation Sans', Arial, sans-serif" font-size="16" font-weight="700">A. Public site</text><text x="44" y="158" fill="#4D5B69" font-family="Inter, 'Source Sans Pro', 'Liberation Sans', Arial, sans-serif" font-size="12">No account</text><g id="mmd-surface-public-1795707359408" transform="translate(191.2, 162.0) scale(0.6654)"><style>#mmd-surface-public-1795707359408{font-family:Inter,'Source Sans Pro','Liberation Sans',Arial,sans-serif;font-size:16px;fill:#0E2841;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-surface-public-1795707359408 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-surface-public-1795707359408 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-surface-public-1795707359408 .error-icon{fill:#EDF5FC;}#mmd-surface-public-1795707359408 .error-text{fill:#0E2841;stroke:#0E2841;}#mmd-surface-public-1795707359408 .edge-thickness-normal{stroke-width:1px;}#mmd-surface-public-1795707359408 .edge-thickness-thick{stroke-width:3.5px;}#mmd-surface-public-1795707359408 .edge-pattern-solid{stroke-dasharray:0;}#mmd-surface-public-1795707359408 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-surface-public-1795707359408 .edge-pattern-dashed{stroke-dasharray:3;}#mmd-surface-public-1795707359408 .edge-pattern-dotted{stroke-dasharray:2;}#mmd-surface-public-1795707359408 .marker{fill:#4D5B69;stroke:#4D5B69;}#mmd-surface-public-1795707359408 .marker.cross{stroke:#4D5B69;}#mmd-surface-public-1795707359408 svg{font-family:Inter,'Source Sans Pro','Liberation Sans',Arial,sans-serif;font-size:16px;}#mmd-surface-public-1795707359408 p{margin:0;}#mmd-surface-public-1795707359408 .label{font-family:Inter,'Source Sans Pro','Liberation Sans',Arial,sans-serif;color:#0E2841;}#mmd-surface-public-1795707359408 .cluster-label text{fill:#0E2841;}#mmd-surface-public-1795707359408 .cluster-label span{color:#0E2841;}#mmd-surface-public-1795707359408 .cluster-label span p{background-color:transparent;}#mmd-surface-public-1795707359408 .label text,#mmd-surface-public-1795707359408 span{fill:#0E2841;color:#0E2841;}#mmd-surface-public-1795707359408 .node rect,#mmd-surface-public-1795707359408 .node circle,#mmd-surface-public-1795707359408 .node ellipse,#mmd-surface-public-1795707359408 .node polygon,#mmd-surface-public-1795707359408 .node path{fill:#FFFFFF;stroke:#0070C0;stroke-width:1px;}#mmd-surface-public-1795707359408 .rough-node .label text,#mmd-surface-public-1795707359408 .node .label text,#mmd-surface-public-1795707359408 .image-shape .label,#mmd-surface-public-1795707359408 .icon-shape .label{text-anchor:middle;}#mmd-surface-public-1795707359408 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmd-surface-public-1795707359408 .rough-node .label,#mmd-surface-public-1795707359408 .node .label,#mmd-surface-public-1795707359408 .image-shape .label,#mmd-surface-public-1795707359408 .icon-shape .label{text-align:center;}#mmd-surface-public-1795707359408 .node.clickable{cursor:pointer;}#mmd-surface-public-1795707359408 .root .anchor path{fill:#4D5B69!important;stroke-width:0;stroke:#4D5B69;}#mmd-surface-public-1795707359408 .arrowheadPath{fill:#000000;}#mmd-surface-public-1795707359408 .edgePath .path{stroke:#4D5B69;stroke-width:2.0px;}#mmd-surface-public-1795707359408 .flowchart-link{stroke:#4D5B69;fill:none;}#mmd-surface-public-1795707359408 .edgeLabel{background-color:#FFFFFF;text-align:center;}#mmd-surface-public-1795707359408 .edgeLabel p{background-color:#FFFFFF;}#mmd-surface-public-1795707359408 .edgeLabel rect{opacity:0.5;background-color:#FFFFFF;fill:#FFFFFF;}#mmd-surface-public-1795707359408 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mmd-surface-public-1795707359408 .cluster rect{fill:#F6F4EF;stroke:#CDC7BA;stroke-width:1px;}#mmd-surface-public-1795707359408 .cluster text{fill:#0E2841;}#mmd-surface-public-1795707359408 .cluster span{color:#0E2841;}#mmd-surface-public-1795707359408 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,'Source Sans Pro','Liberation Sans',Arial,sans-serif;font-size:12px;background:#EDF5FC;border:1px solid #7CC0EA;border-radius:2px;pointer-events:none;z-index:100;}#mmd-surface-public-1795707359408 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#0E2841;}#mmd-surface-public-1795707359408 rect.text{fill:none;stroke-width:0;}#mmd-surface-public-1795707359408 .icon-shape,#mmd-surface-public-1795707359408 .image-shape{background-color:#FFFFFF;text-align:center;}#mmd-surface-public-1795707359408 .icon-shape p,#mmd-surface-public-1795707359408 .image-shape p{background-color:#FFFFFF;padding:2px;}#mmd-surface-public-1795707359408 .icon-shape rect,#mmd-surface-public-1795707359408 .image-shape rect{opacity:0.5;background-color:#FFFFFF;fill:#FFFFFF;}#mmd-surface-public-1795707359408 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mmd-surface-public-1795707359408 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mmd-surface-public-1795707359408 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}#mmd-surface-public-1795707359408 .startEnd&gt;*{fill:#0E2841!important;stroke:#0E2841!important;color:#FFFFFF!important;stroke-width:1.5px!important;}#mmd-surface-public-1795707359408 .startEnd span{fill:#0E2841!important;stroke:#0E2841!important;color:#FFFFFF!important;stroke-width:1.5px!important;}#mmd-surface-public-1795707359408 .startEnd tspan{fill:#FFFFFF!important;}#mmd-surface-public-1795707359408 .process&gt;*{fill:#FFFFFF!important;stroke:#0070C0!important;color:#0E2841!important;stroke-width:1.5px!important;}#mmd-surface-public-1795707359408 .process span{fill:#FFFFFF!important;stroke:#0070C0!important;color:#0E2841!important;stroke-width:1.5px!important;}#mmd-surface-public-1795707359408 .process tspan{fill:#0E2841!important;}</style><g><marker id="mmd-surface-public-1795707359408_flowchart-v2-pointEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mmd-surface-public-1795707359408_flowchart-v2-pointStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mmd-surface-public-1795707359408_flowchart-v2-circleEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mmd-surface-public-1795707359408_flowchart-v2-circleStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mmd-surface-public-1795707359408_flowchart-v2-crossEnd" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="mmd-surface-public-1795707359408_flowchart-v2-crossStart" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M492,64L492,67.667C492,71.333,492,78.667,492,85.333C492,92,492,98,492,101L492,104" id="L_P1_P2_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_P1_P2_0" data-points="W3sieCI6NDkyLCJ5Ijo2NH0seyJ4Ijo0OTIsInkiOjg2fSx7IngiOjQ5MiwieSI6MTA4fV0=" marker-end="url(#mmd-surface-public-1795707359408_flowchart-v2-pointEnd)"></path><path d="M492,164L492,167.667C492,171.333,492,178.667,492,185.333C492,192,492,198,492,201L492,204" id="L_P2_P3_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_P2_P3_0" data-points="W3sieCI6NDkyLCJ5IjoxNjR9LHsieCI6NDkyLCJ5IjoxODZ9LHsieCI6NDkyLCJ5IjoyMDh9XQ==" marker-end="url(#mmd-surface-public-1795707359408_flowchart-v2-pointEnd)"></path><path d="M492,264L492,267.667C492,271.333,492,278.667,492,285.333C492,292,492,298,492,301L492,304" id="L_P3_P4_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_P3_P4_0" data-points="W3sieCI6NDkyLCJ5IjoyNjR9LHsieCI6NDkyLCJ5IjoyODZ9LHsieCI6NDkyLCJ5IjozMDh9XQ==" marker-end="url(#mmd-surface-public-1795707359408_flowchart-v2-pointEnd)"></path><path d="M340,376.386L310,381.988C280,387.59,220,398.795,190,409.398C160,420,160,430,160,435L160,440" id="L_P4_P5_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_P4_P5_0" data-points="W3sieCI6MzQwLCJ5IjozNzYuMzg1NTQyMTY4Njc0N30seyJ4IjoxNjAsInkiOjQxMH0seyJ4IjoxNjAsInkiOjQ0NH1d" marker-end="url(#mmd-surface-public-1795707359408_flowchart-v2-pointEnd)"></path><path d="M492,388L492,391.667C492,395.333,492,402.667,492,409.333C492,416,492,422,492,425L492,428" id="L_P4_P4b_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_P4_P4b_0" data-points="W3sieCI6NDkyLCJ5IjozODh9LHsieCI6NDkyLCJ5Ijo0MTB9LHsieCI6NDkyLCJ5Ijo0MzJ9XQ==" marker-end="url(#mmd-surface-public-1795707359408_flowchart-v2-pointEnd)"></path><path d="M644,382.417L664.303,387.014C684.607,391.611,725.214,400.806,745.517,412.403C765.82,424,765.82,438,765.82,445L765.82,452" id="L_P4_P6_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_P4_P6_0" data-points="W3sieCI6NjQ0LCJ5IjozODIuNDE2NzMwODYyNTA2Nzd9LHsieCI6NzY1LjgyMDMxMjUsInkiOjQxMH0seyJ4Ijo3NjUuODIwMzEyNSwieSI6NDU2fV0=" marker-end="url(#mmd-surface-public-1795707359408_flowchart-v2-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_P1_P2_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_P2_P3_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_P3_P4_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_P4_P5_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_P4_P4b_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_P4_P6_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default startEnd" id="flowchart-P1-0" transform="translate(492, 36)"><rect class="basic label-container" style="fill:#0E2841 !important;stroke:#0E2841 !important;stroke-width:1.5px !important" x="-108.6953125" y="-28" width="217.390625" height="56"></rect><g class="label" style="color:#FFFFFF !important" transform="translate(-76.6953125, -12)"><rect></rect><foreignObject width="153.390625" height="24"><div style="color: rgb(255, 255, 255) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 240px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#FFFFFF !important" class="nodeLabel"><p>Landing / Scan offer</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-P2-1" transform="translate(492, 136)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-83.3671875" y="-28" width="166.734375" height="56"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-51.3671875, -12)"><rect></rect><foreignObject width="102.734375" height="24"><div style="color: rgb(14, 40, 65) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 240px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>Email capture</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-P3-3" transform="translate(492, 236)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-99.6328125" y="-28" width="199.265625" height="56"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-67.6328125, -12)"><rect></rect><foreignObject width="135.265625" height="24"><div style="color: rgb(14, 40, 65) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 240px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>Magic-code entry</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-P4-5" transform="translate(492, 348)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-152" y="-40" width="304" height="80"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-120, -24)"><rect></rect><foreignObject width="240" height="48"><div style="color: rgb(14, 40, 65) !important; display: table; white-space: break-spaces; line-height: 1.5; max-width: 240px; text-align: center; width: 240px;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>Outside-in results: tools detected</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-P5-7" transform="translate(160, 484)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-152" y="-40" width="304" height="80"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-120, -24)"><rect></rect><foreignObject width="240" height="48"><div style="color: rgb(14, 40, 65) !important; display: table; white-space: break-spaces; line-height: 1.5; max-width: 240px; text-align: center; width: 240px;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>Optional pulse-check / self-assessment</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-P4b-9" transform="translate(492, 484)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-152" y="-52" width="304" height="104"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-120, -36)"><rect></rect><foreignObject width="240" height="72"><div style="color: rgb(14, 40, 65) !important; display: table; white-space: break-spaces; line-height: 1.5; max-width: 240px; text-align: center; width: 240px;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>Confirm systems + system owners<br/>→ company record</p></span></div></foreignObject></g></g><g class="node default startEnd" id="flowchart-P6-11" transform="translate(765.8203125, 484)"><rect class="basic label-container" style="fill:#0E2841 !important;stroke:#0E2841 !important;stroke-width:1.5px !important" x="-93.8203125" y="-28" width="187.640625" height="56"></rect><g class="label" style="color:#FFFFFF !important" transform="translate(-61.8203125, -12)"><rect></rect><foreignObject width="123.640625" height="24"><div style="color: rgb(255, 255, 255) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 240px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#FFFFFF !important" class="nodeLabel"><p>Book-a-call CTA</p></span></div></foreignObject></g></g></g></g></g></g></g><g><rect x="988" y="116" width="904" height="418" rx="10" ry="10" fill="#F6F4EF" stroke="#CDC7BA" stroke-width="1.5"/><text x="1004" y="140" fill="#0E2841" font-family="Inter, 'Source Sans Pro', 'Liberation Sans', Arial, sans-serif" font-size="16" font-weight="700">B. PortCo workspace (ACME)</text><text x="1004" y="158" fill="#4D5B69" font-family="Inter, 'Source Sans Pro', 'Liberation Sans', Arial, sans-serif" font-size="12">Role-scoped</text><g id="mmd-surface-portco-1795707359590" transform="translate(998.0, 306.2) scale(0.3013)"><style>#mmd-surface-portco-1795707359590{font-family:Inter,'Source Sans Pro','Liberation Sans',Arial,sans-serif;font-size:16px;fill:#0E2841;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-surface-portco-1795707359590 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-surface-portco-1795707359590 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-surface-portco-1795707359590 .error-icon{fill:#EDF5FC;}#mmd-surface-portco-1795707359590 .error-text{fill:#0E2841;stroke:#0E2841;}#mmd-surface-portco-1795707359590 .edge-thickness-normal{stroke-width:1px;}#mmd-surface-portco-1795707359590 .edge-thickness-thick{stroke-width:3.5px;}#mmd-surface-portco-1795707359590 .edge-pattern-solid{stroke-dasharray:0;}#mmd-surface-portco-1795707359590 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-surface-portco-1795707359590 .edge-pattern-dashed{stroke-dasharray:3;}#mmd-surface-portco-1795707359590 .edge-pattern-dotted{stroke-dasharray:2;}#mmd-surface-portco-1795707359590 .marker{fill:#4D5B69;stroke:#4D5B69;}#mmd-surface-portco-1795707359590 .marker.cross{stroke:#4D5B69;}#mmd-surface-portco-1795707359590 svg{font-family:Inter,'Source Sans Pro','Liberation Sans',Arial,sans-serif;font-size:16px;}#mmd-surface-portco-1795707359590 p{margin:0;}#mmd-surface-portco-1795707359590 .label{font-family:Inter,'Source Sans Pro','Liberation Sans',Arial,sans-serif;color:#0E2841;}#mmd-surface-portco-1795707359590 .cluster-label text{fill:#0E2841;}#mmd-surface-portco-1795707359590 .cluster-label span{color:#0E2841;}#mmd-surface-portco-1795707359590 .cluster-label span p{background-color:transparent;}#mmd-surface-portco-1795707359590 .label text,#mmd-surface-portco-1795707359590 span{fill:#0E2841;color:#0E2841;}#mmd-surface-portco-1795707359590 .node rect,#mmd-surface-portco-1795707359590 .node circle,#mmd-surface-portco-1795707359590 .node ellipse,#mmd-surface-portco-1795707359590 .node polygon,#mmd-surface-portco-1795707359590 .node path{fill:#FFFFFF;stroke:#0070C0;stroke-width:1px;}#mmd-surface-portco-1795707359590 .rough-node .label text,#mmd-surface-portco-1795707359590 .node .label text,#mmd-surface-portco-1795707359590 .image-shape .label,#mmd-surface-portco-1795707359590 .icon-shape .label{text-anchor:middle;}#mmd-surface-portco-1795707359590 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmd-surface-portco-1795707359590 .rough-node .label,#mmd-surface-portco-1795707359590 .node .label,#mmd-surface-portco-1795707359590 .image-shape .label,#mmd-surface-portco-1795707359590 .icon-shape .label{text-align:center;}#mmd-surface-portco-1795707359590 .node.clickable{cursor:pointer;}#mmd-surface-portco-1795707359590 .root .anchor path{fill:#4D5B69!important;stroke-width:0;stroke:#4D5B69;}#mmd-surface-portco-1795707359590 .arrowheadPath{fill:#000000;}#mmd-surface-portco-1795707359590 .edgePath .path{stroke:#4D5B69;stroke-width:2.0px;}#mmd-surface-portco-1795707359590 .flowchart-link{stroke:#4D5B69;fill:none;}#mmd-surface-portco-1795707359590 .edgeLabel{background-color:#FFFFFF;text-align:center;}#mmd-surface-portco-1795707359590 .edgeLabel p{background-color:#FFFFFF;}#mmd-surface-portco-1795707359590 .edgeLabel rect{opacity:0.5;background-color:#FFFFFF;fill:#FFFFFF;}#mmd-surface-portco-1795707359590 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mmd-surface-portco-1795707359590 .cluster rect{fill:#F6F4EF;stroke:#CDC7BA;stroke-width:1px;}#mmd-surface-portco-1795707359590 .cluster text{fill:#0E2841;}#mmd-surface-portco-1795707359590 .cluster span{color:#0E2841;}#mmd-surface-portco-1795707359590 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,'Source Sans Pro','Liberation Sans',Arial,sans-serif;font-size:12px;background:#EDF5FC;border:1px solid #7CC0EA;border-radius:2px;pointer-events:none;z-index:100;}#mmd-surface-portco-1795707359590 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#0E2841;}#mmd-surface-portco-1795707359590 rect.text{fill:none;stroke-width:0;}#mmd-surface-portco-1795707359590 .icon-shape,#mmd-surface-portco-1795707359590 .image-shape{background-color:#FFFFFF;text-align:center;}#mmd-surface-portco-1795707359590 .icon-shape p,#mmd-surface-portco-1795707359590 .image-shape p{background-color:#FFFFFF;padding:2px;}#mmd-surface-portco-1795707359590 .icon-shape rect,#mmd-surface-portco-1795707359590 .image-shape rect{opacity:0.5;background-color:#FFFFFF;fill:#FFFFFF;}#mmd-surface-portco-1795707359590 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mmd-surface-portco-1795707359590 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mmd-surface-portco-1795707359590 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}#mmd-surface-portco-1795707359590 .startEnd&gt;*{fill:#0E2841!important;stroke:#0E2841!important;color:#FFFFFF!important;stroke-width:1.5px!important;}#mmd-surface-portco-1795707359590 .startEnd span{fill:#0E2841!important;stroke:#0E2841!important;color:#FFFFFF!important;stroke-width:1.5px!important;}#mmd-surface-portco-1795707359590 .startEnd tspan{fill:#FFFFFF!important;}#mmd-surface-portco-1795707359590 .process&gt;*{fill:#FFFFFF!important;stroke:#0070C0!important;color:#0E2841!important;stroke-width:1.5px!important;}#mmd-surface-portco-1795707359590 .process span{fill:#FFFFFF!important;stroke:#0070C0!important;color:#0E2841!important;stroke-width:1.5px!important;}#mmd-surface-portco-1795707359590 .process tspan{fill:#0E2841!important;}</style><g><marker id="mmd-surface-portco-1795707359590_flowchart-v2-pointEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mmd-surface-portco-1795707359590_flowchart-v2-pointStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mmd-surface-portco-1795707359590_flowchart-v2-circleEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mmd-surface-portco-1795707359590_flowchart-v2-circleStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mmd-surface-portco-1795707359590_flowchart-v2-crossEnd" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="mmd-surface-portco-1795707359590_flowchart-v2-crossStart" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M781.227,43.94L671.975,50.95C562.724,57.96,344.221,71.98,234.97,87.99C125.719,104,125.719,122,125.719,131L125.719,140" id="L_C0_F_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_C0_F_0" data-points="W3sieCI6NzgxLjIyNjU2MjUsInkiOjQzLjkzOTgyNTk1NDQ0MzM4fSx7IngiOjEyNS43MTg3NSwieSI6ODZ9LHsieCI6MTI1LjcxODc1LCJ5IjoxNDR9XQ==" marker-end="url(#mmd-surface-portco-1795707359590_flowchart-v2-pointEnd)"></path><path d="M781.227,48.68L720.523,54.9C659.82,61.12,538.414,73.56,477.711,88.78C417.008,104,417.008,122,417.008,131L417.008,140" id="L_C0_EV_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_C0_EV_0" data-points="W3sieCI6NzgxLjIyNjU2MjUsInkiOjQ4LjY3OTUxNzc2MzY1Mjk1fSx7IngiOjQxNy4wMDc4MTI1LCJ5Ijo4Nn0seyJ4Ijo0MTcuMDA3ODEyNSwieSI6MTQ0fV0=" marker-end="url(#mmd-surface-portco-1795707359590_flowchart-v2-pointEnd)"></path><path d="M812.683,64L800.597,67.667C788.512,71.333,764.342,78.667,752.257,89.333C740.172,100,740.172,114,740.172,121L740.172,128" id="L_C0_RQ_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_C0_RQ_0" data-points="W3sieCI6ODEyLjY4MjUsInkiOjY0fSx7IngiOjc0MC4xNzE4NzUsInkiOjg2fSx7IngiOjc0MC4xNzE4NzUsInkiOjEzMn1d" marker-end="url(#mmd-surface-portco-1795707359590_flowchart-v2-pointEnd)"></path><path d="M997.255,64L1009.34,67.667C1021.425,71.333,1045.595,78.667,1057.681,89.333C1069.766,100,1069.766,114,1069.766,121L1069.766,128" id="L_C0_ASK_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_C0_ASK_0" data-points="W3sieCI6OTk3LjI1NSwieSI6NjR9LHsieCI6MTA2OS43NjU2MjUsInkiOjg2fSx7IngiOjEwNjkuNzY1NjI1LCJ5IjoxMzJ9XQ==" marker-end="url(#mmd-surface-portco-1795707359590_flowchart-v2-pointEnd)"></path><path d="M1028.711,48.454L1090.887,54.712C1153.063,60.969,1277.414,73.485,1339.59,82.742C1401.766,92,1401.766,98,1401.766,101L1401.766,104" id="L_C0_ST_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_C0_ST_0" data-points="W3sieCI6MTAyOC43MTA5Mzc1LCJ5Ijo0OC40NTQwMDIyMDE2MDQwM30seyJ4IjoxNDAxLjc2NTYyNSwieSI6ODZ9LHsieCI6MTQwMS43NjU2MjUsInkiOjEwOH1d" marker-end="url(#mmd-surface-portco-1795707359590_flowchart-v2-pointEnd)"></path><path d="M1028.711,40.587L1232.87,48.156C1437.029,55.725,1845.346,70.862,2049.505,81.431C2253.664,92,2253.664,98,2253.664,101L2253.664,104" id="L_C0_ONB_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_C0_ONB_0" data-points="W3sieCI6MTAyOC43MTA5Mzc1LCJ5Ijo0MC41ODc0Nzc0ODExMzA0OX0seyJ4IjoyMjUzLjY2NDA2MjUsInkiOjg2fSx7IngiOjIyNTMuNjY0MDYyNSwieSI6MTA4fV0=" marker-end="url(#mmd-surface-portco-1795707359590_flowchart-v2-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_C0_F_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_C0_EV_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_C0_RQ_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_C0_ASK_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_C0_ST_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_C0_ONB_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="root" transform="translate(1573.765625, 100)"><g class="clusters"><g class="cluster" id="ONB" data-look="classic"><rect style="" x="8" y="8" width="1343.796875" height="128"></rect><g class="cluster-label" transform="translate(579.8984375, 8)"><foreignObject width="200" height="48"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel"><p>Onboarding: One-CTO path</p></span></div></foreignObject></g></g></g><g class="edgePaths"><path d="M231.359,72L237.109,72C242.859,72,254.359,72,265.193,72C276.026,72,286.193,72,291.276,72L296.359,72" id="L_S1_S2_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_S1_S2_0" data-points="W3sieCI6MjMxLjM1OTM3NSwieSI6NzJ9LHsieCI6MjY1Ljg1OTM3NSwieSI6NzJ9LHsieCI6MzAwLjM1OTM3NSwieSI6NzJ9XQ==" marker-end="url(#mmd-surface-portco-1795707359590_flowchart-v2-pointEnd)"></path><path d="M499.703,72L505.453,72C511.203,72,522.703,72,533.536,72C544.37,72,554.536,72,559.62,72L564.703,72" id="L_S2_S3_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_S2_S3_0" data-points="W3sieCI6NDk5LjcwMzEyNSwieSI6NzJ9LHsieCI6NTM0LjIwMzEyNSwieSI6NzJ9LHsieCI6NTY4LjcwMzEyNSwieSI6NzJ9XQ==" marker-end="url(#mmd-surface-portco-1795707359590_flowchart-v2-pointEnd)"></path><path d="M780.266,72L786.016,72C791.766,72,803.266,72,814.099,72C824.932,72,835.099,72,840.182,72L845.266,72" id="L_S3_S4_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_S3_S4_0" data-points="W3sieCI6NzgwLjI2NTYyNSwieSI6NzJ9LHsieCI6ODE0Ljc2NTYyNSwieSI6NzJ9LHsieCI6ODQ5LjI2NTYyNSwieSI6NzJ9XQ==" marker-end="url(#mmd-surface-portco-1795707359590_flowchart-v2-pointEnd)"></path><path d="M1081.094,72L1086.844,72C1092.594,72,1104.094,72,1114.927,72C1125.76,72,1135.927,72,1141.01,72L1146.094,72" id="L_S4_S5_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_S4_S5_0" data-points="W3sieCI6MTA4MS4wOTM3NSwieSI6NzJ9LHsieCI6MTExNS41OTM3NSwieSI6NzJ9LHsieCI6MTE1MC4wOTM3NSwieSI6NzJ9XQ==" marker-end="url(#mmd-surface-portco-1795707359590_flowchart-v2-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_S1_S2_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_S2_S3_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_S3_S4_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_S4_S5_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default process" id="flowchart-S1-1" transform="translate(136.9296875, 72)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-94.4296875" y="-40" width="188.859375" height="80"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-62.4296875, -24)"><rect></rect><foreignObject width="124.859375" height="48"><div style="color: rgb(14, 40, 65) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 240px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>1 Record Ready<br/>= Scan Screen 5</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-S2-2" transform="translate(400.03125, 72)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-99.671875" y="-28" width="199.34375" height="56"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-67.671875, -12)"><rect></rect><foreignObject width="135.34375" height="24"><div style="color: rgb(14, 40, 65) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 240px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>2 Trust &amp; Consent</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-S3-4" transform="translate(674.484375, 72)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-105.78125" y="-40" width="211.5625" height="80"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-73.78125, -24)"><rect></rect><foreignObject width="147.5625" height="48"><div style="color: rgb(14, 40, 65) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 240px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>3 Day-One Settings<br/>&amp; Connections</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-S4-6" transform="translate(965.1796875, 72)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-115.9140625" y="-40" width="231.828125" height="80"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-83.9140625, -24)"><rect></rect><foreignObject width="167.828125" height="48"><div style="color: rgb(14, 40, 65) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 240px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>4 Focus-Area Weights<br/>&amp; Exports</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-S5-8" transform="translate(1233.6953125, 72)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-83.6015625" y="-40" width="167.203125" height="80"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-51.6015625, -24)"><rect></rect><foreignObject width="103.203125" height="48"><div style="color: rgb(14, 40, 65) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 240px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>5 Findings &amp;<br/>Baseline Date</p></span></div></foreignObject></g></g></g></g><g class="node default startEnd" id="flowchart-C0-0" transform="translate(904.96875, 36)"><rect class="basic label-container" style="fill:#0E2841 !important;stroke:#0E2841 !important;stroke-width:1.5px !important" x="-123.7421875" y="-28" width="247.484375" height="56"></rect><g class="label" style="color:#FFFFFF !important" transform="translate(-91.7421875, -12)"><rect></rect><foreignObject width="183.484375" height="24"><div style="color: rgb(255, 255, 255) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 240px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#FFFFFF !important" class="nodeLabel"><p>Company home / record</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-F-12" transform="translate(125.71875, 172)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-117.71875" y="-28" width="235.4375" height="56"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-85.71875, -12)"><rect></rect><foreignObject width="171.4375" height="24"><div style="color: rgb(14, 40, 65) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 240px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>Findings by focus area</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-EV-14" transform="translate(417.0078125, 172)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-145.5703125" y="-28" width="291.140625" height="56"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-113.5703125, -12)"><rect></rect><foreignObject width="227.140625" height="24"><div style="color: rgb(14, 40, 65) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 240px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>Evidence library (role-filtered)</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-RQ-16" transform="translate(740.171875, 172)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-149.59375" y="-40" width="299.1875" height="80"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-117.59375, -24)"><rect></rect><foreignObject width="235.1875" height="48"><div style="color: rgb(14, 40, 65) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 240px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>Requests / tasks:<br/>Area Owners + System Admins</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-ASK-18" transform="translate(1069.765625, 172)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-152" y="-40" width="304" height="80"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-120, -24)"><rect></rect><foreignObject width="240" height="48"><div style="color: rgb(14, 40, 65) !important; display: table; white-space: break-spaces; line-height: 1.5; max-width: 240px; text-align: center; width: 240px;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>Ask: Ask User; built, switched off</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-ST-20" transform="translate(1401.765625, 172)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-152" y="-64" width="304" height="128"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-120, -48)"><rect></rect><foreignObject width="240" height="96"><div style="color: rgb(14, 40, 65) !important; display: table; white-space: break-spaces; line-height: 1.5; max-width: 240px; text-align: center; width: 240px;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>Settings: People &amp; roles · Connections<br/>Consent &amp; data lifecycle · Sharing with parent firm</p></span></div></foreignObject></g></g></g></g></g></g></g><g><rect x="28" y="606" width="904" height="418" rx="10" ry="10" fill="#F6F4EF" stroke="#CDC7BA" stroke-width="1.5"/><text x="44" y="630" fill="#0E2841" font-family="Inter, 'Source Sans Pro', 'Liberation Sans', Arial, sans-serif" font-size="16" font-weight="700">D. PerfPulse internal</text><text x="44" y="648" fill="#4D5B69" font-family="Inter, 'Source Sans Pro', 'Liberation Sans', Arial, sans-serif" font-size="12">Onboarding Lead · Interview Lead · Reviewer/Approver · Sales / Parent Lead</text><g id="mmd-surface-internal-1795707359942" transform="translate(342.1, 652.0) scale(0.8619)"><style>#mmd-surface-internal-1795707359942{font-family:Inter,'Source Sans Pro','Liberation Sans',Arial,sans-serif;font-size:16px;fill:#0E2841;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-surface-internal-1795707359942 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-surface-internal-1795707359942 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-surface-internal-1795707359942 .error-icon{fill:#EDF5FC;}#mmd-surface-internal-1795707359942 .error-text{fill:#0E2841;stroke:#0E2841;}#mmd-surface-internal-1795707359942 .edge-thickness-normal{stroke-width:1px;}#mmd-surface-internal-1795707359942 .edge-thickness-thick{stroke-width:3.5px;}#mmd-surface-internal-1795707359942 .edge-pattern-solid{stroke-dasharray:0;}#mmd-surface-internal-1795707359942 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-surface-internal-1795707359942 .edge-pattern-dashed{stroke-dasharray:3;}#mmd-surface-internal-1795707359942 .edge-pattern-dotted{stroke-dasharray:2;}#mmd-surface-internal-1795707359942 .marker{fill:#4D5B69;stroke:#4D5B69;}#mmd-surface-internal-1795707359942 .marker.cross{stroke:#4D5B69;}#mmd-surface-internal-1795707359942 svg{font-family:Inter,'Source Sans Pro','Liberation Sans',Arial,sans-serif;font-size:16px;}#mmd-surface-internal-1795707359942 p{margin:0;}#mmd-surface-internal-1795707359942 .label{font-family:Inter,'Source Sans Pro','Liberation Sans',Arial,sans-serif;color:#0E2841;}#mmd-surface-internal-1795707359942 .cluster-label text{fill:#0E2841;}#mmd-surface-internal-1795707359942 .cluster-label span{color:#0E2841;}#mmd-surface-internal-1795707359942 .cluster-label span p{background-color:transparent;}#mmd-surface-internal-1795707359942 .label text,#mmd-surface-internal-1795707359942 span{fill:#0E2841;color:#0E2841;}#mmd-surface-internal-1795707359942 .node rect,#mmd-surface-internal-1795707359942 .node circle,#mmd-surface-internal-1795707359942 .node ellipse,#mmd-surface-internal-1795707359942 .node polygon,#mmd-surface-internal-1795707359942 .node path{fill:#FFFFFF;stroke:#0070C0;stroke-width:1px;}#mmd-surface-internal-1795707359942 .rough-node .label text,#mmd-surface-internal-1795707359942 .node .label text,#mmd-surface-internal-1795707359942 .image-shape .label,#mmd-surface-internal-1795707359942 .icon-shape .label{text-anchor:middle;}#mmd-surface-internal-1795707359942 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmd-surface-internal-1795707359942 .rough-node .label,#mmd-surface-internal-1795707359942 .node .label,#mmd-surface-internal-1795707359942 .image-shape .label,#mmd-surface-internal-1795707359942 .icon-shape .label{text-align:center;}#mmd-surface-internal-1795707359942 .node.clickable{cursor:pointer;}#mmd-surface-internal-1795707359942 .root .anchor path{fill:#4D5B69!important;stroke-width:0;stroke:#4D5B69;}#mmd-surface-internal-1795707359942 .arrowheadPath{fill:#000000;}#mmd-surface-internal-1795707359942 .edgePath .path{stroke:#4D5B69;stroke-width:2.0px;}#mmd-surface-internal-1795707359942 .flowchart-link{stroke:#4D5B69;fill:none;}#mmd-surface-internal-1795707359942 .edgeLabel{background-color:#FFFFFF;text-align:center;}#mmd-surface-internal-1795707359942 .edgeLabel p{background-color:#FFFFFF;}#mmd-surface-internal-1795707359942 .edgeLabel rect{opacity:0.5;background-color:#FFFFFF;fill:#FFFFFF;}#mmd-surface-internal-1795707359942 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mmd-surface-internal-1795707359942 .cluster rect{fill:#F6F4EF;stroke:#CDC7BA;stroke-width:1px;}#mmd-surface-internal-1795707359942 .cluster text{fill:#0E2841;}#mmd-surface-internal-1795707359942 .cluster span{color:#0E2841;}#mmd-surface-internal-1795707359942 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,'Source Sans Pro','Liberation Sans',Arial,sans-serif;font-size:12px;background:#EDF5FC;border:1px solid #7CC0EA;border-radius:2px;pointer-events:none;z-index:100;}#mmd-surface-internal-1795707359942 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#0E2841;}#mmd-surface-internal-1795707359942 rect.text{fill:none;stroke-width:0;}#mmd-surface-internal-1795707359942 .icon-shape,#mmd-surface-internal-1795707359942 .image-shape{background-color:#FFFFFF;text-align:center;}#mmd-surface-internal-1795707359942 .icon-shape p,#mmd-surface-internal-1795707359942 .image-shape p{background-color:#FFFFFF;padding:2px;}#mmd-surface-internal-1795707359942 .icon-shape rect,#mmd-surface-internal-1795707359942 .image-shape rect{opacity:0.5;background-color:#FFFFFF;fill:#FFFFFF;}#mmd-surface-internal-1795707359942 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mmd-surface-internal-1795707359942 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mmd-surface-internal-1795707359942 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}#mmd-surface-internal-1795707359942 .startEnd&gt;*{fill:#0E2841!important;stroke:#0E2841!important;color:#FFFFFF!important;stroke-width:1.5px!important;}#mmd-surface-internal-1795707359942 .startEnd span{fill:#0E2841!important;stroke:#0E2841!important;color:#FFFFFF!important;stroke-width:1.5px!important;}#mmd-surface-internal-1795707359942 .startEnd tspan{fill:#FFFFFF!important;}#mmd-surface-internal-1795707359942 .process&gt;*{fill:#FFFFFF!important;stroke:#0070C0!important;color:#0E2841!important;stroke-width:1.5px!important;}#mmd-surface-internal-1795707359942 .process span{fill:#FFFFFF!important;stroke:#0070C0!important;color:#0E2841!important;stroke-width:1.5px!important;}#mmd-surface-internal-1795707359942 .process tspan{fill:#0E2841!important;}</style><g><marker id="mmd-surface-internal-1795707359942_flowchart-v2-pointEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mmd-surface-internal-1795707359942_flowchart-v2-pointStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mmd-surface-internal-1795707359942_flowchart-v2-circleEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mmd-surface-internal-1795707359942_flowchart-v2-circleStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mmd-surface-internal-1795707359942_flowchart-v2-crossEnd" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="mmd-surface-internal-1795707359942_flowchart-v2-crossStart" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M160,88L160,91.667C160,95.333,160,102.667,160,110C160,117.333,160,124.667,160,128.333L160,132" id="L_I1_I2_0" class="edge-thickness-invisible edge-pattern-solid" style=";" data-edge="true" data-et="edge" data-id="L_I1_I2_0" data-points="W3sieCI6MTYwLCJ5Ijo4OH0seyJ4IjoxNjAsInkiOjExMH0seyJ4IjoxNjAsInkiOjEzMn1d"></path><path d="M160,188L160,191.667C160,195.333,160,202.667,160,210C160,217.333,160,224.667,160,228.333L160,232" id="L_I2_I3_0" class="edge-thickness-invisible edge-pattern-solid" style=";" data-edge="true" data-et="edge" data-id="L_I2_I3_0" data-points="W3sieCI6MTYwLCJ5IjoxODh9LHsieCI6MTYwLCJ5IjoyMTB9LHsieCI6MTYwLCJ5IjoyMzJ9XQ=="></path><path d="M160,288L160,291.667C160,295.333,160,302.667,160,310C160,317.333,160,324.667,160,328.333L160,332" id="L_I3_I4_0" class="edge-thickness-invisible edge-pattern-solid" style=";" data-edge="true" data-et="edge" data-id="L_I3_I4_0" data-points="W3sieCI6MTYwLCJ5IjoyODh9LHsieCI6MTYwLCJ5IjozMTB9LHsieCI6MTYwLCJ5IjozMzJ9XQ=="></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_I1_I2_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_I2_I3_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_I3_I4_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default startEnd" id="flowchart-I1-0" transform="translate(160, 48)"><rect class="basic label-container" style="fill:#0E2841 !important;stroke:#0E2841 !important;stroke-width:1.5px !important" x="-152" y="-40" width="304" height="80"></rect><g class="label" style="color:#FFFFFF !important" transform="translate(-120, -24)"><rect></rect><foreignObject width="240" height="48"><div style="color: rgb(255, 255, 255) !important; display: table; white-space: break-spaces; line-height: 1.5; max-width: 240px; text-align: center; width: 240px;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#FFFFFF !important" class="nodeLabel"><p>Create PE firm / company record</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-I2-1" transform="translate(160, 160)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-83.5234375" y="-28" width="167.046875" height="56"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-51.5234375, -12)"><rect></rect><foreignObject width="103.046875" height="24"><div style="color: rgb(14, 40, 65) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 240px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>Load PortCos</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-I3-2" transform="translate(160, 260)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-111.5546875" y="-28" width="223.109375" height="56"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-79.5546875, -12)"><rect></rect><foreignObject width="159.109375" height="24"><div style="color: rgb(14, 40, 65) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 240px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>Run outside-in scans</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-I4-3" transform="translate(160, 372)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-132.1796875" y="-40" width="264.359375" height="80"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-100.1796875, -24)"><rect></rect><foreignObject width="200.359375" height="48"><div style="color: rgb(14, 40, 65) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 240px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>Reviewer / Approver:<br/>named approval, D17 open</p></span></div></foreignObject></g></g></g></g></g></g></g><g><rect x="988" y="606" width="904" height="418" rx="10" ry="10" fill="#F6F4EF" stroke="#CDC7BA" stroke-width="1.5"/><text x="1004" y="630" fill="#0E2841" font-family="Inter, 'Source Sans Pro', 'Liberation Sans', Arial, sans-serif" font-size="16" font-weight="700">C. PE firm workspace</text><text x="1004" y="648" fill="#4D5B69" font-family="Inter, 'Source Sans Pro', 'Liberation Sans', Arial, sans-serif" font-size="12">Parent / portfolio</text><g id="mmd-surface-pe-1795707359788" transform="translate(998.0, 765.3) scale(0.5549)"><style>#mmd-surface-pe-1795707359788{font-family:Inter,'Source Sans Pro','Liberation Sans',Arial,sans-serif;font-size:16px;fill:#0E2841;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-surface-pe-1795707359788 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-surface-pe-1795707359788 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-surface-pe-1795707359788 .error-icon{fill:#EDF5FC;}#mmd-surface-pe-1795707359788 .error-text{fill:#0E2841;stroke:#0E2841;}#mmd-surface-pe-1795707359788 .edge-thickness-normal{stroke-width:1px;}#mmd-surface-pe-1795707359788 .edge-thickness-thick{stroke-width:3.5px;}#mmd-surface-pe-1795707359788 .edge-pattern-solid{stroke-dasharray:0;}#mmd-surface-pe-1795707359788 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-surface-pe-1795707359788 .edge-pattern-dashed{stroke-dasharray:3;}#mmd-surface-pe-1795707359788 .edge-pattern-dotted{stroke-dasharray:2;}#mmd-surface-pe-1795707359788 .marker{fill:#4D5B69;stroke:#4D5B69;}#mmd-surface-pe-1795707359788 .marker.cross{stroke:#4D5B69;}#mmd-surface-pe-1795707359788 svg{font-family:Inter,'Source Sans Pro','Liberation Sans',Arial,sans-serif;font-size:16px;}#mmd-surface-pe-1795707359788 p{margin:0;}#mmd-surface-pe-1795707359788 .label{font-family:Inter,'Source Sans Pro','Liberation Sans',Arial,sans-serif;color:#0E2841;}#mmd-surface-pe-1795707359788 .cluster-label text{fill:#0E2841;}#mmd-surface-pe-1795707359788 .cluster-label span{color:#0E2841;}#mmd-surface-pe-1795707359788 .cluster-label span p{background-color:transparent;}#mmd-surface-pe-1795707359788 .label text,#mmd-surface-pe-1795707359788 span{fill:#0E2841;color:#0E2841;}#mmd-surface-pe-1795707359788 .node rect,#mmd-surface-pe-1795707359788 .node circle,#mmd-surface-pe-1795707359788 .node ellipse,#mmd-surface-pe-1795707359788 .node polygon,#mmd-surface-pe-1795707359788 .node path{fill:#FFFFFF;stroke:#0070C0;stroke-width:1px;}#mmd-surface-pe-1795707359788 .rough-node .label text,#mmd-surface-pe-1795707359788 .node .label text,#mmd-surface-pe-1795707359788 .image-shape .label,#mmd-surface-pe-1795707359788 .icon-shape .label{text-anchor:middle;}#mmd-surface-pe-1795707359788 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmd-surface-pe-1795707359788 .rough-node .label,#mmd-surface-pe-1795707359788 .node .label,#mmd-surface-pe-1795707359788 .image-shape .label,#mmd-surface-pe-1795707359788 .icon-shape .label{text-align:center;}#mmd-surface-pe-1795707359788 .node.clickable{cursor:pointer;}#mmd-surface-pe-1795707359788 .root .anchor path{fill:#4D5B69!important;stroke-width:0;stroke:#4D5B69;}#mmd-surface-pe-1795707359788 .arrowheadPath{fill:#000000;}#mmd-surface-pe-1795707359788 .edgePath .path{stroke:#4D5B69;stroke-width:2.0px;}#mmd-surface-pe-1795707359788 .flowchart-link{stroke:#4D5B69;fill:none;}#mmd-surface-pe-1795707359788 .edgeLabel{background-color:#FFFFFF;text-align:center;}#mmd-surface-pe-1795707359788 .edgeLabel p{background-color:#FFFFFF;}#mmd-surface-pe-1795707359788 .edgeLabel rect{opacity:0.5;background-color:#FFFFFF;fill:#FFFFFF;}#mmd-surface-pe-1795707359788 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mmd-surface-pe-1795707359788 .cluster rect{fill:#F6F4EF;stroke:#CDC7BA;stroke-width:1px;}#mmd-surface-pe-1795707359788 .cluster text{fill:#0E2841;}#mmd-surface-pe-1795707359788 .cluster span{color:#0E2841;}#mmd-surface-pe-1795707359788 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,'Source Sans Pro','Liberation Sans',Arial,sans-serif;font-size:12px;background:#EDF5FC;border:1px solid #7CC0EA;border-radius:2px;pointer-events:none;z-index:100;}#mmd-surface-pe-1795707359788 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#0E2841;}#mmd-surface-pe-1795707359788 rect.text{fill:none;stroke-width:0;}#mmd-surface-pe-1795707359788 .icon-shape,#mmd-surface-pe-1795707359788 .image-shape{background-color:#FFFFFF;text-align:center;}#mmd-surface-pe-1795707359788 .icon-shape p,#mmd-surface-pe-1795707359788 .image-shape p{background-color:#FFFFFF;padding:2px;}#mmd-surface-pe-1795707359788 .icon-shape rect,#mmd-surface-pe-1795707359788 .image-shape rect{opacity:0.5;background-color:#FFFFFF;fill:#FFFFFF;}#mmd-surface-pe-1795707359788 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mmd-surface-pe-1795707359788 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mmd-surface-pe-1795707359788 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}#mmd-surface-pe-1795707359788 .startEnd&gt;*{fill:#0E2841!important;stroke:#0E2841!important;color:#FFFFFF!important;stroke-width:1.5px!important;}#mmd-surface-pe-1795707359788 .startEnd span{fill:#0E2841!important;stroke:#0E2841!important;color:#FFFFFF!important;stroke-width:1.5px!important;}#mmd-surface-pe-1795707359788 .startEnd tspan{fill:#FFFFFF!important;}#mmd-surface-pe-1795707359788 .process&gt;*{fill:#FFFFFF!important;stroke:#0070C0!important;color:#0E2841!important;stroke-width:1.5px!important;}#mmd-surface-pe-1795707359788 .process span{fill:#FFFFFF!important;stroke:#0070C0!important;color:#0E2841!important;stroke-width:1.5px!important;}#mmd-surface-pe-1795707359788 .process tspan{fill:#0E2841!important;}</style><g><marker id="mmd-surface-pe-1795707359788_flowchart-v2-pointEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mmd-surface-pe-1795707359788_flowchart-v2-pointStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mmd-surface-pe-1795707359788_flowchart-v2-circleEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mmd-surface-pe-1795707359788_flowchart-v2-circleStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mmd-surface-pe-1795707359788_flowchart-v2-crossEnd" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="mmd-surface-pe-1795707359788_flowchart-v2-crossStart" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M616.313,62.814L535.62,70.678C454.927,78.543,293.542,94.271,212.849,109.136C132.156,124,132.156,138,132.156,145L132.156,152" id="L_E0_E1_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_E0_E1_0" data-points="W3sieCI6NjE2LjMxMjUsInkiOjYyLjgxMzk3MDYyNDM1NTI2fSx7IngiOjEzMi4xNTYyNSwieSI6MTEwfSx7IngiOjEzMi4xNTYyNSwieSI6MTU2fV0=" marker-end="url(#mmd-surface-pe-1795707359788_flowchart-v2-pointEnd)"></path><path d="M616.313,76.386L586.313,81.988C556.313,87.59,496.313,98.795,466.313,109.398C436.313,120,436.313,130,436.313,135L436.313,140" id="L_E0_E2_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_E0_E2_0" data-points="W3sieCI6NjE2LjMxMjUsInkiOjc2LjM4NTU0MjE2ODY3NDd9LHsieCI6NDM2LjMxMjUsInkiOjExMH0seyJ4Ijo0MzYuMzEyNSwieSI6MTQ0fV0=" marker-end="url(#mmd-surface-pe-1795707359788_flowchart-v2-pointEnd)"></path><path d="M768.313,88L768.313,91.667C768.313,95.333,768.313,102.667,768.313,109.333C768.313,116,768.313,122,768.313,125L768.313,128" id="L_E0_E3_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_E0_E3_0" data-points="W3sieCI6NzY4LjMxMjUsInkiOjg4fSx7IngiOjc2OC4zMTI1LCJ5IjoxMTB9LHsieCI6NzY4LjMxMjUsInkiOjEzMn1d" marker-end="url(#mmd-surface-pe-1795707359788_flowchart-v2-pointEnd)"></path><path d="M920.313,76.386L950.313,81.988C980.313,87.59,1040.313,98.795,1070.313,109.398C1100.313,120,1100.313,130,1100.313,135L1100.313,140" id="L_E0_E5_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_E0_E5_0" data-points="W3sieCI6OTIwLjMxMjUsInkiOjc2LjM4NTU0MjE2ODY3NDd9LHsieCI6MTEwMC4zMTI1LCJ5IjoxMTB9LHsieCI6MTEwMC4zMTI1LCJ5IjoxNDR9XQ==" marker-end="url(#mmd-surface-pe-1795707359788_flowchart-v2-pointEnd)"></path><path d="M920.313,62.193L1005.646,70.161C1090.979,78.129,1261.646,94.064,1346.979,107.032C1432.313,120,1432.313,130,1432.313,135L1432.313,140" id="L_E0_E4_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_E0_E4_0" data-points="W3sieCI6OTIwLjMxMjUsInkiOjYyLjE5Mjc3MTA4NDMzNzM1fSx7IngiOjE0MzIuMzEyNSwieSI6MTEwfSx7IngiOjE0MzIuMzEyNSwieSI6MTQ0fV0=" marker-end="url(#mmd-surface-pe-1795707359788_flowchart-v2-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_E0_E1_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_E0_E2_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_E0_E3_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_E0_E5_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_E0_E4_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default startEnd" id="flowchart-E0-0" transform="translate(768.3125, 48)"><rect class="basic label-container" style="fill:#0E2841 !important;stroke:#0E2841 !important;stroke-width:1.5px !important" x="-152" y="-40" width="304" height="80"></rect><g class="label" style="color:#FFFFFF !important" transform="translate(-120, -24)"><rect></rect><foreignObject width="240" height="48"><div style="color: rgb(255, 255, 255) !important; display: table; white-space: break-spaces; line-height: 1.5; max-width: 240px; text-align: center; width: 240px;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#FFFFFF !important" class="nodeLabel"><p>Portfolio overview incl. Proforma Company</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-E1-2" transform="translate(132.15625, 184)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-124.15625" y="-28" width="248.3125" height="56"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-92.15625, -12)"><rect></rect><foreignObject width="184.3125" height="24"><div style="color: rgb(14, 40, 65) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 240px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>PortCo list &amp; scan status</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-E2-4" transform="translate(436.3125, 184)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-152" y="-40" width="304" height="80"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-120, -24)"><rect></rect><foreignObject width="240" height="48"><div style="color: rgb(14, 40, 65) !important; display: table; white-space: break-spaces; line-height: 1.5; max-width: 240px; text-align: center; width: 240px;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>Rollout tracker: per-PortCo onboarding stage</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-E3-6" transform="translate(768.3125, 184)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-152" y="-52" width="304" height="104"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-120, -36)"><rect></rect><foreignObject width="240" height="72"><div style="color: rgb(14, 40, 65) !important; display: table; white-space: break-spaces; line-height: 1.5; max-width: 240px; text-align: center; width: 240px;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>Access &amp; sharing grid:<br/>Operations Team; D44 parent switch OFF</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-E5-8" transform="translate(1100.3125, 184)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-152" y="-40" width="304" height="80"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-120, -24)"><rect></rect><foreignObject width="240" height="48"><div style="color: rgb(14, 40, 65) !important; display: table; white-space: break-spaces; line-height: 1.5; max-width: 240px; text-align: center; width: 240px;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>Board Member: assigned-company views</p></span></div></foreignObject></g></g><g class="node default process" id="flowchart-E4-10" transform="translate(1432.3125, 184)"><rect class="basic label-container" style="fill:#FFFFFF !important;stroke:#0070C0 !important;stroke-width:1.5px !important" x="-152" y="-40" width="304" height="80"></rect><g class="label" style="color:#0E2841 !important" transform="translate(-120, -24)"><rect></rect><foreignObject width="240" height="48"><div style="color: rgb(14, 40, 65) !important; display: table; white-space: break-spaces; line-height: 1.5; max-width: 240px; text-align: center; width: 240px;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#0E2841 !important" class="nodeLabel"><p>Firm settings &amp; Operations Team</p></span></div></foreignObject></g></g></g></g></g></g></g>
-    <line x1="480" y1="534" x2="480" y2="606" stroke="#0070C0" stroke-width="1.75" stroke-dasharray="6 4" marker-end="url(#arrowHead)"/>
-    <rect x="488" y="556" width="88.39999999999999" height="16" rx="3" fill="#FFFFFF" fill-opacity="0.95"/>
-    <text x="488" y="570" fill="#005A9E" font-family="Inter, 'Source Sans Pro', 'Liberation Sans', Arial, sans-serif" font-size="11" font-weight="600" text-anchor="start">sales handoff</text>
-  
-    <line x1="932" y1="584" x2="988" y2="584" stroke="#0070C0" stroke-width="1.75" stroke-dasharray="6 4" marker-end="url(#arrowHead)"/>
-    <rect x="871.6" y="562" width="176.79999999999998" height="16" rx="3" fill="#FFFFFF" fill-opacity="0.95"/>
-    <text x="960" y="576" fill="#005A9E" font-family="Inter, 'Source Sans Pro', 'Liberation Sans', Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle">creates parent / portfolio</text>
-  
-    <line x1="892" y1="606" x2="1028" y2="534" stroke="#0070C0" stroke-width="1.75" stroke-dasharray="6 4" marker-end="url(#arrowHead)"/>
-    <rect x="885.2" y="548" width="149.6" height="16" rx="3" fill="#FFFFFF" fill-opacity="0.95"/>
-    <text x="960" y="562" fill="#005A9E" font-family="Inter, 'Source Sans Pro', 'Liberation Sans', Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle">creates company record</text>
-  
-    <line x1="1440" y1="606" x2="1440" y2="534" stroke="#0070C0" stroke-width="1.75" stroke-dasharray="6 4" marker-end="url(#arrowHead)"/>
-    <rect x="1448" y="556" width="115.6" height="16" rx="3" fill="#FFFFFF" fill-opacity="0.95"/>
-    <text x="1448" y="570" fill="#005A9E" font-family="Inter, 'Source Sans Pro', 'Liberation Sans', Arial, sans-serif" font-size="11" font-weight="600" text-anchor="start">launch onboarding</text>
-  <text x="28" y="1068" fill="#4D5B69" font-family="Inter, 'Source Sans Pro', 'Liberation Sans', Arial, sans-serif" font-size="12">Onboarding is a linear stepper inside the PortCo workspace, not a separate app. The parent (PE) workspace reads only what each PortCo shares.</text>
-</svg>
+
+<section class="card" id="siteflow">
+  <p class="eyebrow">Information Architecture</p>
+  <h2>Sitemap &amp; Siteflow</h2>
+  <p class="caption">Performance Pulse has four product surfaces, each scoped by who owns the data. The One-CTO onboarding path runs as a linear stepper inside the PortCo workspace rather than a separate app.</p>
+
+  <div class="surface-grid">
+    <!-- Surface A -->
+    <div class="surface-box">
+      <div class="surface-head">
+        <h3>A. Public Site</h3>
+        <p>No account required · Outside-in scan entry</p>
+      </div>
+      <div class="flow-col">
+        <div class="node start"><strong>Landing / Scan offer</strong></div>
+        <div class="arrow-down">↓</div>
+        <div class="node"><strong>Work email capture</strong><span class="sub">Blocks personal email domains; no password required</span></div>
+        <div class="arrow-down">↓</div>
+        <div class="node"><strong>6-digit verification code</strong><span class="sub">Emailed magic code with inline retry and resend</span></div>
+        <div class="arrow-down">↓</div>
+        <div class="node"><strong>Outside-in results</strong><span class="sub">Company match confirmation + inferred AI &amp; core systems</span></div>
+        <div class="branch-grid cols-3">
+          <div class="branch-card primary">
+            <span class="branch-tag">Primary</span>
+            <strong>Confirm systems &amp; owners</strong>
+            Saves inferred vs. stated tools and creates the company record.
+          </div>
+          <div class="branch-card">
+            <span class="branch-tag neutral">Optional</span>
+            <strong>Pulse-check</strong>
+            Short self-assessment before continuing or exiting.
+          </div>
+          <div class="branch-card">
+            <span class="branch-tag">Sales CTA</span>
+            <strong>Book a call</strong>
+            Hands off directly to Sales / Parent Lead.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Surface B -->
+    <div class="surface-box">
+      <div class="surface-head">
+        <h3>B. PortCo Workspace (ACME)</h3>
+        <p>Role-scoped company workspace · 3 internal visibility tiers</p>
+      </div>
+      <div class="flow-col">
+        <div class="node start"><strong>Company Home &amp; Record</strong></div>
+        <div class="arrow-down">↓</div>
+        <div class="sub-panel">
+          <p class="sub-panel-title">Onboarding · One-CTO Linear Stepper</p>
+          <div class="mini-steps">
+            <div class="mini-step"><span>Step 1</span>Record Ready &amp; Proposal</div>
+            <div class="mini-step"><span>Step 2</span>Trust &amp; Consent</div>
+            <div class="mini-step"><span>Step 3</span>Day-One Settings &amp; Connections</div>
+            <div class="mini-step"><span>Step 4</span>Focus-Area Weights &amp; Exports</div>
+            <div class="mini-step"><span>Step 5</span>Findings &amp; Baseline Date</div>
+          </div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="node-grid">
+          <div class="node"><strong>Findings by focus area</strong><span class="sub">Role-scoped scores and baseline view</span></div>
+          <div class="node"><strong>Evidence library</strong><span class="sub">Filtered by area; Finance cannot see HR evidence</span></div>
+          <div class="node"><strong>Requests &amp; tasks</strong><span class="sub">Scoped task queues for Area Owners &amp; System Admins</span></div>
+          <div class="node"><strong>Ask (Q&amp;A)</strong><span class="sub">Built for Ask Users; off by default for parent firms</span></div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="node"><strong>Workspace settings</strong><span class="sub">People &amp; roles · System connections · Consent &amp; data lifecycle · Sharing with parent firm</span></div>
+      </div>
+    </div>
+
+    <!-- Surface C -->
+    <div class="surface-box">
+      <div class="surface-head">
+        <h3>C. PE Firm Workspace</h3>
+        <p>Parent / portfolio view · Reads only what each PortCo shares</p>
+      </div>
+      <div class="flow-col">
+        <div class="node start"><strong>Portfolio Overview (incl. Proforma Company)</strong></div>
+        <div class="arrow-down">↓</div>
+        <div class="node-grid">
+          <div class="node"><strong>PortCo list &amp; scan status</strong><span class="sub">Outside-in coverage across portfolio companies</span></div>
+          <div class="node"><strong>Rollout tracker</strong><span class="sub">Per-PortCo onboarding stage and launch trigger</span></div>
+          <div class="node"><strong>Access &amp; sharing grid</strong><span class="sub">Managed by Operations Team; parent-firm Ask switch defaults OFF</span></div>
+          <div class="node"><strong>Board Member views</strong><span class="sub">Read-only access scoped to assigned companies</span></div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="node"><strong>Firm settings &amp; Operations Team</strong><span class="sub">Parent roles, pilot selection, and firm-wide defaults</span></div>
+      </div>
+    </div>
+
+    <!-- Surface D -->
+    <div class="surface-box">
+      <div class="surface-head">
+        <h3>D. Performance Pulse Internal</h3>
+        <p>Onboarding Lead · Interview Lead · Reviewer/Approver · Sales / Parent Lead</p>
+      </div>
+      <div class="flow-col">
+        <div class="node start"><strong>Create PE Firm or Company Record</strong></div>
+        <div class="arrow-down">↓</div>
+        <div class="node"><strong>Load portfolio companies</strong><span class="sub">Link company domains and parent relationships</span></div>
+        <div class="arrow-down">↓</div>
+        <div class="node"><strong>Run outside-in scans</strong><span class="sub">Generate initial tool inventory ahead of first call</span></div>
+        <div class="arrow-down">↓</div>
+        <div class="node later"><strong>Reviewer / Approver sign-off</strong><span class="sub">Named approval before formal assessment release (post-demo scope)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="surface-links" aria-label="Connections between surfaces">
+    <div class="link-pill"><strong>Public Site → Internal</strong>Book-a-call CTA triggers Sales handoff.</div>
+    <div class="link-pill"><strong>Internal → PortCo &amp; PE Firm</strong>Sales / Parent Lead creates the company record and parent portfolio.</div>
+    <div class="link-pill"><strong>PE Firm → PortCo Onboarding</strong>Rollout tracker launches Step 1 (Record Ready) for each company.</div>
   </div>
 </section>
+
   </main>
   <footer class="app-footer">
-    <p>Source: <code>ia-and-flows.md</code> v1.1 · 26 November 2026. Diagrams are inline SVG, so this file works fully offline and can be opened from Dropbox.</p>
-    <p>Companion files for the deck: <code>ux/diagrams/*.png</code> and <code>ux/diagrams/*.svg</code> (2×, white background).</p>
+    <p>Performance Pulse · Information Architecture &amp; User Journeys · Self-contained HTML (WCAG 2.2 AA contrast, zero external dependencies).</p>
+    <p>ACME figures and tool sets shown in the prototype are illustrative sample data.</p>
   </footer>
 </body>
 </html>
