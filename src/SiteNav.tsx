@@ -59,7 +59,7 @@ export default function SiteNav({ onContact }: SiteNavProps) {
                 {link.label}
               </button>
             ))}
-            <a href="/blog" className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
+            <a href="/blog/" className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
               Blog
             </a>
             <button
@@ -100,7 +100,7 @@ export default function SiteNav({ onContact }: SiteNavProps) {
               </button>
             ))}
             <a
-              href="/blog"
+              href="/blog/"
               className="px-2 py-3 text-base text-neutral-200 hover:text-cyan-400"
               onClick={() => setMenuOpen(false)}
             >

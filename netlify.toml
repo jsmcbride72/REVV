@@ -3,8 +3,10 @@
   publish = "dist"
 
 # SPA fallback. A real file in the publish directory wins over this rewrite
-# (Netlify shadowing). The production build writes dist/blog/index.html and
-# dist/blog/<slug>/index.html with crawler-readable Open Graph tags.
+# (Netlify shadowing). The production build writes dist/index.html,
+# dist/blog/index.html, dist/blog/<slug>/index.html, and dist/work/<id>/index.html
+# with crawler-readable titles, descriptions, canonicals, and social tags,
+# plus dist/robots.txt and dist/sitemap.xml.
 # Do not set force = true, or those shells would never be served.
 [[redirects]]
   from = "/*"

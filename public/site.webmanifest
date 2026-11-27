@@ -1,0 +1,19 @@
+{
+  "name": "Revv Studio",
+  "short_name": "Revv Studio",
+  "description": "Scott McBride's Jacksonville, FL studio for product design and AI.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/logo-5.png",
+      "sizes": "2200x1316",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

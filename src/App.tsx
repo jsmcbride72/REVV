@@ -1,33 +1,17 @@
 import { Users, Target, TrendingUp, Heart, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Shield, Search, MousePointer, AlertTriangle, Link2, Eye, ArrowRight, MoveDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import ContactForm from './ContactForm';
-import CaseStudyModal from './CaseStudyModal';
+import Seo from './Seo';
 import SiteNav from './SiteNav';
+import { caseStudies, caseStudyPath } from './lib/case-studies';
+import { homePage } from './lib/public-pages';
 
-interface CaseStudy {
-  id: string;
-  title: string;
-  category: string;
-  description: string;
-  challenge: string;
-  solution: string;
-  results: string[];
-  images: string[];
-  imageAlts?: string[];
-  wideImages?: string[];
-  wideImageAlts?: string[];
-  lessons?: { title: string; body: string }[];
-  tags: string[];
-  color: 'cyan' | 'violet' | 'emerald';
-  videoSrc: string;
-  heroSrc?: string;
-  posterSrc?: string;
-}
+
+const home = homePage();
 
 function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
-  const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [animKey, setAnimKey] = useState(0);
   const HERO_SLIDE_COUNT = 5;
@@ -74,176 +58,6 @@ function App() {
 
   const getAssetUrl = (path: string) => path;
 
-  const caseStudies: CaseStudy[] = [
-    {
-      id: 'fuel-card-platform',
-      title: 'Revolutionizing Fleet Fuel Management for the Mobile Workforce',
-      category: 'Fintech & Mobile UX',
-      description: 'Transformed a fuel card application into a comprehensive fleet management platform, reducing driver support requests by 68% and accelerating expense approvals by 5x.',
-      challenge: 'A fintech company providing fuel cards to trucking and delivery fleets faced serious adoption issues. Drivers struggled to find supported fuel stations, leading to frequent roadside support calls. The expense approval process was slow and opaque, with drivers unable to track their submissions. Administrators were overwhelmed with support requests while manually reviewing expenses across disconnected systems. The disconnect between drivers and back-office teams was costing time, money, and driver satisfaction.',
-      solution: 'We designed a dual-sided platform that serves both drivers and administrators. The driver app features a digital wallet for managing multiple fuel cards, real-time location-based search for nearby supported stations with turn-by-turn navigation, and transparent expense tracking. The admin dashboard provides real-time expense monitoring, an integrated chat system for instant driver support, and a streamlined expense review workflow where agents can quickly approve or flag transactions. Every interaction was designed for users on the move or managing high volumes.',
-      results: [
-        '68% Driver support call reduction',
-        '5x Expense approval speed improvement',
-        '90% Faster fuel station discovery',
-        '85% Issues resolved via chat',
-        '4.6★ App rating with 95% adoption'
-      ],
-      images: [
-        '/main-tile-mock.jpg',
-        '/driven.mp4',
-      ],
-      wideImages: ['/driven3.mp4'],
-      tags: ['Fintech', 'Mobile UX', 'Fleet Management', 'Real-time Communication'],
-      color: 'cyan',
-      videoSrc: '/animate_this_in_a_cool_way_tha_Happy_Horse_11_23300.mp4',
-      heroSrc: '/I_need_to_start_with_the_truck_Seedance_20_20111.mp4'
-    },
-    {
-      id: 'newsring',
-      title: 'NewsRing: Redefining Content Discovery Through Conversational AI',
-      category: 'AI Product Design',
-      description: 'Created an intelligent content discovery platform that transforms how people search, curate, and share information through conversational AI and dynamic "Rings."',
-      challenge: 'Traditional search experiences are static and disconnected from how people actually discover and organize content. Users struggle to keep track of evolving interests across local news, global trends, and niche topics. Content creators and professionals like interior designers need ways to curate and share living collections that stay current without constant manual updates. The market needed a solution that combines the visual curation of Pinterest, the search power of Google, and the shareability of Instagram.',
-      solution: 'We built NewsRing around the concept of "Rings" - intelligent, saved searches that continuously update with fresh content tailored to any criteria. Starting with local news discovery and expanding to global reach, each Ring is powered by conversational AI that understands context and refines results through natural dialogue. Users can create Rings for their hometown updates, professional interests, or creative inspiration, with AI prompts guiding discovery. Content stays current automatically, transforming static boards into living, shareable knowledge streams that evolve with user needs.',
-      results: [
-        '3x Longer content engagement time',
-        '65% Search time reduction with AI',
-        '4x More shares than static bookmarks',
-        '80% Time savings in content curation',
-        '95% Accuracy for location-based updates'
-      ],
-      images: [
-        '/Landing-Page.jpg',
-        '/phones.jpg'
-      ],
-      tags: ['Conversational AI', 'Content Discovery', 'UX Design', 'Real-time Data'],
-      color: 'violet',
-      videoSrc: '/I_want_a_man_using_this_on_his_Seedance_20_54823.mp4',
-      heroSrc: '/nr-case.mp4'
-    },
-    {
-      id: 'gaming-platform',
-      title: 'Unifying the Gaming Community Through Centralized Stats and Competitive Play',
-      category: 'Gaming Platform & Community',
-      description: 'We built a unified gaming platform that dynamically aggregates player stats from multiple sources and hosts sophisticated tournament systems, partnering with G2 Esports for championship-level Rocket League competition tracking.',
-      challenge: 'Gamers face a fragmented identity across the gaming ecosystem - their stats, achievements, and presence are scattered across Discord servers, Steam, Xbox Live, PlayStation Network, and countless other platforms. This fragmentation makes it nearly impossible for players to showcase their complete gaming profile or find suitable teammates and opponents. Tournament organizers struggled with manual tracking systems that couldn\'t scale to nightly competitions or provide the real-time visibility needed for professional esports partnerships.',
-      solution: 'We designed and built a comprehensive platform that solves both discovery and competition challenges. The unified profile system dynamically imports stats from all major gaming platforms, Discord presence, and streaming services into a single, shareable profile that updates in real-time. Our matchmaking engine analyzes aggregated stats to help gamers find teammates and opponents that match their skill level and play style. The tournament platform features automated bracket generation, real-time scoring, and live leaderboards for nightly competitions. For our G2 Esports partnership, we developed a specialized Rocket League championship tracking system with detailed match analytics, player performance metrics, and spectator-friendly visualizations.',
-      results: [
-        '15+ Platforms with unified stats',
-        '92% Player compatibility rating',
-        '500+ Concurrent players with zero downtime',
-        '100% G2 Esports championship tracking',
-        '50K+ Active gamers in 6 months'
-      ],
-      images: [
-        '/give_me_a_product_shot_of_this_Nano_Banana_2_29271.jpg',
-        '/give_me_a_product_shot_of_this_Nano_Banana_2_41828.jpg'
-      ],
-      wideImages: [
-        '/GG-Profile.mp4'
-      ],
-      tags: ['Gaming Platform', 'Real-time Data', 'Tournament Systems', 'Community Building'],
-      color: 'cyan',
-      videoSrc: '/20240207_strideGG_UNIVPROF_VID_1.mp4',
-      heroSrc: '/back_view_of_a_gamer_in_a_game_Seedance_20_54336.mp4'
-    },
-    {
-      id: 'senior-pga-concession',
-      title: 'Proven Live — First Deployed at the Senior PGA, The Concession',
-      category: 'Live Event Technology',
-      description: 'Battle-tested at one of golf\'s most prestigious venues. Our platform went live at the Senior PGA Championship at The Concession, proving the technology under real tournament conditions.',
-      challenge: 'Championship golf presents unique wayfinding challenges. Spectators move between 18 holes spread across hundreds of acres, with player groups constantly shifting positions throughout the day.\n\nTraditional solutions — paper maps, static signage, basic event apps — fail because the information is either outdated by the time it\'s consumed or requires too much effort to find.',
-      solution: 'EventPulse deployed an AI concierge that understood the full context of the championship — player positions, tee times, facility locations, food options, and real-time course conditions.\n\nAttendees simply asked questions naturally like, "Where is Bernhard Langer right now?" or "What\'s the closest food stand to hole 7?" They received instant, accurate answers.',
-      results: [
-        '2016 Active users during 4-day event',
-        '89% Query satisfaction rate',
-        '4.2s Average response time'
-      ],
-      images: [
-        '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4',
-        '/CONCESSION-EP-2.mp4'
-      ],
-      lessons: [
-        {
-          title: 'Speed beats completeness',
-          body: 'Users preferred a fast 80% answer over a slow, comprehensive one. In live event contexts, time pressure means conciseness wins.'
-        },
-        {
-          title: 'Context is everything',
-          body: 'The AI\'s ability to understand implicit context ("Where should I go next?" considers time, location, preferences) was the top-rated feature.'
-        },
-        {
-          title: 'Trust builds through accuracy',
-          body: 'Users who received accurate answers on first interaction were 3x more likely to return for subsequent questions throughout the day.'
-        }
-      ],
-      tags: ['Live Events', 'PGA', 'Real-time Data', 'Tournament Technology'],
-      color: 'emerald',
-      videoSrc: '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4',
-      heroSrc: '/reel1-2.mp4'
-    },
-    {
-      id: 'fuzebox-ai',
-      title: 'FuzeBox AI: Turning Enterprise AI Ambition into Measurable P&L Impact',
-      category: 'AI Platform & Brand',
-      description: 'Designed and built the digital presence for FuzeBox AI — an AI-first venture whose framework turns fragmented enterprise AI efforts into orchestrated, measurable execution.',
-      challenge: 'FuzeBox AI needed a digital presence that could do justice to the framework behind it. Enterprise buyers were being sold AI tools that create "AI theater" — activity without outcomes. The site had to explain three problems every enterprise feels: the Value Realization Gap between AI capability and P&L impact, the Coordination Tax that absorbs 30-50% of enterprise effort in handoffs and decision latency, and the Tool-First Trap of pilots that never scale.\n\nThe challenge was translating a sophisticated operating framework — FuzeBoxOS, with its Transformation Index, productized Blueprints, and vertical apps like EventPulse, VIP Play, and Loop TV — into a clear, credible story that operators, not just technologists, would trust.',
-      solution: 'We designed and built the FuzeBox.ai website as an orchestration story told through design. The architecture mirrors the framework itself: a Platform section explaining the FuzeBoxOS framework and its productized Blueprints, a "Why FuzeBox" section that names the problem in plain operational terms before offering solutions by outcome, and proof pages anchored in real deployments — $30M in documented EBITDA impact at Lee Enterprises, 11 on-time cloud migrations at Caesars Entertainment, and a 10x improvement in technology investment value at Las Vegas Sands.\n\nThe visual design uses a dark, disciplined enterprise aesthetic: a custom logo and brand mark, structured page architecture across platform, delivery, ecosystem, and research sections, and a leadership presence featuring the executive team. The result is a site that sells the way FuzeBox operates — outcome-first, proof-backed, and built for enterprises tired of AI pilots that never reach the balance sheet.',
-      results: [
-        '$30M Documented EBITDA impact (Lee Enterprises)',
-        '11 Cloud migrations on time and on budget (Caesars)',
-        '10x Technology investment value improvement (Las Vegas Sands)',
-        '$100B+ Cumulative enterprise market value impacted',
-        '5+ Portfolio companies represented across the ecosystem'
-      ],
-      images: [
-        '/Blue-lit_conference_auditorium.png',
-        '/Cobalt-lit_stadium_event_hero.png',
-        '/FuzeBox_Website_Case_Study_Spread.png'
-      ],
-      wideImages: ['/FuzeBox_AI_Device_Trio.png'],
-      tags: ['Enterprise AI', 'Brand & Web Design', 'B2B Marketing', 'Framework Storytelling'],
-      color: 'cyan',
-      videoSrc: '/FB-INTRO-SHORT.mp4',
-      heroSrc: '/FB-INTRO-SHORT.mp4'
-    },
-    {
-      id: 'eventpulse-platform',
-      title: 'EventPulse: An AI Concierge Platform for Live Events at Any Scale',
-      category: 'AI Product Design & Build',
-      description: 'Designed and built EventPulse — a six-module event intelligence platform with a conversational AI concierge, 3D venue mapping, and real-time wayfinding, deployed everywhere from championship golf to citywide festivals.',
-      challenge: 'Live events share one fundamental problem: attendees are somewhere they don\'t know well, trying to find people, places, and moments in real time. Paper maps, static signage, and generic event apps go stale the moment conditions change — and at scale, the problem compounds. A championship golf course spreads spectators across 18 holes and hundreds of acres. A citywide festival like Atlanta\'s 404 Day scatters dozens of events across multiple venues. An industry conference like SEAT 2026 spans a convention center plus three night venues.\n\nThe challenge was to prove a bigger thesis: that a conversational AI concierge could deliver faster, more accurate answers than traditional event apps, maps, and signage — and that attendees would actually prefer it. And to do it with one platform that adapts to any live event category, not a custom build per event.',
-      solution: 'We designed and built EventPulse as six purpose-built modules working together. The AI Concierge answers natural-language questions — "Where is John Daly?" or "Where\'s the nearest restroom?" — with no menus. 3D Venue Mapping goes beyond flat maps with full-depth visualization of terrain, structures, and routes. Dynamic Routing adapts to crowd density, real-time conditions, and individual preferences, while Live Tracking follows players and performers with AI-guided directions. Moments & Highlights surfaces can\'t-miss action automatically, and Smart Notifications deliver contextual alerts without overload.\n\nThe platform proved itself across radically different event types: a 3D Las Vegas Strip experience built on Mapbox GL, interactive F1 Grand Prix circuit maps, and a full venue visualization for Super Bowl LX. In production it powered the Senior PGA Championship at The Concession, served as the official attendee layer for SEAT 2026 — 643 unique visitors, nearly 15,000 pageviews, and 87,860 personalization surfaces served — and unified Atlanta\'s 404 Day into a single intelligent citywide experience. For organizers, it doubles as the operational backbone: real-time communication, content management, and event-wide visibility, opening new engagement and revenue streams.',
-      results: [
-        '2016 Active users during 4-day championship event',
-        '89% Query satisfaction rate',
-        '4.2s Average AI response time',
-        '87,860 Personalization surfaces served at SEAT 2026',
-        '6 Event types from golf to citywide festivals'
-      ],
-      images: [
-        '/ep-seat-phones.jpg',
-        '/ep-vegas.png',
-        '/ep-404-phones.jpg',
-        '/ep-superbowl-map.jpg'
-      ],
-      imageAlts: [
-        'SEAT Conference attendee app screens',
-        '',
-        '404 Day Atlanta festival app screens',
-        "Super Bowl LX 3D venue map at Levi's Stadium"
-      ],
-      wideImages: ['/ep-hero-high-impact.jpg'],
-      wideImageAlts: ['Event Pulse platform overview'],
-      tags: ['AI Concierge', '3D Mapping', 'Live Events', 'Real-time Wayfinding'],
-      color: 'cyan',
-      videoSrc: '/ep-explainer.mp4',
-      heroSrc: '/ep-explainer.mp4',
-      posterSrc: '/ep-explainer-poster.jpg'
-    }
-  ];
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -260,8 +74,18 @@ function App() {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
+      <Seo
+        title={home.title}
+        description={home.description}
+        path={home.path}
+        image={home.image}
+        imageAlt={home.imageAlt}
+        type={home.type}
+        jsonLd={home.jsonLd}
+      />
       <SiteNav onContact={() => setIsContactFormOpen(true)} />
 
+      <main>
       <section className="w-full max-w-full overflow-hidden" style={{ display: 'grid', minHeight: '100vh', position: 'relative' }}>
         {/* Video — same grid cell as content, stretches to match content height */}
         <video
@@ -270,6 +94,7 @@ function App() {
           loop
           muted
           playsInline
+          aria-hidden="true"
           src={HERO_VIDEOS[currentSlide]}
           style={{ gridArea: '1/1', width: '100%', minWidth: 0, maxWidth: '100%', objectFit: 'cover', display: 'block' }}
         />
@@ -289,9 +114,9 @@ function App() {
               <p className="text-base sm:text-lg lg:text-2xl font-semibold text-cyan-400 tracking-wide uppercase mb-6 sm:mb-8 opacity-0 animate-[slideInBlur_0.8s_ease-out_1.5s_forwards] break-words">
                 Welcome to the Revolution
               </p>
-              <p className="text-[clamp(1.75rem,6vw,4.5rem)] font-bold text-white leading-tight mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInBlur_0.9s_ease-out_1.7s_forwards] max-w-full text-balance break-words">
+              <h1 className="text-[clamp(1.75rem,6vw,4.5rem)] font-bold text-white leading-tight mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInBlur_0.9s_ease-out_1.7s_forwards] max-w-full text-balance break-words">
                 The way work happens is evolving
-              </p>
+              </h1>
               <p className="text-[clamp(1.125rem,2.5vw,1.875rem)] font-light text-neutral-200 leading-tight drop-shadow-xl opacity-0 animate-[slideInBlur_0.8s_ease-out_1.9s_forwards] max-w-full text-balance break-words">
                 Designing smarter workflows today. Building foundations for tomorrow.
               </p>
@@ -308,13 +133,13 @@ function App() {
                 Redefining Content Discovery Through Conversational AI
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
-                <button
-                  onClick={() => setSelectedCaseStudy(caseStudies[1])}
+                <a
+                  href={caseStudyPath('newsring')}
                   className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 bg-violet-500 hover:bg-violet-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-xl shadow-violet-500/30"
                 >
                   View Case Study
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -329,13 +154,13 @@ function App() {
                 Revolutionizing Fleet Fuel Management for the Mobile Workforce
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
-                <button
-                  onClick={() => setSelectedCaseStudy(caseStudies[0])}
+                <a
+                  href={caseStudyPath('fuel-card-platform')}
                   className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-xl shadow-cyan-500/30"
                 >
                   View Case Study
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -350,13 +175,13 @@ function App() {
                 Unifying the Gaming Community Through Centralized Stats and Competitive Play
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
-                <button
-                  onClick={() => setSelectedCaseStudy(caseStudies[2])}
+                <a
+                  href={caseStudyPath('gaming-platform')}
                   className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-xl shadow-cyan-500/30"
                 >
                   View Case Study
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -371,13 +196,13 @@ function App() {
                 First deployed at the Senior PGA, The Concession.
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
-                <button
-                  onClick={() => setSelectedCaseStudy(caseStudies[3])}
+                <a
+                  href={caseStudyPath('senior-pga-concession')}
                   className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-xl shadow-emerald-500/30"
                 >
                   View Case Study
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -685,10 +510,10 @@ function App() {
                   const isVideo = study.videoSrc.endsWith('.mov') || study.videoSrc.endsWith('.mp4');
 
                   return (
-                    <div
+                    <a
                       key={study.id}
-                      onClick={() => setSelectedCaseStudy(study)}
-                      className={`group relative min-w-0 w-full h-full bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-${study.color}-${study.color === 'cyan' ? '500' : '400'}/50 transition-all duration-500 hover:shadow-2xl hover:shadow-${study.color}-${study.color === 'cyan' ? '500' : '400'}/20 flex flex-col cursor-pointer`}
+                      href={caseStudyPath(study.id)}
+                      className={`group relative min-w-0 w-full h-full bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-${study.color}-${study.color === 'cyan' ? '500' : '400'}/50 transition-all duration-500 hover:shadow-2xl hover:shadow-${study.color}-${study.color === 'cyan' ? '500' : '400'}/20 flex flex-col`}
                     >
                       <div className="relative h-48 overflow-hidden">
                         {isVideo ? (
@@ -697,6 +522,7 @@ function App() {
                             loop
                             muted
                             playsInline
+                            aria-hidden="true"
                             poster={study.posterSrc}
                             className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                             src={getAssetUrl(study.videoSrc)}
@@ -737,7 +563,7 @@ function App() {
                           <ArrowRight className="w-4 h-4" />
                         </div>
                       </div>
-                    </div>
+                    </a>
                   );
                 })}
           </div>
@@ -1244,13 +1070,15 @@ function App() {
 
           <div className="space-y-4">
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl overflow-hidden">
+              <h3 className="text-lg lg:text-xl font-semibold">
               <button
                 onClick={() => setOpenFaq(openFaq === 0 ? null : 0)}
                 className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
-              >
-                <span className="min-w-0 font-semibold text-lg lg:text-xl text-balance">How do you determine if AI is right for our situation?</span>
+                >
+                  <span className="min-w-0 text-balance">How do you determine if AI is right for our situation?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 0 ? 'rotate-180' : ''}`} />
               </button>
+              </h3>
               {openFaq === 0 && (
                 <div className="px-6 pb-6 text-neutral-400 leading-relaxed text-base">
                   We start with your actual workflows and pain points, not technology. Through discovery sessions, we identify where work breaks down, what causes frustration, and where time is wasted. Only then do we assess whether AI or automation genuinely addresses those issues better than process improvements, training, or tool optimization. If AI isn't the answer, we'll tell you.
@@ -1259,13 +1087,15 @@ function App() {
             </div>
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl overflow-hidden">
+              <h3 className="text-lg lg:text-xl font-semibold">
               <button
                 onClick={() => setOpenFaq(openFaq === 1 ? null : 1)}
                 className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
-              >
-                <span className="min-w-0 font-semibold text-lg lg:text-xl text-balance">What does a typical engagement look like?</span>
+                >
+                  <span className="min-w-0 text-balance">What does a typical engagement look like?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 1 ? 'rotate-180' : ''}`} />
               </button>
+              </h3>
               {openFaq === 1 && (
                 <div className="px-6 pb-6 text-neutral-400 leading-relaxed text-base">
                   Most engagements follow a phased approach: discovery and assessment, design and planning, implementation, and measurement. We typically work in 6-12 week cycles with clear milestones and regular check-ins. Unlike traditional consulting, we don't disappear after delivering recommendations — we stay involved through implementation to ensure changes stick and deliver results.
@@ -1274,13 +1104,15 @@ function App() {
             </div>
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl overflow-hidden">
+              <h3 className="text-lg lg:text-xl font-semibold">
               <button
                 onClick={() => setOpenFaq(openFaq === 2 ? null : 2)}
                 className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
-              >
-                <span className="min-w-0 font-semibold text-lg lg:text-xl text-balance">Do you work with companies of all sizes?</span>
+                >
+                  <span className="min-w-0 text-balance">Do you work with companies of all sizes?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 2 ? 'rotate-180' : ''}`} />
               </button>
+              </h3>
               {openFaq === 2 && (
                 <div className="px-6 pb-6 text-neutral-400 leading-relaxed text-base">
                   We work with organizations from 50 to 5,000+ employees. Our approach scales based on your complexity, not just your size. A 200-person company with complex workflows may need more support than a 1,000-person company with clear processes. We're a good fit if you're experiencing workflow friction, unclear ownership, or considering technology investments and want an honest assessment.
@@ -1289,13 +1121,15 @@ function App() {
             </div>
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl overflow-hidden">
+              <h3 className="text-lg lg:text-xl font-semibold">
               <button
                 onClick={() => setOpenFaq(openFaq === 3 ? null : 3)}
                 className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
-              >
-                <span className="min-w-0 font-semibold text-lg lg:text-xl text-balance">How quickly can we expect to see results?</span>
+                >
+                  <span className="min-w-0 text-balance">How quickly can we expect to see results?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 3 ? 'rotate-180' : ''}`} />
               </button>
+              </h3>
               {openFaq === 3 && (
                 <div className="px-6 pb-6 text-neutral-400 leading-relaxed text-base">
                   Quick wins often emerge within the first 4-6 weeks — clearer documentation, streamlined handoffs, or eliminated redundancies. Deeper transformation takes 3-6 months as new workflows become habits and technology integration stabilizes. We prioritize early momentum while building toward sustainable improvement, so you see progress throughout the engagement, not just at the end.
@@ -1304,13 +1138,15 @@ function App() {
             </div>
 
             <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-xl overflow-hidden">
+              <h3 className="text-lg lg:text-xl font-semibold">
               <button
                 onClick={() => setOpenFaq(openFaq === 4 ? null : 4)}
                 className="w-full text-left p-5 flex items-center justify-between hover:bg-neutral-800/30 transition-colors"
-              >
-                <span className="min-w-0 font-semibold text-lg lg:text-xl text-balance">What makes you different from traditional consultants?</span>
+                >
+                  <span className="min-w-0 text-balance">What makes you different from traditional consultants?</span>
                 <ChevronDown className={`w-5 h-5 text-cyan-400 transition-transform flex-shrink-0 ${openFaq === 4 ? 'rotate-180' : ''}`} />
               </button>
+              </h3>
               {openFaq === 4 && (
                 <div className="px-6 pb-6 text-neutral-400 leading-relaxed text-base">
                   We combine strategy with hands-on execution. Instead of delivering slide decks and recommendations, we roll up our sleeves and implement alongside your team. We focus on people-first solutions rather than forcing technology adoption. And we're honest about when AI or automation isn't the answer — even if it means a smaller engagement. Our measure of success is whether your team's work actually gets easier.
@@ -1320,15 +1156,23 @@ function App() {
           </div>
         </div>
       </section>
+      </main>
 
       <footer className="border-t border-neutral-800 py-12">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-2">
-              <Zap className="w-5 h-5 text-cyan-400" />
-              <span className="font-bold">Revv Studio</span>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex flex-col items-center md:items-start gap-1">
+              <div className="flex items-center space-x-2">
+                <Zap className="w-5 h-5 text-cyan-400" />
+                <span className="font-bold">Revv Studio</span>
+              </div>
+              <p className="text-neutral-500 text-sm">Scott McBride · Jacksonville, FL</p>
             </div>
-            <p className="text-neutral-500 text-sm">
+            <nav aria-label="Footer" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+              <a href="/#case-studies" className="text-neutral-400 hover:text-cyan-400">Case Studies</a>
+              <a href="/blog/" className="text-neutral-400 hover:text-cyan-400">Blog</a>
+            </nav>
+            <p className="text-neutral-500 text-sm text-center md:text-right">
               Building better systems for humans. Today and tomorrow.
             </p>
           </div>
@@ -1338,12 +1182,6 @@ function App() {
       <ContactForm
         isOpen={isContactFormOpen}
         onClose={() => setIsContactFormOpen(false)}
-      />
-
-      <CaseStudyModal
-        caseStudy={selectedCaseStudy}
-        isOpen={selectedCaseStudy !== null}
-        onClose={() => setSelectedCaseStudy(null)}
       />
     </div>
   );
