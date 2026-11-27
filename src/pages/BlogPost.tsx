@@ -21,13 +21,13 @@ export default function BlogPostPage({ slug }: BlogPostPageProps) {
         <Seo
           title="Post not found | Revv Studio"
           description="That blog post is not on this site."
-          path={`/blog/${slug}`}
+          path={`/blog/${slug}/`}
           robots="noindex"
         />
         <SiteNav onContact={() => setContactOpen(true)} />
         <main className="max-w-3xl mx-auto px-6 pt-32 pb-20">
           <h1 className="text-[clamp(2rem,6vw,3rem)] font-bold mb-4">Post not found</h1>
-          <a href="/blog" className="inline-flex items-center gap-2 text-cyan-400">
+          <a href="/blog/" className="inline-flex items-center gap-2 text-cyan-400">
             <ArrowLeft className="w-4 h-4" />
             Back to the blog
           </a>
@@ -54,7 +54,7 @@ export default function BlogPostPage({ slug }: BlogPostPageProps) {
       <SiteNav onContact={() => setContactOpen(true)} />
       <article className="pt-28 pb-20">
         <div className="max-w-3xl mx-auto px-6">
-          <a href="/blog" className="inline-flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 mb-8">
+          <a href="/blog/" className="inline-flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 mb-8">
             <ArrowLeft className="w-4 h-4" />
             Back to the blog
           </a>
@@ -106,7 +106,7 @@ export default function BlogPostPage({ slug }: BlogPostPageProps) {
           </div>
           <nav aria-label="Footer" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
             <a href="/#case-studies" className="text-neutral-400 hover:text-cyan-400">Case Studies</a>
-            <a href="/blog" className="text-neutral-400 hover:text-cyan-400">Blog</a>
+            <a href="/blog/" className="text-neutral-400 hover:text-cyan-400">Blog</a>
           </nav>
         </div>
       </footer>

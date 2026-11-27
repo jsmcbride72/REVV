@@ -1170,7 +1170,7 @@ function App() {
             </div>
             <nav aria-label="Footer" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
               <a href="/#case-studies" className="text-neutral-400 hover:text-cyan-400">Case Studies</a>
-              <a href="/blog" className="text-neutral-400 hover:text-cyan-400">Blog</a>
+              <a href="/blog/" className="text-neutral-400 hover:text-cyan-400">Blog</a>
             </nav>
             <p className="text-neutral-500 text-sm text-center md:text-right">
               Building better systems for humans. Today and tomorrow.

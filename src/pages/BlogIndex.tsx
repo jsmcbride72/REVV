@@ -35,7 +35,7 @@ export default function BlogIndex() {
             {posts.map((post) => (
               <a
                 key={post.slug}
-                href={`/blog/${post.slug}`}
+                href={`/blog/${post.slug}/`}
                 className="group flex flex-col min-w-0 bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-neutral-800/50 rounded-2xl overflow-hidden hover:border-cyan-500/40 transition-colors"
               >
                 <img

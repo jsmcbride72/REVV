@@ -81,8 +81,8 @@ export function blogIndexJsonLd() {
       organization(),
       {
         '@type': 'Blog',
-        '@id': `${absoluteSiteUrl('/blog')}#blog`,
-        url: absoluteSiteUrl('/blog'),
+        '@id': `${absoluteSiteUrl('/blog/')}#blog`,
+        url: absoluteSiteUrl('/blog/'),
         name: 'Revv Studio Blog',
         description: BLOG_INDEX_DESCRIPTION,
         inLanguage: 'en',
@@ -90,14 +90,14 @@ export function blogIndexJsonLd() {
       },
       breadcrumb([
         { name: 'Home', path: '/' },
-        { name: 'Blog', path: '/blog' },
+        { name: 'Blog', path: '/blog/' },
       ]),
     ],
   };
 }
 
 export function blogPostJsonLd(post: BlogPost) {
-  const url = absoluteSiteUrl(`/blog/${post.slug}`);
+  const url = absoluteSiteUrl(`/blog/${post.slug}/`);
   const posting: Record<string, unknown> = {
     '@type': 'BlogPosting',
     '@id': `${url}#article`,
@@ -123,7 +123,7 @@ export function blogPostJsonLd(post: BlogPost) {
     isPartOf: {
       '@type': 'Blog',
       name: 'Revv Studio Blog',
-      url: absoluteSiteUrl('/blog'),
+      url: absoluteSiteUrl('/blog/'),
     },
   };
   if (post.tags.length > 0) posting.keywords = post.tags.join(', ');
@@ -135,8 +135,8 @@ export function blogPostJsonLd(post: BlogPost) {
       posting,
       breadcrumb([
         { name: 'Home', path: '/' },
-        { name: 'Blog', path: '/blog' },
-        { name: post.title, path: `/blog/${post.slug}` },
+        { name: 'Blog', path: '/blog/' },
+        { name: post.title, path: `/blog/${post.slug}/` },
       ]),
     ],
   };

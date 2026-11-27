@@ -214,7 +214,7 @@ export function getCaseStudy(id: string): CaseStudy | undefined {
 }
 
 export function caseStudyPath(id: string): string {
-  return `/work/${id}`;
+  return `/work/${id}/`;
 }
 
 export function caseStudyShareImage(study: CaseStudy): string {

@@ -117,7 +117,7 @@ function collectTypes(value: unknown, found: Set<string>): void {
 
 function expectedTypes(pagePath: string): string[] {
   if (pagePath === '/') return ['Organization', 'ProfessionalService', 'WebSite'];
-  if (pagePath === '/blog') return ['Blog', 'BreadcrumbList', 'Organization', 'ProfessionalService'];
+  if (pagePath === '/blog' || pagePath === '/blog/') return ['Blog', 'BreadcrumbList', 'Organization', 'ProfessionalService'];
   if (pagePath.startsWith('/blog/')) return ['BlogPosting', 'BreadcrumbList', 'Organization'];
   if (pagePath.startsWith('/work/')) return ['CreativeWork', 'BreadcrumbList', 'Organization'];
   throw new Error(`No structured data expectation for ${pagePath}`);

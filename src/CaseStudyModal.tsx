@@ -242,7 +242,7 @@ export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
 
         <nav aria-label="Related" className="flex flex-wrap gap-x-6 gap-y-2 text-sm pb-4">
           <a href="/" className="text-cyan-400 hover:text-cyan-300">Revv Studio</a>
-          <a href="/blog" className="text-cyan-400 hover:text-cyan-300">Blog</a>
+          <a href="/blog/" className="text-cyan-400 hover:text-cyan-300">Blog</a>
         </nav>
       </div>
     </main>

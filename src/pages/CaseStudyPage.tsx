@@ -20,7 +20,7 @@ export default function CaseStudyPage({ id }: CaseStudyPageProps) {
         <Seo
           title="Case study not found | Revv Studio"
           description="That case study is not on this site."
-          path={`/work/${id}`}
+          path={`/work/${id}/`}
           robots="noindex"
         />
         <SiteNav onContact={() => setContactOpen(true)} />

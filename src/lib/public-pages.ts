@@ -52,7 +52,7 @@ export function blogIndexPage(): PublicPage {
   return {
     title: BLOG_INDEX_TITLE,
     description: BLOG_INDEX_DESCRIPTION,
-    path: '/blog',
+    path: '/blog/',
     image: DEFAULT_SHARE_IMAGE,
     imageAlt: 'Revv Studio logo',
     type: 'website',
@@ -64,7 +64,7 @@ export function pageForPost(post: BlogPost): PublicPage {
   return {
     title: postDocumentTitle(post.title),
     description: post.excerpt,
-    path: `/blog/${post.slug}`,
+    path: `/blog/${post.slug}/`,
     image: post.cover,
     imageAlt: `Cover image for ${post.title}`,
     type: 'article',
