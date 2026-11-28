@@ -1,4 +1,4 @@
-import { Users, Target, Heart, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Shield, Search, MousePointer, AlertTriangle, Link2, Eye, ArrowRight, MoveDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Users, Target, Heart, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Search, MousePointer, AlertTriangle, Link2, Eye, ArrowRight, MoveDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import ContactForm from './ContactForm';
 import MediaVideo from './MediaVideo';
@@ -658,38 +658,6 @@ function App() {
                     <p className="text-neutral-400 text-sm lg:text-base ml-13">
                       For teams ready to work alongside AI agents
                     </p>
-                  </div>
-                </div>
-
-                <div className="bg-neutral-950/50 border border-neutral-800/50 rounded-xl p-6 mb-8">
-                  <p className="text-xs font-bold text-violet-400 mb-5 tracking-wide">AUTONOMY BALANCE</p>
-
-                  <div className="space-y-6">
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center space-x-2">
-                          <Bot className="w-4 h-4 text-violet-400" />
-                          <span className="text-sm text-neutral-300">Agent Autonomy</span>
-                        </div>
-                        <span className="text-lg font-bold text-violet-400">85%</span>
-                      </div>
-                      <div className="w-full h-2 bg-neutral-800 rounded-full overflow-hidden">
-                        <div className="h-full bg-gradient-to-r from-violet-500 to-violet-400 rounded-full" style={{ width: '85%' }}></div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center space-x-2">
-                          <Shield className="w-4 h-4 text-violet-400" />
-                          <span className="text-sm text-neutral-300">Human Oversight</span>
-                        </div>
-                        <span className="text-lg font-bold text-violet-400">100%</span>
-                      </div>
-                      <div className="w-full h-2 bg-neutral-800 rounded-full overflow-hidden">
-                        <div className="h-full bg-gradient-to-r from-violet-500 to-violet-400 rounded-full" style={{ width: '100%' }}></div>
-                      </div>
-                    </div>
                   </div>
                 </div>
 
