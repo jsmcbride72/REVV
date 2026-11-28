@@ -163,6 +163,16 @@ function assertShell(html: string, meta: PublicPage): void {
     }
   }
 
+  const headEnd = html.search(/<\/head>/i);
+  const head = headEnd === -1 ? '' : html.slice(0, headEnd);
+  const gaScript = 'https://www.googletagmanager.com/gtag/js?id=G-JWKWNM83ZT';
+  if (!head.includes(gaScript) || !head.includes("gtag('config', 'G-JWKWNM83ZT')")) {
+    throw new Error(`HTML shell for ${meta.path} is missing the GA4 snippet in <head>.`);
+  }
+  if ((html.match(/googletagmanager\.com\/gtag\/js/g) ?? []).length !== 1) {
+    throw new Error(`HTML shell for ${meta.path} should include the GA4 script once.`);
+  }
+
   if (html.includes('revstudio.com') || html.includes('www.revvstudio.com')) {
     throw new Error(`HTML shell for ${meta.path} uses a non-canonical host.`);
   }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { X, Send } from "lucide-react";
+import { trackContactClick } from "./lib/analytics";
 import { CONTACT_EMAIL } from "./lib/site";
 
 interface ContactFormProps {
@@ -166,7 +167,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
           {status === "error" && (
             <p className="text-red-400">
               Something went wrong. Email us at{" "}
-              <a href={`mailto:${CONTACT_EMAIL}`} className="underline font-semibold">
+              <a href={`mailto:${CONTACT_EMAIL}`} onClick={() => trackContactClick('contact_form')} className="underline font-semibold">
                 {CONTACT_EMAIL}
               </a>
               .

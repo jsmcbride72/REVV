@@ -5,6 +5,7 @@ import MediaVideo from './MediaVideo';
 import { usePrefersReducedMotion } from './usePrefersReducedMotion';
 import Seo from './Seo';
 import SiteNav from './SiteNav';
+import { trackContactClick, trackStartProjectClick } from './lib/analytics';
 import { caseStudies, caseStudyPath, getCaseStudy, posterForVideo } from './lib/case-studies';
 import { homePage } from './lib/public-pages';
 import { CONTACT_EMAIL, HERO_SUMMARY, HERO_TITLE } from './lib/site';
@@ -127,7 +128,10 @@ function App() {
               <div className="mt-8 opacity-0 animate-[slideInBlur_0.8s_ease-out_2.1s_forwards]">
                 <button
                   type="button"
-                  onClick={() => setIsContactFormOpen(true)}
+                  onClick={() => {
+                    trackStartProjectClick('hero');
+                    setIsContactFormOpen(true);
+                  }}
                   className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 bg-cyan-500 hover:bg-cyan-400 text-neutral-950 font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-xl shadow-cyan-500/30"
                 >
                   Start a project
@@ -1027,7 +1031,7 @@ function App() {
             <nav aria-label="Footer" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
               <a href="/#case-studies" className="text-neutral-400 hover:text-cyan-400">Case Studies</a>
               <a href="/blog/" className="text-neutral-400 hover:text-cyan-400">Blog</a>
-              <a href={`mailto:${CONTACT_EMAIL}`} className="text-neutral-400 hover:text-cyan-400">Contact</a>
+              <a href={`mailto:${CONTACT_EMAIL}`} onClick={() => trackContactClick('footer')} className="text-neutral-400 hover:text-cyan-400">Contact</a>
             </nav>
             <p className="text-neutral-400 text-sm text-center md:text-right">
               Building better systems for humans. Today and tomorrow.
