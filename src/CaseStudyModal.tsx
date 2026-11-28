@@ -1,5 +1,6 @@
 import { ChevronLeft, TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2 } from 'lucide-react';
 import MediaVideo from './MediaVideo';
+import { trackContactClick } from './lib/analytics';
 import { caseStudyPath, getCaseStudy, posterForVideo, type CaseStudy } from './lib/case-studies';
 import { CONTACT_EMAIL } from './lib/site';
 
@@ -316,7 +317,7 @@ export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
         <nav aria-label="Related" className="flex flex-wrap gap-x-6 gap-y-2 text-sm pb-4">
           <a href="/" className="text-cyan-400 hover:text-cyan-300">Revv Studio</a>
           <a href="/blog/" className="text-cyan-400 hover:text-cyan-300">Blog</a>
-          <a href={`mailto:${CONTACT_EMAIL}`} className="text-cyan-400 hover:text-cyan-300">Contact</a>
+          <a href={`mailto:${CONTACT_EMAIL}`} onClick={() => trackContactClick('case_study')} className="text-cyan-400 hover:text-cyan-300">Contact</a>
         </nav>
       </div>
     </main>

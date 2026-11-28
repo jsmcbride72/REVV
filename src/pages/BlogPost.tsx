@@ -3,6 +3,7 @@ import { useState } from 'react';
 import ContactForm from '../ContactForm';
 import Seo from '../Seo';
 import SiteNav from '../SiteNav';
+import { trackContactClick, trackStartProjectClick } from '../lib/analytics';
 import { formatPostDate, getPost, relatedPosts } from '../lib/blog';
 import { renderMarkdown } from '../lib/markdown';
 import { pageForPost } from '../lib/public-pages';
@@ -113,7 +114,10 @@ export default function BlogPostPage({ slug }: BlogPostPageProps) {
           <p className="text-neutral-300 leading-relaxed mb-6">{HERO_SUMMARY}</p>
           <button
             type="button"
-            onClick={() => setContactOpen(true)}
+            onClick={() => {
+              trackStartProjectClick('blog');
+              setContactOpen(true);
+            }}
             className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-neutral-950 font-semibold rounded-xl transition-colors"
           >
             Start a project
@@ -148,7 +152,7 @@ export default function BlogPostPage({ slug }: BlogPostPageProps) {
           <nav aria-label="Footer" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
             <a href="/#case-studies" className="text-neutral-400 hover:text-cyan-400">Case Studies</a>
             <a href="/blog/" className="text-neutral-400 hover:text-cyan-400">Blog</a>
-            <a href={`mailto:${CONTACT_EMAIL}`} className="text-neutral-400 hover:text-cyan-400">Contact</a>
+            <a href={`mailto:${CONTACT_EMAIL}`} onClick={() => trackContactClick('footer')} className="text-neutral-400 hover:text-cyan-400">Contact</a>
           </nav>
         </div>
       </footer>

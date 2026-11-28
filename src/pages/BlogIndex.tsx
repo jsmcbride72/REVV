@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ContactForm from '../ContactForm';
 import Seo from '../Seo';
 import SiteNav from '../SiteNav';
+import { trackContactClick } from '../lib/analytics';
 import { formatPostDate, posts } from '../lib/blog';
 import { blogIndexPage } from '../lib/public-pages';
 import { CONTACT_EMAIL } from '../lib/site';
@@ -93,7 +94,7 @@ export default function BlogIndex() {
           <nav aria-label="Footer" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
             <a href="/#case-studies" className="text-neutral-400 hover:text-cyan-400">Case Studies</a>
             <a href="/" className="text-neutral-400 hover:text-cyan-400">Back to the studio</a>
-            <a href={`mailto:${CONTACT_EMAIL}`} className="text-neutral-400 hover:text-cyan-400">Contact</a>
+            <a href={`mailto:${CONTACT_EMAIL}`} onClick={() => trackContactClick('footer')} className="text-neutral-400 hover:text-cyan-400">Contact</a>
           </nav>
         </div>
       </footer>
