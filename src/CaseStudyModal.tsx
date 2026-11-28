@@ -1,19 +1,7 @@
 import { ChevronLeft, TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2 } from 'lucide-react';
-import type { CaseStudy } from './lib/case-studies';
-
-function GalleryVideo({ src, className, label }: { src: string; className: string; label: string }) {
-  return (
-    <video
-      autoPlay
-      muted
-      loop
-      playsInline
-      aria-label={label}
-      className={className}
-      src={src}
-    />
-  );
-}
+import MediaVideo from './MediaVideo';
+import { posterForVideo, type CaseStudy } from './lib/case-studies';
+import { CONTACT_EMAIL } from './lib/site';
 
 interface CaseStudyModalProps {
   caseStudy: CaseStudy;
@@ -55,12 +43,9 @@ export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
 
       {/* ── Hero spotlight ── */}
       <div className="relative w-full h-[85vh] overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster={caseStudy.posterSrc}
+        <MediaVideo
+          priority
+          poster={posterForVideo(heroVideo, caseStudy.posterSrc)}
           className="absolute inset-0 w-full h-full object-cover"
           src={heroVideo}
         />
@@ -149,8 +134,9 @@ export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
                 return (
                   <div key={`wide-${index}`} className={`lg:col-span-2 rounded-2xl overflow-hidden border ${colors.border} bg-neutral-900`}>
                     {isVideo ? (
-                      <GalleryVideo
+                      <MediaVideo
                         src={image}
+                        poster={posterForVideo(image)}
                         label={caseStudy.title}
                         className="w-full h-auto min-h-[320px] object-cover"
                       />
@@ -170,8 +156,9 @@ export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
                 return (
                   <div key={index} className={`h-full rounded-2xl overflow-hidden border ${colors.border} bg-neutral-900`}>
                     {isVideo ? (
-                      <GalleryVideo
+                      <MediaVideo
                         src={image}
+                        poster={posterForVideo(image)}
                         label={caseStudy.title}
                         className="w-full h-auto min-h-[260px] object-cover"
                       />
@@ -196,7 +183,12 @@ export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
 
         {/* Impact metrics */}
         <div className={`bg-gradient-to-br ${colors.bg} to-transparent border ${colors.border} rounded-2xl p-8`}>
-          <h2 className={`text-3xl font-bold mb-8 ${colors.text}`}>Impact Metrics</h2>
+          <h2 className={`text-3xl font-bold ${caseStudy.resultsContext ? 'mb-3' : 'mb-8'} ${colors.text}`}>
+            {caseStudy.resultsHeading ?? 'Impact Metrics'}
+          </h2>
+          {caseStudy.resultsContext && (
+            <p className="text-neutral-300 leading-relaxed mb-8 max-w-3xl">{caseStudy.resultsContext}</p>
+          )}
           <div className="grid md:grid-cols-2 gap-4">
             {caseStudy.results.map((result, index) => {
               const icons = [TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2];
@@ -230,7 +222,7 @@ export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
 
         {/* Tags */}
         <div className="pb-8">
-          <h2 className="text-xs font-bold text-neutral-500 mb-4 tracking-widest uppercase">Technologies & Approaches</h2>
+          <h2 className="text-xs font-bold text-neutral-400 mb-4 tracking-widest uppercase">Technologies & Approaches</h2>
           <div className="flex flex-wrap gap-2">
             {caseStudy.tags.map((tag, index) => (
               <span key={index} className={`px-3 py-1.5 border rounded-full text-sm ${colors.tag}`}>
@@ -243,6 +235,7 @@ export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
         <nav aria-label="Related" className="flex flex-wrap gap-x-6 gap-y-2 text-sm pb-4">
           <a href="/" className="text-cyan-400 hover:text-cyan-300">Revv Studio</a>
           <a href="/blog/" className="text-cyan-400 hover:text-cyan-300">Blog</a>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="text-cyan-400 hover:text-cyan-300">Contact</a>
         </nav>
       </div>
     </main>

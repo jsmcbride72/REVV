@@ -42,7 +42,7 @@ export function homePage(): PublicPage {
     description: HOME_DESCRIPTION,
     path: '/',
     image: DEFAULT_SHARE_IMAGE,
-    imageAlt: 'Revv Studio logo',
+    imageAlt: 'Revv Studio, a product and UX design studio',
     type: 'website',
     jsonLd: homeJsonLd(),
   };
@@ -54,7 +54,7 @@ export function blogIndexPage(): PublicPage {
     description: BLOG_INDEX_DESCRIPTION,
     path: '/blog/',
     image: DEFAULT_SHARE_IMAGE,
-    imageAlt: 'Revv Studio logo',
+    imageAlt: 'Revv Studio, a product and UX design studio',
     type: 'website',
     jsonLd: blogIndexJsonLd(),
   };

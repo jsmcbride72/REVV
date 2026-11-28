@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { X, Send } from "lucide-react";
+import { CONTACT_EMAIL } from "./lib/site";
 
 interface ContactFormProps {
   isOpen: boolean;
@@ -77,7 +78,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
       <div className="bg-neutral-900 rounded-xl w-full max-w-2xl">
         <div className="flex justify-between p-6 border-b border-neutral-800">
           <h2 className="text-2xl font-bold">Get in Touch</h2>
-          <button onClick={onClose}>
+          <button type="button" onClick={onClose} aria-label="Close">
             <X />
           </button>
         </div>
@@ -105,42 +106,58 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
             </label>
           </p>
 
-          <input
-            name="name"
-            placeholder="Name"
-            required
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full p-3 bg-neutral-800 rounded"
-          />
+          <div>
+            <label htmlFor="contact-name" className="sr-only">Name</label>
+            <input
+              id="contact-name"
+              name="name"
+              placeholder="Name"
+              required
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full p-3 bg-neutral-800 rounded"
+            />
+          </div>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full p-3 bg-neutral-800 rounded"
-          />
+          <div>
+            <label htmlFor="contact-email" className="sr-only">Email</label>
+            <input
+              id="contact-email"
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full p-3 bg-neutral-800 rounded"
+            />
+          </div>
 
-          <input
-            name="company"
-            placeholder="Company"
-            value={formData.company}
-            onChange={handleChange}
-            className="w-full p-3 bg-neutral-800 rounded"
-          />
+          <div>
+            <label htmlFor="contact-company" className="sr-only">Company</label>
+            <input
+              id="contact-company"
+              name="company"
+              placeholder="Company"
+              value={formData.company}
+              onChange={handleChange}
+              className="w-full p-3 bg-neutral-800 rounded"
+            />
+          </div>
 
-          <textarea
-            name="message"
-            placeholder="Message"
-            required
-            rows={5}
-            value={formData.message}
-            onChange={handleChange}
-            className="w-full p-3 bg-neutral-800 rounded"
-          />
+          <div>
+            <label htmlFor="contact-message" className="sr-only">Message</label>
+            <textarea
+              id="contact-message"
+              name="message"
+              placeholder="Message"
+              required
+              rows={5}
+              value={formData.message}
+              onChange={handleChange}
+              className="w-full p-3 bg-neutral-800 rounded"
+            />
+          </div>
 
           {status === "success" && (
             <p className="text-green-400">Message sent successfully.</p>
@@ -148,7 +165,11 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
 
           {status === "error" && (
             <p className="text-red-400">
-              Something went wrong. Please email us directly.
+              Something went wrong. Email us at{" "}
+              <a href={`mailto:${CONTACT_EMAIL}`} className="underline font-semibold">
+                {CONTACT_EMAIL}
+              </a>
+              .
             </p>
           )}
 

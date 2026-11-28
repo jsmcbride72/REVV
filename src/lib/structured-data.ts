@@ -3,8 +3,8 @@ import { caseStudyPath, caseStudyShareImage, type CaseStudy } from './case-studi
 import {
   absoluteSiteUrl,
   BLOG_INDEX_DESCRIPTION,
-  DEFAULT_SHARE_IMAGE,
   HOME_DESCRIPTION,
+  LOGO_IMAGE,
   ORGANIZATION_ID,
   SITE_NAME,
   SITE_ORIGIN,
@@ -17,7 +17,7 @@ export function serializeJsonLd(data: unknown): string {
 function logo() {
   return {
     '@type': 'ImageObject',
-    url: absoluteSiteUrl(DEFAULT_SHARE_IMAGE),
+    url: absoluteSiteUrl(LOGO_IMAGE),
   };
 }
 
@@ -29,7 +29,7 @@ function organization() {
     url: `${SITE_ORIGIN}/`,
     description: HOME_DESCRIPTION,
     logo: logo(),
-    image: absoluteSiteUrl(DEFAULT_SHARE_IMAGE),
+    image: absoluteSiteUrl(LOGO_IMAGE),
     founder: {
       '@type': 'Person',
       name: 'Scott McBride',
@@ -110,9 +110,10 @@ export function blogPostJsonLd(post: BlogPost) {
     url,
     mainEntityOfPage: url,
     author: {
-      '@type': 'Organization',
-      name: SITE_NAME,
-      url: `${SITE_ORIGIN}/`,
+      '@type': 'Person',
+      name: 'Scott McBride',
+      jobTitle: 'Founder',
+      worksFor: { '@id': ORGANIZATION_ID },
     },
     publisher: {
       '@type': 'Organization',
