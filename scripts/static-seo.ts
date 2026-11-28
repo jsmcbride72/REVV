@@ -1,11 +1,15 @@
 import fs from 'fs';
 import path from 'path';
 import type { Plugin, ResolvedConfig } from 'vite';
+import type { BlogPost } from '../src/lib/blog-frontmatter.ts';
 import { postsFromMarkdown } from '../src/lib/blog-frontmatter.ts';
+import { caseStudies, caseStudyPath } from '../src/lib/case-studies.ts';
 import { renderRobots, renderSitemap } from '../src/lib/crawl-files.ts';
+import { renderLlms } from '../src/lib/llms.ts';
 import { publicPages, type PublicPage } from '../src/lib/public-pages.ts';
+import { renderStaticFallback } from '../src/lib/static-fallback.ts';
 import { serializeJsonLd } from '../src/lib/structured-data.ts';
-import { absoluteSiteUrl, SITE_NAME, SITE_ORIGIN } from '../src/lib/site.ts';
+import { absoluteSiteUrl, HERO_TITLE, SITE_NAME, SITE_ORIGIN } from '../src/lib/site.ts';
 
 const BANNED_STRUCTURED_DATA_KEYS = new Set([
   'aggregateRating',
@@ -192,6 +196,62 @@ function assertShell(html: string, meta: PublicPage): void {
       throw new Error(`HTML shell for ${meta.path} is missing schema type ${type}.`);
     }
   }
+
+  if (meta.path.startsWith('/blog/') && meta.path !== '/blog/') {
+    const graph = (data as { '@graph'?: Array<Record<string, unknown>> })['@graph'] ?? [];
+    const posting = graph.find((item) => item['@type'] === 'BlogPosting');
+    const author = posting?.author as { '@type'?: string; name?: string } | undefined;
+    const publisher = posting?.publisher as { '@type'?: string } | undefined;
+    if (author?.['@type'] !== 'Person' || author.name !== 'Scott McBride') {
+      throw new Error(`HTML shell for ${meta.path} must name Scott McBride as a Person author.`);
+    }
+    if (publisher?.['@type'] !== 'Organization') {
+      throw new Error(`HTML shell for ${meta.path} must keep the Organization as publisher.`);
+    }
+  }
+}
+
+function injectStaticContent(html: string, page: PublicPage, posts: BlogPost[]): string {
+  const inner = renderStaticFallback(page, posts);
+  const next = html.replace(/<div id="root">\s*<\/div>/, () => `<div id="root">\n${inner}\n    </div>`);
+  if (next === html || !next.includes('data-static-content="true"')) {
+    throw new Error(`Could not inject static content for ${page.path}`);
+  }
+  if (page.path === '/' && !next.includes(HERO_TITLE)) {
+    throw new Error('Home static HTML is missing the hero heading.');
+  }
+  const post = posts.find((item) => page.path === `/blog/${item.slug}/`);
+  if (post) {
+    if (!next.includes('class="blog-body"')) {
+      throw new Error(`Blog post ${page.path} is missing article text.`);
+    }
+    if (/^#{2,3}\s/m.test(post.body) && !/<h[23]>/.test(next)) {
+      throw new Error(`Blog post ${page.path} is missing article headings.`);
+    }
+    if (!next.includes('<a ')) {
+      throw new Error(`Blog post ${page.path} is missing links.`);
+    }
+  }
+  if (page.path.startsWith('/work/') && !next.includes('<li>')) {
+    throw new Error(`Case study ${page.path} is missing results.`);
+  }
+  return next;
+}
+
+function writeLlms(outDir: string, posts: BlogPost[]): void {
+  const llms = renderLlms(posts);
+  if (!llms.startsWith('# Revv Studio') || llms.includes('<html') || llms.includes('id="root"')) {
+    throw new Error('llms.txt must be plain text that starts with the studio name.');
+  }
+  const required = [
+    absoluteSiteUrl('/blog/'),
+    ...posts.map((post) => absoluteSiteUrl(`/blog/${post.slug}/`)),
+    ...caseStudies.map((study) => absoluteSiteUrl(caseStudyPath(study.id))),
+  ];
+  for (const url of required) {
+    if (!llms.includes(url)) throw new Error(`llms.txt is missing ${url}`);
+  }
+  fs.writeFileSync(path.join(outDir, 'llms.txt'), llms);
 }
 
 function assertShareImage(root: string, image: string): void {
@@ -275,8 +335,10 @@ export function staticSeoPlugin(): Plugin {
 
       for (const page of pages) {
         assertShareImage(config.root, page.image);
-        writeShell(outDir, page.path, applyPageMeta(template, page));
+        writeShell(outDir, page.path, injectStaticContent(applyPageMeta(template, page), page, posts));
       }
+
+      writeLlms(outDir, posts);
 
       const sitemap = renderSitemap(pages);
       const robots = renderRobots();

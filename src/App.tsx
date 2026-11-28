@@ -1,10 +1,13 @@
-import { Users, Target, TrendingUp, Heart, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Network, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Shield, Search, MousePointer, AlertTriangle, Link2, Eye, ArrowRight, MoveDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Users, Target, Heart, ShieldCheck, Rocket, Quote, ChevronDown, Sparkles, Workflow, Activity, Brain, Palette, BarChart3, CircuitBoard, Layers, Gauge, Zap, Bot, Search, MousePointer, AlertTriangle, Link2, Eye, ArrowRight, MoveDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import ContactForm from './ContactForm';
+import MediaVideo from './MediaVideo';
+import { usePrefersReducedMotion } from './usePrefersReducedMotion';
 import Seo from './Seo';
 import SiteNav from './SiteNav';
-import { caseStudies, caseStudyPath } from './lib/case-studies';
+import { caseStudies, caseStudyPath, posterForVideo } from './lib/case-studies';
 import { homePage } from './lib/public-pages';
+import { CONTACT_EMAIL, HERO_SUMMARY, HERO_TITLE } from './lib/site';
 
 
 const home = homePage();
@@ -16,19 +19,21 @@ function App() {
   const [animKey, setAnimKey] = useState(0);
   const HERO_SLIDE_COUNT = 5;
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const reduceMotion = usePrefersReducedMotion();
 
   const HERO_VIDEOS = [
     '/SPOTLIGHT2.mp4',
-    '/I_WANT_THIS_TO_ANIMATE_IN_AREA_Seedance_20_51931.mp4',
-    '/I_need_to_start_with_the_truck_Seedance_20_20111.mp4',
-    '/I_WANT_TO_DO_A_COOL_ANIMATION__Seedance_20_39658.mp4',
-    '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4',
+    '/newsring-devices.mp4',
+    '/driven-fleet-hero.mp4',
+    '/stridegg-devices.mp4',
+    '/concession-devices.mp4',
   ];
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
     setAnimKey(k => k + 1);
     if (timerRef.current) clearInterval(timerRef.current);
+    if (reduceMotion) return;
     timerRef.current = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % HERO_SLIDE_COUNT);
       setAnimKey(k => k + 1);
@@ -47,6 +52,10 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (reduceMotion) {
+      if (timerRef.current) clearInterval(timerRef.current);
+      return;
+    }
     timerRef.current = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % HERO_SLIDE_COUNT);
       setAnimKey(k => k + 1);
@@ -54,9 +63,7 @@ function App() {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, []);
-
-  const getAssetUrl = (path: string) => path;
+  }, [reduceMotion]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -88,15 +95,12 @@ function App() {
       <main>
       <section className="w-full max-w-full overflow-hidden" style={{ display: 'grid', minHeight: '100vh', position: 'relative' }}>
         {/* Video — same grid cell as content, stretches to match content height */}
-        <video
+        <MediaVideo
           key={currentSlide}
-          autoPlay
-          loop
-          muted
-          playsInline
-          aria-hidden="true"
+          priority
           src={HERO_VIDEOS[currentSlide]}
-          style={{ gridArea: '1/1', width: '100%', minWidth: 0, maxWidth: '100%', objectFit: 'cover', display: 'block' }}
+          poster={posterForVideo(HERO_VIDEOS[currentSlide])}
+          style={{ gridArea: '1/1', width: '100%', height: '100%', minWidth: 0, maxWidth: '100%', objectFit: 'cover', display: 'block' }}
         />
         {/* Dark gradient overlay — only under the text for readability */}
         <div style={{ gridArea: '1/1', zIndex: 1, pointerEvents: 'none', background: 'linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.6) 100%)' }} />
@@ -115,11 +119,21 @@ function App() {
                 Welcome to the Revolution
               </p>
               <h1 className="text-[clamp(1.75rem,6vw,4.5rem)] font-bold text-white leading-tight mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInBlur_0.9s_ease-out_1.7s_forwards] max-w-full text-balance break-words">
-                The way work happens is evolving
+                {HERO_TITLE}
               </h1>
               <p className="text-[clamp(1.125rem,2.5vw,1.875rem)] font-light text-neutral-200 leading-tight drop-shadow-xl opacity-0 animate-[slideInBlur_0.8s_ease-out_1.9s_forwards] max-w-full text-balance break-words">
-                Designing smarter workflows today. Building foundations for tomorrow.
+                {HERO_SUMMARY}
               </p>
+              <div className="mt-8 opacity-0 animate-[slideInBlur_0.8s_ease-out_2.1s_forwards]">
+                <button
+                  type="button"
+                  onClick={() => setIsContactFormOpen(true)}
+                  className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 bg-cyan-500 hover:bg-cyan-400 text-neutral-950 font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-xl shadow-cyan-500/30"
+                >
+                  Start a project
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </div>
 
@@ -156,7 +170,7 @@ function App() {
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
                 <a
                   href={caseStudyPath('fuel-card-platform')}
-                  className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-xl shadow-cyan-500/30"
+                  className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 bg-cyan-500 hover:bg-cyan-400 text-neutral-950 font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-xl shadow-cyan-500/30"
                 >
                   View Case Study
                   <ArrowRight className="w-4 h-4" />
@@ -177,7 +191,7 @@ function App() {
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
                 <a
                   href={caseStudyPath('gaming-platform')}
-                  className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-xl shadow-cyan-500/30"
+                  className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 bg-cyan-500 hover:bg-cyan-400 text-neutral-950 font-semibold rounded-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-xl shadow-cyan-500/30"
                 >
                   View Case Study
                   <ArrowRight className="w-4 h-4" />
@@ -222,13 +236,18 @@ function App() {
             <button
               key={i}
               onClick={() => goToSlide(i)}
-              className={`rounded-full transition-all duration-300 ${
-                i === currentSlide
-                  ? `${i === 1 ? 'bg-violet-400' : i === 4 ? 'bg-emerald-400' : 'bg-cyan-400'} w-6 h-2`
-                  : 'bg-neutral-600 hover:bg-neutral-400 w-2 h-2'
-              }`}
+              className="group inline-flex h-6 w-6 items-center justify-center"
               aria-label={`Go to slide ${i + 1}`}
-            />
+              aria-current={i === currentSlide ? 'true' : undefined}
+            >
+              <span
+                className={`rounded-full transition-all duration-300 ${
+                  i === currentSlide
+                    ? `${i === 1 ? 'bg-violet-400' : i === 4 ? 'bg-emerald-400' : 'bg-cyan-400'} w-6 h-2`
+                    : 'bg-neutral-600 group-hover:bg-neutral-400 w-2 h-2'
+                }`}
+              />
+            </button>
           ))}
 
           <button
@@ -263,14 +282,11 @@ function App() {
           </div>
           <div className="bg-gradient-to-br from-neutral-900 to-neutral-900/50 border border-neutral-800 rounded-2xl p-6 lg:p-12">
             <div className="grid lg:grid-cols-2 gap-6 items-center">
-              <div className="rounded-xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
+              <div className="rounded-xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl aspect-square">
+                <MediaVideo
+                  src="/jsmcbride_cool_studio.mp4"
+                  poster={posterForVideo('/jsmcbride_cool_studio.mp4')}
                   className="w-full h-full object-cover"
-                  src={getAssetUrl("/jsmcbride_cool_studio.mp4")}
                 />
               </div>
 
@@ -281,35 +297,6 @@ function App() {
                 <p className="text-base lg:text-xl text-neutral-400 leading-relaxed mb-6">
                   We've seen firsthand how AI hype can distract from fundamental operational issues, and how the best technology investments are the ones that amplify human capability rather than replace it. Our approach combines strategic consulting with hands-on implementation, ensuring that every change we introduce is grounded in real workflow improvement — not theoretical frameworks.
                 </p>
-                <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-8 border-t border-neutral-800">
-                  <div className="text-center">
-                    <div className="flex justify-center mb-3">
-                      <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center">
-                        <Gauge className="w-5 h-5 text-cyan-400" />
-                      </div>
-                    </div>
-                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gradient mb-2">40%</div>
-                    <p className="text-sm text-neutral-400">Average reduction in process cycle time</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="flex justify-center mb-3">
-                      <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center">
-                        <TrendingUp className="w-5 h-5 text-cyan-400" />
-                      </div>
-                    </div>
-                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gradient mb-2">65%</div>
-                    <p className="text-sm text-neutral-400">Fewer handoff errors and rework loops</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="flex justify-center mb-3">
-                      <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center">
-                        <BarChart3 className="w-5 h-5 text-cyan-400" />
-                      </div>
-                    </div>
-                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gradient mb-2">3-6mo</div>
-                    <p className="text-sm text-neutral-400">Typical timeline to measurable outcomes</p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -338,13 +325,10 @@ function App() {
               </div>
 
               <div className="mb-6 rounded-xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl relative" style={{ aspectRatio: '16/12' }}>
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
+                <MediaVideo
+                  src="/jsmcbride_n8nf.mp4"
+                  poster={posterForVideo('/jsmcbride_n8nf.mp4')}
                   className="w-full h-full object-cover scale-150"
-                  src={getAssetUrl("/jsmcbride_n8nf.mp4")}
                 />
               </div>
 
@@ -384,13 +368,10 @@ function App() {
               </div>
 
               <div className="mb-6 rounded-xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl relative" style={{ aspectRatio: '16/12' }}>
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
+                <MediaVideo
+                  src="/jsmcbride_WF.mp4"
+                  poster={posterForVideo('/jsmcbride_WF.mp4')}
                   className="w-full h-full object-cover"
-                  src={getAssetUrl("/jsmcbride_WF.mp4")}
                 />
               </div>
 
@@ -517,15 +498,10 @@ function App() {
                     >
                       <div className="relative h-48 overflow-hidden">
                         {isVideo ? (
-                          <video
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            aria-hidden="true"
-                            poster={study.posterSrc}
+                          <MediaVideo
+                            src={study.videoSrc}
+                            poster={posterForVideo(study.videoSrc, study.posterSrc)}
                             className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
-                            src={getAssetUrl(study.videoSrc)}
                           />
                         ) : (
                           <>
@@ -581,13 +557,10 @@ function App() {
           </div>
 
           <div className="relative rounded-2xl overflow-hidden border border-neutral-800/50 bg-neutral-950/50 shadow-2xl mb-16 h-32 lg:h-48 max-w-5xl mx-auto">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
+            <MediaVideo
+              src="/jsmcbride_WF.mp4"
+              poster={posterForVideo('/jsmcbride_WF.mp4')}
               className="w-full h-full object-cover"
-              src={getAssetUrl("/jsmcbride_WF.mp4")}
             />
           </div>
 
@@ -611,38 +584,6 @@ function App() {
                   </div>
                 </div>
 
-                <div className="bg-neutral-950/50 border border-neutral-800/50 rounded-xl p-6 mb-8">
-                  <p className="text-xs font-bold text-cyan-400 mb-5 tracking-wide">IMPACT METRICS</p>
-
-                  <div className="space-y-6">
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center space-x-2">
-                          <Network className="w-4 h-4 text-cyan-400" />
-                          <span className="text-sm text-neutral-300">Process Cycle Time</span>
-                        </div>
-                        <span className="text-lg font-bold text-cyan-400">-40%</span>
-                      </div>
-                      <div className="w-full h-2 bg-neutral-800 rounded-full overflow-hidden">
-                        <div className="h-full bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full" style={{ width: '40%' }}></div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center space-x-2">
-                          <TrendingUp className="w-4 h-4 text-cyan-400" />
-                          <span className="text-sm text-neutral-300">Handoff Errors</span>
-                        </div>
-                        <span className="text-lg font-bold text-cyan-400">-65%</span>
-                      </div>
-                      <div className="w-full h-2 bg-neutral-800 rounded-full overflow-hidden">
-                        <div className="h-full bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full" style={{ width: '65%' }}></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
                 <div className="space-y-3 mb-8">
                   <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-4 flex items-center space-x-4 hover:border-cyan-500/30 transition-colors">
                     <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -650,7 +591,7 @@ function App() {
                     </div>
                     <div className="flex-1">
                       <h4 className="font-semibold text-neutral-200 text-base mb-0.5">Workflow Mapping</h4>
-                      <p className="text-sm text-neutral-500">Identify friction & handoff breakdowns</p>
+                      <p className="text-sm text-neutral-400">Identify friction & handoff breakdowns</p>
                     </div>
                   </div>
 
@@ -660,7 +601,7 @@ function App() {
                     </div>
                     <div className="flex-1">
                       <h4 className="font-semibold text-neutral-200 text-base mb-0.5">UX & Service Design</h4>
-                      <p className="text-sm text-neutral-500">Better customer & team experiences</p>
+                      <p className="text-sm text-neutral-400">Better customer & team experiences</p>
                     </div>
                   </div>
 
@@ -670,7 +611,7 @@ function App() {
                     </div>
                     <div className="flex-1">
                       <h4 className="font-semibold text-neutral-200 text-base mb-0.5">Process Design</h4>
-                      <p className="text-sm text-neutral-500">Clear systems people actually follow</p>
+                      <p className="text-sm text-neutral-400">Clear systems people actually follow</p>
                     </div>
                   </div>
 
@@ -680,7 +621,7 @@ function App() {
                     </div>
                     <div className="flex-1">
                       <h4 className="font-semibold text-neutral-200 text-base mb-0.5">Tool Alignment</h4>
-                      <p className="text-sm text-neutral-500">Software that supports workflows</p>
+                      <p className="text-sm text-neutral-400">Software that supports workflows</p>
                     </div>
                   </div>
                 </div>
@@ -720,38 +661,6 @@ function App() {
                   </div>
                 </div>
 
-                <div className="bg-neutral-950/50 border border-neutral-800/50 rounded-xl p-6 mb-8">
-                  <p className="text-xs font-bold text-violet-400 mb-5 tracking-wide">AUTONOMY BALANCE</p>
-
-                  <div className="space-y-6">
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center space-x-2">
-                          <Bot className="w-4 h-4 text-violet-400" />
-                          <span className="text-sm text-neutral-300">Agent Autonomy</span>
-                        </div>
-                        <span className="text-lg font-bold text-violet-400">85%</span>
-                      </div>
-                      <div className="w-full h-2 bg-neutral-800 rounded-full overflow-hidden">
-                        <div className="h-full bg-gradient-to-r from-violet-500 to-violet-400 rounded-full" style={{ width: '85%' }}></div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center space-x-2">
-                          <Shield className="w-4 h-4 text-violet-400" />
-                          <span className="text-sm text-neutral-300">Human Oversight</span>
-                        </div>
-                        <span className="text-lg font-bold text-violet-400">100%</span>
-                      </div>
-                      <div className="w-full h-2 bg-neutral-800 rounded-full overflow-hidden">
-                        <div className="h-full bg-gradient-to-r from-violet-500 to-violet-400 rounded-full" style={{ width: '100%' }}></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
                 <div className="mb-6">
                   <p className="text-xs font-bold text-violet-400 mb-3 tracking-wide">CORE PRINCIPLES</p>
                   <div className="grid grid-cols-2 gap-3">
@@ -760,7 +669,7 @@ function App() {
                         <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
                         <h4 className="font-semibold text-neutral-200 text-sm">Agent Autonomy</h4>
                       </div>
-                      <p className="text-sm text-neutral-500 leading-tight">Clear decision boundaries</p>
+                      <p className="text-sm text-neutral-400 leading-tight">Clear decision boundaries</p>
                     </div>
 
                     <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-violet-400/30 transition-colors">
@@ -768,7 +677,7 @@ function App() {
                         <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
                         <h4 className="font-semibold text-neutral-200 text-sm">Explainability</h4>
                       </div>
-                      <p className="text-sm text-neutral-500 leading-tight">Transparent reasoning</p>
+                      <p className="text-sm text-neutral-400 leading-tight">Transparent reasoning</p>
                     </div>
 
                     <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-violet-400/30 transition-colors">
@@ -776,7 +685,7 @@ function App() {
                         <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
                         <h4 className="font-semibold text-neutral-200 text-sm">Collaboration</h4>
                       </div>
-                      <p className="text-sm text-neutral-500 leading-tight">Effective handoffs</p>
+                      <p className="text-sm text-neutral-400 leading-tight">Effective handoffs</p>
                     </div>
 
                     <div className="bg-neutral-950/30 border border-neutral-800/30 rounded-lg p-3 hover:border-violet-400/30 transition-colors">
@@ -784,7 +693,7 @@ function App() {
                         <div className="w-1.5 h-1.5 rounded-full bg-violet-400"></div>
                         <h4 className="font-semibold text-neutral-200 text-sm">Trust Framework</h4>
                       </div>
-                      <p className="text-sm text-neutral-500 leading-tight">Control mechanisms</p>
+                      <p className="text-sm text-neutral-400 leading-tight">Control mechanisms</p>
                     </div>
                   </div>
                 </div>
@@ -796,7 +705,7 @@ function App() {
                     </div>
                     <div className="flex-1">
                       <h4 className="font-semibold text-neutral-200 text-base mb-0.5">AI Opportunity Assessment</h4>
-                      <p className="text-sm text-neutral-500">Value vs. risk analysis</p>
+                      <p className="text-sm text-neutral-400">Value vs. risk analysis</p>
                     </div>
                   </div>
 
@@ -806,7 +715,7 @@ function App() {
                     </div>
                     <div className="flex-1">
                       <h4 className="font-semibold text-neutral-200 text-base mb-0.5">Agent Workflow Design</h4>
-                      <p className="text-sm text-neutral-500">Autonomy vs. oversight definition</p>
+                      <p className="text-sm text-neutral-400">Autonomy vs. oversight definition</p>
                     </div>
                   </div>
 
@@ -816,7 +725,7 @@ function App() {
                     </div>
                     <div className="flex-1">
                       <h4 className="font-semibold text-neutral-200 text-base mb-0.5">Human-Agent Interface</h4>
-                      <p className="text-sm text-neutral-500">Monitor, guide & override systems</p>
+                      <p className="text-sm text-neutral-400">Monitor, guide & override systems</p>
                     </div>
                   </div>
 
@@ -826,7 +735,7 @@ function App() {
                     </div>
                     <div className="flex-1">
                       <h4 className="font-semibold text-neutral-200 text-base mb-0.5">Trust & Change Management</h4>
-                      <p className="text-sm text-neutral-500">Confident adoption strategies</p>
+                      <p className="text-sm text-neutral-400">Confident adoption strategies</p>
                     </div>
                   </div>
                 </div>
@@ -853,60 +762,7 @@ function App() {
       <section className="py-12 lg:py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-5xl font-bold mb-4">What Makes Revv Studio Different</h2>
-            <p className="text-lg lg:text-xl text-neutral-400 max-w-2xl mx-auto">
-              Results that speak louder than words
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8 mb-16">
-            <div className="group relative bg-gradient-to-br from-cyan-950/40 to-neutral-950/40 border border-cyan-500/30 rounded-3xl p-8 hover:border-cyan-400/60 transition-all duration-700">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/20 group-hover:to-transparent rounded-3xl transition-all duration-700"></div>
-              <div className="relative">
-                <div className="mb-6">
-                  <div className="text-[clamp(3rem,8vw,4.5rem)] font-black bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent mb-2 animate-pulse">
-                    3x
-                  </div>
-                  <div className="h-2 bg-neutral-800 rounded-full overflow-hidden mb-4">
-                    <div className="h-full bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full animate-[grow_2s_ease-out_forwards]" style={{ width: '0%', animation: 'grow 2s ease-out forwards' }}></div>
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-cyan-100">Faster Implementation</h3>
-                <p className="text-neutral-400 text-base">Strategy to execution in weeks, not quarters</p>
-              </div>
-            </div>
-
-            <div className="group relative bg-gradient-to-br from-emerald-950/40 to-neutral-950/40 border border-emerald-500/30 rounded-3xl p-8 hover:border-emerald-400/60 transition-all duration-700 lg:translate-y-8">
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 to-emerald-500/0 group-hover:from-emerald-500/20 group-hover:to-transparent rounded-3xl transition-all duration-700"></div>
-              <div className="relative">
-                <div className="mb-6">
-                  <div className="text-[clamp(3rem,8vw,4.5rem)] font-black bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent mb-2 animate-pulse">
-                    94%
-                  </div>
-                  <div className="h-2 bg-neutral-800 rounded-full overflow-hidden mb-4">
-                    <div className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full" style={{ width: '0%', animation: 'grow 2s ease-out 0.3s forwards' }}></div>
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-emerald-100">Client Satisfaction</h3>
-                <p className="text-neutral-400 text-base">Built on honesty over hype</p>
-              </div>
-            </div>
-
-            <div className="group relative bg-gradient-to-br from-violet-950/40 to-neutral-950/40 border border-violet-500/30 rounded-3xl p-8 hover:border-violet-400/60 transition-all duration-700">
-              <div className="absolute inset-0 bg-gradient-to-br from-violet-500/0 to-violet-500/0 group-hover:from-violet-500/20 group-hover:to-transparent rounded-3xl transition-all duration-700"></div>
-              <div className="relative">
-                <div className="mb-6">
-                  <div className="text-[clamp(3rem,8vw,4.5rem)] font-black bg-gradient-to-r from-violet-400 to-violet-300 bg-clip-text text-transparent mb-2 animate-pulse">
-                    100%
-                  </div>
-                  <div className="h-2 bg-neutral-800 rounded-full overflow-hidden mb-4">
-                    <div className="h-full bg-gradient-to-r from-violet-500 to-violet-400 rounded-full" style={{ width: '0%', animation: 'grow 2s ease-out 0.6s forwards' }}></div>
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-violet-100">Human-Centered</h3>
-                <p className="text-neutral-400 text-base">Technology that adapts to people</p>
-              </div>
-            </div>
+            <h2 className="text-3xl lg:text-5xl font-bold">What Makes Revv Studio Different</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
@@ -997,7 +853,7 @@ function App() {
               </p>
               <div className="pt-4 border-t border-neutral-800">
                 <p className="font-semibold text-base">Director of Operations</p>
-                <p className="text-sm text-neutral-500">Financial Services</p>
+                <p className="text-sm text-neutral-400">Financial Services</p>
               </div>
             </div>
 
@@ -1008,7 +864,7 @@ function App() {
               </p>
               <div className="pt-4 border-t border-neutral-800">
                 <p className="font-semibold text-base">VP of Product</p>
-                <p className="text-sm text-neutral-500">Healthcare Technology</p>
+                <p className="text-sm text-neutral-400">Healthcare Technology</p>
               </div>
             </div>
 
@@ -1019,7 +875,7 @@ function App() {
               </p>
               <div className="pt-4 border-t border-neutral-800">
                 <p className="font-semibold text-base">Chief Operating Officer</p>
-                <p className="text-sm text-neutral-500">Manufacturing</p>
+                <p className="text-sm text-neutral-400">Manufacturing</p>
               </div>
             </div>
 
@@ -1030,7 +886,7 @@ function App() {
               </p>
               <div className="pt-4 border-t border-neutral-800">
                 <p className="font-semibold text-base">Head of Digital Transformation</p>
-                <p className="text-sm text-neutral-500">Enterprise Retail</p>
+                <p className="text-sm text-neutral-400">Enterprise Retail</p>
               </div>
             </div>
 
@@ -1041,7 +897,7 @@ function App() {
               </p>
               <div className="pt-4 border-t border-neutral-800">
                 <p className="font-semibold text-base">Analytics Manager</p>
-                <p className="text-sm text-neutral-500">SaaS Platform</p>
+                <p className="text-sm text-neutral-400">SaaS Platform</p>
               </div>
             </div>
 
@@ -1052,7 +908,7 @@ function App() {
               </p>
               <div className="pt-4 border-t border-neutral-800">
                 <p className="font-semibold text-base">SVP, Customer Success</p>
-                <p className="text-sm text-neutral-500">B2B Technology</p>
+                <p className="text-sm text-neutral-400">B2B Technology</p>
               </div>
             </div>
           </div>
@@ -1166,13 +1022,14 @@ function App() {
                 <Zap className="w-5 h-5 text-cyan-400" />
                 <span className="font-bold">Revv Studio</span>
               </div>
-              <p className="text-neutral-500 text-sm">Scott McBride · Jacksonville, FL</p>
+              <p className="text-neutral-400 text-sm">Scott McBride · Jacksonville, FL</p>
             </div>
             <nav aria-label="Footer" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
               <a href="/#case-studies" className="text-neutral-400 hover:text-cyan-400">Case Studies</a>
               <a href="/blog/" className="text-neutral-400 hover:text-cyan-400">Blog</a>
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-neutral-400 hover:text-cyan-400">Contact</a>
             </nav>
-            <p className="text-neutral-500 text-sm text-center md:text-right">
+            <p className="text-neutral-400 text-sm text-center md:text-right">
               Building better systems for humans. Today and tomorrow.
             </p>
           </div>

@@ -21,6 +21,23 @@
     overflow-wrap: break-word;
     text-wrap: balance;
   }
+
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [class*='opacity-0'][class*='animate-'] {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    animation: none !important;
+  }
 }
 
 .blog-body {

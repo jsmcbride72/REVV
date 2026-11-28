@@ -8,6 +8,8 @@ export interface CaseStudy {
   challenge: string;
   solution: string;
   results: string[];
+  resultsHeading?: string;
+  resultsContext?: string;
   images: string[];
   imageAlts?: string[];
   wideImages?: string[];
@@ -45,8 +47,8 @@ export const caseStudies: CaseStudy[] = [
     wideImages: ['/driven3.mp4'],
     tags: ['Fintech', 'Mobile UX', 'Fleet Management', 'Real-time Communication'],
     color: 'cyan',
-    videoSrc: '/animate_this_in_a_cool_way_tha_Happy_Horse_11_23300.mp4',
-    heroSrc: '/I_need_to_start_with_the_truck_Seedance_20_20111.mp4'
+    videoSrc: '/driven-driver-dashboard.mp4',
+    heroSrc: '/driven-fleet-hero.mp4'
   },
   {
     id: 'newsring',
@@ -72,7 +74,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     tags: ['Conversational AI', 'Content Discovery', 'UX Design', 'Real-time Data'],
     color: 'violet',
-    videoSrc: '/I_want_a_man_using_this_on_his_Seedance_20_54823.mp4',
+    videoSrc: '/newsring-product.mp4',
     heroSrc: '/nr-case.mp4'
   },
   {
@@ -90,8 +92,8 @@ export const caseStudies: CaseStudy[] = [
       '50K+ Active gamers in 6 months'
     ],
     images: [
-      '/give_me_a_product_shot_of_this_Nano_Banana_2_29271.jpg',
-      '/give_me_a_product_shot_of_this_Nano_Banana_2_41828.jpg'
+      '/stridegg-player-profiles.jpg',
+      '/stridegg-tournament-profile.jpg'
     ],
     imageAlts: [
       'StrideGG player profiles on four phones in front of a desktop dashboard',
@@ -103,7 +105,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ['Gaming Platform', 'Real-time Data', 'Tournament Systems', 'Community Building'],
     color: 'cyan',
     videoSrc: '/20240207_strideGG_UNIVPROF_VID_1.mp4',
-    heroSrc: '/back_view_of_a_gamer_in_a_game_Seedance_20_54336.mp4'
+    heroSrc: '/stridegg-profile-builder.mp4'
   },
   {
     id: 'senior-pga-concession',
@@ -118,7 +120,7 @@ export const caseStudies: CaseStudy[] = [
       '4.2s Average response time'
     ],
     images: [
-      '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4',
+      '/concession-devices.mp4',
       '/CONCESSION-EP-2.mp4'
     ],
     lessons: [
@@ -137,7 +139,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     tags: ['Live Events', 'PGA', 'Real-time Data', 'Tournament Technology'],
     color: 'emerald',
-    videoSrc: '/I_NEED_ALL_OF_THESE_IIN_A_COOL_Seedance_20_98882.mp4',
+    videoSrc: '/concession-devices.mp4',
     heroSrc: '/reel1-2.mp4'
   },
   {
@@ -146,25 +148,27 @@ export const caseStudies: CaseStudy[] = [
     category: 'AI Platform & Brand',
     description: 'Designed and built the digital presence for FuzeBox AI — an AI-first venture whose framework turns fragmented enterprise AI efforts into orchestrated, measurable execution.',
     challenge: 'FuzeBox AI needed a digital presence that could do justice to the framework behind it. Enterprise buyers were being sold AI tools that create "AI theater" — activity without outcomes. The site had to explain three problems every enterprise feels: the Value Realization Gap between AI capability and P&L impact, the Coordination Tax that absorbs 30-50% of enterprise effort in handoffs and decision latency, and the Tool-First Trap of pilots that never scale.\n\nThe challenge was translating a sophisticated operating framework — FuzeBoxOS, with its Transformation Index, productized Blueprints, and vertical apps like EventPulse, VIP Play, and Loop TV — into a clear, credible story that operators, not just technologists, would trust.',
-    solution: 'We designed and built the FuzeBox.ai website as an orchestration story told through design. The architecture mirrors the framework itself: a Platform section explaining the FuzeBoxOS framework and its productized Blueprints, a "Why FuzeBox" section that names the problem in plain operational terms before offering solutions by outcome, and proof pages anchored in real deployments — $30M in documented EBITDA impact at Lee Enterprises, 11 on-time cloud migrations at Caesars Entertainment, and a 10x improvement in technology investment value at Las Vegas Sands.\n\nThe visual design uses a dark, disciplined enterprise aesthetic: a custom logo and brand mark, structured page architecture across platform, delivery, ecosystem, and research sections, and a leadership presence featuring the executive team. The result is a site that sells the way FuzeBox operates — outcome-first, proof-backed, and built for enterprises tired of AI pilots that never reach the balance sheet.',
+    solution: 'We designed and built the FuzeBox.ai website as an orchestration story told through design. The architecture mirrors the framework itself: a Platform section explaining the FuzeBoxOS framework and its productized Blueprints, a "Why FuzeBox" section that names the problem in plain operational terms before offering solutions by outcome, and proof pages anchored in FuzeBox\'s customer deployments — $30M in documented EBITDA impact at Lee Enterprises, 11 on-time cloud migrations at Caesars Entertainment, and a 10x improvement in technology investment value at Las Vegas Sands.\n\nThe visual design uses a dark, disciplined enterprise aesthetic: a custom logo and brand mark, structured page architecture across platform, delivery, ecosystem, and research sections, and a leadership presence featuring the executive team. The result is a site that sells the way FuzeBox operates — outcome-first, proof-backed, and built for enterprises tired of AI pilots that never reach the balance sheet.',
+    resultsHeading: 'FuzeBox customer outcomes',
+    resultsContext: 'These figures are FuzeBox product and customer outcomes, the context for the marketing site Revv designed. They are not results Revv delivered.',
     results: [
-      '$30M Documented EBITDA impact (Lee Enterprises)',
-      '11 Cloud migrations on time and on budget (Caesars)',
-      '10x Technology investment value improvement (Las Vegas Sands)',
-      '$100B+ Cumulative enterprise market value impacted',
-      '5+ Portfolio companies represented across the ecosystem'
+      '$30M Documented EBITDA from FuzeBox deployments at Lee Enterprises',
+      '11 On-time, on-budget cloud migrations FuzeBox completed at Caesars',
+      '10x Technology investment value FuzeBox reports at Las Vegas Sands',
+      '$100B+ Cumulative enterprise market value FuzeBox attributes to its work',
+      '5+ Portfolio companies in the FuzeBox ecosystem the site presents'
     ],
     images: [
-      '/Blue-lit_conference_auditorium.png',
-      '/Cobalt-lit_stadium_event_hero.png',
-      '/FuzeBox_Website_Case_Study_Spread.png'
+      '/Blue-lit_conference_auditorium.webp',
+      '/Cobalt-lit_stadium_event_hero.webp',
+      '/FuzeBox_Website_Case_Study_Spread.webp'
     ],
     imageAlts: [
       'Event Pulse conferences and meetings scene in a blue-lit auditorium',
       'Event Pulse sports and live events scene over a lit stadium',
       'FuzeBox website pages for the platform and solutions by outcome',
     ],
-    wideImages: ['/FuzeBox_AI_Device_Trio.png'],
+    wideImages: ['/FuzeBox_AI_Device_Trio.jpg'],
     wideImageAlts: ['FuzeBox website on a desktop monitor, tablet, and phone'],
     tags: ['Enterprise AI', 'Brand & Web Design', 'B2B Marketing', 'Framework Storytelling'],
     color: 'cyan',
@@ -187,7 +191,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     images: [
       '/ep-seat-phones.jpg',
-      '/ep-vegas.png',
+      '/ep-vegas.webp',
       '/ep-404-phones.jpg',
       '/ep-superbowl-map.jpg'
     ],
@@ -203,7 +207,7 @@ export const caseStudies: CaseStudy[] = [
     color: 'cyan',
     videoSrc: '/ep-explainer.mp4',
     heroSrc: '/ep-explainer.mp4',
-    posterSrc: '/ep-explainer-poster.jpg'
+    posterSrc: '/posters/ep-explainer.jpg'
   }
 ];
 
@@ -215,6 +219,13 @@ export function getCaseStudy(id: string): CaseStudy | undefined {
 
 export function caseStudyPath(id: string): string {
   return `/work/${id}/`;
+}
+
+export function posterForVideo(src: string, posterSrc?: string): string {
+  if (posterSrc) return posterSrc;
+  const file = src.split('/').pop() ?? 'video';
+  const base = file.replace(/\.(mp4|mov|webm)$/i, '');
+  return `/posters/${base}.jpg`;
 }
 
 export function caseStudyShareImage(study: CaseStudy): string {

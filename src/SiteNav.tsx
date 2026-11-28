@@ -16,48 +16,41 @@ export default function SiteNav({ onContact }: SiteNavProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const onHome = window.location.pathname === '/';
 
-  const goToSection = (sectionId: string) => {
+  const onSectionClick = (event: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     setMenuOpen(false);
-    if (!onHome) {
-      window.location.assign(`/#${sectionId}`);
-      return;
-    }
+    if (!onHome) return;
+    event.preventDefault();
     const element = document.getElementById(sectionId);
     if (!element) return;
     const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - 64;
     window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
   };
 
-  const goHome = () => {
+  const onHomeClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     setMenuOpen(false);
-    if (onHome) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-    window.location.assign('/');
+    if (!onHome) return;
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-xl border-b border-neutral-800/50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
         <div className="flex justify-between items-center gap-4">
-          <button
-            onClick={goHome}
-            className="cursor-pointer hover:opacity-80 transition-opacity"
-            aria-label="Revv Studio home"
-          >
+          <a href="/" onClick={onHomeClick} className="hover:opacity-80 transition-opacity">
             <img src="/logo3.png" alt="REVV Studio" className="h-10 w-auto" />
-          </button>
+          </a>
 
           <div className="hidden md:flex items-center space-x-8">
             {SECTION_LINKS.map((link) => (
-              <button
+              <a
                 key={link.id}
-                onClick={() => goToSection(link.id)}
+                href={`/#${link.id}`}
+                onClick={(event) => onSectionClick(event, link.id)}
                 className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors"
               >
                 {link.label}
-              </button>
+              </a>
             ))}
             <a href="/blog/" className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
               Blog
@@ -91,13 +84,14 @@ export default function SiteNav({ onContact }: SiteNavProps) {
         {menuOpen && (
           <div className="md:hidden mt-4 pb-2 flex flex-col gap-1 border-t border-neutral-800 pt-4">
             {SECTION_LINKS.map((link) => (
-              <button
+              <a
                 key={link.id}
-                onClick={() => goToSection(link.id)}
+                href={`/#${link.id}`}
+                onClick={(event) => onSectionClick(event, link.id)}
                 className="text-left px-2 py-3 text-base text-neutral-200 hover:text-cyan-400"
               >
                 {link.label}
-              </button>
+              </a>
             ))}
             <a
               href="/blog/"
