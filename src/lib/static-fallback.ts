@@ -91,23 +91,83 @@ function postFallback(post: BlogPost): string {
     </main>`;
 }
 
+function paragraphs(text: string): string {
+  return text
+    .split('\n\n')
+    .map((para) => `<p class="text-neutral-300 leading-relaxed mb-4">${escapeHtml(para)}</p>`)
+    .join('\n');
+}
+
 function caseStudyFallback(study: CaseStudy): string {
   const heading = study.resultsHeading ?? 'Results';
-  const context = study.resultsContext
+  const context = study.context ? paragraphs(study.context) : '';
+  const role = study.role
+    ? `<h2 class="text-2xl font-bold mb-4">Role</h2>
+        <p class="text-neutral-300 leading-relaxed mb-8">${escapeHtml(study.role)}</p>`
+    : '';
+  const relatedStudy = study.related
+    ? caseStudies.find((item) => item.id === study.related?.id)
+    : undefined;
+  const related = relatedStudy
+    ? `<p class="text-neutral-300 leading-relaxed mb-8">${escapeHtml(study.related?.lead ?? '')} <a href="${escapeHtml(caseStudyPath(relatedStudy.id))}">${escapeHtml(relatedStudy.title)}</a></p>`
+    : '';
+  const decisions = (study.decisions ?? [])
+    .map((decision, index) => {
+      const tradeoff = decision.tradeoff
+        ? `<p class="text-neutral-300 leading-relaxed mb-4">Tradeoff: ${escapeHtml(decision.tradeoff)}</p>`
+        : '';
+      return `<section>
+          <h3 class="text-xl font-bold mb-2">${index + 1}. ${escapeHtml(decision.title)}</h3>
+          ${paragraphs(decision.reasoning)}
+          ${tradeoff}
+        </section>`;
+    })
+    .join('\n');
+  const decisionBlock =
+    decisions.length > 0
+      ? `<h2 class="text-2xl font-bold mb-4">Key decisions</h2>
+        ${decisions}`
+      : '';
+  const changed = study.changed
+    ? `<h2 class="text-2xl font-bold mb-4">What changed</h2>
+        ${paragraphs(study.changed)}`
+    : '';
+  const resultsContext = study.resultsContext
     ? `<p class="text-neutral-300 leading-relaxed mb-6">${escapeHtml(study.resultsContext)}</p>`
     : '';
   const results = study.results.map((result) => `<li>${escapeHtml(result)}</li>`).join('');
+  const resultsNote = study.resultsNote
+    ? `<p class="text-neutral-300 leading-relaxed mt-6">${escapeHtml(study.resultsNote)}</p>`
+    : '';
+  const captions = [...(study.wideImageAlts ?? []), ...(study.imageAlts ?? [])]
+    .map((alt) => `<p class="text-neutral-400 text-sm mb-2">${escapeHtml(alt)}</p>`)
+    .join('\n');
+  const gallery = captions
+    ? `<h2 class="text-2xl font-bold mb-4">Product Gallery</h2>
+        ${captions}`
+    : '';
 
   return `<main class="bg-neutral-950 text-neutral-100" data-static-content="true">
       <article class="max-w-3xl mx-auto px-6 pt-28 pb-20">
         <p class="text-sm font-semibold uppercase tracking-widest text-cyan-400 mb-4">${escapeHtml(study.category)}</p>
         <h1 class="text-4xl font-bold leading-tight mb-6">${escapeHtml(study.title)}</h1>
         <p class="text-xl text-neutral-300 leading-relaxed mb-8">${escapeHtml(study.description)}</p>
-        <h2 class="text-2xl font-bold mb-4">${escapeHtml(heading)}</h2>
         ${context}
+        ${role}
+        <h2 class="text-2xl font-bold mb-4">The Challenge</h2>
+        ${paragraphs(study.challenge)}
+        <h2 class="text-2xl font-bold mb-4">Our Solution</h2>
+        ${paragraphs(study.solution)}
+        ${related}
+        ${decisionBlock}
+        ${gallery}
+        ${changed}
+        <h2 class="text-2xl font-bold mb-4">${escapeHtml(heading)}</h2>
+        ${resultsContext}
         <ul class="list-disc pl-5 space-y-2 text-neutral-300">
           ${results}
         </ul>
+        ${resultsNote}
         ${contactLink()}
       </article>
     </main>`;

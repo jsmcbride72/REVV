@@ -87,9 +87,13 @@ export function applyPageMeta(template: string, meta: PublicPage): string {
     .replace(canonical, '')
     .replace(jsonLd, '');
   const block = `\n${renderHead(meta)}\n`;
+  // A string replacement would treat $30M and $100B+ in the JSON-LD as capture tokens.
   const withMeta = /<meta\b[^>]*\bname=["']viewport["'][^>]*>/i.test(stripped)
-    ? stripped.replace(/(<meta\b[^>]*\bname=["']viewport["'][^>]*>)/i, `$1${block}`)
-    : stripped.replace(/[ \t]*<\/head>/i, `${block}  </head>`);
+    ? stripped.replace(
+        /(<meta\b[^>]*\bname=["']viewport["'][^>]*>)/i,
+        (viewport) => `${viewport}${block}`,
+      )
+    : stripped.replace(/[ \t]*<\/head>/i, (closing) => `${block}${closing}`);
 
   if (withMeta === stripped || !/<\/head>/i.test(withMeta)) {
     throw new Error('Built index.html is missing </head>, so page meta tags cannot be inserted.');
@@ -197,6 +201,36 @@ function assertShell(html: string, meta: PublicPage): void {
     }
   }
 
+  if (meta.path.startsWith('/work/')) {
+    const study = caseStudies.find((item) => meta.path === caseStudyPath(item.id));
+    const graph = (data as { '@graph'?: Array<Record<string, unknown>> })['@graph'] ?? [];
+    const work = graph.find((item) => item['@type'] === 'CreativeWork');
+    if (!study || !work) {
+      throw new Error(`HTML shell for ${meta.path} is missing its case study structured data.`);
+    }
+    const text = typeof work.text === 'string' ? work.text : '';
+    if (study.role && work.creditText !== study.role) {
+      throw new Error(`HTML shell for ${meta.path} is missing the role line in JSON-LD.`);
+    }
+    if (study.role && !text.includes(study.role)) {
+      throw new Error(`HTML shell for ${meta.path} JSON-LD text is missing the role line.`);
+    }
+    if (study.resultsNote && work.citation !== study.resultsNote) {
+      throw new Error(`HTML shell for ${meta.path} is missing the source note in JSON-LD.`);
+    }
+    for (const decision of study.decisions ?? []) {
+      if (!text.includes(decision.title) || !text.includes(decision.reasoning)) {
+        throw new Error(`HTML shell for ${meta.path} JSON-LD is missing decision "${decision.title}".`);
+      }
+      if (decision.tradeoff && !text.includes(decision.tradeoff)) {
+        throw new Error(`HTML shell for ${meta.path} JSON-LD is missing the tradeoff for "${decision.title}".`);
+      }
+    }
+    if (study.changed && !text.includes(study.changed)) {
+      throw new Error(`HTML shell for ${meta.path} JSON-LD is missing the qualitative result.`);
+    }
+  }
+
   if (meta.path.startsWith('/blog/') && meta.path !== '/blog/') {
     const graph = (data as { '@graph'?: Array<Record<string, unknown>> })['@graph'] ?? [];
     const posting = graph.find((item) => item['@type'] === 'BlogPosting');
@@ -232,8 +266,32 @@ function injectStaticContent(html: string, page: PublicPage, posts: BlogPost[]):
       throw new Error(`Blog post ${page.path} is missing links.`);
     }
   }
-  if (page.path.startsWith('/work/') && !next.includes('<li>')) {
-    throw new Error(`Case study ${page.path} is missing results.`);
+  if (page.path.startsWith('/work/')) {
+    if (!next.includes('<li>')) {
+      throw new Error(`Case study ${page.path} is missing results.`);
+    }
+    const study = caseStudies.find((item) => page.path === caseStudyPath(item.id));
+    if (!study) throw new Error(`Case study ${page.path} has no source record.`);
+    const required = [
+      study.role,
+      study.changed,
+      study.resultsNote,
+      study.resultsContext,
+      ...(study.decisions ?? []).flatMap((decision) => [decision.title, decision.reasoning, decision.tradeoff]),
+      ...study.results,
+    ];
+    for (const value of required) {
+      if (!value) continue;
+      for (const part of value.split('\n\n')) {
+        const snippet = part.trim();
+        if (snippet && !next.includes(escapeHtml(snippet))) {
+          throw new Error(`Case study ${page.path} static HTML is missing: ${snippet.slice(0, 80)}`);
+        }
+      }
+    }
+    if (next.includes('QUESTION FOR SCOTT') || next.includes('[QUESTION')) {
+      throw new Error(`Case study ${page.path} still contains an unanswered placeholder.`);
+    }
   }
   return next;
 }
