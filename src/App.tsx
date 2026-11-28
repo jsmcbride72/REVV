@@ -5,7 +5,7 @@ import MediaVideo from './MediaVideo';
 import { usePrefersReducedMotion } from './usePrefersReducedMotion';
 import Seo from './Seo';
 import SiteNav from './SiteNav';
-import { caseStudies, caseStudyPath, posterForVideo } from './lib/case-studies';
+import { caseStudies, caseStudyPath, getCaseStudy, posterForVideo } from './lib/case-studies';
 import { homePage } from './lib/public-pages';
 import { CONTACT_EMAIL, HERO_SUMMARY, HERO_TITLE } from './lib/site';
 
@@ -144,7 +144,7 @@ function App() {
                 NewsRing — Case Study
               </p>
               <h2 className="text-[clamp(1.25rem,2.2vw+0.7rem,2.25rem)] font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards] max-w-full break-words">
-                Redefining Content Discovery Through Conversational AI
+                {getCaseStudy('newsring')?.title}
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
                 <a
@@ -165,7 +165,7 @@ function App() {
                 Driven — Case Study
               </p>
               <h2 className="text-[clamp(1.25rem,2.2vw+0.7rem,2.25rem)] font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards] max-w-full break-words">
-                Revolutionizing Fleet Fuel Management for the Mobile Workforce
+                {getCaseStudy('fuel-card-platform')?.title}
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
                 <a
@@ -186,7 +186,7 @@ function App() {
                 StrideGG — Case Study
               </p>
               <h2 className="text-[clamp(1.25rem,2.2vw+0.7rem,2.25rem)] font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards] max-w-full break-words">
-                Unifying the Gaming Community Through Centralized Stats and Competitive Play
+                {getCaseStudy('gaming-platform')?.title}
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
                 <a
@@ -204,10 +204,10 @@ function App() {
           <div className="flex min-w-0 items-center pt-28 sm:pt-32 lg:pt-40 pb-24 pl-5 sm:pl-12 lg:pl-28 pr-5 sm:pr-6 lg:pr-8" style={{ width: `${100 / HERO_SLIDE_COUNT}%` }}>
             <div className="text-left max-w-2xl w-full min-w-0" key={`s4-${animKey}`}>
               <p className="text-xs sm:text-sm lg:text-base font-bold text-emerald-400 tracking-widest uppercase mb-3 sm:mb-4 opacity-0 animate-[slideInLeft_0.7s_ease-out_1.5s_forwards]">
-                Proven Live — First Deployed.
+                Senior PGA — Case Study
               </p>
               <h2 className="text-[clamp(1.25rem,2.2vw+0.7rem,2.25rem)] font-bold text-white leading-snug mb-6 sm:mb-8 drop-shadow-2xl opacity-0 animate-[slideInLeft_0.9s_ease-out_1.7s_forwards] max-w-full break-words">
-                First deployed at the Senior PGA, The Concession.
+                {getCaseStudy('senior-pga-concession')?.title}
               </h2>
               <div className="opacity-0 animate-[slideInLeft_0.7s_ease-out_1.9s_forwards]">
                 <a

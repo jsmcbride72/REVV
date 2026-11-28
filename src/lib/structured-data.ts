@@ -1,5 +1,5 @@
 import type { BlogPost } from './blog-frontmatter.ts';
-import { caseStudyPath, caseStudyShareImage, type CaseStudy } from './case-studies.ts';
+import { caseStudyNarrative, caseStudyPath, caseStudyShareImage, type CaseStudy } from './case-studies.ts';
 import {
   absoluteSiteUrl,
   BLOG_INDEX_DESCRIPTION,
@@ -154,12 +154,15 @@ export function caseStudyJsonLd(study: CaseStudy) {
     url,
     image: absoluteSiteUrl(caseStudyShareImage(study)),
     inLanguage: 'en',
+    text: caseStudyNarrative(study),
     creator: {
       '@type': 'Organization',
       name: SITE_NAME,
       url: `${SITE_ORIGIN}/`,
     },
   };
+  if (study.role) work.creditText = study.role;
+  if (study.resultsNote) work.citation = study.resultsNote;
   if (study.tags.length > 0) work.keywords = study.tags.join(', ');
 
   return {

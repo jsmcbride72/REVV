@@ -1,10 +1,29 @@
 import { ChevronLeft, TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2 } from 'lucide-react';
 import MediaVideo from './MediaVideo';
-import { posterForVideo, type CaseStudy } from './lib/case-studies';
+import { caseStudyPath, getCaseStudy, posterForVideo, type CaseStudy } from './lib/case-studies';
 import { CONTACT_EMAIL } from './lib/site';
 
 interface CaseStudyModalProps {
   caseStudy: CaseStudy;
+}
+
+function Paragraphs({ text }: { text: string }) {
+  return (
+    <div className="space-y-4">
+      {text.split('\n\n').map((para, i) => (
+        <p key={i} className="text-neutral-300 leading-relaxed text-base">{para}</p>
+      ))}
+    </div>
+  );
+}
+
+function splitMetric(result: string): { metric: string; description: string } {
+  const match = result.match(/^(nearly\s+)?(\$?\d[\d.,]*[BMK]?[%x+★s]*)(.*)$/i);
+  if (!match?.[2]) return { metric: '', description: result };
+  return {
+    metric: `${match[1] ?? ''}${match[2]}`.replace(/\s+/g, ' ').trim(),
+    description: match[3].trim(),
+  };
 }
 
 export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
@@ -82,6 +101,15 @@ export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
           {caseStudy.description}
         </p>
 
+        {caseStudy.context && <Paragraphs text={caseStudy.context} />}
+
+        {caseStudy.role && (
+          <p className="text-base text-neutral-200 leading-relaxed max-w-3xl">
+            <span className={`block text-xs font-bold tracking-widest uppercase mb-2 ${colors.text}`}>Role</span>
+            {caseStudy.role}
+          </p>
+        )}
+
         {/* Challenge */}
         <div className={`bg-gradient-to-br ${colors.bg} to-transparent border ${colors.border} rounded-2xl p-8`}>
           <h2 className={`text-2xl font-bold mb-4 ${colors.text}`}>The Challenge</h2>
@@ -95,12 +123,43 @@ export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
         {/* Solution */}
         <div className="bg-neutral-900/60 border border-neutral-800 rounded-2xl p-8">
           <h2 className="text-2xl font-bold mb-4 text-white">Our Solution</h2>
-          <div className="space-y-4">
-            {caseStudy.solution.split('\n\n').map((para, i) => (
-              <p key={i} className="text-neutral-300 leading-relaxed text-base">{para}</p>
-            ))}
-          </div>
+          <Paragraphs text={caseStudy.solution} />
+          {caseStudy.related && getCaseStudy(caseStudy.related.id) && (
+            <p className="text-neutral-300 leading-relaxed text-base mt-4">
+              {caseStudy.related.lead}{' '}
+              <a href={caseStudyPath(caseStudy.related.id)} className={`${colors.text} hover:text-white`}>
+                {getCaseStudy(caseStudy.related.id)?.title}
+              </a>
+            </p>
+          )}
         </div>
+
+        {caseStudy.decisions && caseStudy.decisions.length > 0 && (
+          <div>
+            <h2 className="text-2xl font-bold mb-6 text-white">Key decisions</h2>
+            <div className="space-y-4">
+              {caseStudy.decisions.map((decision, index) => (
+                <div key={decision.title} className={`bg-gradient-to-br ${colors.bg} to-transparent border ${colors.border} rounded-2xl p-6`}>
+                  <div className="flex items-start gap-4">
+                    <div className={`flex-shrink-0 w-8 h-8 rounded-full border ${colors.border} flex items-center justify-center`}>
+                      <span className={`text-sm font-black ${colors.text}`}>{index + 1}</span>
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className={`text-lg font-bold mb-2 ${colors.text}`}>{decision.title}</h3>
+                      <Paragraphs text={decision.reasoning} />
+                      {decision.tradeoff && (
+                        <p className="text-neutral-300 leading-relaxed text-base mt-4">
+                          <span className={`font-semibold ${colors.text}`}>Tradeoff. </span>
+                          {decision.tradeoff}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Lessons Learned */}
         {caseStudy.lessons && caseStudy.lessons.length > 0 && (
@@ -148,6 +207,11 @@ export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
                         loading="lazy"
                       />
                     )}
+                    {caseStudy.wideImageAlts?.[index] && (
+                      <p className="px-4 py-3 text-sm text-neutral-400 leading-snug border-t border-neutral-800">
+                        {caseStudy.wideImageAlts[index]}
+                      </p>
+                    )}
                   </div>
                 );
               })}
@@ -174,10 +238,22 @@ export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
                         loading="lazy"
                       />
                     )}
+                    {caseStudy.imageAlts?.[index] && (
+                      <p className="px-4 py-3 text-sm text-neutral-400 leading-snug border-t border-neutral-800">
+                        {caseStudy.imageAlts[index]}
+                      </p>
+                    )}
                   </div>
                 );
               })}
             </div>
+          </div>
+        )}
+
+        {caseStudy.changed && (
+          <div className="bg-neutral-900/60 border border-neutral-800 rounded-2xl p-8">
+            <h2 className="text-2xl font-bold mb-4 text-white">What changed</h2>
+            <Paragraphs text={caseStudy.changed} />
           </div>
         )}
 
@@ -193,9 +269,7 @@ export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
             {caseStudy.results.map((result, index) => {
               const icons = [TrendingDown, Clock, Zap, Star, Users, Target, BarChart3, Trophy, CheckCircle2];
               const Icon = icons[index % icons.length];
-              const metricMatch = result.match(/^(\$?\d[\d.,]*[BMK]?[%x+★s]*)/);
-              const metric = metricMatch ? metricMatch[1] : '';
-              const description = result.substring(metric.length).trim();
+              const { metric, description } = splitMetric(result);
 
               return (
                 <div key={index} className="group bg-neutral-950/50 border border-neutral-800/50 rounded-xl p-5 hover:border-neutral-700 transition-all duration-300">
@@ -204,8 +278,12 @@ export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
                       <Icon className={`w-6 h-6 ${colors.text}`} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className={`text-3xl font-black ${colors.text} mb-1 leading-none`}>{metric}</div>
-                      <p className="text-sm text-neutral-400 leading-tight">{description}</p>
+                      {metric && (
+                        <div className={`text-3xl font-black ${colors.text} mb-1 leading-none`}>{metric}</div>
+                      )}
+                      <p className={metric ? 'text-sm text-neutral-400 leading-tight' : 'text-base text-neutral-300 leading-snug'}>
+                        {description}
+                      </p>
                     </div>
                   </div>
                   <div className="mt-4 h-1.5 bg-neutral-800/50 rounded-full overflow-hidden">
@@ -218,6 +296,9 @@ export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
               );
             })}
           </div>
+          {caseStudy.resultsNote && (
+            <p className="text-sm text-neutral-400 leading-relaxed mt-6 max-w-3xl">{caseStudy.resultsNote}</p>
+          )}
         </div>
 
         {/* Tags */}
