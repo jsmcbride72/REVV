@@ -1,6 +1,8 @@
+import { ABOUT_DESCRIPTION } from './about.ts';
 import type { BlogPost } from './blog-frontmatter.ts';
 import { caseStudies, caseStudyPath } from './case-studies.ts';
 import {
+  ABOUT_PATH,
   absoluteSiteUrl,
   BLOG_INDEX_DESCRIPTION,
   CONTACT_EMAIL,
@@ -25,6 +27,10 @@ export function renderLlms(posts: BlogPost[]): string {
     `${HERO_TITLE}. ${HERO_SUMMARY}`,
     '',
     `Contact: ${CONTACT_EMAIL}`,
+    '',
+    '## About',
+    '',
+    `- [About Scott McBride](${absoluteSiteUrl(ABOUT_PATH)}): ${ABOUT_DESCRIPTION}`,
     '',
     '## Services',
     '',

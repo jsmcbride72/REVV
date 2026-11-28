@@ -1,6 +1,9 @@
+import { ABOUT_DESCRIPTION, HEADSHOT_ALT, HEADSHOT_SRC } from './about.ts';
 import type { BlogPost } from './blog-frontmatter.ts';
 import { caseStudies, caseStudyPath, caseStudyShareImage, type CaseStudy } from './case-studies.ts';
 import {
+  ABOUT_PATH,
+  ABOUT_TITLE,
   BLOG_INDEX_DESCRIPTION,
   BLOG_INDEX_TITLE,
   DEFAULT_SHARE_IMAGE,
@@ -9,7 +12,7 @@ import {
   HOME_TITLE,
   postDocumentTitle,
 } from './site.ts';
-import { blogIndexJsonLd, blogPostJsonLd, caseStudyJsonLd, homeJsonLd } from './structured-data.ts';
+import { aboutJsonLd, blogIndexJsonLd, blogPostJsonLd, caseStudyJsonLd, homeJsonLd } from './structured-data.ts';
 
 export interface PublicPage {
   title: string;
@@ -45,6 +48,18 @@ export function homePage(): PublicPage {
     imageAlt: 'Revv Studio, a product and UX design studio',
     type: 'website',
     jsonLd: homeJsonLd(),
+  };
+}
+
+export function aboutPage(): PublicPage {
+  return {
+    title: ABOUT_TITLE,
+    description: ABOUT_DESCRIPTION,
+    path: ABOUT_PATH,
+    image: HEADSHOT_SRC,
+    imageAlt: HEADSHOT_ALT,
+    type: 'website',
+    jsonLd: aboutJsonLd(),
   };
 }
 
@@ -88,6 +103,7 @@ export function pageForCaseStudy(study: CaseStudy): PublicPage {
 export function publicPages(posts: BlogPost[]): PublicPage[] {
   const pages = [
     homePage(),
+    aboutPage(),
     blogIndexPage(),
     ...posts.map(pageForPost),
     ...caseStudies.map(pageForCaseStudy),

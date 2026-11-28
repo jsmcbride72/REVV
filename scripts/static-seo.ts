@@ -1,6 +1,22 @@
 import fs from 'fs';
 import path from 'path';
 import type { Plugin, ResolvedConfig } from 'vite';
+import {
+  ABOUT_CTA,
+  ABOUT_HEADING,
+  ABOUT_HELP,
+  ABOUT_HELP_HEADING,
+  ABOUT_HOW,
+  ABOUT_HOW_HEADING,
+  ABOUT_INTRO,
+  HEADSHOT_ALT,
+  HEADSHOT_SRC,
+  HEADSHOT_WEBP,
+  SCOTT_JOB_TITLE,
+  SCOTT_LINKEDIN,
+  SCOTT_LOCALITY,
+  SCOTT_REGION,
+} from '../src/lib/about.ts';
 import type { BlogPost } from '../src/lib/blog-frontmatter.ts';
 import { postsFromMarkdown } from '../src/lib/blog-frontmatter.ts';
 import { caseStudies, caseStudyPath } from '../src/lib/case-studies.ts';
@@ -9,7 +25,7 @@ import { renderLlms } from '../src/lib/llms.ts';
 import { publicPages, type PublicPage } from '../src/lib/public-pages.ts';
 import { renderStaticFallback } from '../src/lib/static-fallback.ts';
 import { serializeJsonLd } from '../src/lib/structured-data.ts';
-import { absoluteSiteUrl, HERO_TITLE, SITE_NAME, SITE_ORIGIN } from '../src/lib/site.ts';
+import { ABOUT_PATH, absoluteSiteUrl, HERO_TITLE, ORGANIZATION_ID, SITE_NAME, SITE_ORIGIN, STORY_PARAGRAPHS } from '../src/lib/site.ts';
 
 const BANNED_STRUCTURED_DATA_KEYS = new Set([
   'aggregateRating',
@@ -123,8 +139,30 @@ function collectTypes(value: unknown, found: Set<string>): void {
   }
 }
 
+function findRecord(
+  value: unknown,
+  match: (record: Record<string, unknown>) => boolean,
+): Record<string, unknown> | undefined {
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      const found = findRecord(item, match);
+      if (found) return found;
+    }
+    return undefined;
+  }
+  if (!value || typeof value !== 'object') return undefined;
+  const record = value as Record<string, unknown>;
+  if (match(record)) return record;
+  for (const child of Object.values(record)) {
+    const found = findRecord(child, match);
+    if (found) return found;
+  }
+  return undefined;
+}
+
 function expectedTypes(pagePath: string): string[] {
   if (pagePath === '/') return ['Organization', 'ProfessionalService', 'WebSite'];
+  if (pagePath === ABOUT_PATH) return ['Person', 'BreadcrumbList', 'Organization', 'ProfessionalService'];
   if (pagePath === '/blog' || pagePath === '/blog/') return ['Blog', 'BreadcrumbList', 'Organization', 'ProfessionalService'];
   if (pagePath.startsWith('/blog/')) return ['BlogPosting', 'BreadcrumbList', 'Organization'];
   if (pagePath.startsWith('/work/')) return ['CreativeWork', 'BreadcrumbList', 'Organization'];
@@ -241,6 +279,32 @@ function assertShell(html: string, meta: PublicPage): void {
     }
   }
 
+  if (meta.path === ABOUT_PATH) {
+    const person = findRecord(data, (record) => record.jobTitle === SCOTT_JOB_TITLE);
+    if (!person) {
+      throw new Error(`HTML shell for ${meta.path} is missing the Person schema for Scott McBride.`);
+    }
+    if (person.url !== absoluteSiteUrl(ABOUT_PATH)) {
+      throw new Error(`HTML shell for ${meta.path} Person url must be the about page.`);
+    }
+    const sameAs = person.sameAs;
+    const sameAsUrls = Array.isArray(sameAs) ? sameAs : [sameAs];
+    if (!sameAsUrls.includes(SCOTT_LINKEDIN)) {
+      throw new Error(`HTML shell for ${meta.path} Person schema is missing the LinkedIn profile.`);
+    }
+    const address = person.address as { addressLocality?: string; addressRegion?: string } | undefined;
+    if (address?.addressLocality !== SCOTT_LOCALITY || address?.addressRegion !== SCOTT_REGION) {
+      throw new Error(`HTML shell for ${meta.path} Person schema is missing the Jacksonville Beach address.`);
+    }
+    const worksFor = person.worksFor as { name?: string; '@id'?: string } | undefined;
+    if (worksFor?.name !== SITE_NAME && worksFor?.['@id'] !== ORGANIZATION_ID) {
+      throw new Error(`HTML shell for ${meta.path} Person schema must work for Revv Studio.`);
+    }
+    if (JSON.stringify(person).toLowerCase().includes('telephone') || JSON.stringify(person).includes('phone')) {
+      throw new Error(`HTML shell for ${meta.path} Person schema must not include a phone number.`);
+    }
+  }
+
   if (meta.path.startsWith('/blog/') && meta.path !== '/blog/') {
     const graph = (data as { '@graph'?: Array<Record<string, unknown>> })['@graph'] ?? [];
     const posting = graph.find((item) => item['@type'] === 'BlogPosting');
@@ -261,8 +325,18 @@ function injectStaticContent(html: string, page: PublicPage, posts: BlogPost[]):
   if (next === html || !next.includes('data-static-content="true"')) {
     throw new Error(`Could not inject static content for ${page.path}`);
   }
-  if (page.path === '/' && !next.includes(HERO_TITLE)) {
-    throw new Error('Home static HTML is missing the hero heading.');
+  if (page.path === '/') {
+    if (!next.includes(HERO_TITLE)) {
+      throw new Error('Home static HTML is missing the hero heading.');
+    }
+    for (const paragraph of STORY_PARAGRAPHS) {
+      if (!next.includes(paragraph)) {
+        throw new Error('Home static HTML is missing the Our Story copy.');
+      }
+    }
+    if (next.includes('Founded by practitioners') || next.includes('not theoretical frameworks')) {
+      throw new Error('Home static HTML still contains the old Our Story copy.');
+    }
   }
   const post = posts.find((item) => page.path === `/blog/${item.slug}/`);
   if (post) {
@@ -276,6 +350,31 @@ function injectStaticContent(html: string, page: PublicPage, posts: BlogPost[]):
       throw new Error(`Blog post ${page.path} is missing links.`);
     }
   }
+  if (page.path === ABOUT_PATH) {
+    const required = [
+      ABOUT_HEADING,
+      ...ABOUT_INTRO,
+      ABOUT_HOW_HEADING,
+      ABOUT_HOW,
+      ABOUT_HELP_HEADING,
+      ...ABOUT_HELP,
+      ABOUT_CTA,
+      HEADSHOT_ALT,
+      HEADSHOT_SRC,
+      HEADSHOT_WEBP,
+      'width="400"',
+      'height="400"',
+    ];
+    for (const value of required) {
+      if (!next.includes(value)) {
+        throw new Error(`About page static HTML is missing: ${value.slice(0, 80)}`);
+      }
+    }
+    if (/max-width:\s*[5-9]\d\dpx|width:\s*[5-9]\d\dpx/.test(next)) {
+      throw new Error('About page headshot must not be displayed above 400px.');
+    }
+  }
+
   if (page.path.startsWith('/work/')) {
     if (!next.includes('<li>')) {
       throw new Error(`Case study ${page.path} is missing results.`);
@@ -312,6 +411,7 @@ function writeLlms(outDir: string, posts: BlogPost[]): void {
     throw new Error('llms.txt must be plain text that starts with the studio name.');
   }
   const required = [
+    absoluteSiteUrl(ABOUT_PATH),
     absoluteSiteUrl('/blog/'),
     ...posts.map((post) => absoluteSiteUrl(`/blog/${post.slug}/`)),
     ...caseStudies.map((study) => absoluteSiteUrl(caseStudyPath(study.id))),

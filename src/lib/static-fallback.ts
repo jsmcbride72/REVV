@@ -1,14 +1,30 @@
+import {
+  ABOUT_CTA,
+  ABOUT_HEADING,
+  ABOUT_HELP,
+  ABOUT_HELP_HEADING,
+  ABOUT_HOW,
+  ABOUT_HOW_HEADING,
+  ABOUT_INTRO,
+  HEADSHOT_ALT,
+  HEADSHOT_HEIGHT,
+  HEADSHOT_SRC,
+  HEADSHOT_WEBP,
+  HEADSHOT_WIDTH,
+} from './about.ts';
 import type { BlogPost } from './blog-frontmatter.ts';
 import { caseStudies, caseStudyPath, type CaseStudy } from './case-studies.ts';
 import { renderMarkdown } from './markdown.ts';
 import type { PublicPage } from './public-pages.ts';
 import {
+  ABOUT_PATH,
   AUTHOR_BIO,
   BLOG_INDEX_DESCRIPTION,
   CONTACT_EMAIL,
   HERO_SUMMARY,
   HERO_TITLE,
   HOME_DESCRIPTION,
+  STORY_PARAGRAPHS,
 } from './site.ts';
 
 function escapeHtml(value: string): string {
@@ -31,7 +47,11 @@ function homeFallback(): string {
         <p class="text-xl text-neutral-200 leading-relaxed mb-8">${escapeHtml(HERO_SUMMARY)}</p>
         <p class="mb-10"><a class="inline-flex px-6 py-3 rounded-xl bg-cyan-500 font-semibold text-neutral-950" href="mailto:${CONTACT_EMAIL}">Start a project</a></p>
         <p class="text-neutral-300 leading-relaxed mb-8">${escapeHtml(HOME_DESCRIPTION)}</p>
+        <h2 class="text-2xl font-bold mb-4">Our Story</h2>
+        <p class="text-neutral-300 leading-relaxed mb-4">${escapeHtml(STORY_PARAGRAPHS[0])}</p>
+        <p class="text-neutral-300 leading-relaxed mb-8">${escapeHtml(STORY_PARAGRAPHS[1])}</p>
         <nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm" aria-label="Site">
+          <a class="text-cyan-400" href="${ABOUT_PATH}">About</a>
           <a class="text-cyan-400" href="/blog/">Blog</a>
           <a class="text-cyan-400" href="/#case-studies">Case studies</a>
           <a class="text-cyan-400" href="mailto:${CONTACT_EMAIL}">Contact</a>
@@ -173,8 +193,34 @@ function caseStudyFallback(study: CaseStudy): string {
     </main>`;
 }
 
+function aboutFallback(): string {
+  const intro = ABOUT_INTRO.map(
+    (paragraph) => `<p class="text-neutral-300 leading-relaxed mb-4">${escapeHtml(paragraph)}</p>`,
+  ).join('\n');
+  const help = ABOUT_HELP.map((item) => `<li>${escapeHtml(item)}</li>`).join('\n');
+
+  return `<main class="bg-neutral-950 text-neutral-100" data-static-content="true">
+      <article class="max-w-3xl mx-auto px-6 pt-28 pb-20">
+        <picture>
+          <source srcset="${HEADSHOT_WEBP}" type="image/webp" />
+          <img src="${HEADSHOT_SRC}" alt="${escapeHtml(HEADSHOT_ALT)}" width="${HEADSHOT_WIDTH}" height="${HEADSHOT_HEIGHT}" style="max-width:${HEADSHOT_WIDTH}px;height:auto" />
+        </picture>
+        <h1 class="text-4xl font-bold leading-tight mb-6">${escapeHtml(ABOUT_HEADING)}</h1>
+        ${intro}
+        <h2 class="text-2xl font-bold mb-4">${escapeHtml(ABOUT_HOW_HEADING)}</h2>
+        <p class="text-neutral-300 leading-relaxed mb-8">${escapeHtml(ABOUT_HOW)}</p>
+        <h2 class="text-2xl font-bold mb-4">${escapeHtml(ABOUT_HELP_HEADING)}</h2>
+        <ul class="list-disc pl-5 space-y-2 text-neutral-300">
+          ${help}
+        </ul>
+        <p class="mt-10"><a class="inline-flex px-6 py-3 rounded-xl bg-cyan-500 font-semibold text-neutral-950" href="mailto:${CONTACT_EMAIL}">${escapeHtml(ABOUT_CTA)}</a></p>
+      </article>
+    </main>`;
+}
+
 export function renderStaticFallback(page: PublicPage, posts: BlogPost[]): string {
   if (page.path === '/') return homeFallback();
+  if (page.path === ABOUT_PATH) return aboutFallback();
   if (page.path === '/blog' || page.path === '/blog/') return blogIndexFallback(posts);
 
   const post = posts.find((item) => page.path === `/blog/${item.slug}/`);

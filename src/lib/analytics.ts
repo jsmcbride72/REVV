@@ -26,7 +26,7 @@ declare global {
   }
 }
 
-export type StartProjectLocation = 'hero' | 'blog';
+export type StartProjectLocation = 'hero' | 'blog' | 'about';
 
 export type ContactClickLocation = 'footer' | 'case_study' | 'contact_form';
 
