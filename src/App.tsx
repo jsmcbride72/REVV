@@ -8,7 +8,7 @@ import SiteNav from './SiteNav';
 import { trackContactClick, trackStartProjectClick } from './lib/analytics';
 import { caseStudies, caseStudyPath, getCaseStudy, posterForVideo } from './lib/case-studies';
 import { homePage } from './lib/public-pages';
-import { CONTACT_EMAIL, HERO_SUMMARY, HERO_TITLE } from './lib/site';
+import { CONTACT_EMAIL, HERO_SUMMARY, HERO_TITLE, STORY_PARAGRAPHS } from './lib/site';
 
 
 const home = homePage();
@@ -296,10 +296,10 @@ function App() {
 
               <div>
                 <p className="text-lg lg:text-xl text-neutral-300 leading-relaxed mb-6">
-                  Founded by practitioners who've spent years navigating the gap between business strategy and technological implementation, Revv Studio emerged from a simple observation: most organizations don't need more tools — they need work that actually works for the people doing it.
+                  {STORY_PARAGRAPHS[0]}
                 </p>
                 <p className="text-base lg:text-xl text-neutral-400 leading-relaxed mb-6">
-                  We've seen firsthand how AI hype can distract from fundamental operational issues, and how the best technology investments are the ones that amplify human capability rather than replace it. Our approach combines strategic consulting with hands-on implementation, ensuring that every change we introduce is grounded in real workflow improvement — not theoretical frameworks.
+                  {STORY_PARAGRAPHS[1]}
                 </p>
               </div>
             </div>
@@ -1030,6 +1030,7 @@ function App() {
             </div>
             <nav aria-label="Footer" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
               <a href="/#case-studies" className="text-neutral-400 hover:text-cyan-400">Case Studies</a>
+              <a href="/about/" className="text-neutral-400 hover:text-cyan-400">About</a>
               <a href="/blog/" className="text-neutral-400 hover:text-cyan-400">Blog</a>
               <a href={`mailto:${CONTACT_EMAIL}`} onClick={() => trackContactClick('footer')} className="text-neutral-400 hover:text-cyan-400">Contact</a>
             </nav>

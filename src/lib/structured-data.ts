@@ -1,6 +1,16 @@
 import type { BlogPost } from './blog-frontmatter.ts';
 import { caseStudyNarrative, caseStudyPath, caseStudyShareImage, type CaseStudy } from './case-studies.ts';
 import {
+  ABOUT_DESCRIPTION,
+  HEADSHOT_SRC,
+  SCOTT_JOB_TITLE,
+  SCOTT_LINKEDIN,
+  SCOTT_LOCALITY,
+  SCOTT_NAME,
+  SCOTT_REGION,
+} from './about.ts';
+import {
+  ABOUT_PATH,
   absoluteSiteUrl,
   BLOG_INDEX_DESCRIPTION,
   HOME_DESCRIPTION,
@@ -70,6 +80,42 @@ export function homeJsonLd() {
         inLanguage: 'en',
         publisher: { '@id': ORGANIZATION_ID },
       },
+    ],
+  };
+}
+
+export function aboutJsonLd() {
+  const url = absoluteSiteUrl(ABOUT_PATH);
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      organization(),
+      {
+        '@type': 'Person',
+        '@id': `${url}#person`,
+        name: SCOTT_NAME,
+        jobTitle: SCOTT_JOB_TITLE,
+        description: ABOUT_DESCRIPTION,
+        url,
+        image: absoluteSiteUrl(HEADSHOT_SRC),
+        sameAs: SCOTT_LINKEDIN,
+        worksFor: {
+          '@type': 'Organization',
+          '@id': ORGANIZATION_ID,
+          name: SITE_NAME,
+          url: `${SITE_ORIGIN}/`,
+        },
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: SCOTT_LOCALITY,
+          addressRegion: SCOTT_REGION,
+          addressCountry: 'US',
+        },
+      },
+      breadcrumb([
+        { name: 'Home', path: '/' },
+        { name: 'About', path: ABOUT_PATH },
+      ]),
     ],
   };
 }

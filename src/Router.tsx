@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import App from './App';
+import AboutPage from './pages/About';
 import BlogIndex from './pages/BlogIndex';
 import BlogPostPage from './pages/BlogPost';
 import CaseStudyPage from './pages/CaseStudyPage';
@@ -19,6 +20,8 @@ export default function Router() {
 
   const workMatch = path.match(/^\/work\/([^/]+)\/?$/);
   if (workMatch) return <CaseStudyPage id={decodeURIComponent(workMatch[1])} />;
+
+  if (path === '/about' || path === '/about/') return <AboutPage />;
 
   return <App />;
 }

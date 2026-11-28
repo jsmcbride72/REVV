@@ -316,6 +316,7 @@ export default function CaseStudyModal({ caseStudy }: CaseStudyModalProps) {
 
         <nav aria-label="Related" className="flex flex-wrap gap-x-6 gap-y-2 text-sm pb-4">
           <a href="/" className="text-cyan-400 hover:text-cyan-300">Revv Studio</a>
+          <a href="/about/" className="text-cyan-400 hover:text-cyan-300">About</a>
           <a href="/blog/" className="text-cyan-400 hover:text-cyan-300">Blog</a>
           <a href={`mailto:${CONTACT_EMAIL}`} onClick={() => trackContactClick('case_study')} className="text-cyan-400 hover:text-cyan-300">Contact</a>
         </nav>

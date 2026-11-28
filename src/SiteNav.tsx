@@ -15,6 +15,7 @@ interface SiteNavProps {
 export default function SiteNav({ onContact }: SiteNavProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const onHome = window.location.pathname === '/';
+  const onAbout = window.location.pathname === '/about' || window.location.pathname === '/about/';
 
   const onSectionClick = (event: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     setMenuOpen(false);
@@ -52,6 +53,13 @@ export default function SiteNav({ onContact }: SiteNavProps) {
                 {link.label}
               </a>
             ))}
+            <a
+              href="/about/"
+              aria-current={onAbout ? 'page' : undefined}
+              className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors"
+            >
+              About
+            </a>
             <a href="/blog/" className="text-sm text-neutral-300 hover:text-cyan-400 transition-colors">
               Blog
             </a>
@@ -93,6 +101,14 @@ export default function SiteNav({ onContact }: SiteNavProps) {
                 {link.label}
               </a>
             ))}
+            <a
+              href="/about/"
+              aria-current={onAbout ? 'page' : undefined}
+              className="px-2 py-3 text-base text-neutral-200 hover:text-cyan-400"
+              onClick={() => setMenuOpen(false)}
+            >
+              About
+            </a>
             <a
               href="/blog/"
               className="px-2 py-3 text-base text-neutral-200 hover:text-cyan-400"

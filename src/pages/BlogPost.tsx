@@ -151,6 +151,7 @@ export default function BlogPostPage({ slug }: BlogPostPageProps) {
           </div>
           <nav aria-label="Footer" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
             <a href="/#case-studies" className="text-neutral-400 hover:text-cyan-400">Case Studies</a>
+            <a href="/about/" className="text-neutral-400 hover:text-cyan-400">About</a>
             <a href="/blog/" className="text-neutral-400 hover:text-cyan-400">Blog</a>
             <a href={`mailto:${CONTACT_EMAIL}`} onClick={() => trackContactClick('footer')} className="text-neutral-400 hover:text-cyan-400">Contact</a>
           </nav>

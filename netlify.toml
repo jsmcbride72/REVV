@@ -4,9 +4,9 @@
 
 # SPA fallback. A real file in the publish directory wins over this rewrite
 # (Netlify shadowing). The production build writes dist/index.html,
-# dist/blog/index.html, dist/blog/<slug>/index.html, and dist/work/<id>/index.html
-# with crawler-readable titles, descriptions, canonicals, and social tags,
-# plus dist/robots.txt and dist/sitemap.xml.
+# dist/about/index.html, dist/blog/index.html, dist/blog/<slug>/index.html,
+# and dist/work/<id>/index.html with crawler-readable titles, descriptions,
+# canonicals, and social tags, plus dist/robots.txt, dist/sitemap.xml, and dist/llms.txt.
 # Do not set force = true, or those shells would never be served.
 [[redirects]]
   from = "/*"
